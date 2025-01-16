@@ -35,6 +35,7 @@ hist_delta_phi = ROOT.TH1F("delta_phi", "Delta Phi Between Tau+ and Tau-; #Delta
 hist_xi = ROOT.TH1F("xi", "Proton Energy Loss; #xi; Events", 500, 0, 0.3)
 hist_tau0_phi = ROOT.TH1F("tau0_phi", "Tau0 Phi",100, -4, 4)
 hist_tau1_phi = ROOT.TH1F("tau1_phi", "Tau1 Phi",100, -4, 4)
+hist_ttpair_inv_mass=
 
 # Loop over the tree and fill histograms
 for event in tree:
