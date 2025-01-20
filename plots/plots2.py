@@ -25,17 +25,20 @@ if not tree:
 
 
 # Create histograms
-hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 500, 0, 900)
-hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT; pT [GeV]; Events", 500, 0, 900)
-hist_tau0_eta = ROOT.TH1F("tau0_eta", "Tau+ Eta; #eta; Events", 500, -3, 3)
-hist_tau1_eta = ROOT.TH1F("tau1_eta", "Tau- Eta; #eta; Events", 500, -3, 3)
-hist_sist_mass = ROOT.TH1F("sist_mass", "Invariant Mass of Tau Pair; Mass [GeV]; Events", 500, 0, 1000)
-hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair; Rapidity; Events", 500, -4, 4)
+hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 100, 0, 900)
+hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT; pT [GeV]; Events", 100, 0, 900)
+hist_tau0_eta = ROOT.TH1F("tau0_eta", "Tau+ Eta; #eta; Events", 100, -3, 3)
+hist_tau1_eta = ROOT.TH1F("tau1_eta", "Tau- Eta; #eta; Events", 100, -3, 3)
+hist_sist_mass = ROOT.TH1F("sist_mass", "Invariant Mass of Tau Pair; Mass [GeV]; Events", 100, 0, 1000)
+hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair; Rapidity; Events", 200, -3, 3)
 hist_delta_phi = ROOT.TH1F("delta_phi", "Delta Phi Between Tau+ and Tau-; #Delta#phi; Events", 500, 3.02, 3.18)
 hist_xi = ROOT.TH1F("xi", "Proton Energy Loss; #xi; Events", 500, 0, 0.3)
 hist_tau0_phi = ROOT.TH1F("tau0_phi", "Tau0 Phi",100, -4, 4)
 hist_tau1_phi = ROOT.TH1F("tau1_phi", "Tau1 Phi",100, -4, 4)
-hist_ttpair_inv_mass=
+hist_ttpair_inv_mass=ROOT.TH1F("invariant_mass_tt_pair", "Tau pair invariant mass",100,0, 1000 )
+hist_invariant_mass=ROOT.TH1F("invariant_mass", "Proton invariant mass",100, 0, 1000 )
+hist_p_rapidity=ROOT.TH1F("p_rapidity", "Proton rapidity",100,1.2, 1.2 )
+hist_tt_rapidity=ROOT.TH1F("tt_rapidity", "Tau pair rapidity",100, -1.2, 1.2 )
 
 # Loop over the tree and fill histograms
 for event in tree:
@@ -64,6 +67,13 @@ for event in tree:
     hist_tau0_phi.Fill(event.tau0_phi)
     hist_tau1_phi.Fill(event.tau1_phi)
 
+    hist_ttpair_inv_mass.Fill(event.invariant_mass_tt_pair)
+    print(event.invariant_mass)
+    print(event.invariant_mass)
+    hist_invariant_mass.Fill(event.invariant_mass)
+    hist_p_rapidity.Fill(event.p_rapidity)
+    hist_tt_rapidity.Fill(event.tt_rapidity)
+
 
 # Function to save histograms without showing them
 def save_histogram(hist, filename):
@@ -74,7 +84,7 @@ def save_histogram(hist, filename):
     canvas.Close()  # Close the canvas to free memory
     print(f"Saved {filename}")
 
-dirr="/eos/user/m/mblancco/plots/plots_fase0_with_xi_and_deltaphi/"
+dirr="/eos/user/m/mblancco/tau_analysis/plots/plots_fase0/"
 
 if not os.path.exists(dirr):
     os.makedirs(dirr)
@@ -90,6 +100,11 @@ save_histogram(hist_delta_phi, dirr+"delta_phi_new.png")
 save_histogram(hist_xi, dirr+"proton_xi.png")
 save_histogram(hist_tau0_phi, dirr+"tau0_phi.png")
 save_histogram(hist_tau1_phi, dirr+"tau1_phi.png")
+save_histogram(hist_ttpair_inv_mass, dirr+"tt_inv_mass.png")
+save_histogram(hist_invariant_mass, dirr+"p_inv_mass.png")
+save_histogram(hist_tt_rapidity, dirr+"tt_rapidity.png")
+save_histogram(hist_p_rapidity, dirr+"p_rapidity.png")
+
 
 # Close the ROOT file
 file.Close()
