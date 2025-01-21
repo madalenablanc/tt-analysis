@@ -270,71 +270,71 @@ for(int i=0; i<tree->GetEntries(); i++){
 		double proton_xi1 = -1; 
 		double proton_xi2 = -1; 
 
-        // Loop over all protons in the event
-        for (int j = 0; j < tree->GetLeaf("Proton_multiRP_xi")->GetLen(); j++) {
-            int arm = tree->GetLeaf("Proton_multiRP_arm")->GetValue(j);
-            double xi = tree->GetLeaf("Proton_multiRP_xi")->GetValue(j);
+        // // Loop over all protons in the event
+        // for (int j = 0; j < tree->GetLeaf("Proton_multiRP_xi")->GetLen(); j++) {
+        //     int arm = tree->GetLeaf("Proton_multiRP_arm")->GetValue(j);
+        //     double xi = tree->GetLeaf("Proton_multiRP_xi")->GetValue(j);
 
 			
 
 
-            if (arm == 0 && xi > proton_xi1) {
-                // Update the largest xi for Arm 0
-                proton_xi1 = xi;
-            } else if (arm == 1 && xi > proton_xi2) {
-                // Update the largest xi for Arm 1
-                proton_xi2 = xi;
-            }
+        //     if (arm == 0 && xi > proton_xi1) {
+        //         // Update the largest xi for Arm 0
+        //         proton_xi1 = xi;
+        //     } else if (arm == 1 && xi > proton_xi2) {
+        //         // Update the largest xi for Arm 1
+        //         proton_xi2 = xi;
+        //     }
 
-			cout << "Event NEW " << i << ": Proton 1 (xi1) = " << proton_xi1 << ", Arm = 0" << endl;
-			cout << "Event " << i << ": Proton 2 (xi2) = " << proton_xi2 << ", Arm = 1" << endl;
-			// Check if we have valid protons from both arms
-			if (proton_xi1 > 0 && proton_xi2 > 0) {
-				double s = 13000 * 13000;  // Center-of-mass energy squared
+		// 	cout << "Event NEW " << i << ": Proton 1 (xi1) = " << proton_xi1 << ", Arm = 0" << endl;
+		// 	cout << "Event " << i << ": Proton 2 (xi2) = " << proton_xi2 << ", Arm = 1" << endl;
+		// 	// Check if we have valid protons from both arms
+		// 	if (proton_xi1 > 0 && proton_xi2 > 0) {
+		// 		double s = 13000 * 13000;  // Center-of-mass energy squared
 
-				cout << "Center-of-mass energy squared (s) = " << s << endl;
+		// 		cout << "Center-of-mass energy squared (s) = " << s << endl;
 
-				p_invariant_mass = sqrt(s * proton_xi1 * proton_xi2);
-				p_rapidity= 0.5 * log(proton_xi1 / proton_xi2);
-				//out.Fill();
+		// 		p_invariant_mass = sqrt(s * proton_xi1 * proton_xi2);
+		// 		p_rapidity= 0.5 * log(proton_xi1 / proton_xi2);
+		// 		//out.Fill();
 
-				cout << "Invariant Mass: " << p_invariant_mass << ", Rapidity: " << p_rapidity << endl;
-			}
-        }
+		// 		cout << "Invariant Mass: " << p_invariant_mass << ", Rapidity: " << p_rapidity << endl;
+		// 	}
+        // }
 
-		// Progress output
-        if (i % 1000 == 0) cout << "Progress: " << i << "/" << tree->GetEntries() << endl;
-
-
-
-// // Multi-RP proton selection: Loop over multi-RP protons
-// for (int j = 0; j < tree->GetLeaf("Proton_multiRP_xi")->GetLen(); j++) {
-//     int arm = tree->GetLeaf("Proton_multiRP_arm")->GetValue(j);  // Arm of the proton (0 or 1)
-//     double xi = tree->GetLeaf("Proton_multiRP_xi")->GetValue(j); // Fractional momentum loss (xi)
+		// // Progress output
+        // if (i % 1000 == 0) cout << "Progress: " << i << "/" << tree->GetEntries() << endl;
 
 
-//     // Select the largest xi for each arm
-//     if (arm == 0 && xi > proton_xi1) {
-//         proton_xi1 = xi; // Assign to Arm 0
-//     } else if (arm == 1 && xi > proton_xi2) {
-//         proton_xi2 = xi; // Assign to Arm 1
-//     }
-// }
 
-// if (proton_xi1 > 0 && proton_xi2 > 0) {
-//     double s = 13000 * 13000;  // Center-of-mass energy squared (13 TeV collisions)
-//     double invariant_mass = sqrt(s * proton_xi1 * proton_xi2);
-//     double proton_rapidity = 0.5 * log(proton_xi1 / proton_xi2);
+// Multi-RP proton selection: Loop over multi-RP protons
+for (int j = 0; j < tree->GetLeaf("Proton_multiRP_xi")->GetLen(); j++) {
+    int arm = tree->GetLeaf("Proton_multiRP_arm")->GetValue(j);  // Arm of the proton (0 or 1)
+    double xi = tree->GetLeaf("Proton_multiRP_xi")->GetValue(j); // Fractional momentum loss (xi)
 
 
-// 	p_rapidity=proton_rapidity;
-//     p_invariant_mass=invariant_mass;
+    // Select the largest xi for each arm
+    if (arm == 0 && xi > proton_xi1) {
+        proton_xi1 = xi; // Assign to Arm 0
+    } else if (arm == 1 && xi > proton_xi2) {
+        proton_xi2 = xi; // Assign to Arm 1
+    }
+}
 
-// 	cout << "P inv mass: " << p_invariant_mass ;
+if (proton_xi1 > 0 && proton_xi2 > 0) {
+    double s = 13000 * 13000;  // Center-of-mass energy squared (13 TeV collisions)
+    double invariant_mass = sqrt(s * proton_xi1 * proton_xi2);
+    double proton_rapidity = 0.5 * log(proton_xi1 / proton_xi2);
 
-//     std::cout << "Invariant Mass: " << invariant_mass
-//               << ", Rapidity: " << p_rapidity << std::endl;
-// }
+
+	p_rapidity=proton_rapidity;
+    p_invariant_mass=invariant_mass;
+
+	cout << "P inv mass: " << p_invariant_mass ;
+
+    std::cout << "Invariant Mass: " << invariant_mass
+              << ", Rapidity: " << p_rapidity << std::endl;
+}
 
 
 		

@@ -94,7 +94,7 @@ int main(){
         if (i % 1000 == 0) cout << "Progress: " << i << "/" << tree->GetEntries() << endl;
     }
 
-     TCanvas *c1 = new TCanvas("c1", "Invariant Mass Plot", 800, 600);
+    TCanvas *c1 = new TCanvas("c1", "Invariant Mass Plot", 800, 600);
     out.Draw("invariant_mass");
     c1->SaveAs("invariant_mass.png");
 
