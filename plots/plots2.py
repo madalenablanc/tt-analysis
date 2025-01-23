@@ -30,15 +30,17 @@ hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT; pT [GeV]; Events", 100, 0, 900)
 hist_tau0_eta = ROOT.TH1F("tau0_eta", "Tau+ Eta; #eta; Events", 100, -3, 3)
 hist_tau1_eta = ROOT.TH1F("tau1_eta", "Tau- Eta; #eta; Events", 100, -3, 3)
 hist_sist_mass = ROOT.TH1F("sist_mass", "Invariant Mass of Tau Pair; Mass [GeV]; Events", 100, 0, 1000)
-hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair; Rapidity; Events", 200, -3, 3)
+hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair; Rapidity; Events", 100, -3, 3)
 hist_delta_phi = ROOT.TH1F("delta_phi", "Delta Phi Between Tau+ and Tau-; #Delta#phi; Events", 500, 3.02, 3.18)
 hist_xi = ROOT.TH1F("xi", "Proton Energy Loss; #xi; Events", 500, 0, 0.3)
 hist_tau0_phi = ROOT.TH1F("tau0_phi", "Tau0 Phi",100, -4, 4)
 hist_tau1_phi = ROOT.TH1F("tau1_phi", "Tau1 Phi",100, -4, 4)
 hist_ttpair_inv_mass=ROOT.TH1F("invariant_mass_tt_pair", "Tau pair invariant mass",100,0, 1000 )
-hist_invariant_mass=ROOT.TH1F("invariant_mass", "Proton invariant mass",100, 0, 1000 )
-hist_p_rapidity=ROOT.TH1F("p_rapidity", "Proton rapidity",100,1.2, 1.2 )
-hist_tt_rapidity=ROOT.TH1F("tt_rapidity", "Tau pair rapidity",100, -1.2, 1.2 )
+hist_invariant_mass=ROOT.TH1F("p_invariant_mass", "Proton invariant mass",100, 300, 2000 )
+hist_p_rapidity=ROOT.TH1F("p_rapidity", "Proton rapidity",100,-3,3 )
+hist_tt_rapidity=ROOT.TH1F("tt_rapidity", "Tau pair rapidity",100,-3,3)
+hist_diff_mass=ROOT.TH1F("p-t mass","p-t mass ",100,-100,2000)
+hist_diff_rapidity=ROOT.TH1F("p-t rapidity","p-t rapidity",100,-10,10)
 
 # Loop over the tree and fill histograms
 for event in tree:
@@ -68,11 +70,16 @@ for event in tree:
     hist_tau1_phi.Fill(event.tau1_phi)
 
     hist_ttpair_inv_mass.Fill(event.invariant_mass_tt_pair)
-    print(event.invariant_mass)
-    print(event.invariant_mass)
-    hist_invariant_mass.Fill(event.invariant_mass)
+    print(event.p_invariant_mass)
+    print(event.p_invariant_mass)
+    hist_invariant_mass.Fill(event.p_invariant_mass)
     hist_p_rapidity.Fill(event.p_rapidity)
     hist_tt_rapidity.Fill(event.tt_rapidity)
+
+    # hist_diff_mass=hist_invariant_mass-hist_ttpair_inv_mass
+    # hist_diff_rapidity=hist_p_rapidity-hist_tt_rapidity
+    hist_diff_mass.Fill(event.p_invariant_mass-event.invariant_mass_tt_pair)
+    hist_diff_rapidity.Fill(event.p_rapidity-event.tt_rapidity)
 
 
 # Function to save histograms without showing them
@@ -104,6 +111,8 @@ save_histogram(hist_ttpair_inv_mass, dirr+"tt_inv_mass.png")
 save_histogram(hist_invariant_mass, dirr+"p_inv_mass.png")
 save_histogram(hist_tt_rapidity, dirr+"tt_rapidity.png")
 save_histogram(hist_p_rapidity, dirr+"p_rapidity.png")
+save_histogram(hist_diff_mass,dirr+"p-t mass.png")
+save_histogram(hist_diff_rapidity,dirr+"p-t rapidity.png")
 
 
 # Close the ROOT file

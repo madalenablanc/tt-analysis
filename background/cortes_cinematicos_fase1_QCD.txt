@@ -1,0 +1,17 @@
+joaonunes
+joaotavares
+output file: /eos/user/m/mblancco/samples_2018_tautau/fase1/QCD_fase1_PIC_skimmed_TauTau_2018_.root
+joaonunes
+joaotavares
+output file: /eos/user/m/mblancco/samples_2018_tautau/fase1/QCD_fase1_PIC_skimmed_TauTau_2018_.root
+joaonunes
+joaotavares
+output file: /eos/user/m/mblancco/samples_2018_tautau/fase1/QCD_fase1_PIC_skimmed_TauTau_2018_.root
+joaonunes
+output file: /eos/user/m/mblancco/samples_2018_tautau/fase1/QCD_fase1_PIC_skimmed_TauTau_2018_.root
+joaonunes
+joaotavares
+Error: TTree 'tree' not found in the file.
+output file: /eos/user/m/mblancco/samples_2018_tautau/fase1/QCD_fase1_PIC_skimmed_TauTau_2018_.root
+joaonunes
+joaotavares
