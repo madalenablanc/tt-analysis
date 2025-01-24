@@ -1,9 +1,9 @@
 tau0_phi,tau1_phi,100,-4,4,100,-4,4
-tau0_eta,tau1_eta,100,-3,3, 100, -3,3
+tau0_eta,tau1_eta,75,-3,3, 75, -3,3
 tau0_pt,tau1_pt,100,0,900,100,0,900
 sist_mass,tau0_pt, 100,0,1000,100,0,900
 sist_mass,tau1_pt, 100,0,1000,100,0,900
-sist_rap,tau0_eta, 100,-3,3, 100,-3,3
-tt_rapidity,tau0_eta,100,-3,3,100,-3,3
-p_invariant_mass,invariant_mass_tt_pair,100,0,2000,100,0,2000
-p_rapidity,tt_rapidity,100,-1.2,1.2,100,-1.2,1.2
+sist_rap,tau0_eta, 75,-3,3, 75,-3,3
+tt_rapidity,tau0_eta,75,-3,3,75,-3,3
+p_invariant_mass,invariant_mass_tt_pair,75,0,2000,75,0,2000
+p_rapidity,tt_rapidity,50,-1.2,1.2,50,-1.2,1.2

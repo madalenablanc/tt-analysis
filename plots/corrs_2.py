@@ -14,8 +14,8 @@ import seaborn as sns
 # filename="2018Data_passPreselection_passSPlotCuts_mergeSweights.root"
 
 dir="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/"
-filename="GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_qcdcode.root"
 filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
+#filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
 #ilename2="MC_JPSI_2018_preBDT_Nov21.root"
 
 data = uproot.open(dir+filename)
@@ -57,7 +57,7 @@ def plot_heatmap(data_type):
     correlation_matrix = combined_signal_df.corr()
 
     # Create a heatmap using seaborn
-    plt.figure(figsize=(10, 8))  # Set the figure size (optional)
+    plt.figure(figsize=(15, 15))  # Set the figure size (optional)
     color = plt.get_cmap('RdYlGn')   # default color
     color.set_bad('lightblue')  
     sns.heatmap(correlation_matrix, annot=True, fmt=".2f",cmap=color, center=0)

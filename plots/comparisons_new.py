@@ -37,6 +37,8 @@ def creat_scatter(v1,v2,tree,nbinsx,minx,maxx,nbinsy,miny,maxy):
     c1 = ROOT.TCanvas("canvas", "Scatter Plots", 800, 600)
     hist.Draw()
     hist.Draw("colz")
+    hist.SetXTitle(v1)
+    hist.SetYTitle(v2)
     c1.SaveAs("/eos/user/m/mblancco/tau_analysis/plots/scatter_plots/"+"scatter_"+v1+"_"+v2+".png")
 
 #creat_scatter("tau0_pt","tau1_pt",tree,100,0,900,100,0,900)
@@ -52,9 +54,13 @@ for event in tree: #diff mass vs diff rapidty
 
     hist2.Fill(p_mass-t_mass,p_rapidity-tt_rapidity)
 
+
+#hist2.Fit("pol1")
 c2 = ROOT.TCanvas("canvas", "Scatter Plots", 800, 600)
 hist2.Draw()
 hist2.Draw("colz")
+hist2.SetXTitle("Proton-TauPair Inv Mass")
+hist2.SetYTitle("Proton-TauPair Rapidity")
 c2.SaveAs("/eos/user/m/mblancco/tau_analysis/plots/scatter_plots/"+"diffs_p_tt.png")
     
 

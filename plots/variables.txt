@@ -3,9 +3,11 @@ tau0_pt
 tau1_pt
 tau0_eta
 tau1_eta
-sist_mass
-sist_rap
 delta_phi
 proton_xi_multi_rp
 tau0_phi
 tau1_phi
+p_invariant_mass
+invariant_mass_tt_pair
+p_rapidity
+tt_rapidity
