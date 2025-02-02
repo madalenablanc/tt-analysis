@@ -6,7 +6,9 @@ import os
 #filename = "/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_.root"  # Replace with the correct path to your file
 #filename ="/eos/user/m/mblancco/samples_2018_tautau/fase1/GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase1_with_xi_qcdcode.root"
 
-filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
+#filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
+filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
+#filename_bck="/eos/user/m/mblancco/samples_2018_tautau/fase0_background/QCD_2018_UL_skimmed_TauTau_nano.root"
 
 file = ROOT.TFile.Open(filename)
 
@@ -25,61 +27,85 @@ if not tree:
 
 
 # Create histograms
-hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 100, 0, 900)
-hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT; pT [GeV]; Events", 100, 0, 900)
-hist_tau0_eta = ROOT.TH1F("tau0_eta", "Tau+ Eta; #eta; Events", 100, -3, 3)
-hist_tau1_eta = ROOT.TH1F("tau1_eta", "Tau- Eta; #eta; Events", 100, -3, 3)
-hist_sist_mass = ROOT.TH1F("sist_mass", "Invariant Mass of Tau Pair; Mass [GeV]; Events", 100, 0, 1000)
-hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair; Rapidity; Events", 100, -3, 3)
-hist_delta_phi = ROOT.TH1F("delta_phi", "Delta Phi Between Tau+ and Tau-; #Delta#phi; Events", 500, 3.02, 3.18)
-hist_xi = ROOT.TH1F("xi", "Proton Energy Loss; #xi; Events", 500, 0, 0.3)
-hist_tau0_phi = ROOT.TH1F("tau0_phi", "Tau0 Phi; #phi; Events",100, -4, 4)
-hist_tau1_phi = ROOT.TH1F("tau1_phi", "Tau1 Phi; #phi; Events",100, -4, 4)
-hist_ttpair_inv_mass=ROOT.TH1F("invariant_mass_tt_pair", "Tau pair invariant mass; #M_X; Events",100,0, 1000 )
-hist_invariant_mass=ROOT.TH1F("p_invariant_mass", "Proton invariant mass; #M_X; Events",100, 300, 2000 )
-hist_p_rapidity=ROOT.TH1F("p_rapidity", "Proton rapidity; #Y_X; Events",100,-3,3 )
-hist_tt_rapidity=ROOT.TH1F("tt_rapidity", "Tau pair rapidity; #Y_X; Events",100,-3,3)
+hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT, No pileup; pT [GeV]; Events", 100, 0, 600)
+hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT, No pileup; pT [GeV]; Events", 100, 0, 600)
+hist_tau0_eta = ROOT.TH1F("tau0_eta", "Tau+ Eta, No pileup; #eta; Events", 100, -3, 3)
+hist_tau1_eta = ROOT.TH1F("tau1_eta", "Tau- Eta, No pileup; #eta; Events", 100, -3, 3)
+hist_sist_mass = ROOT.TH1F("sist_mass", "Invariant Mass of Tau Pair, No pileup; Mass [GeV]; Events", 100, 0, 1000)
+hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair, No pileup; Rapidity; Events", 100, -2, 2)
+hist_delta_phi = ROOT.TH1F("delta_phi", "Delta Phi Between Tau+ and Tau-, No pileup; #Delta#phi; Events", 250, 3.06, 3.15)
+hist_xi = ROOT.TH1F("xi", "Proton Energy Loss, No pileup; Proton energy loss #xi; Events", 200, 0, 0.2)
+hist_tau0_phi = ROOT.TH1F("tau0_phi", "Tau0 Phi; #phi, No pileup; Events",100, -4, 4)
+hist_tau1_phi = ROOT.TH1F("tau1_phi", "Tau1 Phi; #phi, No pileup; Events",100, -4, 4)
+hist_ttpair_inv_mass=ROOT.TH1F("invariant_mass_tt_pair", "Tau pair invariant mass, No pileup; Tau pair invariant mass [GeV]; Events",75,0, 1000 )
+hist_invariant_mass=ROOT.TH1F("p_invariant_mass", "Proton pair invariant mass, No pileup; Proton pair invariant mass [GeV]; Events",45, 300, 2000 )
+hist_p_rapidity=ROOT.TH1F("p_rapidity", "Proton pair rapidity, No pileup; Proton pair rapidity; Events",55,-1.5,1.5 )
+hist_tt_rapidity=ROOT.TH1F("tt_rapidity", "Tau pair rapidity, No pileup; Tau pair rapidity; Events",75,-3,3)
 hist_diff_mass=ROOT.TH1F("p-t mass","p-t mass ",100,-100,2000)
 hist_diff_rapidity=ROOT.TH1F("p-t rapidity","p-t rapidity",100,-10,10)
+
+# Helper function to check if a branch exists
+def check_branch(event, branch_name):
+    if not hasattr(event, branch_name):
+        raise RuntimeError(f"Error: Branch '{branch_name}' does not exist in the event.")
 
 # Loop over the tree and fill histograms
 for event in tree:
     # Tau kinematics
+    check_branch(event, "tau0_pt")
     hist_tau0_pt.Fill(event.tau0_pt)
+    
+    check_branch(event, "tau1_pt")
     hist_tau1_pt.Fill(event.tau1_pt)
+    
+    check_branch(event, "tau0_eta")
     hist_tau0_eta.Fill(event.tau0_eta)
+    
+    check_branch(event, "tau1_eta")
     hist_tau1_eta.Fill(event.tau1_eta)
     
     # Tau pair invariant mass and rapidity
+    check_branch(event, "sist_mass")
     hist_sist_mass.Fill(event.sist_mass)
+    
+    check_branch(event, "sist_rap")
     hist_sist_rap.Fill(event.sist_rap)
     
     # Delta Phi
-    # delta_phi = math.atan2(math.sin(event.tau0_phi - event.tau1_phi), math.cos(event.tau0_phi - event.tau1_phi))
-    # delta_phi_2=event.tau1_phi-event.tau0_phi
-    # hist_delta_phi.Fill(delta_phi_2)
-
-    abs_delta_phi=abs(event.delta_phi)
+    check_branch(event, "delta_phi")
+    abs_delta_phi = abs(event.delta_phi)
     hist_delta_phi.Fill(abs_delta_phi)
     
     # Proton energy loss
-    if hasattr(event, "proton_xi_multi_rp"):
+    if hasattr(event, "proton_xi_multi_rp"):  # Optional variable
         hist_xi.Fill(event.proton_xi_multi_rp)
-
+    
+    # Tau phi
+    check_branch(event, "tau0_phi")
     hist_tau0_phi.Fill(event.tau0_phi)
+    
+    check_branch(event, "tau1_phi")
     hist_tau1_phi.Fill(event.tau1_phi)
-
+    
+    # Invariant mass and rapidity
+    check_branch(event, "invariant_mass_tt_pair")
     hist_ttpair_inv_mass.Fill(event.invariant_mass_tt_pair)
-    print(event.p_invariant_mass)
+    
+    check_branch(event, "p_invariant_mass")
     print(event.p_invariant_mass)
     hist_invariant_mass.Fill(event.p_invariant_mass)
+    
+    check_branch(event, "p_rapidity")
     hist_p_rapidity.Fill(event.p_rapidity)
-    hist_tt_rapidity.Fill(event.tt_rapidity)
+    
+    # Difference in mass and rapidity
+    check_branch(event, "invariant_mass_tt_pair")
+    check_branch(event, "p_invariant_mass")
+    hist_diff_mass.Fill(event.p_invariant_mass - event.invariant_mass_tt_pair)
+    
+    check_branch(event, "tt_rapidity")
+    hist_diff_rapidity.Fill(event.p_rapidity - event.tt_rapidity)
 
-    # hist_diff_mass=hist_invariant_mass-hist_ttpair_inv_mass
-    # hist_diff_rapidity=hist_p_rapidity-hist_tt_rapidity
-    hist_diff_mass.Fill(event.p_invariant_mass-event.invariant_mass_tt_pair)
-    hist_diff_rapidity.Fill(event.p_rapidity-event.tt_rapidity)
 
 
 # Function to save histograms without showing them
@@ -91,7 +117,7 @@ def save_histogram(hist, filename):
     canvas.Close()  # Close the canvas to free memory
     print(f"Saved {filename}")
 
-dirr="/eos/user/m/mblancco/tau_analysis/plots/plots_fase0/"
+dirr="/eos/user/m/mblancco/tau_analysis/plots/plots_fase0_no_pileup/"
 
 if not os.path.exists(dirr):
     os.makedirs(dirr)

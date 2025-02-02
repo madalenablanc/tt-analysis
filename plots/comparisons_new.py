@@ -5,6 +5,14 @@ import ctypes
 
 
 filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
+#filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
+
+dirr2="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots2/"
+#dirr2="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots2_no_pileup/"
+
+if not os.path.exists(dirr2):
+    os.makedirs(dirr2)
+
 
 file = ROOT.TFile.Open(filename)
 
@@ -22,9 +30,11 @@ print(vars_corrs)
 
 f.close()
 
-def creat_scatter(v1,v2,tree,nbinsx,minx,maxx,nbinsy,miny,maxy):
+def creat_scatter(v1,v2,tree,nbinsx,minx,maxx,nbinsy,miny,maxy,direct): #plot with default axis titles
+    title=v1+ " vs " + v2
 
-    hist=ROOT.TH2F(v1+" "+v2,v1+v2,nbinsx,minx,maxx,nbinsy,miny,maxy)
+    hist=ROOT.TH2F(v1+","+v2,title,nbinsx,minx,maxx,nbinsy,miny,maxy)
+
 
     for event in tree:
         x_value = getattr(event, v1)
@@ -39,7 +49,26 @@ def creat_scatter(v1,v2,tree,nbinsx,minx,maxx,nbinsy,miny,maxy):
     hist.Draw("colz")
     hist.SetXTitle(v1)
     hist.SetYTitle(v2)
-    c1.SaveAs("/eos/user/m/mblancco/tau_analysis/plots/scatter_plots/"+"scatter_"+v1+"_"+v2+".png")
+    c1.SaveAs(direct+"scatter_"+v1+"_"+v2+".png")
+
+def create_scatter_2(v1,v2,tree,nbinsx,minx,maxx,nbinsy,miny,maxy,title,xaxis,yaxis,direct): #plot with personalized axis titles
+
+    hist3=ROOT.TH2F(v1+" "+v2,title+";"+xaxis+";"+yaxis,nbinsx,minx,maxx,nbinsy,miny,maxy)
+
+    for event in tree:
+        x_value = getattr(event, v1)
+        y_value = getattr(event, v2)
+
+        hist3.Fill(x_value,y_value)
+
+    # tf1=ROOT.TF1("tf1",hist,)    
+    hist3.Fit("pol1")
+    c2 = ROOT.TCanvas("canvas", "Scatter Plots", 800, 600)
+    hist3.Draw()
+    hist3.Draw("colz")
+    hist3.SetXTitle(xaxis)
+    hist3.SetYTitle(yaxis)
+    c2.SaveAs(direct+"scatter_"+v1+"_"+v2+".png")
 
 #creat_scatter("tau0_pt","tau1_pt",tree,100,0,900,100,0,900)
 
@@ -61,13 +90,8 @@ hist2.Draw()
 hist2.Draw("colz")
 hist2.SetXTitle("Proton-TauPair Inv Mass")
 hist2.SetYTitle("Proton-TauPair Rapidity")
-c2.SaveAs("/eos/user/m/mblancco/tau_analysis/plots/scatter_plots/"+"diffs_p_tt.png")
+c2.SaveAs(dirr2+"_diffs_p_tt.png")
     
-
-dirr="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots/"
-
-if not os.path.exists(dirr):
-    os.makedirs(dirr)
 
 
 for pair in vars_corrs:
@@ -82,8 +106,11 @@ for pair in vars_corrs:
     # print(nbinsx)
     # print(nbinsy)
     # print()
-    creat_scatter(v1,v2,tree,nbinsx,xmin,xmax,nbinsy,ymin,ymax)
+    creat_scatter(v1,v2,tree,nbinsx,xmin,xmax,nbinsy,ymin,ymax,dirr2)
     print("creating scatter of pair")
+
+create_scatter_2("p_rapidity","tt_rapidity",tree,40,-1.5,1.5,40,-1.5,1.5,"Proton pair rapidity vs Tau pair rapidity","Proton pair rapidity","Tau pair rapidity",dirr2)
+create_scatter_2("p_invariant_mass","invariant_mass_tt_pair",tree,50,0,2000,50,0,2000,"Proton pair invariant mass vs Tau pair invariant mass","Proton pair invariant mass","Tau pair invariant mass",dirr2)
 
 
 # creat_scatter("invariant_mass_tt_pair","p_invariant_mass",tree,100,0,2000,100,0,2000)
