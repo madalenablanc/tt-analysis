@@ -19,7 +19,7 @@ int main(){
 string prefix = "root:://cms-xrd-global.cern.ch//";
 string input;
 
-string prefix_output = "ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi";
+string prefix_output = "ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups";
 
 int k=0;
 
@@ -57,7 +57,8 @@ TLorentzVector tau1;
 TLorentzVector sistema;
 
 //string total = prefix+input;
-input="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM.root";
+//input="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM.root";
+input="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/GammaGammaTauTau_SignalMC_SM_18UL_25k_NoPileupProtons_NANOAODSIM.root";
 cout <<"Input file: " << input << endl;
 
 TApplication app("app", NULL, NULL);

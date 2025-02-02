@@ -47,7 +47,7 @@ int z=0;
 	string prefix = "root:://cms-xrd-global.cern.ch//";
 	string input;
 
-	string prefix_output = "QCD_2018_UL_skimmed_TauTau_nano_";
+	string prefix_output = "QCD_2018_UL_skimmed_TauTau_nano";
 
 	int k=0;
 
@@ -62,7 +62,7 @@ int z=0;
 	// string out_put;
 	// ss>>out_put;
 
-	string output_tot = "/eos/user/m/mblancco/samples_2018_tautau/fase0/" + prefix_output + ".root";  //out_put + ".root";
+	string output_tot = "/eos/user/m/mblancco/samples_2018_tautau/fase0_background/" + prefix_output + ".root";  //out_put + ".root";
 
 	// ifstream ifile;
 	// ifile.open("QCD_2018_UL.txt");
@@ -162,11 +162,10 @@ out.Branch("met_phi", &entry_22, "met_phi/D");
 		
 
 
-		//double e_pt = tree->GetLeaf("Electron_pt")->GetValue(0);
-
-	/* 	cout << "Numero de eletroes: " << tree->GetLeaf("Electron_pt")->GetLen() << endl;
+ 	double e_pt = tree->GetLeaf("Electron_pt")->GetValue(0);
+	cout << "Numero de eletroes: " << tree->GetLeaf("Electron_pt")->GetLen() << endl;
 		cout << "Energia do primeiro eletrao " << e_pt << endl ;
-		cout << "ID eletrao: " << tree->GetLeaf("Electron_mvaFall17V2Iso_WP80")->GetValue(0) << endl << endl; */
+		cout << "ID eletrao: " << tree->GetLeaf("Electron_mvaFall17V2Iso_WP80")->GetValue(0) << endl << endl; 
 
 
 		/* if(tree->GetLeaf("Electron_pt")->GetLen()>=1) histo.Fill(e_pt);*/
