@@ -4,11 +4,11 @@ import numpy as np
 import ctypes
 
 
-filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
-#filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
+#filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
+filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
 
-dirr2="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots2/"
-#dirr2="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots2_no_pileup/"
+#dirr2="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots2/"
+dirr2="/eos/user/m/mblancco/tau_analysis/plots/scatter_plots2_no_pileup/"
 
 if not os.path.exists(dirr2):
     os.makedirs(dirr2)

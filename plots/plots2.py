@@ -7,7 +7,7 @@ import os
 #filename ="/eos/user/m/mblancco/samples_2018_tautau/fase1/GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase1_with_xi_qcdcode.root"
 
 #filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
-filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
+filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetsCode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0.root"
 #filename_bck="/eos/user/m/mblancco/samples_2018_tautau/fase0_background/QCD_2018_UL_skimmed_TauTau_nano.root"
 
 file = ROOT.TFile.Open(filename)
@@ -117,7 +117,7 @@ def save_histogram(hist, filename):
     canvas.Close()  # Close the canvas to free memory
     print(f"Saved {filename}")
 
-dirr="/eos/user/m/mblancco/tau_analysis/plots/plots_fase0_no_pileup/"
+dirr="/eos/user/m/mblancco/tau_analysis/plots/plots_fase0/"
 
 if not os.path.exists(dirr):
     os.makedirs(dirr)
