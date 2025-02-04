@@ -1,0 +1,14 @@
+tau0_pt, Tau+ pT; pT [GeV]; Events, 80, 0, 600,0
+tau1_pt, Tau- pT; pT [GeV]; Events, 80, 0, 600,0
+tau0_eta, Tau+ Eta; #eta; Events, 80, -3, 3,0
+tau1_eta, Tau- Eta; #eta; Events, 80, -3, 3,0
+sist_mass, Invariant Mass of Tau Pair; Mass [GeV]; Events, 75, 0, 1000,0
+sist_rap, Rapidity of Tau Pair; Rapidity; Events, 75, -2, 2,0
+delta_phi, Delta Phi Between Tau+ and Tau-; #Delta#phi; Events, 200, 3.06, 3.16,0
+proton_xi_multi_rp, Proton Energy Loss; Proton energy loss #xi; Events, 100, 0, 0.2,45
+tau0_phi, Tau0 #phi; #phi; Events, 100, -4, 4,0
+tau1_phi, Tau1 #phi; #phi; Events, 100, -4, 4,0
+invariant_mass_tt_pair, Tau pair invariant mass; Tau pair invariant mass [GeV]; Events, 60, 0, 1000,0
+p_invariant_mass, Proton pair invariant mass; Proton pair invariant mass [GeV]; Events, 45, 300, 2000,40
+p_rapidity, Proton pair rapidity; Proton pair rapidity; Events, 75, -1.5, 1.5,50
+tt_rapidity, Tau pair rapidity; Tau pair rapidity; Events, 75, -3, 3,0
