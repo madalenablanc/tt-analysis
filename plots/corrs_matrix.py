@@ -14,7 +14,7 @@ import seaborn as sns
 # filename="2018Data_passPreselection_passSPlotCuts_mergeSweights.root"
 
 dir="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/"
-filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
+filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
 #filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
 #ilename2="MC_JPSI_2018_preBDT_Nov21.root"
 
@@ -71,7 +71,7 @@ def plot_heatmap(data_type):
     #remove error handling if it is not used
     while True:
         try:
-            plt.savefig(data_type+'_correlation_2.png')
+            plt.savefig(data_type+'_correlation_no_pileups.png')
             break
         except FileNotFoundError:
             print("bad name")

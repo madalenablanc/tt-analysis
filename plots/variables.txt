@@ -1,22 +1,13 @@
-hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 80, 0, 600)
-hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT; pT [GeV]; Events", 80, 0, 600)
-hist_tau0_eta = ROOT.TH1F("tau0_eta", "Tau+ Eta; #eta; Events", 80, -3, 3)
-hist_tau1_eta = ROOT.TH1F("tau1_eta", "Tau- Eta; #eta; Events", 80, -3, 3)
-hist_sist_mass = ROOT.TH1F("sist_mass", "Invariant Mass of Tau Pair; Mass [GeV]; Events", 75, 0, 1000)
-hist_sist_rap = ROOT.TH1F("sist_rap", "Rapidity of Tau Pair; Rapidity; Events", 75, -2, 2)
-hist_delta_phi = ROOT.TH1F("delta_phi", "Delta Phi Between Tau+ and Tau-; #Delta#phi; Events", 200, 3.06, 3.16)
-hist_xi = ROOT.TH1F("xi", "Proton Energy Loss; Proton energy loss #xi; Events", 100, 0, 0.2)
-hist_tau0_phi = ROOT.TH1F("tau0_phi", "Tau0 Phi; #phi; Events",100, -4, 4)
-hist_tau1_phi = ROOT.TH1F("tau1_phi", "Tau1 Phi; #phi, No pileup; Events",100, -4, 4)
-hist_ttpair_inv_mass=ROOT.TH1F("invariant_mass_tt_pair", "Tau pair invariant mass; Tau pair invariant mass [GeV]; Events",60,0, 1000 )
-hist_invariant_mass=ROOT.TH1F("p_invariant_mass", "Proton pair invariant mass; Proton pair invariant mass [GeV]; Events",45, 300, 2000 )
-hist_p_rapidity=ROOT.TH1F("p_rapidity", "Proton pair rapidity; Proton pair rapidity; Events",75,-1.5,1.5 )
-hist_tt_rapidity=ROOT.TH1F("tt_rapidity", "Tau pair rapidity; Tau pair rapidity; Events",75,-3,3)
-hist_diff_mass=ROOT.TH1F("p-t mass","p-t mass ",100,-100,2000)
-hist_diff_rapidity=ROOT.TH1F("p-t rapidity","p-t rapidity",100,-10,10)
-
-
-tau0_pt,Tau+ pT; pT [GeV]; Events, 80, 0, 600
-tau1_pt,Tau- pT; pT [GeV]; Events, 80, 0, 600
-tau0_eta,Tau+ Eta; #eta; Events, 80, -3, 3
-tau1_eta,Tau- Eta; #eta; Events, 80, -3, 3
+var_name
+tau0_pt
+tau1_pt
+tau0_eta
+tau1_eta
+delta_phi
+proton_xi_multi_rp
+tau0_phi
+tau1_phi
+p_invariant_mass
+invariant_mass_tt_pair
+p_rapidity
+tt_rapidity
