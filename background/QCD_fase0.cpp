@@ -1,3 +1,4 @@
+#include <ROOT/RDataFrame.hxx>
 #include <stdio.h>
 #include <iostream>
 #include <cmath>
@@ -15,6 +16,9 @@
 using namespace std;
 
 int main(){
+	// Enable implicit multi-threading
+    ROOT::EnableImplicitMT();
+
 
 	ifstream ifilelum;
 //              cout<<"ola1";
@@ -62,7 +66,7 @@ int z=0;
 	// string out_put;
 	// ss>>out_put;
 
-	string output_tot = "/eos/user/m/mblancco/samples_2018_tautau/fase0_background/" + prefix_output + ".root";  //out_put + ".root";
+	string output_tot = "/eos/user/m/mblancco/samples_2018_tautau/background_test/" + prefix_output + ".root";  //out_put + ".root";
 
 	// ifstream ifile;
 	// ifile.open("QCD_2018_UL.txt");
@@ -94,6 +98,9 @@ int z=0;
 	TFile *f = TFile::Open("root:://cms-xrd-global.cern.ch///store/mc/RunIISummer20UL18NanoAODv9/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/2520000/028FE21B-A107-4347-92C3-B533907C13DE.root");
 
 	// TFile *f = TFile::Open(total.c_str());
+
+	//dataframe for input
+    ROOT::RDataFrame df("Events", input_file);
 
 	TTree *tree = (TTree*) f->Get("Events");
 
