@@ -19,7 +19,8 @@ int main(){
   //string prefix = "root:://cms-xrd-global.cern.ch//";
 	string input;
 
-	string prefix_output = "GammaGammaTauTau_SignalMC_skimmed_2018";
+	// string prefix_output = "GammaGammaTauTau_SignalMC_skimmed_2018";
+	string prefix_output = "GammaGammaTauTau_SignalMC_skimmed_2018_no_pileup";
 
 	int k=0;
 
@@ -41,7 +42,8 @@ int main(){
 	TLorentzVector tau1;
 	TLorentzVector sistema;
 
-    input="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root";
+    //input="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetsCode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0.root";
+	input="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root";
 
 	string total = input;
 	cout <<"Input file: " << total << endl;

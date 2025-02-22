@@ -83,14 +83,14 @@ for line in f:
 
 
 
-#filename="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetsCode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0.root"
-filename_no_pileup="/eos/user/m/mblancco/samples_2018_tautau/fase1_2/GammaGammaTauTau_SignalMC_skimmed_2018.root"
+filename="/eos/user/m/mblancco/samples_2018_tautau/fase1_2/GammaGammaTauTau_SignalMC_skimmed_2018.root"
+filename_no_pileup="/eos/user/m/mblancco/samples_2018_tautau/fase1_2/GammaGammaTauTau_SignalMC_skimmed_2018_no_pileup.root"
 
 
 
 
-create_hist(filename_no_pileup,vars,"/eos/user/m/mblancco/tau_analysis/fase1_code/plots/",pileup=True)
-#create_hist(filename_no_pileup,vars,"/eos/user/m/mblancco/tau_analysis/plots/fase0_no_pileup/",pileup=True)
+create_hist(filename,vars,"/eos/user/m/mblancco/tau_analysis/fase1_code/plots_fase1/",pileup=False)
+create_hist(filename_no_pileup,vars,"/eos/user/m/mblancco/tau_analysis/fase1_code/plots_no_pileup/",pileup=True)
 
 # # Create histograms
 # hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 80, 0, 600)

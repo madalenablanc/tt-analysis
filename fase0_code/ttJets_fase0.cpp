@@ -19,8 +19,8 @@ int main(){
 string prefix = "root:://cms-xrd-global.cern.ch//";
 string input;
 
-//string prefix_output = "ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups";
-string prefix_output="ttJetsCode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0";
+string prefix_output = "ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups";
+//string prefix_output="ttJetsCode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0";
 
 
 int k=0;
@@ -134,7 +134,7 @@ for(int i=0; i<tree->GetEntries(); i++){
 	
 	cout << "Progress: " << i << "/" <<tree->GetEntries() << endl;
 
-	//if(tree->GetLeaf("Tau_pt") -> GetLen() < 2) continue;
+	if(tree->GetLeaf("Tau_pt") -> GetLen() < 2) continue;
 	
 	tau0.SetPtEtaPhiM(tree->GetLeaf("Tau_pt")->GetValue(0),tree->GetLeaf("Tau_eta")->GetValue(0),tree->GetLeaf("Tau_phi")->GetValue(0),tree->GetLeaf("Tau_mass")->GetValue(0));
 	tau1.SetPtEtaPhiM(tree->GetLeaf("Tau_pt")->GetValue(1),tree->GetLeaf("Tau_eta")->GetValue(1),tree->GetLeaf("Tau_phi")->GetValue(1),tree->GetLeaf("Tau_mass")->GetValue(1));
@@ -151,7 +151,7 @@ for(int i=0; i<tree->GetEntries(); i++){
 	if(i%1000==0) cout << "progress: " << double (i)/tree->GetEntries()*100 << endl; */
 
 	// apply trigger
-	//if( tree->GetLeaf("HLT_DoubleMediumChargedIsoPFTauHPS40_Trk1_eta2p1_Reg")->GetValue(0)==1){
+	if( tree->GetLeaf("HLT_DoubleMediumChargedIsoPFTauHPS40_Trk1_eta2p1_Reg")->GetValue(0)==1){
 
 				
 									
@@ -274,45 +274,45 @@ for(int i=0; i<tree->GetEntries(); i++){
 		double proton_xi2 = -1; 
 
 
-// // Multi-RP proton selection: Loop over multi-RP protons
-// for (int j = 0; j < tree->GetLeaf("Proton_multiRP_xi")->GetLen(); j++) {
-//     int arm = tree->GetLeaf("Proton_multiRP_arm")->GetValue(j);  // Arm of the proton (0 or 1)
-//     double xi = tree->GetLeaf("Proton_multiRP_xi")->GetValue(j); // Fractional momentum loss (xi)
+// Multi-RP proton selection: Loop over multi-RP protons
+for (int j = 0; j < tree->GetLeaf("Proton_multiRP_xi")->GetLen(); j++) {
+    int arm = tree->GetLeaf("Proton_multiRP_arm")->GetValue(j);  // Arm of the proton (0 or 1)
+    double xi = tree->GetLeaf("Proton_multiRP_xi")->GetValue(j); // Fractional momentum loss (xi)
 
 
-//     // Select the largest xi for each arm
-//     if (arm == 0 && xi > proton_xi1) {
-//         proton_xi1 = xi; // Assign to Arm 0
-//     } else if (arm == 1 && xi > proton_xi2) {
-//         proton_xi2 = xi; // Assign to Arm 1
-//     }
-// }
+    // Select the largest xi for each arm
+    if (arm == 0 && xi > proton_xi1) {
+        proton_xi1 = xi; // Assign to Arm 0
+    } else if (arm == 1 && xi > proton_xi2) {
+        proton_xi2 = xi; // Assign to Arm 1
+    }
+}
 
-// if (proton_xi1 > 0 && proton_xi2 > 0) {
-//     double s = 13000 * 13000;  // Center-of-mass energy squared (13 TeV collisions)
-//     double invariant_mass = sqrt(s * proton_xi1 * proton_xi2);
-//     double proton_rapidity = 0.5 * log(proton_xi1 / proton_xi2);
+if (proton_xi1 > 0 && proton_xi2 > 0) {
+    double s = 13000 * 13000;  // Center-of-mass energy squared (13 TeV collisions)
+    double invariant_mass = sqrt(s * proton_xi1 * proton_xi2);
+    double proton_rapidity = 0.5 * log(proton_xi1 / proton_xi2);
 
 
-// 	p_rapidity=proton_rapidity;
-//     p_invariant_mass=invariant_mass;
+	p_rapidity=proton_rapidity;
+    p_invariant_mass=invariant_mass;
 
-// 	cout << "P inv mass: " << p_invariant_mass ;
+	cout << "P inv mass: " << p_invariant_mass ;
 
-//     std::cout << "Invariant Mass: " << invariant_mass
-//               << ", Rapidity: " << p_rapidity << std::endl;
-// 		neta++;
-// 		out.Fill();
-// }
+    std::cout << "Invariant Mass: " << invariant_mass
+              << ", Rapidity: " << p_rapidity << std::endl;
+		neta++;
+		out.Fill();
+}
 
 	
 		
 
 
-		neta++;
-		out.Fill();
+		// neta++;
+		// out.Fill();
 							
-		//}
+		}
 	
 			
 
