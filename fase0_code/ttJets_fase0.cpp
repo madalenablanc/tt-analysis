@@ -234,7 +234,7 @@ for(int i=0; i<tree->GetEntries(); i++){
 
 		for(int j=0; j<tree->GetLeaf("Jet_btagDeepB")->GetLen(); j++){
 
-			if(tree->GetLeaf("Jet_btagDeepB")->GetValue(j)>0.4506) btag++;
+			if(tree->GetLeaf("Jet_btagDeepB")->GetValue(j)>0.4506) btag++; //DeepCSV b+bb tag discriminator
 
 		}
 

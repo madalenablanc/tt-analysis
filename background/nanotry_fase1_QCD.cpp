@@ -17,9 +17,9 @@ using namespace std;
 int main(){
 
   //string prefix = "root:://cms-xrd-global.cern.ch//";
-	string input;
+	string input="/eos/user/m/mblancco/samples_2018_tautau/fase0/QCD_2018_UL_skimmed_TauTau_nano_.root";
 
-	string prefix_output = "QCD_fase1_PIC_skimmed_TauTau_2018_";
+	string prefix_output = "QCD_fase1_PIC_skimmed_TauTau_2018";
 
 	int k=0;
 
@@ -63,7 +63,8 @@ int main(){
 
 	TApplication app("app", NULL, NULL);
 	cout<<"joaonunes"<<endl;
-	TFile *f = TFile::Open("root:://cms-xrd-global.cern.ch///store/mc/RunIISummer20UL18NanoAODv9/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/2520000/028FE21B-A107-4347-92C3-B533907C13DE.root");
+	TFile *f=TFile::Open(input.c_str());
+	//TFile *f = TFile::Open("root:://cms-xrd-global.cern.ch///store/mc/RunIISummer20UL18NanoAODv9/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/2520000/028FE21B-A107-4347-92C3-B533907C13DE.root");
 
 	//TFile *f = TFile::Open(total.c_str());
 	cout<<"joaotavares"<<endl;
@@ -80,22 +81,22 @@ if (!f || f->IsZombie()) {
     return -1;
 }
 
-TTree *tree = (TTree*) f->Get("Events");
-if (!tree) {
-    cout << "Error: TTree 'tree' not found in the file." << endl;
-    return -1;
-}
+TTree *tree = (TTree*) f->Get("tree");
+// if (!tree) {
+//     cout << "Error: TTree 'tree' not found in the file." << endl;
+//     return -1;
+// }
 
-TTree *tree_lumi = (TTree*) f->Get("LuminosityBlocks");
-if (!tree_lumi) {
-    cout << "Error: TTree 'LuminosityBlocks' not found in the file." << endl;
-    return -1;
-}
+// TTree *tree_lumi = (TTree*) f->Get("LuminosityBlocks");
+// if (!tree_lumi) {
+//     cout << "Error: TTree 'LuminosityBlocks' not found in the file." << endl;
+//     return -1;
+// }
 
-if (tree->GetEntries() == 0) {
-    cout << "Error: TTree 'tree' is empty." << endl;
-    return -1;
-}
+// if (tree->GetEntries() == 0) {
+//     cout << "Error: TTree 'tree' is empty." << endl;
+//     return -1;
+// }
 
 	TFile output (output_tot.c_str(), "RECREATE", "");
 	TTree out("tree","");

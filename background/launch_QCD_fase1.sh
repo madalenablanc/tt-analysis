@@ -9,4 +9,4 @@ g++ -o nanotry_fase1_QCD nanotry_fase1_QCD.cpp `root-config --cflags --glibs` -g
 #done
 
 
-./nanotry_fase1_QCD >> cortes_cinematicos_fase1_QCD.txt
+./nanotry_fase1_QCD # >> cortes_cinematicos_fase1_QCD.txt

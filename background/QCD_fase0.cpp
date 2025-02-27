@@ -17,7 +17,7 @@ using namespace std;
 
 int main(){
 	// Enable implicit multi-threading
-    ROOT::EnableImplicitMT();
+    //ROOT::EnableImplicitMT();
 
 
 	ifstream ifilelum;
@@ -84,6 +84,7 @@ int z=0;
 	int ncharge=0;
 	int npt=0;
 	int neta=0;
+	int nevents=0;
 
 	////////////////////////////////////////
 	TLorentzVector tau0;
@@ -95,12 +96,14 @@ int z=0;
 
 	TApplication app("app", NULL, NULL);
 	//cout<<"antes de abrir o ficheiro"<<endl;
-	TFile *f = TFile::Open("root:://cms-xrd-global.cern.ch///store/mc/RunIISummer20UL18NanoAODv9/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/2520000/028FE21B-A107-4347-92C3-B533907C13DE.root");
+	//TFile *f = TFile::Open("root:://cms-xrd-global.cern.ch///store/mc/RunIISummer20UL18NanoAODv9/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/2520000/028FE21B-A107-4347-92C3-B533907C13DE.root");
+	//input="root:://cms-xrd-global.cern.ch///store/data/Run2018A/Tau/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v2/2810000/0075950B-3B06-844E-86D0-7900E3A78B52.root"
+	TFile *f=TFile::Open("root:://cms-xrd-global.cern.ch///store/data/Run2018A/Tau/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v2/2810000/0075950B-3B06-844E-86D0-7900E3A78B52.root");
 
 	// TFile *f = TFile::Open(total.c_str());
 
 	//dataframe for input
-    ROOT::RDataFrame df("Events", input_file);
+    // ROOT::RDataFrame df("Events", input_file);
 
 	TTree *tree = (TTree*) f->Get("Events");
 
@@ -150,6 +153,10 @@ out.Branch("met_phi", &entry_22, "met_phi/D");
 
 	
 	for(int i=0; i<tree->GetEntries(); i++){
+
+		if (nevents>100){
+			break;
+		} 
 
 		int eventos=tree->GetEvent(i);
                 int eventoslum=tree_lumi->GetEvent(i);
@@ -296,11 +303,12 @@ out.Branch("met_phi", &entry_22, "met_phi/D");
 
 		    neta++;
 		    out.Fill();
+			
 								
 		  }
 		
 				
-
+		nevents++;
 		//if(i%1000==0) cout << "progress: " << double (i)/tree->GetEntries()*100 << endl; 	
 					
 	}
