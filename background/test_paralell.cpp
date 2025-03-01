@@ -1,96 +1,84 @@
 #include <ROOT/RDataFrame.hxx>
-#include <TFile.h>
-#include <TLorentzVector.h>
+#include <stdio.h>
 #include <iostream>
-#include <fstream>
-#include <vector>
+#include <cmath>
+#include "TApplication.h"
+#include "TFile.h"
+#include "TTree.h"
+#include "TLeaf.h"
+#include "TH1D.h"
+#include "TLorentzVector.h"
 #include <string>
+#include <fstream>
+#include <cstdlib>
+#include <sstream>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
-// Function to load luminosity data from a file
-vector<vector<int>> loadLuminosityData(const string& filename) {
-    ifstream ifilelum(filename);
-    vector<int> lumaux;
-    int d;
-    while (ifilelum >> d) {
-        lumaux.push_back(d);
-    }
-    vector<vector<int>> lum(447, vector<int>(101, 0));
-    int o = -1, z = 0;
-    for (size_t i = 0; i < lumaux.size(); ++i) {
-        if (lumaux[i] > 50000) {
-            o++; z = 0;
-        }
-        lum[o][z] = lumaux[i];
-        z++;
-    }
-    return lum;
-}
-
-// Function to check if an event passes the luminosity selection
-bool passLuminositySelection(unsigned int run, unsigned int luminosityBlock, const vector<vector<int>>& lum) {
-    for (const auto& l : lum) {
-        if (l[0] == static_cast<int>(run)) {
-            for (size_t j = 1; j < l.size(); j += 2) {
-                if (luminosityBlock > static_cast<unsigned int>(l[j]) && luminosityBlock < static_cast<unsigned int>(l[j + 1])) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
-
-// Function to process each event
-bool processEvent(unsigned int run, unsigned int luminosityBlock,
-                  const ROOT::RVec<float>& Tau_pt, const ROOT::RVec<float>& Tau_eta,
-                  const ROOT::RVec<float>& Tau_phi, const ROOT::RVec<float>& Tau_mass,
-                  const ROOT::RVec<int>& Tau_charge, const ROOT::RVec<int>& Tau_idDeepTau2017v2p1VSjet,
-                  const ROOT::RVec<int>& Tau_idDeepTau2017v2p1VSe, const ROOT::RVec<int>& Tau_idDeepTau2017v2p1VSmu,
-                  float MET_pt, float MET_phi, const ROOT::RVec<float>& Jet_pt,
-                  const ROOT::RVec<float>& Jet_eta, const ROOT::RVec<float>& Jet_phi,
-                  const ROOT::RVec<float>& Jet_mass, const ROOT::RVec<float>& Jet_btagDeepB,
-                  const vector<vector<int>>& lum) {
-    if (!passLuminositySelection(run, luminosityBlock, lum)) return false;
-    if (Tau_pt.size() < 2) return false;
-    TLorentzVector tau0, tau1;
-    tau0.SetPtEtaPhiM(Tau_pt[0], Tau_eta[0], Tau_phi[0], Tau_mass[0]);
-    tau1.SetPtEtaPhiM(Tau_pt[1], Tau_eta[1], Tau_phi[1], Tau_mass[1]);
-    TLorentzVector system = tau0 + tau1;
-    double deltaPhi = fabs(tau1.Phi() - tau0.Phi());
-    if (deltaPhi > M_PI) deltaPhi -= 2 * M_PI;
-    double acoplanarity = fabs(deltaPhi) / M_PI;
-    int btagCount = 0;
-    for (const auto& btag : Jet_btagDeepB) {
-        if (btag > 0.4506) btagCount++;
-    }
-    return true;
-}
-
-int main() {
+int main(){
     ROOT::EnableImplicitMT();
-    auto lum = loadLuminosityData("dadosluminosidade.txt");
-    string inputFileName = "root://cms-xrd-global.cern.ch//store/mc/RunIISummer20UL18NanoAODv9/TTJets_TuneCP5_13TeV-amcatnloFXFX-pythia8/NANOAODSIM/106X_upgrade2018_realistic_v16_L1v1-v1/2520000/028FE21B-A107-4347-92C3-B533907C13DE.root";
-    string outputFileName = "output.root";
-    const Long64_t nEvents = 20000;
-    ROOT::RDataFrame df("Events", inputFileName);
-    auto df_limited = df.Range(0, nEvents);
-    auto filtered = df_limited.Filter([&](unsigned int run, unsigned int luminosityBlock,
-                                          const ROOT::RVec<float>& Tau_pt, const ROOT::RVec<float>& Tau_eta,
-                                          const ROOT::RVec<float>& Tau_phi, const ROOT::RVec<float>& Tau_mass,
-                                          const ROOT::RVec<int>& Tau_charge, const ROOT::RVec<int>& Tau_idDeepTau2017v2p1VSjet,
-                                          const ROOT::RVec<int>& Tau_idDeepTau2017v2p1VSe, const ROOT::RVec<int>& Tau_idDeepTau2017v2p1VSmu,
-                                          float MET_pt, float MET_phi, const ROOT::RVec<float>& Jet_pt,
-                                          const ROOT::RVec<float>& Jet_eta, const ROOT::RVec<float>& Jet_phi,
-                                          const ROOT::RVec<float>& Jet_mass, const ROOT::RVec<float>& Jet_btagDeepB) {
-        return processEvent(run, luminosityBlock, Tau_pt, Tau_eta, Tau_phi, Tau_mass,
-                            Tau_charge, Tau_idDeepTau2017v2p1VSjet, Tau_idDeepTau2017v2p1VSe,
-                            Tau_idDeepTau2017v2p1VSmu, MET_pt, MET_phi, Jet_pt, Jet_eta,
-                            Jet_phi, Jet_mass, Jet_btagDeepB, lum);
-    }, {"run", "luminosityBlock", "Tau_pt", "Tau_eta", "Tau_phi", "Tau_mass", "Tau_charge",
-        "Tau_idDeepTau2017v2p1VSjet", "Tau_idDeepTau2017v2p1VSe", "Tau_idDeepTau2017v2p1VSmu",
-        "MET_pt", "MET_phi", "Jet_pt", "Jet_eta", "Jet_phi", "Jet_mass", "Jet_btagDeepB"});
-    auto result = filtered.Snapshot("tree", outputFileName);
-    return 0;
+
+  //string prefix = "root:://cms-xrd-global.cern.ch//";
+	// string input="/eos/user/m/mblancco/samples_2018_tautau/fase0/QCD_2018_UL_skimmed_TauTau_nano_.root";
+    string input="root:://cms-xrd-global.cern.ch///store/data/Run2018A/Tau/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v2/2810000/0075950B-3B06-844E-86D0-7900E3A78B52.root";
+
+	string prefix_output = "QCD_fase1_PIC_skimmed_TauTau_2018";
+
+    auto start2 = high_resolution_clock::now();
+
+    ROOT::RDataFrame rdf("Events", input.c_str());
+
+    auto entries1 = rdf.Count();
+    std::cout << *entries1 << " entries passed all filters" << std::endl;
+
+    TFile *f=TFile::Open(input.c_str());
+
+
+    auto stop2 = high_resolution_clock::now();
+
+    auto duration2 = duration_cast<microseconds>(stop2 - start2);
+
+    // To get the value of duration use the count()
+    // member function on the duration object
+    cout <<"Duration; Parallel: "<< duration2.count() << endl;
+
+
+
+
+    TTree *tree = (TTree*) f->Get("Events");
+    TTree *tree_lumi = (TTree*) f->Get("LuminosityBlocks");
+    
+	int k=0;
+
+	double weight = 1.0;
+    auto start = high_resolution_clock::now();
+
+    int n_events=0;
+
+    for(int i=0;i<tree->GetEntries();i++){
+        // int eventos=tree->GetEvent(i);
+        // int eventoslum=tree_lumi->GetEvent(i);
+
+        // int run=tree->GetLeaf("run")->GetValue(0);
+        // int luminosity=tree->GetLeaf("luminosityBlock")->GetValue(0);
+
+        // cout<<"run"<<run<<endl;
+        // cout<<"lum"<<luminosity<<endl;
+        // cout<<"//////////////////////"<<endl;
+        n_events++;
+    }    
+
+    cout << "n events" << n_events << endl;
+    auto stop = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    // To get the value of duration use the count()
+    // member function on the duration object
+    cout <<"Duration: "<< duration.count() << endl;
+
+
+	return 0;
 }
