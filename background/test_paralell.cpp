@@ -26,59 +26,31 @@ int main(){
 
 	string prefix_output = "QCD_fase1_PIC_skimmed_TauTau_2018";
 
-    auto start2 = high_resolution_clock::now();
-
+        // First section - RDataFrame approach
+    auto start_rdf = high_resolution_clock::now();
     ROOT::RDataFrame rdf("Events", input.c_str());
-
     auto entries1 = rdf.Count();
+    // Force execution by dereferencing the result
     std::cout << *entries1 << " entries passed all filters" << std::endl;
+    auto stop_rdf = high_resolution_clock::now();
+    auto duration_rdf = duration_cast<seconds>(stop_rdf - start_rdf);
+    cout << "Duration RDataFrame: " << duration_rdf.count() << " seconds" << endl;
 
-    TFile *f=TFile::Open(input.c_str());
-
-
-    auto stop2 = high_resolution_clock::now();
-
-    auto duration2 = duration_cast<microseconds>(stop2 - start2);
-
-    // To get the value of duration use the count()
-    // member function on the duration object
-    cout <<"Duration; Parallel: "<< duration2.count() << endl;
-
-
-
-
+    // Second section - Traditional TTree approach
+    TFile *f = TFile::Open(input.c_str());
     TTree *tree = (TTree*) f->Get("Events");
     TTree *tree_lumi = (TTree*) f->Get("LuminosityBlocks");
-    
-	int k=0;
 
-	double weight = 1.0;
-    auto start = high_resolution_clock::now();
-
-    int n_events=0;
-
-    for(int i=0;i<tree->GetEntries();i++){
-        // int eventos=tree->GetEvent(i);
-        // int eventoslum=tree_lumi->GetEvent(i);
-
-        // int run=tree->GetLeaf("run")->GetValue(0);
-        // int luminosity=tree->GetLeaf("luminosityBlock")->GetValue(0);
-
-        // cout<<"run"<<run<<endl;
-        // cout<<"lum"<<luminosity<<endl;
-        // cout<<"//////////////////////"<<endl;
+    auto start_tree = high_resolution_clock::now();
+    int n_events = 0;
+    for(int i = 0; i < tree->GetEntries(); i++) {
+        tree->GetEntry(i);  // Actually get the entry
         n_events++;
-    }    
-
-    cout << "n events" << n_events << endl;
-    auto stop = high_resolution_clock::now();
-
-    auto duration = duration_cast<microseconds>(stop - start);
-
-    // To get the value of duration use the count()
-    // member function on the duration object
-    cout <<"Duration: "<< duration.count() << endl;
-
+    }
+    cout << "n events: " << n_events << endl;
+    auto stop_tree = high_resolution_clock::now();
+    auto duration_tree = duration_cast<seconds>(stop_tree - start_tree);
+    cout << "Duration TTree: " << duration_tree.count() << " seconds" << endl;
 
 	return 0;
 }
