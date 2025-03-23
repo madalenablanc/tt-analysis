@@ -1,0 +1,323 @@
+Input file: 
+joaonunes
+joaotavares
+Input file: 
+joaonunes
+joaotavares
+Input file: 
+joaonunes
+joaotavares
+Input file: 
+joaonunes
+joaotavares
+Input file: 
+joaonunes
+joaotavares
+Input file: 
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+joaonunes
+joaotavares
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/DY_2018_UL_skimmed_TauTau_nano_204.root
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/DY_2018_UL_skimmed_TauTau_nano_204.root
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
+I am here
+I am here
+Input file: /eos/user/m/mblancco/samples_2018_tautau/fase0_try/
