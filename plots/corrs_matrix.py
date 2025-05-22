@@ -13,15 +13,15 @@ import seaborn as sns
 # dir="/lstore/cms/boletti/ntuples/"
 # filename="2018Data_passPreselection_passSPlotCuts_mergeSweights.root"
 
-dir="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/"
-filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
+dir="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/"
+filename="Dados_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root"
 #filename="ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_with_xi_and_deltaphi.root"
 #ilename2="MC_JPSI_2018_preBDT_Nov21.root"
 
 data = uproot.open(dir+filename)
 #data_mc=uproot.open(dir+filename2)
 
-variables_path = 'variables.txt'
+variables_path = '/eos/home-m/mblancco/tau_analysis/plots/variables2.txt'
 df = pd.read_csv(variables_path,header=0)
 #df.columns = df.columns.str.strip()
 print(df)
@@ -71,7 +71,7 @@ def plot_heatmap(data_type):
     #remove error handling if it is not used
     while True:
         try:
-            plt.savefig(data_type+'_correlation_no_pileups.png')
+            plt.savefig(data_type+'_correlation_all_background.png')
             break
         except FileNotFoundError:
             print("bad name")

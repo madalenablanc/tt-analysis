@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<MethodSetup Method="Fisher::Fisher">
+  <GeneralInfo>
+    <Info name="TMVA Release" value="4.2.1 [262657]"/>
+    <Info name="ROOT Release" value="6.34/08 [401928]"/>
+    <Info name="Creator" value="mblancco"/>
+    <Info name="Date" value="Mon May 19 14:42:42 2025"/>
+    <Info name="Host" value="Linux buildhw-x86-04.iad2.fedoraproject.org 6.13.8-200.fc41.x86_64 #1 SMP PREEMPT_DYNAMIC Sun Mar 23 05:03:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux"/>
+    <Info name="Dir" value="/eos/home-m/mblancco/TauTau2018AnalysisCode/TauTau_Channel"/>
+    <Info name="Training events" value="3100"/>
+    <Info name="TrainingTime" value="2.14004517e-03"/>
+    <Info name="AnalysisType" value="Classification"/>
+  </GeneralInfo>
+  <Options>
+    <Option name="V" modified="Yes">False</Option>
+    <Option name="VerbosityLevel" modified="No">Default</Option>
+    <Option name="VarTransform" modified="Yes">None</Option>
+    <Option name="H" modified="Yes">True</Option>
+    <Option name="CreateMVAPdfs" modified="Yes">True</Option>
+    <Option name="IgnoreNegWeightsInTraining" modified="No">False</Option>
+    <Option name="Method" modified="Yes">Fisher</Option>
+  </Options>
+  <Variables NVar="7">
+    <Variable VarIndex="0" Expression="sist_acop" Label="sist_acop" Title="Central system acoplanarity" Unit="" Internal="sist_acop" Type="F" Min="5.90614043e-03" Max="9.99999881e-01"/>
+    <Variable VarIndex="1" Expression="sist_pt" Label="sist_pt" Title="Total Momentum" Unit="GeV" Internal="sist_pt" Type="F" Min="1.98840439e-01" Max="1.18988208e+03"/>
+    <Variable VarIndex="2" Expression="sist_mass" Label="sist_mass" Title="Invariant Mass" Unit="GeV" Internal="sist_mass" Type="F" Min="5.91946220e+01" Max="1.99538416e+03"/>
+    <Variable VarIndex="3" Expression="sist_rap" Label="sist_rap" Title="Sistem Rapidity" Unit="" Internal="sist_rap" Type="F" Min="-1.97307861e+00" Max="1.85393822e+00"/>
+    <Variable VarIndex="4" Expression="met_pt" Label="met_pt" Title="Missing Energy" Unit="GeV" Internal="met_pt" Type="F" Min="7.53196537e-01" Max="1.24540137e+03"/>
+    <Variable VarIndex="5" Expression="sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)" Label="sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)" Title="Invariant Mass Matching" Unit="GeV" Internal="sist_mass_M_sqrt_13000.0_T_13000.0_T_xi_arm1_1_T_xi_arm2_1_" Type="F" Min="-1.74656799e+03" Max="1.30455676e+03"/>
+    <Variable VarIndex="6" Expression="sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)" Label="sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)" Title="Rapidity matching" Unit="" Internal="sist_rap_M_0.5_T_log_xi_arm1_1_D_xi_arm2_1_" Type="D" Min="-2.32302403e+00" Max="2.27441430e+00"/>
+  </Variables>
+  <Spectators NSpec="0"/>
+  <Classes NClass="2">
+    <Class Name="Signal" Index="0"/>
+    <Class Name="Background" Index="1"/>
+  </Classes>
+  <Transformations NTransformations="0"/>
+  <MVAPdfs>
+    <PDF Name="Fisher_PDFSig" MinNSmooth="10" MaxNSmooth="10" InterpolMethod="2" KDE_type="1" KDE_iter="1" KDE_border="1" KDE_finefactor="1.0000000000000000e+00">
+      <Histogram Name="Fisher_tr_S_original" NBins="50" XMin="-1.2039834260940552e+00" XMax="2.3604674339294434e+00" HasEquidistantBins="1">
+        0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 6.42157221e-03 6.51941842e-03 5.07756360e-02 1.61145178e-01 3.93403574e-01 8.06892651e-01 1.43367814e+00 1.45095560e+00 1.63459560e+00 1.77912423e+00 1.73348655e+00 1.29393516e+00 1.05918122e+00 6.51314002e-01 4.97295993e-01 3.31750137e-01 1.96526181e-01 1.70684035e-01 1.17547708e-01 8.55616728e-02 4.84905247e-02 3.01028548e-02 2.44723662e-02 2.95080385e-02 6.61572573e-03 1.03843225e-02 6.31323640e-03 0.00000000e+00 5.36915033e-03 0.00000000e+00 5.35569780e-03 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 
+      </Histogram>
+    </PDF>
+    <PDF Name="Fisher_PDFBkg" MinNSmooth="10" MaxNSmooth="10" InterpolMethod="2" KDE_type="1" KDE_iter="1" KDE_border="1" KDE_finefactor="1.0000000000000000e+00">
+      <Histogram Name="Fisher_tr_B_original" NBins="50" XMin="-1.2039834260940552e+00" XMax="2.3604674339294434e+00" HasEquidistantBins="1">
+        1.16895051e-01 2.10411093e-01 2.80548123e-01 2.33790103e-01 2.80548123e-01 2.57169113e-01 1.87032082e-01 9.35160412e-02 1.40274062e-01 1.87032082e-01 4.20822185e-01 8.18265360e-01 1.26246656e+00 1.75342577e+00 1.49625666e+00 1.82356280e+00 1.54301468e+00 1.02867645e+00 5.61096247e-01 5.84475257e-01 3.03927134e-01 1.63653072e-01 1.63653072e-01 2.33790103e-02 2.33790103e-02 2.33790103e-02 2.33790103e-02 2.33790103e-02 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 0.00000000e+00 
+      </Histogram>
+    </PDF>
+  </MVAPdfs>
+  <Weights NCoeff="8">
+    <Coefficient Index="0" Value="-1.0496154555812547e+00"/>
+    <Coefficient Index="1" Value="9.8227851203860661e-01"/>
+    <Coefficient Index="2" Value="1.3410740137027447e-03"/>
+    <Coefficient Index="3" Value="6.1074319566214151e-04"/>
+    <Coefficient Index="4" Value="3.7711858195365371e-02"/>
+    <Coefficient Index="5" Value="-3.8278268013727188e-04"/>
+    <Coefficient Index="6" Value="3.6621432057703813e-04"/>
+    <Coefficient Index="7" Value="-1.7072663043575947e-02"/>
+  </Weights>
+</MethodSetup>

@@ -511,8 +511,8 @@ xi_sist_2->Fit("xi_sist_inter_2");
 //xi_sist_inter_2.Draw("same");
 //app.Run(true);
 
-TFile file_multi("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_multiRP_reMiniAOD.root");
-TFile file_rad("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_radiation_reMiniAOD.root");
+TFile file_multi("pixelEfficiencies_multiRP_reMiniAOD.root");
+TFile file_rad("pixelEfficiencies_radiation_reMiniAOD.root");
 TFile id_sf("../POGCorrections/TauID_SF_pt_DeepTau2017v2p1VSjet_UL2018.root");
 
 TF1 *f_id_sf = (TF1*) id_sf.Get("VTight_cent");
@@ -613,7 +613,10 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 	 if  ((tau_charge)->size()<=1) continue;
 
 
-         weight_sample = 54900.*(1.)/(4000.*1000.);
+         //weight_sample = 54900.*(0.0001)/(4000*1000);
+		 // this is the old value divided by 1000
+		 weight_sample= 0.000013725;
+		 //weight_sample = 54900.*(1.)/(246663);
 
 	 phi_tau0 = (*tau_phi)[0];
 
@@ -656,6 +659,8 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 	 TH1F *trig_tau_sf = (TH1F*) trigger_tau_sf.Get("sf_ditau_VTight_dmall_fitted");
 
 	 double tau_id_sf=f_id_sf->Eval((*tau_pt)[0])*f_id_sf->Eval((*tau_pt)[1])*trig_tau_sf->GetBinContent(trig_tau_sf->FindBin((*tau_pt)[0]))*trig_tau_sf->GetBinContent(trig_tau_sf->FindBin((*tau_pt)[1]));
+
+	 //eval() Computes the value of this function (general case for a 3-d function) at point x,y,z
 
 	 entry_74=f_id_sf->Eval((*tau_pt)[0]);
 	 entry_75=f_id_sf_up->Eval((*tau_pt)[0]);
@@ -1430,6 +1435,7 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 
 
 		  entry_65=weight_sample*weight*tau_id_sf;
+		  //entry_65 = weight_sample * weight;
 
 		 entry_79=entry_14+xi_sist_inter_1.Eval(entry_14);
 		 entry_80=entry_14-xi_sist_inter_1.Eval(entry_14);
@@ -1521,7 +1527,11 @@ cout << "O número de partículas com 2 protões reconstruidos que passam o radi
 
 output.Write();
 
-app.Run(true);
+bool interactive = false;
+
+if (interactive) {
+    app.Run(true);
+}
 
 return 0;
 

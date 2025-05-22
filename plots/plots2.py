@@ -85,7 +85,7 @@ def create_hist(input,vars,dest,pileup):
 # vars=[["tau0_pt", "Tau+ pT; pT [GeV]; Events",'80', '0', '600'], ['"tau1_pt"', ' "Tau- pT; pT [GeV]; Events"', ' 80', ' 0', ' 600']]
 vars=[]
 
-f=open("vars2.txt","r")
+f=open("/eos/user/m/mblancco/TauTau2018AnalysisCode/TauTau_Channel/vars.txt","r")
 for line in f:
     vars.append(line.strip().split(","))
 

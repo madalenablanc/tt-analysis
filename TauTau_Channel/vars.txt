@@ -1,0 +1,6 @@
+tau0_pt, Tau+ pT; pT [GeV]; Events, 80, 0, 600,0
+tau1_pt, Tau- pT; pT [GeV]; Events, 80, 0, 600,0
+tau0_eta, Tau+ Eta; #eta; Events, 80, -3, 3,0
+tau1_eta, Tau- Eta; #eta; Events, 80, -3, 3,0
+sist_mass, Invariant Mass of Tau Pair; Mass [GeV]; Events, 75, 0, 1000,0
+sist_rap, Rapidity of Tau Pair; Rapidity; Events, 75, -2, 2,0
