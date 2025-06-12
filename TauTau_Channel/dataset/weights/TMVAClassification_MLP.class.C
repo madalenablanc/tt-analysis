@@ -10,9 +10,9 @@ Method         : MLP::MLP
 TMVA Release   : 4.2.1         [262657]
 ROOT Release   : 6.34/08       [401928]
 Creator        : mblancco
-Date           : Mon May 19 14:42:51 2025
+Date           : Sat Jun  7 17:19:14 2025
 Host           : Linux buildhw-x86-04.iad2.fedoraproject.org 6.13.8-200.fc41.x86_64 #1 SMP PREEMPT_DYNAMIC Sun Mar 23 05:03:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
-Dir            : /eos/home-m/mblancco/TauTau2018AnalysisCode/TauTau_Channel
+Dir            : /eos/home-m/mblancco/tau_analysis/TauTau_Channel
 Training events: 3100
 Analysis type  : [Classification]
 

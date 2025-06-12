@@ -95,7 +95,7 @@ int main() { // plots bdt output
     legend->AddEntry(histQCD, "QCD contribution", "f");
     legend->AddEntry(histDY, "DY contribution", "f");
     legend->AddEntry(histTTJets, "TTJets contribution", "f");
-    legend->AddEntry(histSinal, "Signal (x5000)", "l");
+    legend->AddEntry(histSinal, "Signal (x1000)", "l");
     legend->AddEntry(histDados, "Data", "l");
     legend->SetBorderSize(1);
     legend->SetFillColor(0);

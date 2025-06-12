@@ -19,11 +19,11 @@ int main(){
 	string prefix = "root:://cms-xrd-global.cern.ch//";
 	string input;
 
-	string prefix_output = "ttJets_2018_UL_skimmed_TauTau_nano_";
+	string prefix_output = "ttJets_2018_UL_skimmed_TauTau_nano_no_weights";
 
 	int k=0;
 
-	double weight = .15; //w= Numero monte carlo / Numero de 2018 , Numero de 2018 = luminosidade de 2018 * secção de 2018  
+	double weight = 1; //w= Numero monte carlo / Numero de 2018 , Numero de 2018 = luminosidade de 2018 * secção de 2018  
 
 	int numero_linha;
 	cin >> numero_linha;

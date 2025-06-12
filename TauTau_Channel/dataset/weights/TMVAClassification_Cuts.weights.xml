@@ -4,11 +4,11 @@
     <Info name="TMVA Release" value="4.2.1 [262657]"/>
     <Info name="ROOT Release" value="6.34/08 [401928]"/>
     <Info name="Creator" value="mblancco"/>
-    <Info name="Date" value="Mon May 19 14:42:39 2025"/>
+    <Info name="Date" value="Sat Jun  7 17:19:04 2025"/>
     <Info name="Host" value="Linux buildhw-x86-04.iad2.fedoraproject.org 6.13.8-200.fc41.x86_64 #1 SMP PREEMPT_DYNAMIC Sun Mar 23 05:03:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux"/>
-    <Info name="Dir" value="/eos/home-m/mblancco/TauTau2018AnalysisCode/TauTau_Channel"/>
+    <Info name="Dir" value="/eos/home-m/mblancco/tau_analysis/TauTau_Channel"/>
     <Info name="Training events" value="3100"/>
-    <Info name="TrainingTime" value="1.48150015e+00"/>
+    <Info name="TrainingTime" value="1.41385198e+00"/>
     <Info name="AnalysisType" value="Classification"/>
   </GeneralInfo>
   <Options>

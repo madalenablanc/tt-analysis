@@ -493,7 +493,7 @@ int jet_b_n=0;
  
  double k =0.0;
 
-TFile proton_sist_1("../POGCorrections/reco_charactersitics_version1.root");
+TFile proton_sist_1("/eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrections/reco_charactersitics_version1.root");
 TGraphErrors* xi_sist_1 = (TGraphErrors*)proton_sist_1.Get("2018_TS1_TS2/multi rp-0/xi/g_systematics_vs_xi");
 TF1 xi_sist_inter_1("xi_sist_inter_1","pol20" ,0,10);
 xi_sist_inter_1.SetParLimits(0,-.8,0.1);
@@ -513,13 +513,13 @@ xi_sist_2->Fit("xi_sist_inter_2");
 
 TFile file_multi("pixelEfficiencies_multiRP_reMiniAOD.root");
 TFile file_rad("pixelEfficiencies_radiation_reMiniAOD.root");
-TFile id_sf("../POGCorrections/TauID_SF_pt_DeepTau2017v2p1VSjet_UL2018.root");
+TFile id_sf("/eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrections/TauID_SF_pt_DeepTau2017v2p1VSjet_UL2018.root");
 
 TF1 *f_id_sf = (TF1*) id_sf.Get("VTight_cent");
 TF1 *f_id_sf_up = (TF1*) id_sf.Get("VTight_up");
 TF1 *f_id_sf_down = (TF1*) id_sf.Get("VTight_down");
 
-TFile trigger_tau_sf("../POGCorrections/2018UL_tauTriggerEff_DeepTau2017v2p1.root");
+TFile trigger_tau_sf("/eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrectionss/2018UL_tauTriggerEff_DeepTau2017v2p1.root");
 TH1F *trig_tau_sf = (TH1F*) trigger_tau_sf.Get("sf_ditau_VTight_dmall_fitted");
 
 
@@ -616,6 +616,7 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
          //weight_sample = 54900.*(0.0001)/(4000*1000);
 		 // this is the old value divided by 1000
 		 weight_sample= 0.000013725;
+		 //weight_sample=1;
 		 //weight_sample = 54900.*(1.)/(246663);
 
 	 phi_tau0 = (*tau_phi)[0];
@@ -655,7 +656,7 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 
 
 
-	 TFile trigger_tau_sf("../POGCorrections/2018UL_tauTriggerEff_DeepTau2017v2p1.root");
+	 TFile trigger_tau_sf("/eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrections/2018UL_tauTriggerEff_DeepTau2017v2p1.root");
 	 TH1F *trig_tau_sf = (TH1F*) trigger_tau_sf.Get("sf_ditau_VTight_dmall_fitted");
 
 	 double tau_id_sf=f_id_sf->Eval((*tau_pt)[0])*f_id_sf->Eval((*tau_pt)[1])*trig_tau_sf->GetBinContent(trig_tau_sf->FindBin((*tau_pt)[0]))*trig_tau_sf->GetBinContent(trig_tau_sf->FindBin((*tau_pt)[1]));
@@ -675,7 +676,7 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 
 	 n_id= n_id + 1*weight_sample*tau_id_sf;
 
-	 TFile tauenergy("../POGCorrections/TauES_dm_DeepTau2017v2p1VSjet_2018ReReco.root");
+	 TFile tauenergy("/eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrections/TauES_dm_DeepTau2017v2p1VSjet_2018ReReco.root");
 
 	 TH1F *histtauenergy = (TH1F*) tauenergy.Get("tes");
 

@@ -62,11 +62,11 @@ int main(){
 	TFile output("DY_CR_e_mu_UL_2018_shapes_1.root","RECREATE","");
 
         //double w_data=1.;
-        double w_qcd=1.*0.13;
-        double w_ttjets=0.15*0.13;
-        double w_dy=1.81*0.13;
+        double w_qcd; //=1.*0.13;
+        double w_ttjets; //=0.15*0.13;
+        double w_dy;//=1.81*0.13;
 	double w_sinal;  // tentar com .13 para ver se acerta nos graficos
-	double w_data=1*0.13;
+	double w_data;//=1*0.13;
 
         double min_aco=0.0;
         double max_aco=1.0;
@@ -228,7 +228,9 @@ int main(){
         for(int i=0; i<n_evt_data; i++){
                 int o=tree_data->GetEvent(i);
                 if(tree_data->GetLeaf("sist_mass") ->GetValue(0) >=0){
-                //NAO ATIVAR//w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+                        w_data = tree_data->GetLeaf("weight")->GetValue(0);
+                        w_data=1;
+                        w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
                 n_data = n_data + w_data;
                 aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0),w_data);
                 m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
@@ -245,7 +247,8 @@ int main(){
         for(int i=0; i<n_evt_qcd; i++){
                 int o=tree_qcd->GetEvent(i);
 		if(tree_qcd->GetLeaf("sist_mass") ->GetValue(0) >=0){
-		//NAO ATIVAR//w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+		w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+                w_qcd=1;
                 n_qcd = n_qcd + w_qcd;
                 aco_qcd.Fill(tree_qcd->GetLeaf("sist_acop")->GetValue(0),w_qcd);
                 m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0),w_qcd);
@@ -282,7 +285,8 @@ int main(){
         for(int i=0; i<n_evt_dy; i++){
                 int o=tree_dy->GetEvent(i);
 		if(tree_dy->GetLeaf("sist_mass") ->GetValue(0) >=0){
-		//w_dy = tree_dy->GetLeaf("weight")->GetValue(0);
+		w_dy = tree_dy->GetLeaf("weight")->GetValue(0);
+                w_dy=1;
                 n_dy = n_dy + w_dy;
                 aco_dy.Fill(tree_dy->GetLeaf("sist_acop")->GetValue(0),w_dy);
                 m_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0),w_dy);
@@ -318,7 +322,8 @@ int main(){
         for(int i=0; i<n_evt_ttjets; i++){
                 int o=tree_ttjets->GetEvent(i);
                 if(tree_ttjets->GetLeaf("sist_mass") ->GetValue(0)>=0){
-		//w_ttjets = tree_ttjets->GetLeaf("weight")->GetValue(0);
+		w_ttjets = tree_ttjets->GetLeaf("weight")->GetValue(0);
+                w_ttjets=1;
                 n_tt=n_tt+w_ttjets;
                 aco_ttjets.Fill(tree_ttjets->GetLeaf("sist_acop")->GetValue(0),w_ttjets);
                 m_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0),w_ttjets);
@@ -355,6 +360,7 @@ int main(){
                 int o=tree_sinal->GetEvent(i);
                 if(tree_sinal->GetLeaf("sist_mass") ->GetValue(0)>=0){
                 w_sinal = tree_sinal->GetLeaf("weight")->GetValue(0)*500;
+                w_sinal=1;
                 cout<<"w_sinal: "<<w_sinal<<endl;
                 m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0),w_sinal);
 		aco_sinal.Fill(tree_sinal->GetLeaf("sist_acop")->GetValue(0),w_sinal);

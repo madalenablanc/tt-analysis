@@ -14,8 +14,52 @@
 #include "TMVA/MethodCuts.h"
  
 using namespace TMVA;
+
+TString getInputFile(const std::string& fileType) {
+    if (fileType == "dy") {
+        return "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/DY_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root";
+    }
+    else if (fileType == "ttjets") {
+        return "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/ttJets_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root";
+    }
+    else if (fileType == "qcd") {
+        return "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/QCD_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root";
+    }
+    else if (fileType == "signal") {
+        return "TauTau_sinal_PIC_july_2018.root";
+    }
+    else if (fileType == "data") {
+        return "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Dados_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root";
+    }
+    else {
+        std::cout << "Unknown file type: " << fileType << std::endl;
+        std::cout << "Available types: dy, ttjets, qcd, signal, data" << std::endl;
+        return "";
+    }
+}
+
+TString getOutputFile(const std::string& fileType) {
+    if (fileType == "dy") {
+        return "TMVApp_DY.root";
+    }
+    else if (fileType == "ttjets") {
+        return "TMVApp_ttjets.root";
+    }
+    else if (fileType == "qcd") {
+        return "TMVApp_QCD.root";
+    }
+    else if (fileType == "signal") {
+        return "TMVApp_sinal.root";
+    }
+    else if (fileType == "data") {
+        return "TMVApp_dados.root";
+    }
+    else {
+        return "TMVApp_custom.root";
+    }
+}
  
-void TMVAClassificationApplication( TString myMethodList = "" )
+void TMVAClassificationApplication( TString myMethodList = "", TString inputFile = "", TString outputFile = "" )
 {
  
    //---------------------------------------------------------------
@@ -257,12 +301,11 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    //
    TFile *input(0);
 
-   //   TString fname = "/eos/user/m/mpisano/samples_2018_tautau/fase1/soma/DY_total-protons_2018_tautau.root";
-   //   TString fname = "/eos/user/m/mpisano/samples_2018_tautau/fase1/soma/ttjets_total-protons_2018_tautau.root";
-   //   TString fname = "/eos/user/m/mpisano/samples_2018_tautau/fase1/soma/QCD_total-protons_2018_tautau.root";
-   //   TString fname = "TauTau_sinal_PIC_july_2018.root";
-   // TString fname = "/eos/user/m/mpisano/samples_2018_tautau/fase1/soma/Dados_fase1-protons_2018_tautau.root";
-   TString fname = "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/DY_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root";
+   // Use the provided input file, or default to DY sample
+   TString fname = inputFile;
+   if (fname == "") {
+       fname = "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Dados_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root";
+   }
    
    if (!gSystem->AccessPathName( fname )) {
       input = TFile::Open( fname ); // check if file in local directory exists
@@ -318,7 +361,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
 	var3 = userVar3;
 	var4 = userVar4;
 	var5 = userVar5;
-	var6 = var4-log(userVar6/userVar7);
+	var6 = var4-0.5*log(userVar6/userVar7);
         var8 = var3-sqrt(13000.*13000.*userVar6*userVar7);
  
  
@@ -413,12 +456,13 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    }
  
    // Write histograms
- 
-   // TFile *target  = new TFile( "TMVApp_dados.root","RECREATE" );
-      // TFile *target = new TFile("TMVApp_sinal.root","RECREATE");
-     TFile *target = new TFile("TMVApp_DY.root","RECREATE");
-   //   TFile *target = new TFile("TMVApp_ttjets.root","RECREATE");
-   //   TFile *target = new TFile("TMVApp_QCD.root","RECREATE");
+
+   TFile *target;
+   if (outputFile != "") {
+       target = new TFile(outputFile, "RECREATE");
+   } else {
+       target = new TFile("TMVApp_DY.root", "RECREATE");
+   }
 
    if (Use["Likelihood"   ])   histLk     ->Write();
    if (Use["LikelihoodD"  ])   histLkD    ->Write();
@@ -462,7 +506,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    if (Use["Fisher"]) { if (probHistFi != 0) probHistFi->Write(); if (rarityHistFi != 0) rarityHistFi->Write(); }
    target->Close();
  
-   std::cout << "--- Created root file: \"TMVApp.root\" containing the MVA output histograms" << std::endl;
+   std::cout << "--- Created root file: \"" << target->GetName() << "\" containing the MVA output histograms" << std::endl;
  
    delete reader;
  
@@ -471,13 +515,67 @@ void TMVAClassificationApplication( TString myMethodList = "" )
  
 int main( int argc, char** argv )
 {
-   TString methodList;
+   TString methodList = "";
+   TString inputFile = "";
+   TString outputFile = "";
+   
+   // Parse command line arguments
    for (int i=1; i<argc; i++) {
-      TString regMethod(argv[i]);
-      if(regMethod=="-b" || regMethod=="--batch") continue;
-      if (!methodList.IsNull()) methodList += TString(",");
-      methodList += regMethod;
+      TString arg(argv[i]);
+      
+      if (arg == "-h" || arg == "--help") {
+         std::cout << "Usage: " << argv[0] << " [OPTIONS]" << std::endl;
+         std::cout << "Options:" << std::endl;
+         std::cout << "  -f, --file FILENAME    Specify input file path" << std::endl;
+         std::cout << "  -t, --type TYPE        Use predefined file type:" << std::endl;
+         std::cout << "                           dy, ttjets, qcd, signal, data" << std::endl;
+         std::cout << "  -o, --output FILENAME  Specify output file path" << std::endl;
+         std::cout << "  -h, --help             Show this help message" << std::endl;
+         std::cout << std::endl;
+         std::cout << "Examples:" << std::endl;
+         std::cout << "  " << argv[0] << " -t dy" << std::endl;
+         std::cout << "  " << argv[0] << " -f /path/to/myfile.root" << std::endl;
+         std::cout << "  " << argv[0] << " -t ttjets BDT,MLP" << std::endl;
+         return 0;
+      }
+      else if (arg == "-f" || arg == "--file") {
+         if (i+1 < argc) {
+            inputFile = argv[++i];
+         } else {
+            std::cout << "Error: -f/--file requires a filename" << std::endl;
+            return 1;
+         }
+      }
+      else if (arg == "-o" || arg == "--output") {
+         if (i+1 < argc) {
+            outputFile = argv[++i];
+         } else {
+            std::cout << "Error: -o/--output requires a filename" << std::endl;
+            return 1;
+         }
+      }
+      else if (arg == "-t" || arg == "--type") {
+         if (i+1 < argc) {
+            std::string fileType = argv[++i];
+            inputFile = getInputFile(fileType);
+            if (inputFile == "") return 1;
+            if (outputFile == "") outputFile = getOutputFile(fileType);
+         } else {
+            std::cout << "Error: -t/--type requires a type (dy, ttjets, qcd, signal, data)" << std::endl;
+            return 1;
+         }
+      }
+      else if (arg == "-b" || arg == "--batch") {
+         // Skip batch mode flag
+         continue;
+      }
+      else {
+         // Assume it's a method for backward compatibility
+         if (!methodList.IsNull()) methodList += TString(",");
+         methodList += arg;
+      }
    }
-   TMVAClassificationApplication(methodList);
+   
+   TMVAClassificationApplication(methodList, inputFile, outputFile);
    return 0;
 }
