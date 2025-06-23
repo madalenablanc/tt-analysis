@@ -258,6 +258,7 @@ int main(){
 		ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0),w_qcd);
 		tau_qcd.Fill(tree_qcd->GetLeaf("tau0_pt")->GetValue(0),w_qcd);
 		met_qcd.Fill(tree_qcd->GetLeaf("met_pt")->GetValue(0),w_qcd);
+                cout<<"pt tt"<<tree_qcd->GetLeaf("sist_pt")->GetValue(0)<<endl;
  	}
         }
 
@@ -361,7 +362,7 @@ int main(){
                 if(tree_sinal->GetLeaf("sist_mass") ->GetValue(0)>=0){
                 w_sinal = tree_sinal->GetLeaf("weight")->GetValue(0)*500;
                 w_sinal=1;
-                cout<<"w_sinal: "<<w_sinal<<endl;
+                //cout<<"w_sinal: "<<w_sinal<<endl;
                 m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0),w_sinal);
 		aco_sinal.Fill(tree_sinal->GetLeaf("sist_acop")->GetValue(0),w_sinal);
 		r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
@@ -392,6 +393,11 @@ int main(){
         sum_aco.Add(&aco_ttjets);
 	sum_aco.SetFillColor(kGray+1);
 	sum_aco.SetFillStyle(3354);
+
+        cout << "DY CR - Data events: " << aco_data.GetEntries() << endl;
+        cout << "DY CR - DY MC events: " << aco_dy.GetEntries() << endl;
+        cout << "DY CR - QCD MC events: " << aco_qcd.GetEntries() << endl;
+        cout << "DY CR - ttjets MC events: " << aco_ttjets.GetEntries() << endl;
 
 	for (int i = 1; i <= sum_aco.GetNbinsX(); ++i) {
            double content = sum_aco.GetBinContent(i);
