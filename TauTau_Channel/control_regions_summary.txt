@@ -1,0 +1,16 @@
+
+Control Region Definitions Used (in order: DY, TT, QCD):
+
+• DY CR: τₕτₕ invariant mass M_μτ ∈ [40,100] GeV + acoplanarity a < 0.3 + |η| < 2.4 + 
+         2 isolated τₕ, opposite sign leptons + N_b-jets = 0. By choosing events with dilepton 
+         invariant mass below 100 GeV allows to select events from the Z boson decays;
+
+• TT CR: at least one b-jet + acoplanarity a > 0.5 + |η| < 2.4 + 2 isolated τₕ of opposite 
+         charge + M_τₕτₕ ∈ [200,650] GeV + p_T(τₕ⁺τₕ⁻) < 125 GeV.
+
+• QCD CR: M_τₕτₕ ∈ [100,300] GeV + N_b-jets = 0 + |η| < 2.4 + 2 isolated τₜ's of same 
+          sign + system acoplanarity a > 0.8 + p_T(τₕ⁺τₕ⁻) < 75 GeV;
+
+Note: All cuts use tau_mass for selection, but:
+- DY plots tau_mass (hence ~70-100 GeV range in histograms)
+- QCD/TT plot sist_mass (hence ~400-1000 GeV range in histograms)

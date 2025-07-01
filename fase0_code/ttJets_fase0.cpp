@@ -253,7 +253,7 @@ for(int i=0; i<tree->GetEntries(); i++){
 		TLorentzVector tau_pair = tau0 + tau1;
 		// double invariant_mass_tt_pair = tau_pair.M(); // Invariant mass
 
-		double rapidity_pair = tau_pair.Rapidity(); // rapidity
+		double rapidity_pair = tau_pair.Rapidity(); // rapidity of tau pair 
 
 		tt_rapidity=rapidity_pair;
 
