@@ -225,7 +225,7 @@ int main(){
             double sist_mass = tree_data->GetLeaf("sist_mass")->GetValue(0);
             double sist_rap= tree_data->GetLeaf("sist_rap")->GetValue(0);
             double sist_pt=tree_data->GetLeaf("sist_pt")->GetValue(0);
-            int n_bjets = coutBJets2(tree_data);
+            int n_bjets = countBJets(tree_data,0.4);
 
             double delta_phi=fabs(tree_data->GetLeaf("tau1_phi")->GetValue(0)-tree_data->GetLeaf("tau0_phi")->GetValue(0));
             if (delta_phi > M_PI) delta_phi = 2*M_PI - delta_phi;
@@ -236,9 +236,9 @@ int main(){
             double tau_mass=sqrt(2*tau0_pt*tau1_pt*(cosh_delta_eta - cos_delta_phi));
 
             // Control region cuts exactly as defined in your reference
-            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) && (n_bjets == 0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (n_bjets == 0) && (sist_pt < 75);
-            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (n_bjets >= 1) && (sist_pt < 125);
+            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (sist_pt < 75);
+            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
             
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
@@ -249,13 +249,13 @@ int main(){
             }
             if(isQCD_CR) {
                 h_aco_data_QCD.Fill(sist_acop,w_data);
-                h_m_data_QCD.Fill(sist_mass,w_data);   // QCD plots sist_mass
+                h_m_data_QCD.Fill(tau_mass,w_data);   // QCD plots sist_mass
                 h_r_data_QCD.Fill(sist_rap,w_data);
                 h_pt_data_QCD.Fill(sist_pt,w_data);
             }
             if(isTT_CR) {
                 h_aco_data_TT.Fill(sist_acop,w_data);
-                h_m_data_TT.Fill(sist_mass,w_data);    // TT plots 
+                h_m_data_TT.Fill(tau_mass,w_data);    // TT plots 
                 h_r_data_TT.Fill(sist_rap,w_data);
                 h_pt_data_TT.Fill(sist_pt,w_data);
             }
@@ -285,9 +285,9 @@ int main(){
             double tau_mass=sqrt(2*tau0_pt*tau1_pt*(cosh_delta_eta - cos_delta_phi));
 
             // Control region cuts exactly as defined in your reference
-            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) && (n_bjets == 0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (n_bjets == 0) && (sist_pt < 75);
-            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (n_bjets >= 1) && (sist_pt < 125);
+            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (sist_pt < 75);
+            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
             
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
@@ -335,9 +335,9 @@ int main(){
             double tau_mass=sqrt(2*tau0_pt*tau1_pt*(cosh_delta_eta - cos_delta_phi));
 
             // Control region cuts exactly as defined in your reference
-            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) && (n_bjets == 0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (n_bjets == 0) && (sist_pt < 75);
-            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (n_bjets >= 1) && (sist_pt < 125);
+            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) ;
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8)  && (sist_pt < 75);
+            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
             
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
@@ -385,9 +385,9 @@ int main(){
             double tau_mass=sqrt(2*tau0_pt*tau1_pt*(cosh_delta_eta - cos_delta_phi));
 
             // Control region cuts exactly as defined in your reference
-            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) && (n_bjets == 0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (n_bjets == 0) && (sist_pt < 75);
-            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (n_bjets >= 1) && (sist_pt < 125);
+            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) ;
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8)  && (sist_pt < 75);
+            bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
             
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
