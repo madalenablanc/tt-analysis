@@ -104,6 +104,8 @@ int countBJets(TTree* tree, double btagThreshold = 0.5) {
     return nBJets;
 }
 
+
+
 int main(){
 
     TApplication app("app",NULL,NULL);
@@ -125,7 +127,7 @@ int main(){
 
     // QCD Control Region parameters (plots sist_mass, range ~400-1000 GeV from visual inspection)  
     double min_aco_QCD=0.8, max_aco_QCD=1.0; int bin_aco_QCD=6;
-    double min_m_QCD=100, max_m_QCD=500; int bin_m_QCD=6;  // sist_mass range from plot
+    double min_m_QCD=400, max_m_QCD=1000; int bin_m_QCD=6;  // sist_mass range from plot
     double min_r_QCD=-2, max_r_QCD=2; int bin_r_QCD=10;
     double min_pt_QCD=0, max_pt_QCD=100; int bin_pt_QCD=5;
 
@@ -219,7 +221,7 @@ int main(){
         
         if(tree_data->GetLeaf("sist_mass")->GetValue(0) >= 0){
 
-            double w_data = tree_data->GetLeaf("weight")->GetValue(0);
+            double w_data =  1.0 * 0.13;
             
             double sist_acop=tree_data->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_data->GetLeaf("sist_mass")->GetValue(0);
@@ -255,7 +257,7 @@ int main(){
             }
             if(isTT_CR) {
                 h_aco_data_TT.Fill(sist_acop,w_data);
-                h_m_data_TT.Fill(tau_mass,w_data);    // TT plots 
+                h_m_data_TT.Fill(sist_mass,w_data);    // TT plots 
                 h_r_data_TT.Fill(sist_rap,w_data);
                 h_pt_data_TT.Fill(sist_pt,w_data);
             }
@@ -268,7 +270,7 @@ int main(){
     for(int i=0; i<n_evt_dy; i++){
         tree_dy->GetEvent(i);
         if(tree_dy->GetLeaf("sist_mass")->GetValue(0) >= 0){
-            double w_dy = tree_data->GetLeaf("weight")->GetValue(0);
+            double w_dy = 1.81 * 0.8 * 0.13;
 
             double sist_acop=tree_dy->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_dy->GetLeaf("sist_mass")->GetValue(0);
@@ -288,7 +290,8 @@ int main(){
             bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3);
             bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (sist_pt < 75);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
-            
+
+
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_dy_DY.Fill(sist_acop,w_dy);
@@ -298,7 +301,7 @@ int main(){
             }
             if(isQCD_CR) {
                 h_aco_dy_QCD.Fill(sist_acop,w_dy);
-                h_m_dy_QCD.Fill(sist_mass,w_dy);   // QCD plots sist_mass
+                h_m_dy_QCD.Fill(tau_mass,w_dy);   // QCD plots sist_mass
                 h_r_dy_QCD.Fill(sist_rap,w_dy);
                 h_pt_dy_QCD.Fill(sist_pt,w_dy);
             }
@@ -318,7 +321,7 @@ int main(){
         tree_qcd->GetEvent(i);
         if(tree_qcd->GetLeaf("sist_mass")->GetValue(0) >= 0){
 
-            double w_qcd = tree_data->GetLeaf("weight")->GetValue(0);
+            double w_qcd = 1.0 * 0.8 * 0.13;
 
             double sist_acop=tree_qcd->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_qcd->GetLeaf("sist_mass")->GetValue(0);
@@ -335,10 +338,12 @@ int main(){
             double tau_mass=sqrt(2*tau0_pt*tau1_pt*(cosh_delta_eta - cos_delta_phi));
 
             // Control region cuts exactly as defined in your reference
-            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) ;
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8)  && (sist_pt < 75);
+            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (sist_pt < 75);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
             
+
+
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_qcd_DY.Fill(sist_acop,w_qcd);
@@ -348,7 +353,7 @@ int main(){
             }
             if(isQCD_CR) {
                 h_aco_qcd_QCD.Fill(sist_acop,w_qcd);
-                h_m_qcd_QCD.Fill(sist_mass,w_qcd);   // QCD plots sist_mass
+                h_m_qcd_QCD.Fill(tau_mass,w_qcd);   // QCD plots sist_mass
                 h_r_qcd_QCD.Fill(sist_rap,w_qcd);
                 h_pt_qcd_QCD.Fill(sist_pt,w_qcd);
             }
@@ -368,7 +373,7 @@ int main(){
         tree_ttjets->GetEvent(i);
         if(tree_ttjets->GetLeaf("sist_mass")->GetValue(0) >= 0){
 
-            double w_ttjets = tree_data->GetLeaf("weight")->GetValue(0);
+            double w_ttjets = 0.15 * 0.8 * 0.13;
 
             double sist_acop=tree_ttjets->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_ttjets->GetLeaf("sist_mass")->GetValue(0);
@@ -385,10 +390,10 @@ int main(){
             double tau_mass=sqrt(2*tau0_pt*tau1_pt*(cosh_delta_eta - cos_delta_phi));
 
             // Control region cuts exactly as defined in your reference
-            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3) ;
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8)  && (sist_pt < 75);
+            bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop < 0.3);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (sist_pt < 75);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (sist_pt < 125);
-            
+
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_ttjets_DY.Fill(sist_acop,w_ttjets);
@@ -398,7 +403,7 @@ int main(){
             }
             if(isQCD_CR) {
                 h_aco_ttjets_QCD.Fill(sist_acop,w_ttjets);
-                h_m_ttjets_QCD.Fill(sist_mass,w_ttjets);   // QCD plots sist_mass
+                h_m_ttjets_QCD.Fill(tau_mass,w_ttjets);   // QCD plots sist_mass
                 h_r_ttjets_QCD.Fill(sist_rap,w_ttjets);
                 h_pt_ttjets_QCD.Fill(sist_pt,w_ttjets);
             }

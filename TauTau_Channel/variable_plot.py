@@ -1,7 +1,7 @@
 import ROOT
 
 # Open the ROOT file
-file = ROOT.TFile("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Dados_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root", "READ")
+file = ROOT.TFile("TauTau_sinal_PIC_july_2018.root", "READ")
 
 # Method 1: Plot a histogram that's already in the file
 # hist = file.Get("histogram_name")
@@ -25,12 +25,12 @@ hist.SetFillColor(ROOT.kBlue-10)
 hist.Draw()
 
 # Add title and labels
-hist.SetTitle("Your Plot Title")
-hist.GetXaxis().SetTitle("X-axis Label")
-hist.GetYaxis().SetTitle("Y-axis Label")
+hist.SetTitle("n_b_jet")
+hist.GetXaxis().SetTitle("n_b_jets")
+hist.GetYaxis().SetTitle("events")
 
 # Save the plot
-canvas.SaveAs("output_plot.png")  # Can also use .pdf, .eps, .svg, etc.
+canvas.SaveAs("nbjets_signal.png")  # Can also use .pdf, .eps, .svg, etc.
 
 # Optional: Save as ROOT file too
 output_file = ROOT.TFile("output.root", "RECREATE")
