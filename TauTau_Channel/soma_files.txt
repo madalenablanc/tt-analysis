@@ -1,0 +1,16 @@
+bkg_syst_protons.cpp
+Dados_fase1-protons_2018_tautau.root   no 
+Dados_fase1_tautau_total_2018-protons.root no var
+Dados_fase1_tautau_total_2018.root yes
+DY_fase1_tautau_total_2018.root yes
+DY_total-protons_2018_tautau.root no
+Fundo_fase1_tautau_total_2018.root yes
+Fundo_total-protons_2018_tautau.root no
+Fundo_total-protons_2018_tautau_syst.root no
+QCD_fase1_tautau_total_2018.root yes
+QCD_total-protons_2018_tautau.root no
+TauTau_sinal_PIC_2018.root yes
+TauTau_sinal_PIC_march_2018.root yes
+ttjets_fase1_tautau_total_2018.root yes
+ttjets_total-protons_2018_tautau.root no
+Cx

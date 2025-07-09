@@ -614,6 +614,7 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 
 
          //weight_sample = 54900.*(0.0001)/(4000*1000);
+		 
 		 // this is the old value divided by 1000
 		 weight_sample= 0.000013725;
 		 //weight_sample=1;
