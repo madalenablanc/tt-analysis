@@ -110,24 +110,29 @@ int main(){
 
     TApplication app("app",NULL,NULL);
 
-    // Open files
-    TFile data("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/Dados_fase1-protons_2018_tautau.root");
+    // Open files -> without pileup protons
+    // TFile data("/eos/user/j/jjhollar/TauTauBackup/samples_2018_tautau/fase1/soma/Dados_fase1_tautau_total_2018.root");
+    // TFile dy("/eos/user/j/jjhollar/TauTauBackup/samples_2018_tautau/fase1/soma/DY_fase1_tautau_total_2018.root");
+    // TFile ttjets("/eos/user/j/jjhollar/TauTauBackup/samples_2018_tautau/fase1/soma/ttjets_fase1_tautau_total_2018.root");
+    // TFile qcd("/eos/user/j/jjhollar/TauTauBackup/samples_2018_tautau/fase1/soma/QCD_fase1_tautau_total_2018.root");
+    // TFile sinal("TauTau_sinal_PIC_july_2018.root");
+
+    TFile data("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/Dados_total-protons_2018_tautau.root");
     TFile dy("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/DY_total-protons_2018_tautau.root");
     TFile ttjets("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/ttjets_total-protons_2018_tautau.root");
     TFile qcd("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/QCD_total-protons_2018_tautau.root");
     TFile sinal("TauTau_sinal_PIC_july_2018.root");
-
     // Control Region parameters - MATCHED to reference plots exactly
     
     // DY Control Region parameters (plots tau_mass, range ~70-100 GeV from visual inspection)
     double min_aco_DY=0.05, max_aco_DY=0.25; int bin_aco_DY=5;
-    double min_m_DY=70, max_m_DY=100; int bin_m_DY=5;  // tau_mass range from plot
+    double min_m_DY=40, max_m_DY=100; int bin_m_DY=5;  // tau_mass range from plot
     double min_r_DY=-2, max_r_DY=2; int bin_r_DY=5;
     double min_pt_DY=200, max_pt_DY=350; int bin_pt_DY=10;
 
     // QCD Control Region parameters (plots sist_mass, range ~400-1000 GeV from visual inspection)  
     double min_aco_QCD=0.8, max_aco_QCD=1.0; int bin_aco_QCD=6;
-    double min_m_QCD=400, max_m_QCD=1000; int bin_m_QCD=6;  // sist_mass range from plot
+    double min_m_QCD=200, max_m_QCD=500; int bin_m_QCD=6;  // sist_mass range from plot
     double min_r_QCD=-2, max_r_QCD=2; int bin_r_QCD=10;
     double min_pt_QCD=0, max_pt_QCD=100; int bin_pt_QCD=5;
 
@@ -221,7 +226,7 @@ int main(){
         
         if(tree_data->GetLeaf("sist_mass")->GetValue(0) >= 0){
 
-            double w_data =  0;
+            double w_data =  1;
             
             double sist_acop=tree_data->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_data->GetLeaf("sist_mass")->GetValue(0);
@@ -229,7 +234,7 @@ int main(){
             double sist_pt=tree_data->GetLeaf("sist_pt")->GetValue(0);
             // int n_bjets = countBJets(tree_data,0.4);
             int n_bjets = tree_data->GetLeaf("n_b_jet")->GetValue(0);
-            cout<< "n bjets:" << n_bjets <<endl;
+            // cout<< "n bjets:" << n_bjets <<endl;
             double tau0_phi=tree_data->GetLeaf("tau0_phi")->GetValue(0);
             double tau1_phi=tree_data->GetLeaf("tau1_phi")->GetValue(0);
 
@@ -255,17 +260,18 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
 
             // Control region cuts exactly as defined in your reference
             bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop <0.3) && (n_bjets==0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 400) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (pt_diTau < 125) && (n_bjets>0);
             
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_data_DY.Fill(sist_acop,w_data);
-                h_m_data_DY.Fill(sist_mass,w_data);     // DY plots tau_mass
+                h_m_data_DY.Fill(tau_mass,w_data);     // DY plots tau_mass
                 h_r_data_DY.Fill(sist_rap,w_data);
                 h_pt_data_DY.Fill(sist_pt,w_data);
             }
             if(isQCD_CR) {
+                std::cout << "sist_mass: " << sist_mass << std::endl;  // Debug line
                 h_aco_data_QCD.Fill(sist_acop,w_data);
                 h_m_data_QCD.Fill(sist_mass,w_data);   // QCD plots sist_mass
                 h_r_data_QCD.Fill(sist_rap,w_data);
@@ -286,7 +292,7 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
     for(int i=0; i<n_evt_dy; i++){
         tree_dy->GetEvent(i);
         if(tree_dy->GetLeaf("sist_mass")->GetValue(0) >= 0){
-            double w_dy = 1.81 * 0.13;
+            double w_dy = 1.81 ;
 
             double sist_acop=tree_dy->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_dy->GetLeaf("sist_mass")->GetValue(0);
@@ -316,18 +322,19 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
 
             // Control region cuts exactly as defined in your reference
             bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop <0.3) && (n_bjets==0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 400) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (pt_diTau < 125) && (n_bjets>0);
 
 
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_dy_DY.Fill(sist_acop,w_dy);
-                h_m_dy_DY.Fill(sist_mass,w_dy);     // DY plots tau_mass
+                h_m_dy_DY.Fill(tau_mass,w_dy);     // DY plots tau_mass
                 h_r_dy_DY.Fill(sist_rap,w_dy);
                 h_pt_dy_DY.Fill(sist_pt,w_dy);
             }
             if(isQCD_CR) {
+                std::cout << "sist_mass: " << sist_mass << std::endl;  // Debug line
                 h_aco_dy_QCD.Fill(sist_acop,w_dy);
                 h_m_dy_QCD.Fill(sist_mass,w_dy);   // QCD plots sist_mass
                 h_r_dy_QCD.Fill(sist_rap,w_dy);
@@ -349,7 +356,7 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
         tree_qcd->GetEvent(i);
         if(tree_qcd->GetLeaf("sist_mass")->GetValue(0) >= 0){
 
-            double w_qcd = 0;
+            double w_qcd = 1;
 
             double sist_acop=tree_qcd->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_qcd->GetLeaf("sist_mass")->GetValue(0);
@@ -379,7 +386,7 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
 
             // Control region cuts exactly as defined in your reference
             bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop <0.3) && (n_bjets==0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 400) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (pt_diTau < 125) && (n_bjets>0);
             
 
@@ -387,11 +394,12 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_qcd_DY.Fill(sist_acop,w_qcd);
-                h_m_qcd_DY.Fill(sist_mass,w_qcd);     // DY plots tau_mass
+                h_m_qcd_DY.Fill(tau_mass,w_qcd);     // DY plots tau_mass
                 h_r_qcd_DY.Fill(sist_rap,w_qcd);
                 h_pt_qcd_DY.Fill(sist_pt,w_qcd);
             }
             if(isQCD_CR) {
+                std::cout << "sist_mass: " << sist_mass << std::endl;  // Debug line
                 h_aco_qcd_QCD.Fill(sist_acop,w_qcd);
                 h_m_qcd_QCD.Fill(sist_mass,w_qcd);   // QCD plots sist_mass
                 h_r_qcd_QCD.Fill(sist_rap,w_qcd);
@@ -413,7 +421,7 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
         tree_ttjets->GetEvent(i);
         if(tree_ttjets->GetLeaf("sist_mass")->GetValue(0) >= 0){
 
-            double w_ttjets = 0.15 * 0.13;
+            double w_ttjets = 0.15 ;
 
             double sist_acop=tree_ttjets->GetLeaf("sist_acop")->GetValue(0);
             double sist_mass = tree_ttjets->GetLeaf("sist_mass")->GetValue(0);
@@ -443,17 +451,18 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
 
             // Control region cuts exactly as defined in your reference
             bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop <0.3) && (n_bjets==0);
-            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 300) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
+            bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 400) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (pt_diTau < 125) && (n_bjets>0);
 
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {
                 h_aco_ttjets_DY.Fill(sist_acop,w_ttjets);
-                h_m_ttjets_DY.Fill(sist_mass,w_ttjets);     // DY plots tau_mass
+                h_m_ttjets_DY.Fill(tau_mass,w_ttjets);     // DY plots tau_mass
                 h_r_ttjets_DY.Fill(sist_rap,w_ttjets);
                 h_pt_ttjets_DY.Fill(sist_pt,w_ttjets);
             }
             if(isQCD_CR) {
+                std::cout << "sist_mass: " << sist_mass << std::endl;  // Debug line
                 h_aco_ttjets_QCD.Fill(sist_acop,w_ttjets);
                 h_m_ttjets_QCD.Fill(sist_mass,w_ttjets);   // QCD plots sist_mass
                 h_r_ttjets_QCD.Fill(sist_rap,w_ttjets);
