@@ -117,7 +117,7 @@ int main(){
     // TFile qcd("/eos/user/j/jjhollar/TauTauBackup/samples_2018_tautau/fase1/soma/QCD_fase1_tautau_total_2018.root");
     // TFile sinal("TauTau_sinal_PIC_july_2018.root");
 
-    TFile data("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/Dados_total-protons_2018_tautau.root");
+    TFile data("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/Dados_fase1-protons_2018_tautau.root");
     TFile dy("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/DY_total-protons_2018_tautau.root");
     TFile ttjets("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/ttjets_total-protons_2018_tautau.root");
     TFile qcd("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/QCD_total-protons_2018_tautau.root");

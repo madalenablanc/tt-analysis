@@ -40,6 +40,7 @@ int main() {
   double weight, generator_weight;
   double tau_n;
   int n_b_jet;
+  double pu_xi
 
   // Set branch addresses
   tree_mc->SetBranchAddress("tau0_id1", &tau0_id1);
