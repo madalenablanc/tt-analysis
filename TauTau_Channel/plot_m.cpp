@@ -62,6 +62,7 @@ int main(){
         TFile ttjets("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/ttjets_total-protons_2018_tautau.root");
         TFile qcd("/eos/user/m/mblancco/samples_2018_tautau/fase1/soma/QCD_total-protons_2018_tautau.root");
         TFile sinal("TauTau_sinal_PIC_july_2018.root");
+        
 
 
 	TFile output("DY_CR_e_mu_UL_2018_shapes_1.root","RECREATE","");
@@ -254,7 +255,7 @@ int main(){
                 int o=tree_qcd->GetEvent(i);
 		if(tree_qcd->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
-                w_qcd=1.*0.8*0.13;
+                w_qcd=1;
                 n_qcd = n_qcd + w_qcd;
                 aco_qcd.Fill(tree_qcd->GetLeaf("sist_acop")->GetValue(0),w_qcd);
                 m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0),w_qcd);
@@ -293,7 +294,7 @@ int main(){
                 int o=tree_dy->GetEvent(i);
 		if(tree_dy->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		w_dy = tree_dy->GetLeaf("weight")->GetValue(0);
-                w_dy=1.81*0.8*0.13;
+                w_dy=1.81*0.13;
                 n_dy = n_dy + w_dy;
                 aco_dy.Fill(tree_dy->GetLeaf("sist_acop")->GetValue(0),w_dy);
                 m_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0),w_dy);
@@ -330,7 +331,7 @@ int main(){
                 int o=tree_ttjets->GetEvent(i);
                 if(tree_ttjets->GetLeaf("sist_mass") ->GetValue(0)>=0){
 		w_ttjets = tree_ttjets->GetLeaf("weight")->GetValue(0);
-                w_ttjets=0.15*0.8*0.13;
+                w_ttjets=0.15*0.13;
                 n_tt=n_tt+w_ttjets;
                 aco_ttjets.Fill(tree_ttjets->GetLeaf("sist_acop")->GetValue(0),w_ttjets);
                 m_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0),w_ttjets);

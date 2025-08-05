@@ -126,19 +126,19 @@ int main(){
     
     // DY Control Region parameters (plots tau_mass, range ~70-100 GeV from visual inspection)
     double min_aco_DY=0.05, max_aco_DY=0.25; int bin_aco_DY=5;
-    double min_m_DY=40, max_m_DY=100; int bin_m_DY=5;  // tau_mass range from plot
+    double min_m_DY=40, max_m_DY=120; int bin_m_DY=8;  // tau_mass range from plot
     double min_r_DY=-2, max_r_DY=2; int bin_r_DY=5;
     double min_pt_DY=200, max_pt_DY=350; int bin_pt_DY=10;
 
     // QCD Control Region parameters (plots sist_mass, range ~400-1000 GeV from visual inspection)  
     double min_aco_QCD=0.8, max_aco_QCD=1.0; int bin_aco_QCD=6;
-    double min_m_QCD=200, max_m_QCD=500; int bin_m_QCD=6;  // sist_mass range from plot
+    double min_m_QCD=150, max_m_QCD=450; int bin_m_QCD=8;  // sist_mass range from plot
     double min_r_QCD=-2, max_r_QCD=2; int bin_r_QCD=10;
     double min_pt_QCD=0, max_pt_QCD=100; int bin_pt_QCD=5;
 
     // TT Control Region parameters (plots sist_mass, range ~400-1000 GeV from visual inspection)
     double min_aco_TT=0.5, max_aco_TT=1.0; int bin_aco_TT=10;
-    double min_m_TT=400, max_m_TT=1000; int bin_m_TT=10;  // sist_mass range from plot
+    double min_m_TT=0, max_m_TT=800; int bin_m_TT=10;  // sist_mass range from plot
     double min_r_TT=-2, max_r_TT=2; int bin_r_TT=10;
     double min_pt_TT=0, max_pt_TT=240; int bin_pt_TT=5;
 
@@ -262,6 +262,8 @@ double pt_diTau = sqrt(px_sys*px_sys + py_sys*py_sys);
             bool isDY_CR = (tau_mass >= 40 && tau_mass <= 100) && (sist_acop <0.3) && (n_bjets==0);
             bool isQCD_CR = (tau_mass >= 100 && tau_mass <= 400) && (sist_acop > 0.8) && (pt_diTau < 75)&& (n_bjets==0);
             bool isTT_CR = (tau_mass >= 200 && tau_mass <= 650) && (sist_acop > 0.5) && (pt_diTau < 125) && (n_bjets>0);
+
+            
             
             // Fill histograms - CRUCIAL: DY plots tau_mass, QCD/TT plot sist_mass
             if(isDY_CR) {

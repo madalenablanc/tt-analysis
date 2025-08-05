@@ -1,0 +1,2505 @@
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 475
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 0
+progress: 0
+progress: 74.4602
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 679
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 4
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 527
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 1
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 410
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 3
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 372
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 0
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 475
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 16
+progress: 0
+progress: 74.4602
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 679
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 527
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 410
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 10
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 372
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 14
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 317
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 13
+progress: 0
+progress: 98.4252
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 603
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 504
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 17
+progress: 0
+progress: 92.9368
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 621
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 15
+progress: 0
+progress: 91.3242
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 647
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 13
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 442
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 500
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 11
+progress: 0
+progress: 81.6993
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 720
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 28
+progress: 0
+progress: 70.5716
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 847
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 27
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 377
+Eventos apos momento muoes e taus: 12
+Eventos apos carga <3: 12
+progress: 0
+progress: 73.3676
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 811
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 11
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 422
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 581
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 21
+progress: 0
+progress: 86.3558
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 693
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+progress: 86.5801
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 658
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 17
+progress: 0
+progress: 66.9792
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 861
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+progress: 72.7802
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 730
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 15
+progress: 0
+progress: 74.8503
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 749
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 25
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 546
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 18
+progress: 0
+progress: 80.0641
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 707
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 22
+progress: 0
+progress: 70.373
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 820
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 19
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 550
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 13
+progress: 0
+progress: 65.8328
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 900
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 27
+progress: 0
+progress: 64.8088
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 887
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 28
+progress: 0
+progress: 69.0131
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 862
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 490
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 22
+progress: 0
+progress: 75.643
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 650
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 12
+progress: 0
+progress: 96.5251
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 611
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 23
+progress: 0
+progress: 64.5995
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 917
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 25
+progress: 0
+progress: 63.4518
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 889
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 466
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 566
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 25
+progress: 0
+progress: 91.2409
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 611
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 14
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 519
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 15
+progress: 0
+progress: 66.6667
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 878
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 24
+progress: 0
+progress: 94.0734
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 619
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 22
+progress: 0
+progress: 71.0227
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 828
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 14
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 550
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 14
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 466
+Eventos apos momento muoes e taus: 7
+Eventos apos carga <3: 5
+progress: 0
+progress: 63.1313
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 923
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 23
+progress: 0
+progress: 69.541
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 833
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 26
+progress: 0
+progress: 69.0608
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 840
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 361
+Eventos apos momento muoes e taus: 9
+Eventos apos carga <3: 8
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 143
+Eventos apos momento muoes e taus: 1
+Eventos apos carga <3: 1
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 362
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 495
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 501
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 479
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 14
+progress: 0
+progress: 97.2763
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 628
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 24
+progress: 0
+progress: 81.9672
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 684
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 10
+progress: 0
+progress: 72.1501
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 776
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 13
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 304
+Eventos apos momento muoes e taus: 12
+Eventos apos carga <3: 10
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 350
+Eventos apos momento muoes e taus: 11
+Eventos apos carga <3: 9
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 468
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 135
+Eventos apos momento muoes e taus: 4
+Eventos apos carga <3: 3
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 196
+Eventos apos momento muoes e taus: 6
+Eventos apos carga <3: 5
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 214
+Eventos apos momento muoes e taus: 5
+Eventos apos carga <3: 4
+progress: 0
+progress: 80.9061
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 722
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 20
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 436
+Eventos apos momento muoes e taus: 12
+Eventos apos carga <3: 11
+progress: 0
+progress: 2.82287
+progress: 5.64573
+progress: 8.4686
+progress: 11.2915
+progress: 14.1143
+progress: 16.9372
+progress: 19.7601
+progress: 22.5829
+progress: 25.4058
+progress: 28.2287
+progress: 31.0515
+progress: 33.8744
+progress: 36.6972
+progress: 39.5201
+progress: 42.343
+progress: 45.1658
+progress: 47.9887
+progress: 50.8116
+progress: 53.6344
+progress: 56.4573
+progress: 59.2802
+progress: 62.103
+progress: 64.9259
+progress: 67.7488
+progress: 70.5716
+progress: 73.3945
+progress: 76.2174
+progress: 79.0402
+progress: 81.8631
+progress: 84.686
+progress: 87.5088
+progress: 90.3317
+progress: 93.1546
+progress: 95.9774
+progress: 98.8003
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 5.16983
+progress: 10.3397
+progress: 15.5095
+progress: 20.6793
+progress: 25.8491
+progress: 31.019
+progress: 36.1888
+progress: 41.3586
+progress: 46.5285
+progress: 51.6983
+progress: 56.8681
+progress: 62.0379
+progress: 67.2078
+progress: 72.3776
+progress: 77.5474
+progress: 82.7173
+progress: 87.8871
+progress: 93.0569
+progress: 98.2267
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 505
+Eventos apos momento muoes e taus: 9
+Eventos apos carga <3: 7
+progress: 0
+progress: 75.1315
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 754
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 594
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 3.75305
+progress: 7.5061
+progress: 11.2591
+progress: 15.0122
+progress: 18.7652
+progress: 22.5183
+progress: 26.2713
+progress: 30.0244
+progress: 33.7774
+progress: 37.5305
+progress: 41.2835
+progress: 45.0366
+progress: 48.7896
+progress: 52.5427
+progress: 56.2957
+progress: 60.0488
+progress: 63.8018
+progress: 67.5549
+progress: 71.3079
+progress: 75.061
+progress: 78.814
+progress: 82.5671
+progress: 86.3201
+progress: 90.0732
+progress: 93.8262
+progress: 97.5793
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 63.2911
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 740
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 14
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 517
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 13
+progress: 0
+progress: 67.1141
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 811
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 27
+progress: 0
+progress: 90.9091
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 627
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 527
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 11
+progress: 0
+progress: 78.5546
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 712
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 19
+progress: 0
+progress: 70.2741
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 810
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 27
+progress: 0
+progress: 71.7875
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 800
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 22
+progress: 0
+progress: 3.28052
+progress: 6.56103
+progress: 9.84155
+progress: 13.1221
+progress: 16.4026
+progress: 19.6831
+progress: 22.9636
+progress: 26.2441
+progress: 29.5247
+progress: 32.8052
+progress: 36.0857
+progress: 39.3662
+progress: 42.6467
+progress: 45.9272
+progress: 49.2078
+progress: 52.4883
+progress: 55.7688
+progress: 59.0493
+progress: 62.3298
+progress: 65.6103
+progress: 68.8909
+progress: 72.1714
+progress: 75.4519
+progress: 78.7324
+progress: 82.0129
+progress: 85.2934
+progress: 88.574
+progress: 91.8545
+progress: 95.135
+progress: 98.4155
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 77.2798
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 736
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 27
+progress: 0
+progress: 62.6959
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 742
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 25
+progress: 0
+progress: 75.0751
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 715
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 13
+progress: 0
+progress: 72.0981
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 806
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 27
+progress: 0
+progress: 71.9942
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 761
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 17
+progress: 0
+progress: 84.317
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 659
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 22
+progress: 0
+progress: 74.8503
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 754
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 14
+progress: 0
+progress: 72.6744
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 796
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 16
+progress: 0
+progress: 68.3527
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 864
+Eventos apos momento muoes e taus: 37
+Eventos apos carga <3: 33
+progress: 0
+progress: 64.3501
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 864
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 26
+progress: 0
+progress: 69.2521
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 823
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 13
+progress: 0
+progress: 67.1592
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 842
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 29
+progress: 0
+progress: 69.9301
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 776
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 22
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 92
+Eventos apos momento muoes e taus: 4
+Eventos apos carga <3: 4
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 533
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 9
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 398
+Eventos apos momento muoes e taus: 10
+Eventos apos carga <3: 9
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 361
+Eventos apos momento muoes e taus: 8
+Eventos apos carga <3: 8
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 359
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 12
+progress: 0
+progress: 82.7815
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 636
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 22
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 121
+Eventos apos momento muoes e taus: 4
+Eventos apos carga <3: 4
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 408
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 13
+progress: 0
+progress: 64.6831
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 848
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 23
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 483
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 427
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 480
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 13
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 498
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 12
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 485
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 19
+progress: 0
+progress: 84.674
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 647
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 14
+progress: 0
+progress: 83.3333
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 669
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 12
+progress: 0
+progress: 72.0461
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 773
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 72.8332
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 769
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 511
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 12
+progress: 0
+progress: 72.3589
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 750
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 31
+progress: 0
+progress: 70.922
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 769
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 19
+progress: 0
+progress: 70.5716
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 810
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 20
+progress: 0
+progress: 60.5694
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 906
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 19
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 454
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 13
+progress: 0
+progress: 72.5689
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 770
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 25
+progress: 0
+progress: 80.3859
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 729
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 18
+progress: 0
+progress: 69.2042
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 775
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 13
+progress: 0
+progress: 66.4452
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 793
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 20
+progress: 0
+progress: 67.8887
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 766
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 26
+progress: 0
+progress: 96.0615
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 617
+Eventos apos momento muoes e taus: 9
+Eventos apos carga <3: 9
+progress: 0
+progress: 76.8049
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 731
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 25
+progress: 0
+progress: 76.9823
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 703
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 21
+progress: 0
+progress: 75.188
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 767
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 67.981
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 779
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 13
+progress: 0
+progress: 71.8907
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 768
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 28
+progress: 0
+progress: 73.4214
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 773
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 15
+progress: 0
+progress: 78.2473
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 711
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 22
+progress: 0
+progress: 73.692
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 749
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 63.3312
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 869
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 16
+progress: 0
+progress: 56.6251
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 839
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 18
+progress: 0
+progress: 73.3138
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 763
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 22
+progress: 0
+progress: 68.1663
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 837
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 64.9351
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 865
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 24
+progress: 0
+progress: 77.0416
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 713
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 21
+progress: 0
+progress: 71.0227
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 814
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 29
+progress: 0
+progress: 74.2942
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 774
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 24
+progress: 0
+progress: 63.6132
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 870
+Eventos apos momento muoes e taus: 35
+Eventos apos carga <3: 28
+progress: 0
+progress: 68.5401
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 817
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 24
+progress: 0
+progress: 65.6168
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 839
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 23
+progress: 0
+progress: 58.6854
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 775
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 28
+progress: 0
+progress: 63.9795
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 871
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 28
+progress: 0
+progress: 65.7462
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 840
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 19
+progress: 0
+progress: 59.6303
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 973
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 26
+progress: 0
+progress: 70.2247
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 770
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 22
+progress: 0
+progress: 69.2042
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 874
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 23
+progress: 0
+progress: 65.9196
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 829
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 26
+progress: 0
+progress: 70.1754
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 792
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 28
+progress: 0
+progress: 65.7462
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 867
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 26
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 522
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 14
+progress: 0
+progress: 66.0502
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 875
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 57.5374
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 968
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 25
+progress: 0
+progress: 67.6133
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 881
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 29
+progress: 0
+progress: 68.0272
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 867
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 25
+progress: 0
+progress: 83.1255
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 699
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 19
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 448
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 12
+progress: 0
+progress: 63.6537
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 945
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 27
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 469
+Eventos apos momento muoes e taus: 12
+Eventos apos carga <3: 11
+progress: 0
+progress: 72.9395
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 765
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 16
+progress: 0
+progress: 69.8324
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 796
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 15
+progress: 0
+progress: 68.918
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 814
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 22
+progress: 0
+progress: 64.7249
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 714
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 29
+progress: 0
+progress: 65.2316
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 939
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 27
+progress: 0
+progress: 66.0502
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 858
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 21
+progress: 0
+progress: 73.0994
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 763
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 18
+progress: 0
+progress: 68.0272
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 812
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 27
+progress: 0
+progress: 63.1313
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 832
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 20
+progress: 0
+progress: 64.8929
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 867
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 31
+progress: 0
+progress: 70.6714
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 775
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 32
+progress: 0
+progress: 70.6714
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 737
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 367
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 46
+Eventos apos momento muoes e taus: 3
+Eventos apos carga <3: 3
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 544
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 15
+progress: 0
+progress: 76.6284
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 739
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 25
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 486
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 20
+progress: 0
+progress: 96.2464
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 602
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 15
+progress: 0
+progress: 60.9756
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 917
+Eventos apos momento muoes e taus: 36
+Eventos apos carga <3: 33
+progress: 0
+progress: 98.4252
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 587
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 14
+progress: 0
+progress: 71.4796
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 816
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 458
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 16
+progress: 0
+progress: 51.6529
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 907
+Eventos apos momento muoes e taus: 37
+Eventos apos carga <3: 35
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 440
+Eventos apos momento muoes e taus: 6
+Eventos apos carga <3: 4
+progress: 0
+progress: 82.5083
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 666
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 22
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 451
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 32
+Eventos apos momento muoes e taus: 1
+Eventos apos carga <3: 1
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 513
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 11
+progress: 0
+progress: 77.3395
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 720
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 397
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 12
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 504
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 13
+progress: 0
+progress: 84.5309
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 664
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 26
+progress: 0
+progress: 83.5422
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 653
+Eventos apos momento muoes e taus: 19
+Eventos apos carga <3: 18
+progress: 0
+progress: 54.4959
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 878
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 29
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 460
+Eventos apos momento muoes e taus: 11
+Eventos apos carga <3: 11
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 555
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 14
+progress: 0
+progress: 95.4198
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 549
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 16
+progress: 0
+progress: 54.8847
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 845
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 27
+progress: 0
+progress: 78.9889
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 704
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 23
+progress: 0
+progress: 70.5716
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 821
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 20
+progress: 0
+progress: 70.3235
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 800
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 29
+progress: 0
+progress: 85.6164
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 670
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 18
+progress: 0
+progress: 75.815
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 752
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 530
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 23
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 473
+Eventos apos momento muoes e taus: 17
+Eventos apos carga <3: 14
+progress: 0
+progress: 68.6813
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 781
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 18
+progress: 0
+progress: 66.6223
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 809
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 16
+progress: 0
+progress: 71.0732
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 662
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 19
+progress: 0
+progress: 65.1466
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 848
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 26
+progress: 0
+progress: 68.4463
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 800
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 23
+progress: 0
+progress: 75.7576
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 760
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 19
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 437
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 14
+progress: 0
+progress: 74.8503
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 769
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 12
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 505
+Eventos apos momento muoes e taus: 13
+Eventos apos carga <3: 12
+progress: 0
+progress: 92.5069
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 651
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 82.4402
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 718
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 78.5546
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 740
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 19
+progress: 0
+progress: 64.3087
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 888
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 28
+progress: 0
+progress: 99.4036
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 549
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 16
+progress: 0
+progress: 76.1035
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 755
+Eventos apos momento muoes e taus: 38
+Eventos apos carga <3: 31
+progress: 0
+progress: 63.857
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 849
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 23
+progress: 0
+progress: 63.0915
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 886
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 30
+progress: 0
+progress: 70.1262
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 820
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 21
+progress: 0
+progress: 74.239
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 770
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 18
+progress: 0
+progress: 84.0336
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 669
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 29
+progress: 0
+progress: 64.1026
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 866
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 28
+progress: 0
+progress: 60.423
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 957
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 26
+progress: 0
+progress: 60.9756
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 910
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 27
+progress: 0
+progress: 71.2758
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 816
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 20
+progress: 0
+progress: 59.3472
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 786
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 21
+progress: 0
+progress: 69.735
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 795
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 75.815
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 744
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 18
+progress: 0
+progress: 61.0128
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 920
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 25
+progress: 0
+progress: 60.2047
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 925
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 23
+progress: 0
+progress: 65.0618
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 853
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 21
+progress: 0
+progress: 60.5327
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 954
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 31
+progress: 0
+progress: 67.1141
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 849
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 29
+progress: 0
+progress: 69.541
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 830
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 22
+progress: 0
+progress: 79.3021
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 703
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 17
+progress: 0
+progress: 63.6132
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 931
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 24
+progress: 0
+progress: 65.3168
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 842
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 24
+progress: 0
+progress: 86.2069
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 681
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 27
+progress: 0
+progress: 63.8978
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 899
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 18
+progress: 0
+progress: 70.8717
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 816
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 20
+progress: 0
+progress: 64.2674
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 913
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 28
+progress: 0
+progress: 2.42654
+progress: 4.85307
+progress: 7.27961
+progress: 9.70615
+progress: 12.1327
+progress: 14.5592
+progress: 16.9858
+progress: 19.4123
+progress: 21.8388
+progress: 24.2654
+progress: 26.6919
+progress: 29.1184
+progress: 31.545
+progress: 33.9715
+progress: 36.398
+progress: 38.8246
+progress: 41.2511
+progress: 43.6777
+progress: 46.1042
+progress: 48.5307
+progress: 50.9573
+progress: 53.3838
+progress: 55.8103
+progress: 58.2369
+progress: 60.6634
+progress: 63.09
+progress: 65.5165
+progress: 67.943
+progress: 70.3696
+progress: 72.7961
+progress: 75.2226
+progress: 77.6492
+progress: 80.0757
+progress: 82.5022
+progress: 84.9288
+progress: 87.3553
+progress: 89.7819
+progress: 92.2084
+progress: 94.6349
+progress: 97.0615
+progress: 99.488
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 2.58859
+progress: 5.17719
+progress: 7.76578
+progress: 10.3544
+progress: 12.943
+progress: 15.5316
+progress: 18.1202
+progress: 20.7088
+progress: 23.2974
+progress: 25.8859
+progress: 28.4745
+progress: 31.0631
+progress: 33.6517
+progress: 36.2403
+progress: 38.8289
+progress: 41.4175
+progress: 44.0061
+progress: 46.5947
+progress: 49.1833
+progress: 51.7719
+progress: 54.3605
+progress: 56.9491
+progress: 59.5377
+progress: 62.1263
+progress: 64.7149
+progress: 67.3035
+progress: 69.8921
+progress: 72.4807
+progress: 75.0692
+progress: 77.6578
+progress: 80.2464
+progress: 82.835
+progress: 85.4236
+progress: 88.0122
+progress: 90.6008
+progress: 93.1894
+progress: 95.778
+progress: 98.3666
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 64.2674
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 846
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 21
+progress: 0
+progress: 72.3066
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 803
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+progress: 61.7284
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 878
+Eventos apos momento muoes e taus: 35
+Eventos apos carga <3: 30
+progress: 0
+progress: 72.5689
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 791
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 29
+progress: 0
+progress: 68.2594
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 829
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 26
+progress: 0
+progress: 90.6618
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 647
+Eventos apos momento muoes e taus: 11
+Eventos apos carga <3: 10
+progress: 0
+progress: 77.2201
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 739
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 17
+progress: 0
+progress: 65.5738
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 848
+Eventos apos momento muoes e taus: 38
+Eventos apos carga <3: 32
+progress: 0
+progress: 70.5716
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 776
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 27
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 536
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 392
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 13
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 511
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 17
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 486
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 80.1925
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 707
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 22
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 495
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 19
+progress: 0
+progress: 78.5546
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 701
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 28
+progress: 0
+progress: 89.9281
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 641
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 21
+progress: 0
+progress: 67.9348
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 837
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 23
+progress: 0
+progress: 69.735
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 787
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 24
+progress: 0
+progress: 80.9717
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 701
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 9
+progress: 0
+progress: 89.0472
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 674
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 11
+progress: 0
+progress: 70.922
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 745
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 29
+progress: 0
+progress: 64.8088
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 836
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 21
+progress: 0
+progress: 65.6599
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 862
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 24
+progress: 0
+progress: 68.4932
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 836
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 21
+progress: 0
+progress: 69.4927
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 869
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 21
+progress: 0
+progress: 80.7754
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 736
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 14
+progress: 0
+progress: 86.4304
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 680
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 23
+progress: 0
+progress: 86.2813
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 665
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 22
+progress: 0
+progress: 68.3995
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 814
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 28
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 414
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 15
+progress: 0
+progress: 59.1017
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 871
+Eventos apos momento muoes e taus: 32
+Eventos apos carga <3: 30
+progress: 0
+progress: 80.5153
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 680
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+progress: 71.0732
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 790
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 66.9344
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 798
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 26
+progress: 0
+progress: 71.582
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 826
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 68.1199
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 871
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 28
+progress: 0
+progress: 67.981
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 870
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 29
+progress: 0
+progress: 65.7462
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 897
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 18
+progress: 0
+progress: 65.3595
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 862
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 22
+progress: 0
+progress: 75.1315
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 781
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 23
+progress: 0
+progress: 68.5401
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 818
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 25
+progress: 0
+progress: 73.0994
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 785
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 19
+progress: 0
+progress: 87.9507
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 628
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 26
+progress: 0
+progress: 66.2252
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 816
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 308
+Eventos apos momento muoes e taus: 9
+Eventos apos carga <3: 8
+progress: 0
+progress: 57.7367
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 818
+Eventos apos momento muoes e taus: 39
+Eventos apos carga <3: 33
+progress: 0
+progress: 64.5578
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 728
+Eventos apos momento muoes e taus: 36
+Eventos apos carga <3: 33
+progress: 0
+progress: 55.5864
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 840
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 29
+progress: 0
+progress: 66.7557
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 877
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 15
+progress: 0
+progress: 59.4884
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 830
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 18
+progress: 0
+progress: 57.5705
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 816
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 28
+progress: 0
+progress: 56.2746
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 808
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 24
+progress: 0
+progress: 60.35
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 814
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 24
+progress: 0
+progress: 54.4366
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 872
+Eventos apos momento muoes e taus: 40
+Eventos apos carga <3: 35
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 462
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 12
+progress: 0
+progress: 2.59041
+progress: 5.18081
+progress: 7.77122
+progress: 10.3616
+progress: 12.952
+progress: 15.5424
+progress: 18.1328
+progress: 20.7232
+progress: 23.3136
+progress: 25.9041
+progress: 28.4945
+progress: 31.0849
+progress: 33.6753
+progress: 36.2657
+progress: 38.8561
+progress: 41.4465
+progress: 44.0369
+progress: 46.6273
+progress: 49.2177
+progress: 51.8081
+progress: 54.3985
+progress: 56.9889
+progress: 59.5793
+progress: 62.1697
+progress: 64.7601
+progress: 67.3505
+progress: 69.9409
+progress: 72.5313
+progress: 75.1217
+progress: 77.7122
+progress: 80.3026
+progress: 82.893
+progress: 85.4834
+progress: 88.0738
+progress: 90.6642
+progress: 93.2546
+progress: 95.845
+progress: 98.4354
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 68.1663
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 685
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 19
+progress: 0
+progress: 59.1716
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 803
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 14
+progress: 0
+progress: 53.7057
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 875
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 22
+progress: 0
+progress: 67.8426
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 696
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 20
+progress: 0
+progress: 61.0874
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 783
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 19
+progress: 0
+progress: 99.108
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 538
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 20
+progress: 0
+progress: 55.8659
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 802
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 16
+progress: 0
+progress: 58.5823
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 815
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 21
+progress: 0
+progress: 63.0517
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 781
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 26
+progress: 0
+progress: 74.5156
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 672
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 19
+progress: 0
+progress: 2.59794
+progress: 5.19588
+progress: 7.79383
+progress: 10.3918
+progress: 12.9897
+progress: 15.5877
+progress: 18.1856
+progress: 20.7835
+progress: 23.3815
+progress: 25.9794
+progress: 28.5774
+progress: 31.1753
+progress: 33.7733
+progress: 36.3712
+progress: 38.9691
+progress: 41.5671
+progress: 44.165
+progress: 46.763
+progress: 49.3609
+progress: 51.9588
+progress: 54.5568
+progress: 57.1547
+progress: 59.7527
+progress: 62.3506
+progress: 64.9486
+progress: 67.5465
+progress: 70.1444
+progress: 72.7424
+progress: 75.3403
+progress: 77.9383
+progress: 80.5362
+progress: 83.1342
+progress: 85.7321
+progress: 88.33
+progress: 90.928
+progress: 93.5259
+progress: 96.1239
+progress: 98.7218
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 58.4454
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 806
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 22
+progress: 0
+progress: 54.7046
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1021
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 30
+progress: 0
+progress: 55.4017
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 888
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 19
+progress: 0
+progress: 58.651
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 772
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 23
+progress: 0
+progress: 57.6369
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 837
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 60.6796
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 930
+Eventos apos momento muoes e taus: 45
+Eventos apos carga <3: 36
+progress: 0
+progress: 87.7193
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 669
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 24
+progress: 0
+progress: 84.3882
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 605
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+progress: 3.24907
+progress: 6.49815
+progress: 9.74722
+progress: 12.9963
+progress: 16.2454
+progress: 19.4944
+progress: 22.7435
+progress: 25.9926
+progress: 29.2417
+progress: 32.4907
+progress: 35.7398
+progress: 38.9889
+progress: 42.238
+progress: 45.487
+progress: 48.7361
+progress: 51.9852
+progress: 55.2343
+progress: 58.4833
+progress: 61.7324
+progress: 64.9815
+progress: 68.2306
+progress: 71.4796
+progress: 74.7287
+progress: 77.9778
+progress: 81.2269
+progress: 84.4759
+progress: 87.725
+progress: 90.9741
+progress: 94.2231
+progress: 97.4722
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 0
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 482
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 19
+progress: 0
+progress: 58.3431
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 785
+Eventos apos momento muoes e taus: 30
+Eventos apos carga <3: 28
+progress: 0
+progress: 70.2247
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 715
+Eventos apos momento muoes e taus: 35
+Eventos apos carga <3: 30
+progress: 0
+progress: 84.9618
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 601
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 19
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 14
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+progress: 0
+progress: 76.1615
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 750
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 511
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 15
+progress: 0
+progress: 91.5751
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 575
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 21
+progress: 0
+progress: 66.5336
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 786
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 26
+progress: 0
+progress: 52.3286
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 878
+Eventos apos momento muoes e taus: 36
+Eventos apos carga <3: 36
+progress: 0
+progress: 70.4225
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 694
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 27
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 420
+Eventos apos momento muoes e taus: 12
+Eventos apos carga <3: 12
+progress: 0
+progress: 57.8704
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 825
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 17
+progress: 0
+progress: 88.4956
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 542
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 20
+progress: 0
+progress: 57.0125
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 875
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 25
+progress: 0
+progress: 75.5287
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 703
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 23
+progress: 0
+progress: 65.9631
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 817
+Eventos apos momento muoes e taus: 26
+Eventos apos carga <3: 25
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 478
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 454
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 12
+progress: 0
+progress: 69.4927
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 684
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 435
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 15
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 305
+Eventos apos momento muoes e taus: 11
+Eventos apos carga <3: 8
+progress: 0
+progress: 66.1376
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 883
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 504
+Eventos apos momento muoes e taus: 14
+Eventos apos carga <3: 13
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 546
+Eventos apos momento muoes e taus: 16
+Eventos apos carga <3: 14
+progress: 0
+progress: 62.6959
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 881
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 23
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 456
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 17
+progress: 0
+progress: 80.7754
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 731
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 19
+progress: 0
+progress: 65.4022
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 917
+Eventos apos momento muoes e taus: 39
+Eventos apos carga <3: 37
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 385
+Eventos apos momento muoes e taus: 12
+Eventos apos carga <3: 10
+progress: 0
+progress: 71.0732
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 804
+Eventos apos momento muoes e taus: 29
+Eventos apos carga <3: 26
+progress: 0
+progress: 71.3776
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 794
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 18
+progress: 0
+progress: 87.8735
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 624
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 18
+progress: 0
+progress: 90.9918
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 599
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 16
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 469
+Eventos apos momento muoes e taus: 11
+Eventos apos carga <3: 11
+progress: 0
+progress: 64.433
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 895
+Eventos apos momento muoes e taus: 22
+Eventos apos carga <3: 20
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 412
+Eventos apos momento muoes e taus: 15
+Eventos apos carga <3: 12
+progress: 0
+progress: 67.981
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 833
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 21
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 456
+Eventos apos momento muoes e taus: 25
+Eventos apos carga <3: 17
+progress: 0
+progress: 67.5676
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 819
+Eventos apos momento muoes e taus: 28
+Eventos apos carga <3: 24
+progress: 0
+progress: 72.0981
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 737
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 19
+progress: 0
+progress: 69.6864
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 792
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 23
+progress: 0
+progress: 66.6667
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 810
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 25
+progress: 0
+progress: 68.2128
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 813
+Eventos apos momento muoes e taus: 24
+Eventos apos carga <3: 21
+progress: 0
+progress: 85.6898
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 663
+Eventos apos momento muoes e taus: 23
+Eventos apos carga <3: 20
+progress: 0
+progress: 74.5712
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 735
+Eventos apos momento muoes e taus: 31
+Eventos apos carga <3: 27
+progress: 0
+progress: 76.1035
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 725
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 25
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 512
+Eventos apos momento muoes e taus: 18
+Eventos apos carga <3: 17
+progress: 0
+progress: 87.184
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 667
+Eventos apos momento muoes e taus: 33
+Eventos apos carga <3: 30
+progress: 0
+progress: 98.7167
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 550
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 21
+progress: 0
+progress: 64.3087
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 868
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 30
+progress: 0
+progress: 65.4022
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 827
+Eventos apos momento muoes e taus: 34
+Eventos apos carga <3: 28
+progress: 0
+progress: 71.4286
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 767
+Eventos apos momento muoes e taus: 27
+Eventos apos carga <3: 26
+progress: 0
+progress: 62.3441
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 878
+Eventos apos momento muoes e taus: 21
+Eventos apos carga <3: 17
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 67
+Eventos apos momento muoes e taus: 2
+Eventos apos carga <3: 2
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 129
+Eventos apos momento muoes e taus: 4
+Eventos apos carga <3: 4
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 482
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 18
+progress: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 482
+Eventos apos momento muoes e taus: 20
+Eventos apos carga <3: 18

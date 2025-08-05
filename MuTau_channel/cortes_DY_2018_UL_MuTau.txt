@@ -1,0 +1,812 @@
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 720.956
+Eventos apos momento muoes e taus: 21.1171
+Eventos apos carga <3: 17.5656
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 752.4
+Eventos apos momento muoes e taus: 10.543
+Eventos apos carga <3: 7.02948
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1391.6
+Eventos apos momento muoes e taus: 15.8261
+Eventos apos carga <3: 14.0683
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 733.808
+Eventos apos momento muoes e taus: 15.917
+Eventos apos carga <3: 12.3189
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 925.465
+Eventos apos momento muoes e taus: 15.9543
+Eventos apos carga <3: 10.6846
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1126.19
+Eventos apos momento muoes e taus: 19.3656
+Eventos apos carga <3: 17.5665
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 789.299
+Eventos apos momento muoes e taus: 10.5633
+Eventos apos carga <3: 10.5633
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1299.79
+Eventos apos momento muoes e taus: 28.2615
+Eventos apos carga <3: 24.7531
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 732.024
+Eventos apos momento muoes e taus: 10.5633
+Eventos apos carga <3: 10.5633
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1244.26
+Eventos apos momento muoes e taus: 37.0795
+Eventos apos carga <3: 30.0213
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 771.157
+Eventos apos momento muoes e taus: 14.0826
+Eventos apos carga <3: 12.3265
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1384.87
+Eventos apos momento muoes e taus: 30.0794
+Eventos apos carga <3: 30.0794
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 699.062
+Eventos apos momento muoes e taus: 24.8123
+Eventos apos carga <3: 24.8123
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 874.147
+Eventos apos momento muoes e taus: 19.2702
+Eventos apos carga <3: 19.2702
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1438.67
+Eventos apos momento muoes e taus: 33.4731
+Eventos apos carga <3: 31.717
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1471.12
+Eventos apos momento muoes e taus: 31.6815
+Eventos apos carga <3: 28.1694
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1409.71
+Eventos apos momento muoes e taus: 33.4255
+Eventos apos carga <3: 29.9188
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 868.705
+Eventos apos momento muoes e taus: 26.6034
+Eventos apos carga <3: 23.0124
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1281.44
+Eventos apos momento muoes e taus: 24.6536
+Eventos apos carga <3: 21.1376
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1390
+Eventos apos momento muoes e taus: 30.0104
+Eventos apos carga <3: 22.9368
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1399.19
+Eventos apos momento muoes e taus: 31.8422
+Eventos apos carga <3: 22.9955
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1364.17
+Eventos apos momento muoes e taus: 28.1777
+Eventos apos carga <3: 26.3858
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1263.9
+Eventos apos momento muoes e taus: 28.2335
+Eventos apos carga <3: 26.5059
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 728.24
+Eventos apos momento muoes e taus: 8.80045
+Eventos apos carga <3: 8.80045
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1352.32
+Eventos apos momento muoes e taus: 40.5036
+Eventos apos carga <3: 31.7651
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1065.21
+Eventos apos momento muoes e taus: 21.1703
+Eventos apos carga <3: 21.1703
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1172.92
+Eventos apos momento muoes e taus: 28.2113
+Eventos apos carga <3: 26.4854
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1328.57
+Eventos apos momento muoes e taus: 35.5336
+Eventos apos carga <3: 31.9856
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1348.54
+Eventos apos momento muoes e taus: 22.8268
+Eventos apos carga <3: 22.8268
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 701.531
+Eventos apos momento muoes e taus: 12.343
+Eventos apos carga <3: 10.6225
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 715.408
+Eventos apos momento muoes e taus: 15.8823
+Eventos apos carga <3: 14.0833
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 690.408
+Eventos apos momento muoes e taus: 14.0682
+Eventos apos carga <3: 12.3176
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 127.946
+Eventos apos momento muoes e taus: 3.47658
+Eventos apos carga <3: 1.75604
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 171.482
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 171.164
+Eventos apos momento muoes e taus: 5.32471
+Eventos apos carga <3: 5.32471
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 230.803
+Eventos apos momento muoes e taus: 5.34878
+Eventos apos carga <3: 5.34878
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 28.8531
+Eventos apos momento muoes e taus: 3.56352
+Eventos apos carga <3: 3.56352
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 46.7631
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 25.2785
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 779.13
+Eventos apos momento muoes e taus: 15.827
+Eventos apos carga <3: 14.0674
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1161.24
+Eventos apos momento muoes e taus: 17.6808
+Eventos apos carga <3: 14.1669
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 958.382
+Eventos apos momento muoes e taus: 15.8543
+Eventos apos carga <3: 15.8543
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 958.929
+Eventos apos momento muoes e taus: 21.1693
+Eventos apos carga <3: 21.1693
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 825.226
+Eventos apos momento muoes e taus: 17.7558
+Eventos apos carga <3: 14.2132
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 890.371
+Eventos apos momento muoes e taus: 24.6884
+Eventos apos carga <3: 24.6884
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 733.866
+Eventos apos momento muoes e taus: 14.0792
+Eventos apos carga <3: 10.549
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 804.078
+Eventos apos momento muoes e taus: 15.8548
+Eventos apos carga <3: 15.8548
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 784.421
+Eventos apos momento muoes e taus: 19.4575
+Eventos apos carga <3: 17.6585
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1016.77
+Eventos apos momento muoes e taus: 17.572
+Eventos apos carga <3: 15.8461
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 901.234
+Eventos apos momento muoes e taus: 15.8671
+Eventos apos carga <3: 15.8671
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 766.516
+Eventos apos momento muoes e taus: 17.7185
+Eventos apos carga <3: 17.7185
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 959.21
+Eventos apos momento muoes e taus: 23.0138
+Eventos apos carga <3: 21.2391
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1294.56
+Eventos apos momento muoes e taus: 19.3529
+Eventos apos carga <3: 19.3529
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 704.529
+Eventos apos momento muoes e taus: 12.2878
+Eventos apos carga <3: 12.2878
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 755.649
+Eventos apos momento muoes e taus: 8.83575
+Eventos apos carga <3: 8.83575
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 371.286
+Eventos apos momento muoes e taus: 8.84649
+Eventos apos carga <3: 8.84649
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 892.587
+Eventos apos momento muoes e taus: 14.0097
+Eventos apos carga <3: 12.2142
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1351.24
+Eventos apos momento muoes e taus: 47.813
+Eventos apos carga <3: 46.057
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1217.04
+Eventos apos momento muoes e taus: 14.1206
+Eventos apos carga <3: 14.1206
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 798.335
+Eventos apos momento muoes e taus: 14.1132
+Eventos apos carga <3: 14.1132
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 928.735
+Eventos apos momento muoes e taus: 22.7096
+Eventos apos carga <3: 20.9535
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1313.9
+Eventos apos momento muoes e taus: 31.8724
+Eventos apos carga <3: 30.0769
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1164.96
+Eventos apos momento muoes e taus: 22.9223
+Eventos apos carga <3: 21.1662
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1336.68
+Eventos apos momento muoes e taus: 17.5411
+Eventos apos carga <3: 17.5411
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1360.59
+Eventos apos momento muoes e taus: 35.3578
+Eventos apos carga <3: 24.7959
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1427.96
+Eventos apos momento muoes e taus: 33.5256
+Eventos apos carga <3: 24.633
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1365.74
+Eventos apos momento muoes e taus: 29.9665
+Eventos apos carga <3: 26.4899
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 953.846
+Eventos apos momento muoes e taus: 15.9032
+Eventos apos carga <3: 15.9032
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 816.299
+Eventos apos momento muoes e taus: 14.1244
+Eventos apos carga <3: 8.83774
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1356.64
+Eventos apos momento muoes e taus: 26.576
+Eventos apos carga <3: 21.2326
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1290.9
+Eventos apos momento muoes e taus: 28.3672
+Eventos apos carga <3: 23.0919
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 760.83
+Eventos apos momento muoes e taus: 14.093
+Eventos apos carga <3: 14.093
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 831.377
+Eventos apos momento muoes e taus: 14.0916
+Eventos apos carga <3: 12.3356
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 735.725
+Eventos apos momento muoes e taus: 21.3165
+Eventos apos carga <3: 21.3165
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 261.365
+Eventos apos momento muoes e taus: 8.75187
+Eventos apos carga <3: 8.75187
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 654.056
+Eventos apos momento muoes e taus: 15.8425
+Eventos apos carga <3: 12.2839
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 686.841
+Eventos apos momento muoes e taus: 19.3437
+Eventos apos carga <3: 12.2715
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 246.811
+Eventos apos momento muoes e taus: 5.28136
+Eventos apos carga <3: 5.28136
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1126.09
+Eventos apos momento muoes e taus: 19.4885
+Eventos apos carga <3: 17.6966
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 698.88
+Eventos apos momento muoes e taus: 13.9845
+Eventos apos carga <3: 6.99047
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 789.681
+Eventos apos momento muoes e taus: 8.76247
+Eventos apos carga <3: 7.00643
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1238.36
+Eventos apos momento muoes e taus: 19.3887
+Eventos apos carga <3: 17.614
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 928.296
+Eventos apos momento muoes e taus: 26.5588
+Eventos apos carga <3: 21.2287
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 234.351
+Eventos apos momento muoes e taus: 5.27169
+Eventos apos carga <3: 3.51565
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 43.4199
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 19.8256
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 43.0314
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 430.81
+Eventos apos momento muoes e taus: 7.02125
+Eventos apos carga <3: 7.02125
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 77.6012
+Eventos apos momento muoes e taus: 5.2699
+Eventos apos carga <3: 5.2699
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 212.734
+Eventos apos momento muoes e taus: 1.75781
+Eventos apos carga <3: 1.75781
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 506.162
+Eventos apos momento muoes e taus: 7.01172
+Eventos apos carga <3: 7.01172
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 722.992
+Eventos apos momento muoes e taus: 10.6081
+Eventos apos carga <3: 7.10476
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 799.955
+Eventos apos momento muoes e taus: 24.626
+Eventos apos carga <3: 24.626
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 807.273
+Eventos apos momento muoes e taus: 12.3886
+Eventos apos carga <3: 12.3886
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 688.347
+Eventos apos momento muoes e taus: 19.3898
+Eventos apos carga <3: 17.5907
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 723.058
+Eventos apos momento muoes e taus: 19.4106
+Eventos apos carga <3: 15.8985
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 651.628
+Eventos apos momento muoes e taus: 10.5598
+Eventos apos carga <3: 8.80022
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 623.878
+Eventos apos momento muoes e taus: 7.06717
+Eventos apos carga <3: 7.06717
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 66.6807
+Eventos apos momento muoes e taus: 3.59095
+Eventos apos carga <3: 3.59095
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 490.32
+Eventos apos momento muoes e taus: 5.3882
+Eventos apos carga <3: 5.3882
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 61.2493
+Eventos apos momento muoes e taus: 1.69438
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 747.947
+Eventos apos momento muoes e taus: 15.9148
+Eventos apos carga <3: 14.1552
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 860.818
+Eventos apos momento muoes e taus: 19.4057
+Eventos apos carga <3: 15.9238
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 868.299
+Eventos apos momento muoes e taus: 24.4651
+Eventos apos carga <3: 20.9708
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 499.439
+Eventos apos momento muoes e taus: 7.08172
+Eventos apos carga <3: 7.08172
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 21.6029
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 234.424
+Eventos apos momento muoes e taus: 3.5067
+Eventos apos carga <3: 3.5067
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 809.077
+Eventos apos momento muoes e taus: 19.3922
+Eventos apos carga <3: 19.3922
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 805.091
+Eventos apos momento muoes e taus: 19.2787
+Eventos apos carga <3: 19.2787
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 750.887
+Eventos apos momento muoes e taus: 21.3106
+Eventos apos carga <3: 19.5569
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 690.423
+Eventos apos momento muoes e taus: 10.6161
+Eventos apos carga <3: 8.86007
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1139.19
+Eventos apos momento muoes e taus: 19.3764
+Eventos apos carga <3: 17.5719
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1369.03
+Eventos apos momento muoes e taus: 37.0062
+Eventos apos carga <3: 28.1956
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1049.07
+Eventos apos momento muoes e taus: 22.9222
+Eventos apos carga <3: 21.1231
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 785.739
+Eventos apos momento muoes e taus: 21.164
+Eventos apos carga <3: 21.164
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 472.077
+Eventos apos momento muoes e taus: 8.77122
+Eventos apos carga <3: 7.01518
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 770.23
+Eventos apos momento muoes e taus: 12.4485
+Eventos apos carga <3: 12.4485
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 764.742
+Eventos apos momento muoes e taus: 14.1909
+Eventos apos carga <3: 14.1909
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 698.459
+Eventos apos momento muoes e taus: 15.8677
+Eventos apos carga <3: 14.1116
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 890.167
+Eventos apos momento muoes e taus: 15.7785
+Eventos apos carga <3: 15.7785
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 707.993
+Eventos apos momento muoes e taus: 24.8324
+Eventos apos carga <3: 23.0728
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 7.20466
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1182.27
+Eventos apos momento muoes e taus: 24.5913
+Eventos apos carga <3: 21.0792
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1191.28
+Eventos apos momento muoes e taus: 22.8976
+Eventos apos carga <3: 19.3909
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 834.586
+Eventos apos momento muoes e taus: 10.5527
+Eventos apos carga <3: 8.79662
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 701.777
+Eventos apos momento muoes e taus: 14.1667
+Eventos apos carga <3: 10.6116
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1159.43
+Eventos apos momento muoes e taus: 29.9305
+Eventos apos carga <3: 29.9305
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 719.698
+Eventos apos momento muoes e taus: 14.131
+Eventos apos carga <3: 12.3714
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1345.73
+Eventos apos momento muoes e taus: 22.9691
+Eventos apos carga <3: 15.7908
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 712.269
+Eventos apos momento muoes e taus: 22.7412
+Eventos apos carga <3: 17.5356
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 695.654
+Eventos apos momento muoes e taus: 8.74252
+Eventos apos carga <3: 8.74252
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 740.478
+Eventos apos momento muoes e taus: 30.0161
+Eventos apos carga <3: 24.6691
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 297.401
+Eventos apos momento muoes e taus: 5.26722
+Eventos apos carga <3: 5.26722
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 801.992
+Eventos apos momento muoes e taus: 12.2391
+Eventos apos carga <3: 12.2391
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1080.12
+Eventos apos momento muoes e taus: 26.5832
+Eventos apos carga <3: 23.0352
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 857.834
+Eventos apos momento muoes e taus: 17.5887
+Eventos apos carga <3: 15.7932
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 54.1323
+Eventos apos momento muoes e taus: 1.75961
+Eventos apos carga <3: 1.75961
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1294.26
+Eventos apos momento muoes e taus: 28.1937
+Eventos apos carga <3: 22.8644
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 702.836
+Eventos apos momento muoes e taus: 14.2044
+Eventos apos carga <3: 12.4054
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1365.59
+Eventos apos momento muoes e taus: 21.2644
+Eventos apos carga <3: 17.7789
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 686.025
+Eventos apos momento muoes e taus: 14.1446
+Eventos apos carga <3: 14.1446
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1350.65
+Eventos apos momento muoes e taus: 35.4562
+Eventos apos carga <3: 23.1042
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 835.288
+Eventos apos momento muoes e taus: 29.9035
+Eventos apos carga <3: 24.6168
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1469.73
+Eventos apos momento muoes e taus: 19.596
+Eventos apos carga <3: 16.0051
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1411.56
+Eventos apos momento muoes e taus: 42.2294
+Eventos apos carga <3: 33.4615
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1319.49
+Eventos apos momento muoes e taus: 24.6752
+Eventos apos carga <3: 22.9493
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 992.946
+Eventos apos momento muoes e taus: 12.3012
+Eventos apos carga <3: 7.03308
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 21.5203
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1366.56
+Eventos apos momento muoes e taus: 47.519
+Eventos apos carga <3: 38.7242
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 780.595
+Eventos apos momento muoes e taus: 8.8379
+Eventos apos carga <3: 7.11735
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 757.645
+Eventos apos momento muoes e taus: 14.1824
+Eventos apos carga <3: 12.3905
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 917.526
+Eventos apos momento muoes e taus: 24.7909
+Eventos apos carga <3: 23.0313
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1321.46
+Eventos apos momento muoes e taus: 24.7318
+Eventos apos carga <3: 19.4491
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 23.3607
+Eventos apos momento muoes e taus: 3.55509
+Eventos apos carga <3: 3.55509
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 663.249
+Eventos apos momento muoes e taus: 14.0328
+Eventos apos carga <3: 12.2373
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 776.862
+Eventos apos momento muoes e taus: 14.1694
+Eventos apos carga <3: 14.1694
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 771.253
+Eventos apos momento muoes e taus: 21.1071
+Eventos apos carga <3: 15.8354
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 789.052
+Eventos apos momento muoes e taus: 21.0529
+Eventos apos carga <3: 17.5764
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 194.84
+Eventos apos momento muoes e taus: 7.07612
+Eventos apos carga <3: 5.32008
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 780.128
+Eventos apos momento muoes e taus: 15.9361
+Eventos apos carga <3: 15.9361
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 878.25
+Eventos apos momento muoes e taus: 14.2329
+Eventos apos carga <3: 12.4374
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 797.057
+Eventos apos momento muoes e taus: 8.78732
+Eventos apos carga <3: 8.78732
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 872.302
+Eventos apos momento muoes e taus: 19.361
+Eventos apos carga <3: 17.5691
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 801.681
+Eventos apos momento muoes e taus: 19.3735
+Eventos apos carga <3: 15.8185
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 652.883
+Eventos apos momento muoes e taus: 14.0239
+Eventos apos carga <3: 12.2678
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 904.065
+Eventos apos momento muoes e taus: 8.84863
+Eventos apos carga <3: 7.12808
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 740.655
+Eventos apos momento muoes e taus: 15.941
+Eventos apos carga <3: 12.3859
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 814.64
+Eventos apos momento muoes e taus: 22.9861
+Eventos apos carga <3: 17.6758
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 869.06
+Eventos apos momento muoes e taus: 14.1398
+Eventos apos carga <3: 12.4193
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 699.556
+Eventos apos momento muoes e taus: 7.06347
+Eventos apos carga <3: 7.06347
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1052.94
+Eventos apos momento muoes e taus: 22.835
+Eventos apos carga <3: 19.3886
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 949.518
+Eventos apos momento muoes e taus: 19.4317
+Eventos apos carga <3: 15.8749
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1002.37
+Eventos apos momento muoes e taus: 23.0549
+Eventos apos carga <3: 21.2558
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1051.58
+Eventos apos momento muoes e taus: 31.7952
+Eventos apos carga <3: 26.4357
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 390.976
+Eventos apos momento muoes e taus: 5.35054
+Eventos apos carga <3: 5.35054
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 803.994
+Eventos apos momento muoes e taus: 12.3105
+Eventos apos carga <3: 12.3105
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 122.314
+Eventos apos momento muoes e taus: 3.51744
+Eventos apos carga <3: 3.51744
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 53.7991
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1179.69
+Eventos apos momento muoes e taus: 30.1054
+Eventos apos carga <3: 26.5951
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 977.631
+Eventos apos momento muoes e taus: 12.3326
+Eventos apos carga <3: 10.558
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 80.8023
+Eventos apos momento muoes e taus: 1.72054
+Eventos apos carga <3: 1.72054
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 728.412
+Eventos apos momento muoes e taus: 14.1219
+Eventos apos carga <3: 14.1219
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 365.758
+Eventos apos momento muoes e taus: 10.4738
+Eventos apos carga <3: 8.73731
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 27.0549
+Eventos apos momento muoes e taus: 1.79907
+Eventos apos carga <3: 1.79907
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 653.547
+Eventos apos momento muoes e taus: 22.8919
+Eventos apos carga <3: 21.0929
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 739.3
+Eventos apos momento muoes e taus: 12.3937
+Eventos apos carga <3: 12.3937
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 848.821
+Eventos apos momento muoes e taus: 22.9551
+Eventos apos carga <3: 19.4696
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 477.656
+Eventos apos momento muoes e taus: 8.89848
+Eventos apos carga <3: 3.58376
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 790.362
+Eventos apos momento muoes e taus: 8.80729
+Eventos apos carga <3: 7.05124
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 798.79
+Eventos apos momento muoes e taus: 12.3553
+Eventos apos carga <3: 8.80379
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1101.56
+Eventos apos momento muoes e taus: 12.2962
+Eventos apos carga <3: 10.5401
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 32.5296
+Eventos apos momento muoes e taus: 0
+Eventos apos carga <3: 0
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1134.22
+Eventos apos momento muoes e taus: 21.2147
+Eventos apos carga <3: 17.7149
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1071.66
+Eventos apos momento muoes e taus: 15.8218
+Eventos apos carga <3: 15.8218
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1381.74
+Eventos apos momento muoes e taus: 24.8271
+Eventos apos carga <3: 21.272
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1392.06
+Eventos apos momento muoes e taus: 15.9355
+Eventos apos carga <3: 14.2096
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1290.04
+Eventos apos momento muoes e taus: 33.5822
+Eventos apos carga <3: 28.1922
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1305.3
+Eventos apos momento muoes e taus: 30.0378
+Eventos apos carga <3: 26.4899
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 894.88
+Eventos apos momento muoes e taus: 12.3304
+Eventos apos carga <3: 10.5385
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 720.72
+Eventos apos momento muoes e taus: 17.4951
+Eventos apos carga <3: 17.4951
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 995.485
+Eventos apos momento muoes e taus: 16.0642
+Eventos apos carga <3: 14.2687
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1364.52
+Eventos apos momento muoes e taus: 29.9942
+Eventos apos carga <3: 24.7462
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 1364.52
+Eventos apos momento muoes e taus: 29.9942
+Eventos apos carga <3: 24.7462
