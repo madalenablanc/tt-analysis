@@ -1406,3 +1406,379 @@ Eventos com muoes e taus: 0
 Eventos apos id de muoes e taus e controlo de etas: 116.172
 Eventos apos momento muoes e taus: 16.3681
 Eventos apos carga <3: 14.8973
+i am here
+i am here
+i am here
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 65.4201
+Eventos apos momento muoes e taus: 9.35773
+Eventos apos carga <3: 9.06499
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 93.3251
+Eventos apos momento muoes e taus: 11.8227
+Eventos apos carga <3: 11.5255
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 67.1872
+Eventos apos momento muoes e taus: 11.102
+Eventos apos carga <3: 10.6619
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 126.616
+Eventos apos momento muoes e taus: 16.3329
+Eventos apos carga <3: 15.4484
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 101.574
+Eventos apos momento muoes e taus: 14.3152
+Eventos apos carga <3: 13.4382
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 80.0068
+Eventos apos momento muoes e taus: 13.6091
+Eventos apos carga <3: 12.4429
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 95.9142
+Eventos apos momento muoes e taus: 13.2726
+Eventos apos carga <3: 12.5417
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 71.7258
+Eventos apos momento muoes e taus: 7.88774
+Eventos apos carga <3: 7.45366
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 126.103
+Eventos apos momento muoes e taus: 18.2442
+Eventos apos carga <3: 17.0821
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 117.592
+Eventos apos momento muoes e taus: 15.9386
+Eventos apos carga <3: 14.6197
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 122.421
+Eventos apos momento muoes e taus: 17.6571
+Eventos apos carga <3: 16.0554
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 125.172
+Eventos apos momento muoes e taus: 16.5437
+Eventos apos carga <3: 15.5182
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 84.6881
+Eventos apos momento muoes e taus: 12.5432
+Eventos apos carga <3: 11.2292
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 86.5245
+Eventos apos momento muoes e taus: 11.1034
+Eventos apos carga <3: 10.5204
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 126.854
+Eventos apos momento muoes e taus: 17.9774
+Eventos apos carga <3: 16.3757
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 61.6142
+Eventos apos momento muoes e taus: 7.60155
+Eventos apos carga <3: 7.16407
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 127.373
+Eventos apos momento muoes e taus: 17.0717
+Eventos apos carga <3: 15.6133
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 124.47
+Eventos apos momento muoes e taus: 16.0613
+Eventos apos carga <3: 15.6217
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 129.021
+Eventos apos momento muoes e taus: 16.7783
+Eventos apos carga <3: 15.8995
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 46.2803
+Eventos apos momento muoes e taus: 6.59837
+Eventos apos carga <3: 6.16149
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 80.348
+Eventos apos momento muoes e taus: 11.0668
+Eventos apos carga <3: 10.6328
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 70.7624
+Eventos apos momento muoes e taus: 9.34894
+Eventos apos carga <3: 8.61818
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 94.575
+Eventos apos momento muoes e taus: 12.5534
+Eventos apos carga <3: 11.527
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 124.188
+Eventos apos momento muoes e taus: 15.9531
+Eventos apos carga <3: 15.0698
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 117.405
+Eventos apos momento muoes e taus: 17.5114
+Eventos apos carga <3: 16.6408
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 120.533
+Eventos apos momento muoes e taus: 16.9447
+Eventos apos carga <3: 15.7745
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 119.049
+Eventos apos momento muoes e taus: 16.6369
+Eventos apos carga <3: 16.0482
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 56.5626
+Eventos apos momento muoes e taus: 7.16541
+Eventos apos carga <3: 6.14253
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 93.1309
+Eventos apos momento muoes e taus: 13.4324
+Eventos apos carga <3: 12.4115
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 61.217
+Eventos apos momento muoes e taus: 7.87515
+Eventos apos carga <3: 7.87515
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 75.1976
+Eventos apos momento muoes e taus: 11.194
+Eventos apos carga <3: 10.3171
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 80.3362
+Eventos apos momento muoes e taus: 11.5412
+Eventos apos carga <3: 10.5209
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 95.0187
+Eventos apos momento muoes e taus: 14.2993
+Eventos apos carga <3: 13.2729
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 78.2145
+Eventos apos momento muoes e taus: 10.4908
+Eventos apos carga <3: 10.2016
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 84.2414
+Eventos apos momento muoes e taus: 10.9551
+Eventos apos carga <3: 10.6637
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 83.7534
+Eventos apos momento muoes e taus: 13.1796
+Eventos apos carga <3: 12.5911
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 104.871
+Eventos apos momento muoes e taus: 16.6633
+Eventos apos carga <3: 15.6343
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 74.9084
+Eventos apos momento muoes e taus: 12.0969
+Eventos apos carga <3: 10.6444
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 82.7975
+Eventos apos momento muoes e taus: 11.3877
+Eventos apos carga <3: 10.5163
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 67.763
+Eventos apos momento muoes e taus: 9.64541
+Eventos apos carga <3: 8.91049
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 124.306
+Eventos apos momento muoes e taus: 18.1108
+Eventos apos carga <3: 17.0902
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 64.7624
+Eventos apos momento muoes e taus: 10.229
+Eventos apos carga <3: 8.47641
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 100.542
+Eventos apos momento muoes e taus: 12.4215
+Eventos apos carga <3: 11.5487
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 120.028
+Eventos apos momento muoes e taus: 17.2386
+Eventos apos carga <3: 16.0733
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 98.0367
+Eventos apos momento muoes e taus: 13.4493
+Eventos apos carga <3: 12.5726
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 35.1983
+Eventos apos momento muoes e taus: 4.68919
+Eventos apos carga <3: 4.53995
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 76.8607
+Eventos apos momento muoes e taus: 9.92951
+Eventos apos carga <3: 9.63815
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 92.5053
+Eventos apos momento muoes e taus: 12.8469
+Eventos apos carga <3: 11.8294
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 82.654
+Eventos apos momento muoes e taus: 9.62815
+Eventos apos carga <3: 8.45675
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 13.3043
+Eventos apos momento muoes e taus: 1.90231
+Eventos apos carga <3: 1.90231
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 66.578
+Eventos apos momento muoes e taus: 9.329
+Eventos apos carga <3: 8.45594
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 68.9618
+Eventos apos momento muoes e taus: 10.5125
+Eventos apos carga <3: 9.63689
+i started
+i am here
+i am here
+Eventos com muoes e taus: 0
+Eventos apos id de muoes e taus e controlo de etas: 86.9829
+Eventos apos momento muoes e taus: 10.214
+Eventos apos carga <3: 9.18792
+i started
+i am here

@@ -1,128 +1,106 @@
-import ROOT
-import numpy as np
-import math
-import os
+import ROOT, os, numpy as np, math
 
-ROOT.EnableImplicitMT()  # Enable multithreading
+ROOT.EnableImplicitMT(1)  # Must be before any RDataFrame is created :contentReference[oaicite:3]{index=3}
 
-# === CONFIGURATION ===
-base_path = "/eos/user/m/mblancco/samples_2018_mutau/"
-file_list_txt = "ttjets_reading.txt"
-line_number = int(input("Enter line number to process: "))  # like your C++ cin >> numero_linha
-output_dir = "/eos/user/m/mblancco/samples_2018_mutau/ficheiros_fase1/"
-weight_sample = 0.15
+# === Load correction tables as numpy arrays
+sf_neg = np.loadtxt("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_neg18_lowTrig.txt")
+sf_pos = np.loadtxt("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_pos18_lowTrig.txt")
+sf_high = np.loadtxt("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_18_highTrig.txt")
+sf_idiso = np.loadtxt("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_IdISO.txt")
 
-# === GET ROOT FILE FROM TXT ===
-with open(file_list_txt, 'r') as f:
-    lines = f.readlines()
-    if line_number < 1 or line_number > len(lines):
-        raise ValueError(f"Line number {line_number} out of bounds (file has {len(lines)} lines)")
-    input_filename = lines[line_number - 1].strip()  # strip newline
-    input_file_path = os.path.join(base_path, input_filename)
-
-# === LOAD SF TEXT FILES ===
-def load_sf_file(path):
-    return np.loadtxt(path)
-
-sf_neg = load_sf_file("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_neg18_lowTrig.txt")
-sf_pos = load_sf_file("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_pos18_lowTrig.txt")
-sf_high = load_sf_file("/eos/user/m/mblancco/tau_analysis/POGCorrections/muon_18_highTrig.txt")
-sf_idiso = load_sf_file("/eos/user/m/mblancco/tau_analysis/POGCorrections/emu_2018/muon_IdISO.txt")
-
-def get_sf(pt, eta, sf_array, flag=0):
+# === Python functions decorated to compile with numba
+@ROOT.Numba.Declare(['float', 'float', 'float', 'float', 'int'], 'float')
+def MuonTrigSF(pt, eta, charge, p_tot, flag):
+    sf = 1.0
     abs_eta = abs(eta)
-    for row in sf_array:
-        eta_min, eta_max, pt_min, pt_max, corr, syst = row
-        if eta_min < abs_eta <= eta_max and pt_min < pt <= pt_max:
-            return corr if flag == 0 else syst
-    return 1.0
-
-def MuonTrigSF(pt, eta, charge, flag=0):
-    if pt < 35 or abs(eta) > 2.4:
+    if pt < 35 or abs_eta > 2.4:
         return 1.0
-    if pt < 200:
-        return get_sf(pt, eta, sf_neg if charge < 0 else sf_pos, flag)
-    else:
-        return get_sf(pt, eta, sf_high, flag)
+    tbl = sf_high if pt >= 200 else (sf_pos if charge > 0 else sf_neg)
+    for e0,e1,p0,p1,corr,syst in tbl:
+        if abs_eta > e0 and abs_eta <= e1 and pt > p0 and pt <= p1:
+            sf = corr if flag == 0 else syst
+    return sf
 
-def MuonIDISOSF(pt, eta, charge, flag=0):
-    if pt < 35 or abs(eta) > 2.4:
+@ROOT.Numba.Declare(['float', 'float', 'float', 'float', 'int'], 'float')
+def MuonIDISOSF(pt, eta, charge, p_tot, flag):
+    sf = 1.0
+    abs_eta = abs(eta)
+    if pt < 35 or abs_eta > 2.4:
         return 1.0
-    return get_sf(pt, eta, sf_idiso, flag)
+    for e0,e1,p0,p1,corr,syst in sf_idiso:
+        if abs_eta > e0 and abs_eta <= e1 and pt > p0 and pt <= p1:
+            sf = corr if flag == 0 else syst
+    return sf
 
-def muRecoSF(pt, eta, flag=0):
+@ROOT.Numba.Declare(['float','float','int'],'float')
+def muRecoSF(pt, eta, flag):
     abs_eta = abs(eta)
     p_tot = pt / math.sin(2 * math.atan(math.exp(-eta)))
-    sf = 1.0
     if flag == 0:
         if pt < 200 and abs_eta > 2.1:
             return 0.999
         if pt > 200:
-            bins = [
-                (100, 150, 0.9948, 0.993),
-                (150, 200, 0.9950, 0.990),
-                (200, 300, 0.994, 0.988),
-                (300, 400, 0.9914, 0.981),
-                (400, 600, 0.993, 0.983),
-                (600, 1500, 0.991, 0.978),
-                (1500, 3500, 1.0, 0.98)
-            ]
-            for p_min, p_max, val1, val2 in bins:
-                if p_min < p_tot < p_max:
-                    return val1 if abs_eta < 1.6 else val2
-    elif flag == 1:
+            # replicate your logic bins from original C++
+            if 100 < p_tot < 150:
+                return 0.9948 if abs_eta < 1.6 else 0.993
+            if 150 < p_tot < 200:
+                return 0.9950 if abs_eta < 1.6 else 0.990
+            if 200 < p_tot < 300:
+                return 0.994 if abs_eta < 1.6 else 0.988
+            if 300 < p_tot < 400:
+                return 0.9914 if abs_eta < 1.6 else 0.981
+            if 400 < p_tot < 600:
+                return 0.993 if abs_eta < 1.6 else 0.983
+            if 600 < p_tot < 1500:
+                return 0.991 if abs_eta < 1.6 else 0.978
+            if 1500 < p_tot < 3500:
+                return 1.0 if abs_eta < 1.6 else 0.98
+    else:
         if pt < 200:
-            if abs_eta < 0.9:
-                return 0.000382
-            elif abs_eta < 1.2:
-                return 0.000522
-            elif abs_eta < 2.1:
-                return 0.000831
-            else:
-                return 0.001724
+            if abs_eta < 0.9: return 0.000382
+            elif abs_eta < 1.2: return 0.000522
+            elif abs_eta < 2.1: return 0.000831
+            else: return 0.001724
         else:
-            bins = [
-                (0, 300, 0.001, 0.001),
-                (300, 400, 0.0009, 0.002),
-                (400, 600, 0.002, 0.003),
-                (600, 1500, 0.004, 0.006),
-                (1500, float("inf"), 0.1, 0.03)
-            ]
-            for p_min, p_max, val1, val2 in bins:
-                if p_min < p_tot <= p_max:
-                    return val1 if abs_eta < 1.6 else val2
-    return sf
+            if p_tot < 300: return 0.001
+            elif p_tot < 400: return 0.0009 if abs_eta < 1.6 else 0.002
+            elif p_tot < 600: return 0.002 if abs_eta < 1.6 else 0.003
+            elif p_tot < 1500: return 0.004 if abs_eta < 1.6 else 0.006
+            else: return 0.1 if abs_eta < 1.6 else 0.03
+    return 1.0
 
-# === PREPARE DATAFRAME ===
-rdf = ROOT.RDataFrame("tree", input_file_path)
+# === Batch processing over all listed files
+base_path = "/eos/user/m/mblancco/samples_2018_mutau/"
+output_dir = os.path.join(base_path, "ficheiros_fase1")
+weight_sample = 0.15
 
-rdf = rdf \
-    .Define("p_tot", "mu_pt/sin(2*atan(exp(-mu_eta)))") \
-    .Define("mu_trig_sf", f"({weight_sample}) * ({MuonTrigSF.__name__})(mu_pt, mu_eta, mu_charge, 0)") \
-    .Define("mu_idiso_sf", f"({MuonIDISOSF.__name__})(mu_pt, mu_eta, mu_charge, 0)") \
-    .Define("mu_reco_sf", f"({muRecoSF.__name__})(mu_pt, mu_eta, 0)") \
-    .Define("total_weight", "mu_trig_sf * mu_idiso_sf * mu_reco_sf") \
-    .Define("deltaR", "sqrt(pow(mu_eta - tau_eta, 2) + pow(muon_phi - tau_phi, 2))") \
-    .Define("deltaphi", "fabs(muon_phi - tau_phi) > M_PI ? fabs(muon_phi - tau_phi - 2*M_PI) : fabs(muon_phi - tau_phi)") \
-    .Define("sist_acop", "fabs(deltaphi)/M_PI") \
-    .Define("sist_mass", "sqrt(pow(mu_pt + tau_pt, 2) - pow(mu_eta + tau_eta, 2))") \
-    .Define("sist_rap", "0.5 * log((mu_pt + tau_pt + mu_eta + tau_eta)/(mu_pt + tau_pt - mu_eta - tau_eta))")  # Placeholder
+with open("/eos/user/m/mblancco/samples_2018_mutau/samples_ttjets_skimmed_new.txt") as f:
+    files = [ln.strip() for ln in f if ln.strip()]
 
-# === FILTER EVENTS ===
-rdf_filtered = rdf \
-    .Filter("mu_id > 3") \
-    .Filter("tau_id1 > 63 && tau_id2 > 7 && tau_id3 > 1") \
-    .Filter("deltaR > 0.4") \
-    .Filter("fabs(tau_eta) < 2.4 && fabs(mu_eta) < 2.4") \
-    .Filter("mu_pt > 35 && tau_pt > 100") \
-    .Filter("mu_charge * tau_charge < 0")
+for idx, fname in enumerate(files, start=1):
+    infile = os.path.join(base_path, fname)
+    if not os.path.exists(infile):
+        print("Skipping missing:", infile)
+        continue
+    print(f"Processing {fname} ({idx}/{len(files)})")
 
-# === OUTPUT ===
-output_filename = f"ttjets_2018_UL_skimmed_MuTau_nano_cortes_{line_number}.root"
-output_path = os.path.join(output_dir, output_filename)
+    rdf = ROOT.RDataFrame("tree", infile)
+    rdf = rdf.Define("p_tot", "mu_pt / sin(2*atan(exp(-mu_eta)))") \
+        .Define("mu_trig_sf", f"{weight_sample} * Numba::MuonTrigSF(mu_pt, mu_eta, mu_charge, p_tot, 0)") \
+        .Define("mu_idiso_sf", "Numba::MuonIDISOSF(mu_pt, mu_eta, mu_charge, p_tot, 0)") \
+        .Define("mu_reco_sf", "Numba::muRecoSF(mu_pt, mu_eta, 0)") \
+        .Define("total_weight", "mu_trig_sf * mu_idiso_sf * mu_reco_sf") \
+        .Define("deltaR", "sqrt(pow(mu_eta - tau_eta,2) + pow(mu_phi - tau_phi,2))") \
+        .Define("deltaphi", "fabs(mu_phi - tau_phi) > M_PI ? fabs(mu_phi - tau_phi - 2*M_PI) : fabs(mu_phi - tau_phi)") \
+        .Define("sist_acop", "fabs(deltaphi)/M_PI") 
 
-rdf_filtered.Snapshot("tree_out", output_path)
+    rdf_f = rdf.Filter("mu_id > 3") \
+              .Filter("tau_id1 > 63 && tau_id2 > 7 && tau_id3 > 1") \
+              .Filter("deltaR > 0.4") \
+              .Filter("fabs(mu_eta) < 2.4 && fabs(tau_eta) < 2.4") \
+              .Filter("mu_pt > 35 && tau_pt > 100") \
+              .Filter("mu_charge * tau_charge < 0")
 
-print(f"✅ Processed line {line_number}:")
-print(f"   Input file: {input_file_path}")
-print(f"   Output file: {output_path}")
+    outfile = os.path.join(output_dir, f"TESTS_ttjets_output_{idx}.root")
+    rdf_f.Snapshot("tree_out", outfile)
+    print("Saved:", outfile)

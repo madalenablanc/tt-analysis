@@ -1,13 +1,13 @@
 import ROOT
 
 # --- User Configurable ---
-input_file = "/eos/user/m/mblancco/samples_2018_mutau/ttjets_2018_UL_skimmed_MuTau_nano_1.root"     # Change to your file
-tree_name = "tree"                # TTree name
-variable = "sist_mass"                # Variable to plot
+input_file = "/eos/user/m/mblancco/samples_2018_mutau/ficheiros_fase1/merged.root"     # Change to your file
+tree_name = "tree_out"                # TTree name
+variable = "mu_pt"                # Variable to plot
 bins = 50                         # Number of bins
 x_min = 0                         # X-axis min
 x_max = 500                       # X-axis max
-output_plot = "mu_pt_plot.png"    # Output image file
+output_plot = "mu_pt_plot_merged.png"    # Output image file
 
 # --- Open the ROOT file ---
 f = ROOT.TFile.Open(input_file)
@@ -19,7 +19,8 @@ if not tree:
     raise IOError(f"TTree '{tree_name}' not found in {input_file}")
 
 # --- Create histogram ---
-hist = ROOT.TH1F("hist", f"{variable};{variable};Entries", bins, x_min, x_max)
+tt=variable+" merged"
+hist = ROOT.TH1F("hist", f"{tt};{variable};Entries", bins, x_min, x_max)
 
 # --- Fill histogram from tree ---
 tree.Draw(f"{variable}>>hist", "", "goff")  # goff = no GUI drawing
