@@ -1,0 +1,2020 @@
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_10.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 279
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 12
+279
+11
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_100.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 568
+Eventos com carga oposta tau/eletrao: 19
+Eventos apos corte no momento dos eletroes e taus: 19
+568
+19
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_101.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 297
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 13
+297
+11
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_102.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 386
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 10
+386
+9
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_103.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 434
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 19
+434
+17
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_104.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 301
+Eventos com carga oposta tau/eletrao: 4
+Eventos apos corte no momento dos eletroes e taus: 4
+301
+4
+4
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_105.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 505
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 22
+505
+20
+22
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_106.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 354
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 16
+354
+14
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_107.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 453
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 18
+453
+17
+18
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_108.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 308
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+308
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_109.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 510
+Eventos com carga oposta tau/eletrao: 18
+Eventos apos corte no momento dos eletroes e taus: 20
+510
+18
+20
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_11.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 269
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 8
+269
+8
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_110.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 372
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 14
+372
+12
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_111.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 520
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 24
+520
+20
+24
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_112.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 552
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 18
+552
+15
+18
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_113.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 521
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 15
+521
+14
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_114.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 349
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 14
+349
+13
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_115.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 516
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 8
+516
+8
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_116.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 488
+Eventos com carga oposta tau/eletrao: 19
+Eventos apos corte no momento dos eletroes e taus: 21
+488
+19
+21
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_117.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 550
+Eventos com carga oposta tau/eletrao: 23
+Eventos apos corte no momento dos eletroes e taus: 25
+550
+23
+25
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_118.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 566
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 24
+566
+20
+24
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_119.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 503
+Eventos com carga oposta tau/eletrao: 22
+Eventos apos corte no momento dos eletroes e taus: 25
+503
+22
+25
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_12.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 307
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 21
+307
+16
+21
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_120.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 570
+Eventos com carga oposta tau/eletrao: 22
+Eventos apos corte no momento dos eletroes e taus: 28
+570
+22
+28
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_121.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 426
+Eventos com carga oposta tau/eletrao: 24
+Eventos apos corte no momento dos eletroes e taus: 25
+426
+24
+25
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_122.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 452
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 15
+452
+14
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_123.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 602
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 25
+602
+20
+25
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_124.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 527
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 17
+527
+16
+17
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_125.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 284
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 14
+284
+10
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_126.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 248
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 6
+248
+6
+6
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_127.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 288
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+288
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_128.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 45
+Eventos com carga oposta tau/eletrao: 2
+Eventos apos corte no momento dos eletroes e taus: 2
+45
+2
+2
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_129.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 63
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 1
+63
+0
+1
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_13.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 86
+Eventos com carga oposta tau/eletrao: 3
+Eventos apos corte no momento dos eletroes e taus: 3
+86
+3
+3
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_130.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 90
+Eventos com carga oposta tau/eletrao: 4
+Eventos apos corte no momento dos eletroes e taus: 4
+90
+4
+4
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_131.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 21
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+21
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_132.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 18
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+18
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_133.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 7
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+7
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_134.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 307
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 9
+307
+9
+9
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_135.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 405
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 10
+405
+9
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_136.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 349
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 8
+349
+7
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_137.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 364
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 15
+364
+13
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_138.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 284
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 11
+284
+10
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_139.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 347
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 10
+347
+10
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_14.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 276
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 11
+276
+10
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_140.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 301
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 7
+301
+6
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_141.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 300
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+300
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_142.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 386
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+386
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_143.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 330
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 13
+330
+11
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_144.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 314
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 13
+314
+10
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_145.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 392
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 12
+392
+11
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_146.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 531
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 20
+531
+20
+20
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_147.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 309
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 13
+309
+13
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_148.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 311
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 17
+311
+15
+17
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_149.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 160
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 8
+160
+6
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_15.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 337
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 8
+337
+8
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_150.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 542
+Eventos com carga oposta tau/eletrao: 21
+Eventos apos corte no momento dos eletroes e taus: 26
+542
+21
+26
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_151.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 468
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 15
+468
+13
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_152.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 321
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 17
+321
+17
+17
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_153.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 358
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 12
+358
+10
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_154.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 528
+Eventos com carga oposta tau/eletrao: 19
+Eventos apos corte no momento dos eletroes e taus: 19
+528
+19
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_155.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 448
+Eventos com carga oposta tau/eletrao: 19
+Eventos apos corte no momento dos eletroes e taus: 22
+448
+19
+22
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_156.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 509
+Eventos com carga oposta tau/eletrao: 19
+Eventos apos corte no momento dos eletroes e taus: 19
+509
+19
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_157.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 528
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 19
+528
+15
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_158.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 511
+Eventos com carga oposta tau/eletrao: 21
+Eventos apos corte no momento dos eletroes e taus: 26
+511
+21
+26
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_159.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 529
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 20
+529
+17
+20
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_16.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 384
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 15
+384
+15
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_160.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 313
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+313
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_161.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 501
+Eventos com carga oposta tau/eletrao: 18
+Eventos apos corte no momento dos eletroes e taus: 23
+501
+18
+23
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_162.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 488
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 19
+488
+17
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_163.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 240
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 8
+240
+7
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_164.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 304
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 19
+304
+15
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_165.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 291
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 7
+291
+6
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_166.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 95
+Eventos com carga oposta tau/eletrao: 5
+Eventos apos corte no momento dos eletroes e taus: 5
+95
+5
+5
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_167.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 257
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 8
+257
+7
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_168.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 242
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 10
+242
+10
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_169.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 103
+Eventos com carga oposta tau/eletrao: 4
+Eventos apos corte no momento dos eletroes e taus: 4
+103
+4
+4
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_17.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 446
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 12
+446
+11
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_170.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 281
+Eventos com carga oposta tau/eletrao: 5
+Eventos apos corte no momento dos eletroes e taus: 5
+281
+5
+5
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_171.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 336
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 17
+336
+14
+17
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_172.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 447
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 15
+447
+12
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_173.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 245
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 12
+245
+11
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_174.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 279
+Eventos com carga oposta tau/eletrao: 5
+Eventos apos corte no momento dos eletroes e taus: 7
+279
+5
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_175.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 365
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 16
+365
+16
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_176.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 80
+Eventos com carga oposta tau/eletrao: 4
+Eventos apos corte no momento dos eletroes e taus: 4
+80
+4
+4
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_177.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 34
+Eventos com carga oposta tau/eletrao: 2
+Eventos apos corte no momento dos eletroes e taus: 2
+34
+2
+2
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_178.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 11
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 1
+11
+0
+1
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_179.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 18
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+18
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_18.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 194
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 12
+194
+10
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_180.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 13
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+13
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_181.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 62
+Eventos com carga oposta tau/eletrao: 1
+Eventos apos corte no momento dos eletroes e taus: 1
+62
+1
+1
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_182.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 202
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 7
+202
+7
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_183.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 307
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 16
+307
+15
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_184.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 344
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 15
+344
+13
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_185.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 345
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 15
+345
+14
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_186.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 254
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 8
+254
+6
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_187.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 303
+Eventos com carga oposta tau/eletrao: 5
+Eventos apos corte no momento dos eletroes e taus: 9
+303
+5
+9
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_188.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 260
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+260
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_189.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 238
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 7
+238
+6
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_19.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 28
+Eventos com carga oposta tau/eletrao: 1
+Eventos apos corte no momento dos eletroes e taus: 1
+28
+1
+1
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_190.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 180
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 14
+180
+11
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_191.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 31
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+31
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_192.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 319
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 13
+319
+12
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_193.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 339
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 11
+339
+9
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_194.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 319
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 9
+319
+8
+9
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_195.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 176
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 7
+176
+7
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_196.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 4
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+4
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_197.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 74
+Eventos com carga oposta tau/eletrao: 1
+Eventos apos corte no momento dos eletroes e taus: 1
+74
+1
+1
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_198.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 339
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 17
+339
+16
+17
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_199.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 314
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 14
+314
+13
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_2.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 295
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 12
+295
+9
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_20.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 276
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 12
+276
+8
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_200.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 416
+Eventos com carga oposta tau/eletrao: 19
+Eventos apos corte no momento dos eletroes e taus: 20
+416
+19
+20
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_201.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 539
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 20
+539
+17
+20
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_202.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 450
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 17
+450
+16
+17
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_203.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 326
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 11
+326
+10
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_204.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 172
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 8
+172
+7
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_21.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 279
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 6
+279
+6
+6
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_22.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 279
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 8
+279
+6
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_23.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 298
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 12
+298
+12
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_24.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 342
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 16
+342
+13
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_26.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 3
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+3
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_27.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 488
+Eventos com carga oposta tau/eletrao: 18
+Eventos apos corte no momento dos eletroes e taus: 21
+488
+18
+21
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_28.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 443
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 16
+443
+13
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_29.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 309
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 13
+309
+10
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_3.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 249
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 8
+249
+8
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_30.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 459
+Eventos com carga oposta tau/eletrao: 21
+Eventos apos corte no momento dos eletroes e taus: 22
+459
+21
+22
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_31.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 247
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 11
+247
+10
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_32.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 501
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 15
+501
+14
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_33.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 339
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 14
+339
+13
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_34.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 290
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 10
+290
+7
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_35.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 272
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 11
+272
+10
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_36.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 126
+Eventos com carga oposta tau/eletrao: 3
+Eventos apos corte no momento dos eletroes e taus: 4
+126
+3
+4
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_37.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 297
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 6
+297
+6
+6
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_38.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 409
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 18
+409
+15
+18
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_39.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 348
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 13
+348
+11
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_4.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 15
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+15
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_40.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 505
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 19
+505
+17
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_41.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 277
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 10
+277
+6
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_42.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 586
+Eventos com carga oposta tau/eletrao: 26
+Eventos apos corte no momento dos eletroes e taus: 27
+586
+26
+27
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_43.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 280
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 7
+280
+7
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_44.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 522
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 18
+522
+14
+18
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_45.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 314
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 11
+314
+10
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_46.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 494
+Eventos com carga oposta tau/eletrao: 23
+Eventos apos corte no momento dos eletroes e taus: 24
+494
+23
+24
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_47.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 538
+Eventos com carga oposta tau/eletrao: 22
+Eventos apos corte no momento dos eletroes e taus: 25
+538
+22
+25
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_48.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 504
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 25
+504
+20
+25
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_49.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 377
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 16
+377
+16
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_5.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 11
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+11
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_50.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 579
+Eventos com carga oposta tau/eletrao: 26
+Eventos apos corte no momento dos eletroes e taus: 29
+579
+26
+29
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_51.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 324
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 12
+324
+11
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_52.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 305
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+305
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_53.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 340
+Eventos com carga oposta tau/eletrao: 6
+Eventos apos corte no momento dos eletroes e taus: 8
+340
+6
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_54.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 507
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 14
+507
+14
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_55.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 6
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+6
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_56.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 244
+Eventos com carga oposta tau/eletrao: 5
+Eventos apos corte no momento dos eletroes e taus: 6
+244
+5
+6
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_57.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 295
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 15
+295
+12
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_58.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 299
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 14
+299
+14
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_59.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 312
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 7
+312
+7
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_6.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 80
+Eventos com carga oposta tau/eletrao: 3
+Eventos apos corte no momento dos eletroes e taus: 3
+80
+3
+3
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_60.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 377
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 21
+377
+16
+21
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_61.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 352
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 14
+352
+13
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_62.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 265
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 9
+265
+8
+9
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_63.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 286
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 10
+286
+8
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_64.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 282
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 14
+282
+13
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_65.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 282
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 14
+282
+13
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_66.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 351
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 8
+351
+8
+8
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_67.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 288
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 13
+288
+11
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_68.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 272
+Eventos com carga oposta tau/eletrao: 10
+Eventos apos corte no momento dos eletroes e taus: 12
+272
+10
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_69.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 275
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 10
+275
+8
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_7.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 268
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 10
+268
+7
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_70.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 435
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 12
+435
+9
+12
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_71.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 351
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 10
+351
+8
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_72.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 356
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 15
+356
+11
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_73.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 410
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 11
+410
+11
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_74.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 176
+Eventos com carga oposta tau/eletrao: 3
+Eventos apos corte no momento dos eletroes e taus: 3
+176
+3
+3
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_75.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 299
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 7
+299
+7
+7
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_76.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 41
+Eventos com carga oposta tau/eletrao: 2
+Eventos apos corte no momento dos eletroes e taus: 2
+41
+2
+2
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_77.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 27
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+27
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_78.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 432
+Eventos com carga oposta tau/eletrao: 13
+Eventos apos corte no momento dos eletroes e taus: 15
+432
+13
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_79.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 372
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 15
+372
+14
+15
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_8.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 32
+Eventos com carga oposta tau/eletrao: 4
+Eventos apos corte no momento dos eletroes e taus: 4
+32
+4
+4
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_80.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 272
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 9
+272
+8
+9
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_81.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 148
+Eventos com carga oposta tau/eletrao: 7
+Eventos apos corte no momento dos eletroes e taus: 10
+148
+7
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_82.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 11
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+11
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_83.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 279
+Eventos com carga oposta tau/eletrao: 9
+Eventos apos corte no momento dos eletroes e taus: 11
+279
+9
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_84.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 291
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 14
+291
+12
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_85.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 321
+Eventos com carga oposta tau/eletrao: 12
+Eventos apos corte no momento dos eletroes e taus: 13
+321
+12
+13
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_86.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 191
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 10
+191
+8
+10
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_87.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 295
+Eventos com carga oposta tau/eletrao: 8
+Eventos apos corte no momento dos eletroes e taus: 11
+295
+8
+11
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_88.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 299
+Eventos com carga oposta tau/eletrao: 15
+Eventos apos corte no momento dos eletroes e taus: 16
+299
+15
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_89.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 457
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 18
+457
+17
+18
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_9.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 10
+Eventos com carga oposta tau/eletrao: 0
+Eventos apos corte no momento dos eletroes e taus: 0
+10
+0
+0
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_90.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 415
+Eventos com carga oposta tau/eletrao: 18
+Eventos apos corte no momento dos eletroes e taus: 22
+415
+18
+22
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_91.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 419
+Eventos com carga oposta tau/eletrao: 16
+Eventos apos corte no momento dos eletroes e taus: 19
+419
+16
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_92.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 543
+Eventos com carga oposta tau/eletrao: 18
+Eventos apos corte no momento dos eletroes e taus: 18
+543
+18
+18
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_93.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 524
+Eventos com carga oposta tau/eletrao: 18
+Eventos apos corte no momento dos eletroes e taus: 19
+524
+18
+19
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_94.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 522
+Eventos com carga oposta tau/eletrao: 20
+Eventos apos corte no momento dos eletroes e taus: 22
+522
+20
+22
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_95.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 501
+Eventos com carga oposta tau/eletrao: 17
+Eventos apos corte no momento dos eletroes e taus: 20
+501
+17
+20
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_96.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 405
+Eventos com carga oposta tau/eletrao: 14
+Eventos apos corte no momento dos eletroes e taus: 16
+405
+14
+16
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_97.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 280
+Eventos com carga oposta tau/eletrao: 4
+Eventos apos corte no momento dos eletroes e taus: 5
+280
+4
+5
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_98.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 349
+Eventos com carga oposta tau/eletrao: 11
+Eventos apos corte no momento dos eletroes e taus: 14
+349
+11
+14
+-11111111111111
+Input file: /eos/user/m/mpisano/samples_2018_etau/DY_2018_UL_skimmed_ETau_nano_99.root
+joaonunes
+joaotavares
+Eventos com eletroes e taus: 530
+Eventos com carga oposta tau/eletrao: 22
+Eventos apos corte no momento dos eletroes e taus: 23
+530
+22
+23
+-11111111111111
