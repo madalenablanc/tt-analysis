@@ -1,204 +1,139 @@
-#include <stdio.h>
-#include <iostream>
-#include <cmath>
-#include "TApplication.h"
+// nanotry_data.cpp
+#include "ROOT/RDataFrame.hxx"
 #include "TFile.h"
-#include "TTree.h"
-#include "TLeaf.h"
-#include "TH1D.h"
 #include "TLorentzVector.h"
+#include <cmath>
+#include <iostream>
 #include <string>
-#include <fstream>
-#include <cstdlib>
-#include <sstream>
+#include <vector>
 
-using namespace std;
+using std::string;
+using std::vector;
 
-int main(){
+// ---------- helpers ----------
+template <typename T>
+inline T first_or(const vector<T>& v, T def) { return v.empty() ? def : v[0]; }
 
-    string prefix = "root:://cms-xrd-global.cern.ch//";
-    string input;
+inline double acoplanarity(float phi1, float phi2) {
+    double dphi = std::fabs(phi2 - phi1);
+    if (dphi > M_PI) dphi -= 2.0 * M_PI;
+    return std::fabs(dphi) / M_PI;
+}
 
-    string prefix_output = "Data_2018_UL_skimmed_MuTau_nano_";
-    int k = 0;
+struct Kine { double mass, pt, rap, acop; };
 
-    double weight = 1.;
+inline Kine syst_kine(float mu_pt, float mu_eta, float mu_phi, float mu_E,
+                      float t_pt,  float t_eta,  float t_phi,  float t_E) {
+    TLorentzVector mu, tau, sys;
+    mu.SetPtEtaPhiE(mu_pt, mu_eta, mu_phi, mu_E);
+    tau.SetPtEtaPhiE(t_pt,  t_eta,  t_phi,  t_E);
+    sys = mu + tau;
+    return { sys.M(), sys.Pt(), sys.Rapidity(), acoplanarity(mu_phi, t_phi) };
+}
 
-    // int numero_linha;
-    // cin >> numero_linha;
+inline int count_btags(const vector<int>& btags) {
+    int n = 0;
+    for (int b : btags) if (b > 0) ++n;   // treat >0 as "tagged"
+    return n;
+}
 
-    // stringstream ss;
-    // ss << numero_linha;
+// ---------- skimmer ----------
+void skim_mutau_rdf(const string& infile,
+                    const string& outfile,
+                    const string& intree_path = "analyzer/ntp1",
+                    const string& outtreename = "tree")
+{
+    // parallelize
+    ROOT::EnableImplicitMT();
 
-    // string out_put;
-    // ss >> out_put;
+    // build RDF on nested tree path
+    ROOT::RDataFrame df(intree_path, infile);
 
-    // // adjust the output path if you prefer a different folder
-    string out_put="fase1total_2018";
-    string output_tot = "/eos/user/m/mblancco/samples_2018_mutau/" + prefix_output + out_put + ".root";
+    // selection: at least one mu and tau
+    auto df_sel = df
+        .Filter([](const vector<float>& mu_pt, const vector<float>& tau_pt){
+            return !mu_pt.empty() && !tau_pt.empty();
+        }, {"mu_pt", "tau_pt"}, "has >=1 mu & >=1 tau")
+        // leading muon id
+        .Filter([](const vector<float>& mu_id){
+            return !mu_id.empty() && mu_id[0] >= 3.f;
+        }, {"mu_id"}, "mu_id >= 3 (leading)")
+        // leading tau DeepTau IDs
+        .Filter([](const vector<float>& aJ, const vector<float>& aE, const vector<float>& aMu){
+            return !aJ.empty() && !aE.empty() && !aMu.empty()
+                   && aJ[0] >= 63.f && aE[0] >= 7.f && aMu[0] >= 1.f;
+        }, {"tau_id_antij","tau_id_antie","tau_id_antimu"},
+           "DeepTau VSjet>=63, VSe>=7, VSmu>=1 (leading)");
 
-    // ifstream ifile;
-    // ifile.open("data_2018_UL.txt"); // change to a MuTau-specific list if you have one
-    // while (k < numero_linha) {
-    //     ifile >> input;
-    //     k++;
-    // }
+    // scalarize leading objects (keep names close to your previous skims)
+    auto df_lead = df_sel
+        .Redefine("mu_id",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"mu_id"})
+        .Define("tau_id1",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_id_antij"}) // VSjet
+        .Define("tau_id2",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_id_antie"}) // VSe
+        .Define("tau_id3",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_id_antimu"})// VSmu
+        .Redefine("mu_pt",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"mu_pt"})
+        .Redefine("tau_pt",      [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_pt"})
+        .Redefine("mu_eta",    [](const vector<float>& v){ return first_or(v, -99.f); }, {"mu_eta"})
+        .Redefine("tau_eta",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_eta"})
+        .Redefine("mu_phi",    [](const vector<float>& v){ return first_or(v, -99.f); }, {"mu_phi"})
+        .Redefine("tau_phi",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_phi"})
+        .Redefine("mu_energy", [](const vector<float>& v){ return first_or(v, -99.f); }, {"mu_energy"})
+        .Redefine("tau_energy",  [](const vector<float>& v){ return first_or(v, -99.f); }, {"tau_energy"})
+        .Redefine("mu_charge", [](const vector<float>& v){ return first_or(v, -99.f); }, {"mu_charge"}) // file stores float
+        .Redefine("tau_charge",  [](const vector<int>&   v){ return static_cast<double>(first_or(v, -99)); }, {"tau_charge"})
+        .Define("mu_n",      [](const vector<float>& v){ return static_cast<double>(v.size()); }, {"mu_pt"})
+        .Define("tau_n",       [](const vector<float>& v){ return static_cast<double>(v.size()); }, {"tau_pt"})
+        // MET (vector<float>, typically size 1)
+        .Redefine("met_pt",      [](const vector<float>& v){ return first_or(v, -99.f); }, {"met_pt"})
+        .Redefine("met_phi",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"met_phi"})
+        // leading jet + b-tag multiplicity
+        .Redefine("jet_pt",      [](const vector<float>& v){ return first_or(v, -99.f); }, {"jet_pt"})
+        .Redefine("jet_eta",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"jet_eta"})
+        .Redefine("jet_phi",     [](const vector<float>& v){ return first_or(v, -99.f); }, {"jet_phi"})
+        .Redefine("jet_mass",    [](const vector<float>& v){ return first_or(v, -99.f); }, {"jet_mass"})
+        .Redefine("jet_btag",    [](const vector<int>&   v){ return static_cast<double>(first_or(v, 0)); }, {"jet_btag"})
+        .Define("n_b_jet",     count_btags, {"jet_btag"});
 
-    // entries
-    double entry_1,entry_2,entry_3,entry_4,entry_5,entry_6,entry_7,entry_8,entry_9,entry_10,
-           entry_11,entry_12,entry_13,entry_14,entry_15,entry_16,entry_17,entry_18,entry_19,entry_20,
-           entry_21,entry_22,entry_23,entry_24,entry_25,entry_26,entry_27,entry_28, entry_30;
-    int entry_29;
+    // system kinematics
+    auto df_sys = df_lead
+        .Define("syst_tuple",  syst_kine,
+                {"mu_pt","mu_eta","mu_phi","mu_energy",
+                 "tau_pt","tau_eta","tau_phi","tau_energy"})
+        .Define("sist_mass", [](const Kine& k){ return k.mass; }, {"syst_tuple"})
+        .Define("sist_pt",   [](const Kine& k){ return k.pt;   }, {"syst_tuple"})
+        .Define("sist_rap",  [](const Kine& k){ return k.rap;  }, {"syst_tuple"})
+        .Define("sist_acop", [](const Kine& k){ return k.acop; }, {"syst_tuple"})
+        .Define("weight",    [](){ return 1.0; })
+        .Define("generator_weight", [](){ return 1.0; });
 
-    // counters (mostly for printout)
-    int nmutau=0, nid=0, ncharge=0, npt=0, neta=0;
+    // columns to write (compact skim)
+    const std::vector<string> cols = {
+        "mu_id","tau_id1","tau_id2","tau_id3",
+        "mu_pt","tau_pt","mu_charge","tau_charge",
+        "mu_eta","tau_eta","mu_n","tau_n",
+        "mu_phi","tau_phi","mu_energy","tau_energy",
+        "sist_mass","sist_acop","sist_pt","sist_rap",
+        "met_pt","met_phi",
+        "jet_pt","jet_eta","jet_phi","jet_mass","jet_btag",
+        "weight","n_b_jet","generator_weight"
+    };
 
-    ////////////////////////////////////////
-    TLorentzVector tau, muon, sistema;
+    df_sys.Snapshot(outtreename, outfile, cols);
+    std::cout << "Wrote skim to: " << outfile << " (tree: " << outtreename << ")\n";
+}
 
-    string total = "/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau/Dados_2018_UL_skimmed_MuTau_nano_fase0_merge.root";
-    cout << "Input file: " << total << endl;
-
-    TApplication app("app", NULL, NULL);
-
-    TFile *f = TFile::Open(total.c_str());
-    TTree *tree = (TTree*) f->Get("analyzer/ntp1");
-
-
-    // (QCD-only use of LuminosityBlocks in your note — not used here)
-    // TTree *tree_lumi = (TTree*) f->Get("LuminosityBlocks");
-
-    TFile output(output_tot.c_str(), "RECREATE", "");
-    TTree out("tree","");
-
-    // Branches — μ and τ
-    out.Branch("muon_id",   &entry_1 , "mu_id/D");
-    out.Branch("tau_id1",   &entry_2 , "tau_id1/D"); // DeepTau VSjet
-    out.Branch("tau_id2",   &entry_3 , "tau_id2/D"); // DeepTau VSe
-    out.Branch("tau_id3",   &entry_4 , "tau_id3/D"); // DeepTau VSmu
-    out.Branch("muon_pt",   &entry_5 , "mu_pt/D");
-    out.Branch("tau_pt",    &entry_6 , "tau_pt/D");
-    out.Branch("muon_charge",&entry_7, "mu_charge/D");
-    out.Branch("tau_charge",&entry_8 , "tau_charge/D");
-    out.Branch("muon_eta",  &entry_9 , "mu_eta/D");
-    out.Branch("tau_eta",   &entry_10, "tau_eta/D");
-    out.Branch("muon_n",    &entry_11, "mu_n/D");
-    out.Branch("tau_n",     &entry_12, "tau_n/D");
-    out.Branch("muon_phi",  &entry_13, "mu_phi/D");
-    out.Branch("tau_phi",   &entry_14, "tau_phi/D");
-    out.Branch("muon_mass", &entry_15, "mu_mass/D");
-    out.Branch("tau_mass",  &entry_16, "tau_mass/D");
-
-    // system & MET
-    out.Branch("sist_mass", &entry_17, "sist_mass/D");
-    out.Branch("sist_acop", &entry_18, "sist_acop/D");
-    out.Branch("sist_pt",   &entry_19, "sist_pt/D");
-    out.Branch("sist_rap",  &entry_20, "sist_rap/D");
-    out.Branch("met_pt",    &entry_21, "met_pt/D");
-    out.Branch("met_phi",   &entry_22, "met_phi/D");
-
-    // jets
-    out.Branch("jet_pt",    &entry_23, "jet_pt/D");
-    out.Branch("jet_eta",   &entry_24, "jet_eta/D");
-    out.Branch("jet_phi",   &entry_25, "jet_phi/D");
-    out.Branch("jet_mass",  &entry_26, "jet_mass/D");
-    out.Branch("jet_btag",  &entry_27, "jet_btag/D");
-    out.Branch("weight",    &entry_28, "weight/D");
-    out.Branch("n_b_jet",   &entry_29, "n_b_jet/I");
-    out.Branch("generator_weight", &entry_30, "generator_weight/D");
-
-    // TH1D histo("histo","histo", 1000, 0, 1000);
-
-    const double deepB_wp = 0.4506; // same as your other code
-
-    for (int i=0; i<tree->GetEntries(); i++) {
-
-        tree->GetEvent(i);
-        if (i%1000==0) cout << "progress: " << double(i)/tree->GetEntries()*100.0 << endl;
-
-        // Trigger: single-muon
-        if (tree->GetLeaf("HLT_IsoMu24")->GetValue(0) == 1) {
-
-            // object presence + IDs (mirror your QCD selection)
-            bool hasMuon = tree->GetLeaf("Muon_pt")->GetLen() > 0;
-            bool hasTau  = tree->GetLeaf("Tau_pt")->GetLen()  > 0;
-
-            if (hasMuon && hasTau &&
-                tree->GetLeaf("Muon_mvaId")->GetValue(0)                >= 3 &&
-                tree->GetLeaf("Tau_idDeepTau2017v2p1VSjet")->GetValue(0) >= 63 &&
-                tree->GetLeaf("Tau_idDeepTau2017v2p1VSe")->GetValue(0)   >= 7 &&
-                tree->GetLeaf("Tau_idDeepTau2017v2p1VSmu")->GetValue(0)  >= 1)
-            {
-                nmutau++;
-
-                // read first muon and first tau
-                entry_1  = tree->GetLeaf("Muon_mvaId")->GetValue(0);
-                entry_2  = tree->GetLeaf("Tau_idDeepTau2017v2p1VSjet")->GetValue(0);
-                entry_3  = tree->GetLeaf("Tau_idDeepTau2017v2p1VSe")->GetValue(0);
-                entry_4  = tree->GetLeaf("Tau_idDeepTau2017v2p1VSmu")->GetValue(0);
-                entry_5  = tree->GetLeaf("Muon_pt")->GetValue(0);
-                entry_6  = tree->GetLeaf("Tau_pt")->GetValue(0);
-                entry_7  = tree->GetLeaf("Muon_charge")->GetValue(0);
-                entry_8  = tree->GetLeaf("Tau_charge")->GetValue(0);
-                entry_9  = tree->GetLeaf("Muon_eta")->GetValue(0);
-                entry_10 = tree->GetLeaf("Tau_eta")->GetValue(0);
-                entry_11 = tree->GetLeaf("Muon_pt")->GetLen();
-                entry_12 = tree->GetLeaf("Tau_pt")->GetLen();
-                entry_13 = tree->GetLeaf("Muon_phi")->GetValue(0);
-                entry_14 = tree->GetLeaf("Tau_phi")->GetValue(0);
-                entry_15 = tree->GetLeaf("Muon_mass")->GetValue(0);
-                entry_16 = tree->GetLeaf("Tau_mass")->GetValue(0);
-
-                muon.SetPtEtaPhiM(entry_5, entry_9, entry_13, entry_15);
-                tau .SetPtEtaPhiM(entry_6, entry_10, entry_14, entry_16);
-                sistema = muon + tau;
-
-                double deltaphi = fabs(entry_14 - entry_13);
-                if (deltaphi > M_PI) deltaphi -= 2*M_PI;
-                entry_18 = fabs(deltaphi)/M_PI;  // acoplanarity
-                entry_17 = sistema.M();
-                entry_19 = sistema.Pt();
-                entry_20 = sistema.Rapidity();
-
-                // MET (fixed ordering)
-                entry_21 = tree->GetLeaf("MET_pt")->GetValue(0);
-                entry_22 = tree->GetLeaf("MET_phi")->GetValue(0);
-
-                // leading jet + b-tag counting
-                entry_23 = tree->GetLeaf("Jet_pt")->GetLen()  > 0 ? tree->GetLeaf("Jet_pt")->GetValue(0)   : -99.;
-                entry_24 = tree->GetLeaf("Jet_eta")->GetLen() > 0 ? tree->GetLeaf("Jet_eta")->GetValue(0)  : -99.;
-                entry_25 = tree->GetLeaf("Jet_phi")->GetLen() > 0 ? tree->GetLeaf("Jet_phi")->GetValue(0)  : -99.;
-                entry_26 = tree->GetLeaf("Jet_mass")->GetLen()> 0 ? tree->GetLeaf("Jet_mass")->GetValue(0) : -99.;
-                entry_27 = tree->GetLeaf("Jet_btagDeepB")->GetLen()>0 ? tree->GetLeaf("Jet_btagDeepB")->GetValue(0) : -99.;
-
-                int btag = 0;
-                int njets = tree->GetLeaf("Jet_btagDeepB")->GetLen();
-                for (int j=0; j<njets; ++j) {
-                    if (tree->GetLeaf("Jet_btagDeepB")->GetValue(j) > deepB_wp) btag++;
-                }
-                entry_29 = btag;
-
-                // weights (data)
-                entry_28 = weight;   // 1.
-                entry_30 = 1.;       // generator_weight placeholder for data
-
-                // optional counters you had before (left as-is)
-                nid++; ncharge++; npt++; neta++;
-
-                out.Fill();
-            }
-        }
+// ---------- main ----------
+int main(int argc, char** argv) {
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0]
+                  << " input.root [output.root] [intree_path=analyzer/ntp1] [outtree_name=tree]\n";
+        return 1;
     }
+    const string infile      = argv[1];
+    const string outfile     = (argc > 2) ? argv[2] : "skim_mutau_from_ntp1.root";
+    const string intree_path = (argc > 3) ? argv[3] : "analyzer/ntp1";
+    const string outtree     = (argc > 4) ? argv[4] : "tree";
 
-    cout << nmutau << endl;
-    cout << nid << endl;
-    cout << ncharge << endl;
-    cout << npt << endl;
-    cout << neta << endl;
-    cout << -11111111111111 << endl;
-
-    output.Write();
-    // app.Run(true);
-
+    skim_mutau_rdf(infile, outfile, intree_path, outtree);
     return 0;
 }
