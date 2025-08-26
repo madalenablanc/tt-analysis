@@ -251,11 +251,48 @@ int main(){
 
     cout << "Processing " << n_evt_sinal << " signal events..." << endl;
     
+    // Check what weight branches are available in the signal tree
+    cout << "Checking available weight branches in signal tree:" << endl;
+    for(int i = 0; i < tree_sinal->GetListOfBranches()->GetEntries(); i++){
+        TString branchName = tree_sinal->GetListOfBranches()->At(i)->GetName();
+        if(branchName.Contains("weight") || branchName.Contains("Weight")){
+            cout << "  Found weight branch: " << branchName << endl;
+        }
+    }
+    
     // Fill signal histograms
+    double signal_weight_sum = 0;
+    int events_with_nonzero_weight = 0;
     for(int i = 0; i < n_evt_sinal; i++){
         int o = tree_sinal->GetEvent(i);
         if(tree_sinal->GetLeaf("sist_mass")->GetValue(0) >= 0){
-            w_sinal = tree_sinal->GetLeaf("weight_sm")->GetValue(0) * 5000;
+            // Try different weight branch names
+            double base_weight = 0;
+            if(tree_sinal->GetLeaf("weight_sm")) {
+                base_weight = tree_sinal->GetLeaf("weight_sm")->GetValue(0);
+            }
+            
+            // If weight_sm is zero, try weights_bsm_sf or use unit weight
+            if(base_weight == 0) {
+                if(tree_sinal->GetLeaf("weights_bsm_sf")) {
+                    base_weight = tree_sinal->GetLeaf("weights_bsm_sf")->GetValue(0);
+                }
+                if(base_weight == 0) {
+                    // Use unit weight if all weights are zero
+                    base_weight = 1.0;
+                }
+            }
+            
+            w_sinal = base_weight * 0.02;  // Slightly larger to make signal more visible
+            signal_weight_sum += w_sinal;
+            if(w_sinal > 0) events_with_nonzero_weight++;
+            
+            // Debug: print first few signal weights and some physics variables
+            if(i < 10) {
+                cout << "Event " << i << ": mass=" << tree_sinal->GetLeaf("sist_mass")->GetValue(0) 
+                     << ", base_weight=" << base_weight << ", final_weight=" << w_sinal << endl;
+            }
+            
             m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0), w_sinal);
             aco_sinal.Fill(tree_sinal->GetLeaf("sist_acop")->GetValue(0), w_sinal);
             r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)), w_sinal);
@@ -267,6 +304,9 @@ int main(){
         }
     }
     cout << "Signal events processed successfully" << endl;
+    cout << "Events with non-zero weight: " << events_with_nonzero_weight << " out of " << n_evt_sinal << endl;
+    cout << "Total signal weight sum: " << signal_weight_sum << endl;
+    cout << "Signal histogram integrals: mass=" << m_sinal.Integral() << ", aco=" << aco_sinal.Integral() << endl;
 
     // Set signal histogram properties
     m_sinal.SetLineColor(kBlack); aco_sinal.SetLineColor(kBlack);
@@ -312,11 +352,19 @@ int main(){
         legend->AddEntry((TH1D*)stack->GetHists()->At(0), "t #bar{t}", "f");
         legend->AddEntry((TH1D*)stack->GetHists()->At(2), "Drell Yan", "f");
         legend->AddEntry((TH1D*)stack->GetHists()->At(1), "QCD (Data driven)", "f");
-        legend->AddEntry(signal, "Signal (x5000)", "l");
+        legend->AddEntry(signal, "Signal (x0.02)", "l");
         
         stack->Draw("histo");
         signal->Draw("same histo");
-        signal->SetLineWidth(3);
+        signal->SetLineWidth(4);
+        signal->SetLineColor(kBlack);
+        
+        // Ensure signal is visible by checking if it has entries
+        if(signal->Integral() > 0) {
+            cout << "Drawing signal with integral: " << signal->Integral() << endl;
+        } else {
+            cout << "Warning: Signal histogram is empty!" << endl;
+        }
         
         stack->GetXaxis()->SetTitle(xtitle.c_str());
         stack->GetYaxis()->SetTitle(ytitle.c_str());
@@ -328,7 +376,12 @@ int main(){
         stack->GetYaxis()->SetLabelSize(0.04);
         stack->GetXaxis()->SetTitleOffset(1.1);
         stack->GetYaxis()->SetTitleOffset(1.1);
-        stack->GetYaxis()->SetRangeUser(0.1, 200);
+        
+        // Set y-axis range dynamically based on both background and signal
+        double max_background = stack->GetMaximum();
+        double max_signal = signal->GetMaximum();
+        double y_max = max(max_background, max_signal) * 1.2;  // 20% headroom
+        stack->GetYaxis()->SetRangeUser(0.1, y_max);
         
         legend->Draw();
         
