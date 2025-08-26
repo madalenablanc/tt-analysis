@@ -217,7 +217,7 @@ double EleReco(double pt, double eta, int flag=0){
 
  //Inicialização proões (tratação dos erros estatísticos)
 
- TFile proton_sist_1("../PIC_joao/reco_charactersitics_version1.root");
+ TFile proton_sist_1("/eos/home-m/mblancco/tau_analysis/POGCorrections/reco_charactersitics_version1.root");
 TGraphErrors* xi_sist_1 = (TGraphErrors*)proton_sist_1.Get("2018_TS1_TS2/multi rp-0/xi/g_systematics_vs_xi");
 TF1 xi_sist_inter_1("xi_sist_inter_1","pol20" ,0,10);
 xi_sist_inter_1.SetParLimits(0,-.8,0.1);
@@ -232,7 +232,7 @@ xi_sist_2->Fit("xi_sist_inter_2");
 
  TLorentzVector ele, tau, nu;
 
- TFile fundo ("/eos/user/m/mpisano/analyzer_etau/CMSSW_12_5_0/src/ExclTauTau/ExclTauTau/test/ETau_highstat_SM_2018_july.root");
+ TFile fundo ("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/ETau/GammaGammaTauTau_2018_UL_ETau_SMandBSMweights_ntuplesfromminiJuly.root");
  TTree* ntp1 = (TTree*) fundo.Get("ntp1");
  TFile output ("./ETau_sinal_SM_july.root", "RECREATE", "");
  double weight_sample =0.;
@@ -729,8 +729,8 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 		    //Adicionar seletor de periodo
 
 
-		    TFile file_multi("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_multiRP_reMiniAOD.root");
-		    TFile file_rad("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_radiation_reMiniAOD.root");
+		    TFile file_multi("pixelEfficiencies_multiRP_reMiniAOD.root");
+		    TFile file_rad("pixelEfficiencies_radiation_reMiniAOD.root");
 
 		    weight=1.;
 
@@ -978,7 +978,12 @@ cout << "O n  mero de part  culas com 2 prot reconstruidos que passam o radiatio
 
 
 output.Write();
-app.Run(true);
+bool interactive = false;
+
+if (interactive) {
+    app.Run(true);
+}
+
 return 0;
 }
 

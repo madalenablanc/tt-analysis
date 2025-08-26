@@ -25,14 +25,14 @@ int main(){
 	string luminosity;
 // samples for DY  region
           //TFile data("/eos/user/m/mpisano/samples_2018_emu/fase1/Dados_fase1_PICskimmed_EMu_2018_total.root");
-          TFile dy("/eos/user/m/mpisano/samples_2018_etau/fase1_etau/suma_fundos_fase1/DY_total-protons.root");
-          TFile ttjets("/eos/user/m/mpisano/samples_2018_etau/fase1_etau/suma_fundos_fase1/ttjets_total-protons.root");
-          TFile qcd("/eos/user/m/mpisano/samples_2018_etau/fase1_etau/suma_fundos_fase1/QCD_total-protons.root");
+          TFile dy("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/DY_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
+          TFile ttjets("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/ttJets_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
+          TFile qcd("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/QCD_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
 
 	TFile sinal("ETau_sinal_SM_july.root");
 
 
-	TFile output("DY_CR_e_mu_UL_2018_shapes.root","RECREATE","");
+	TFile output("DY_CR_e_tau_UL_2018_shapes.root","RECREATE","");
 
         //double w_data=1.;
         double w_qcd=1.;
@@ -463,6 +463,8 @@ int main(){
 
 	c1.Update();
 
+        c1.SaveAs("output_plots/aco_etau.png");
+
         TF1 f2 ("f2","1",-1100,1100);
 
         TCanvas c2;
@@ -510,6 +512,9 @@ int main(){
 
         c2.Update();
 
+        c2.SaveAs("output_plots/mass_etau.png");
+
+
 
 	TCanvas c3;
 	c3.SetCanvasSize(700,800);
@@ -556,6 +561,7 @@ int main(){
         cmsLabel5.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c3.Update();
+        c3.SaveAs("output_plots/rapidity_matching_etau.png");
 
 
 	TCanvas c4;
@@ -600,6 +606,7 @@ int main(){
         cmsLabel7.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c4.Update();
+        c4.SaveAs("output_plots/pt_central_etau.png");
 
 	TCanvas c5;
         c5.SetCanvasSize(700,800);
@@ -643,6 +650,7 @@ int main(){
         cmsLabel9.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c5.Update();
+        c5.SaveAs("output_plots/mass_diff_etau.png");
 
 	TCanvas c6;
         c6.SetCanvasSize(700,800);
@@ -686,6 +694,7 @@ int main(){
         cmsLabel11.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c6.Update();
+        c6.SaveAs("output_plots/rapidity_central_etau.png");
 
 	TCanvas c7;
         c7.SetCanvasSize(700,800);
@@ -729,6 +738,7 @@ int main(){
         cmsLabel13.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c7.Update();
+        c7.SaveAs("output_plots/tau_pt_etau.png");
 
 	TCanvas c8;
         c8.SetCanvasSize(700,800);
@@ -772,9 +782,14 @@ int main(){
         cmsLabel15.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c8.Update();
+        c8.SaveAs("output_plots/met_etau.png");
 
 
-        app.Run("true");
+        bool interactive = false;
+
+        if (interactive) {
+        app.Run(true);
+        }
 
         return 0;
 
