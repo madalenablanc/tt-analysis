@@ -28,6 +28,7 @@ int main(){
     gSystem->mkdir("output_plots", true);
     
     // Sample files for DY region
+    TFile data("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
     TFile dy("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/DY_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
     TFile ttjets("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/ttJets_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
     TFile qcd("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/QCD_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root");
@@ -36,6 +37,7 @@ int main(){
     TFile output("DY_CR_e_tau_UL_2018_shapes.root", "RECREATE", "");
 
     // Define weights
+    double w_data = 1.0;
     double w_qcd = 1.0;
     double w_ttjets = 0.15;
     double w_dy = 1.81;
@@ -51,19 +53,19 @@ int main(){
     double min_r = -3.0, max_r = 3.0;
     int bin_r = 15;
     
-    double min_pt = 0, max_pt = 600;  // Start from 0 to include all pT values
+    double min_pt = 0, max_pt = 600;
     int bin_pt = 25;
     
-    double min_mm = -2000, max_mm = 500;  // Extended range for mass difference
+    double min_mm = -2000, max_mm = 500;
     int bin_mm = 25;
     
-    double min_ra = -3.0, max_ra = 3.0;  // Extended rapidity range
+    double min_ra = -3.0, max_ra = 3.0;
     int bin_ra = 15;
     
-    double min_tau = 20, max_tau = 500;  // Lower minimum for tau pT
+    double min_tau = 20, max_tau = 500;
     int bin_tau = 25;
     
-    double min_met = 0, max_met = 250;  // Better range for electron pT
+    double min_met = 0, max_met = 250;
     int bin_met = 25;
 
     // Create THStacks
@@ -95,6 +97,16 @@ int main(){
     l_ra->SetBorderSize(0);
     l_tau->SetBorderSize(0);
     l_met->SetBorderSize(0);
+
+    // Create histograms for data
+    TH1D aco_data("aco_data", "aco_data", bin_aco, min_aco, max_aco);
+    TH1D m_data("m_data", "m_data", bin_m, min_m, max_m);
+    TH1D r_data("r_data", "r_data", bin_r, min_r, max_r);
+    TH1D pt_data("pt_data", "pt_data", bin_pt, min_pt, max_pt);
+    TH1D mm_data("mm_data", "mm_data", bin_mm, min_mm, max_mm);
+    TH1D ra_data("ra_data", "ra_data", bin_ra, min_ra, max_ra);
+    TH1D tau_data("tau_data", "tau_data", bin_tau, min_tau, max_tau);
+    TH1D met_data("met_data", "met_data", bin_met, min_met, max_met);
 
     // Create histograms for QCD
     TH1D aco_qcd("aco_qcd", "aco_qcd", bin_aco, min_aco, max_aco);
@@ -147,15 +159,45 @@ int main(){
     TH1D sum_met("sum_met_ttjets", "sum_met_ttjets", bin_met, min_met, max_met);
 
     // Get trees
+    TTree* tree_data = (TTree*) data.Get("tree");
     TTree* tree_dy = (TTree*) dy.Get("tree");
     TTree* tree_qcd = (TTree*) qcd.Get("tree");
     TTree* tree_ttjets = (TTree*) ttjets.Get("tree");
     TTree* tree_sinal = (TTree*) sinal.Get("tree");
 
+    int n_evt_data = tree_data->GetEntries();
     int n_evt_dy = tree_dy->GetEntries();
     int n_evt_qcd = tree_qcd->GetEntries();
     int n_evt_ttjets = tree_ttjets->GetEntries();
     int n_evt_sinal = tree_sinal->GetEntries();
+
+    cout << "Processing " << n_evt_data << " data events..." << endl;
+    
+    // Fill data histograms
+    for(int i = 0; i < n_evt_data; i++){
+        int o = tree_data->GetEvent(i);
+        if(tree_data->GetLeaf("sist_mass")->GetValue(0) >= 0){
+            aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0), w_data);
+            m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0), w_data);
+            r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)/tree_data->GetLeaf("xi_arm2_1")->GetValue(0)), w_data);
+            pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0), w_data);
+            mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)*tree_data->GetLeaf("xi_arm2_1")->GetValue(0)), w_data);
+            ra_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0), w_data);
+            tau_data.Fill(tree_data->GetLeaf("tau_pt")->GetValue(0), w_data);
+            met_data.Fill(tree_data->GetLeaf("e_pt")->GetValue(0), w_data);
+        }
+    }
+    cout << "Data events processed: " << aco_data.Integral() << endl;
+    
+    // Set data histogram properties
+    aco_data.SetLineColor(kBlack); aco_data.SetMarkerStyle(20); aco_data.SetMarkerSize(0.8);
+    m_data.SetLineColor(kBlack); m_data.SetMarkerStyle(20); m_data.SetMarkerSize(0.8);
+    r_data.SetLineColor(kBlack); r_data.SetMarkerStyle(20); r_data.SetMarkerSize(0.8);
+    pt_data.SetLineColor(kBlack); pt_data.SetMarkerStyle(20); pt_data.SetMarkerSize(0.8);
+    mm_data.SetLineColor(kBlack); mm_data.SetMarkerStyle(20); mm_data.SetMarkerSize(0.8);
+    ra_data.SetLineColor(kBlack); ra_data.SetMarkerStyle(20); ra_data.SetMarkerSize(0.8);
+    tau_data.SetLineColor(kBlack); tau_data.SetMarkerStyle(20); tau_data.SetMarkerSize(0.8);
+    met_data.SetLineColor(kBlack); met_data.SetMarkerStyle(20); met_data.SetMarkerSize(0.8);
 
     cout << "Processing " << n_evt_qcd << " QCD events..." << endl;
     
@@ -342,20 +384,27 @@ int main(){
     cout << "Creating plots..." << endl;
 
     // Function to create and save plots
-    auto createPlot = [](THStack* stack, TH1D* signal, TLegend* legend, const string& xtitle, const string& ytitle, const string& filename) {
-        TCanvas c1("c1", "c1", 800, 600);  // Better aspect ratio
-        c1.SetLeftMargin(0.12);   // More space for y-axis label
-        c1.SetBottomMargin(0.12); // More space for x-axis label
-        c1.SetTopMargin(0.08);    // Space for title
-        c1.SetRightMargin(0.05);  // Minimal right margin
+    auto createPlot = [](THStack* stack, TH1D* signal, TH1D* data, TLegend* legend, 
+                         const string& xtitle, const string& ytitle, const string& filename) {
+        TCanvas c1("c1", "c1", 800, 600);
+        c1.SetLeftMargin(0.12);
+        c1.SetBottomMargin(0.12);
+        c1.SetTopMargin(0.08);
+        c1.SetRightMargin(0.05);
         
+        // Add entries to legend
+        legend->AddEntry(data, "Data", "ep");
         legend->AddEntry((TH1D*)stack->GetHists()->At(0), "t #bar{t}", "f");
         legend->AddEntry((TH1D*)stack->GetHists()->At(2), "Drell Yan", "f");
         legend->AddEntry((TH1D*)stack->GetHists()->At(1), "QCD (Data driven)", "f");
         legend->AddEntry(signal, "Signal (x0.02)", "l");
         
+        // Draw stack and signal
         stack->Draw("histo");
         signal->Draw("same histo");
+        data->Draw("same ep");  // Draw data points with error bars
+        
+        // Style signal
         signal->SetLineWidth(4);
         signal->SetLineColor(kBlack);
         
@@ -366,9 +415,10 @@ int main(){
             cout << "Warning: Signal histogram is empty!" << endl;
         }
         
+        // Set axis properties
         stack->GetXaxis()->SetTitle(xtitle.c_str());
         stack->GetYaxis()->SetTitle(ytitle.c_str());
-        stack->GetXaxis()->SetNdivisions(508);  // Better tick marks
+        stack->GetXaxis()->SetNdivisions(508);
         stack->GetYaxis()->SetNdivisions(508);
         stack->GetXaxis()->SetTitleSize(0.045);
         stack->GetYaxis()->SetTitleSize(0.045);
@@ -380,9 +430,11 @@ int main(){
         // Set y-axis range dynamically based on both background and signal
         double max_background = stack->GetMaximum();
         double max_signal = signal->GetMaximum();
-        double y_max = max(max_background, max_signal) * 1.2;  // 20% headroom
+        double max_data = data->GetMaximum();
+        double y_max = max(max(max_background, max_signal), max_data) * 1.2;  // 20% headroom
         stack->GetYaxis()->SetRangeUser(0.1, y_max);
         
+        // Draw legend and CMS labels
         legend->Draw();
         
         TLatex cmsLabel;
@@ -392,7 +444,7 @@ int main(){
         cmsLabel.DrawLatexNDC(0.95, 0.94, "54.9 fb^{-1} (13 TeV)");
         
         TLatex cmsLabel1;
-        cmsLabel1.SetTextAlign(11);  // Left align
+        cmsLabel1.SetTextAlign(11);
         cmsLabel1.SetTextSize(0.04);
         cmsLabel1.SetTextFont(62);
         cmsLabel1.DrawLatexNDC(0.12, 0.94, "CMS-TOTEM Preliminary");
@@ -404,15 +456,15 @@ int main(){
         legend->Clear();
     };
 
-    // Create all plots
-    createPlot(aco, &aco_sinal, l_aco, "Acoplanarity of the central system", "Events", "output_plots/aco_etau.png");
-    createPlot(m, &m_sinal, l_m, "Invariant mass of the central system [GeV]", "Events", "output_plots/mass_etau.png");
-    createPlot(r, &r_sinal, l_r, "Rapidity matching", "Events", "output_plots/rapidity_matching_etau.png");
-    createPlot(pt, &pt_sinal, l_pt, "Transverse momentum of the central system [GeV]", "Events", "output_plots/pt_central_etau.png");
-    createPlot(mm, &mm_sinal, l_mm, "Mass difference (CMS-PPS) [GeV]", "Events", "output_plots/mass_diff_etau.png");
-    createPlot(ra, &ra_sinal, l_ra, "Rapidity of the central system", "Events", "output_plots/rapidity_central_etau.png");
-    createPlot(tau, &tau_sinal, l_tau, "Transverse momentum of the hadronic tau [GeV]", "Events", "output_plots/tau_pt_etau.png");
-    createPlot(met, &met_sinal, l_met, "Electron transverse momentum [GeV]", "Events", "output_plots/met_etau.png");
+    // Create all plots with data
+    createPlot(aco, &aco_sinal, &aco_data, l_aco, "Acoplanarity of the central system", "Events", "output_plots/aco_etau.png");
+    createPlot(m, &m_sinal, &m_data, l_m, "Invariant mass of the central system [GeV]", "Events", "output_plots/mass_etau.png");
+    createPlot(r, &r_sinal, &r_data, l_r, "Rapidity matching", "Events", "output_plots/rapidity_matching_etau.png");
+    createPlot(pt, &pt_sinal, &pt_data, l_pt, "Transverse momentum of the central system [GeV]", "Events", "output_plots/pt_central_etau.png");
+    createPlot(mm, &mm_sinal, &mm_data, l_mm, "Mass difference (CMS-PPS) [GeV]", "Events", "output_plots/mass_diff_etau.png");
+    createPlot(ra, &ra_sinal, &ra_data, l_ra, "Rapidity of the central system", "Events", "output_plots/rapidity_central_etau.png");
+    createPlot(tau, &tau_sinal, &tau_data, l_tau, "Transverse momentum of the hadronic tau [GeV]", "Events", "output_plots/tau_pt_etau.png");
+    createPlot(met, &met_sinal, &met_data, l_met, "Electron transverse momentum [GeV]", "Events", "output_plots/met_etau.png");
 
     cout << "All plots created successfully!" << endl;
     cout << "Plots saved in output_plots/ directory" << endl;
