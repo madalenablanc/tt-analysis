@@ -10,7 +10,7 @@ prefix = "root://cms-xrd-global.cern.ch//"
 output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/ttjets_2018_UL_skimmed_MuTau_nano_"
 
 print("Processing ttjets - phase0\n")
-print("output directory:/eos/user/m/mblancco/samples_2018_mutau/")
+print("output directory:/eos/user/m/mblancco/samples_2018_mutau/fase0_new")
 
 # --- Get all input files ---
 with open(input_list_path) as f:
