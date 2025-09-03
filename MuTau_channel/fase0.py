@@ -1,29 +1,83 @@
+#!/usr/bin/python
+
+import subprocess, sys
+
+command = "voms-proxy-init --rfc --voms cms --valid 172:00"
+
+subprocess.run(command, shell = True, executable="/bin/bash")
+
+
 import ROOT
 import math
+import os
+import json
+import signal
+import sys
 
 # Enable multithreading
 ROOT.EnableImplicitMT()
 
 # --- Parameters ---
+line_number   = -1  # -1 => process all; >=0 => only that line index
 input_list_path = "ttJets_2018_UL.txt"
 prefix = "root://cms-xrd-global.cern.ch//"
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/ttjets_2018_UL_skimmed_MuTau_nano_"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/ttjets_2018_UL_skimmed_MuTau_nano_"
+resume_path   = ".mutau_phase0_ttjets_resume.json"
+overwrite     = False
 
 print("Processing ttjets - phase0\n")
 print("output directory:/eos/user/m/mblancco/samples_2018_mutau/fase0_new")
 
+def load_resume(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {"done": []}
+
+def save_resume(path, state):
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(state, f, indent=2, sort_keys=True)
+    os.replace(tmp, path)
+
+resume = load_resume(resume_path)
+
+def _sig_handler(signum, frame):
+    print("\n📝 Caught signal, writing resume file…")
+    save_resume(resume_path, resume)
+    sys.exit(1)
+
+signal.signal(signal.SIGINT, _sig_handler)
+signal.signal(signal.SIGTERM, _sig_handler)
+
 # --- Get all input files ---
 with open(input_list_path) as f:
-    lines = [line.strip() for line in f.readlines() if line.strip()]
+    all_lines = [line.strip() for line in f.readlines() if line.strip()]
 
-total_files = len(lines)
+if line_number >= 0 and line_number >= len(all_lines):
+    raise IndexError(f"line_number {line_number} >= number of files {len(all_lines)}")
 
-for line_number, input_file in enumerate(lines):
-    print(f"\n📦 Processing file {line_number+1} of {total_files}:")
+indices = range(len(all_lines)) if line_number < 0 else [line_number]
+total_files = len(indices)
+
+for file_idx, idx in enumerate(indices):
+    input_file = all_lines[idx]
+    print(f"\n📦 Processing file {file_idx+1} of {total_files} (index {idx}):")
     print(f" → {input_file}")
 
-    input_path = prefix + input_file
-    output_path = output_prefix + str(line_number) + ".root"
+    input_path = prefix + input_file if not input_file.startswith("root://") else input_file
+    output_path = output_prefix + str(idx) + ".root"
+
+    # Skip if output exists or already done (unless overwrite)
+    if not overwrite and (os.path.exists(output_path) or idx in resume.get("done", [])):
+        print(f"⏭️  Skipping index {idx} (already done).")
+        continue
+
+    # Ensure output directory exists
+    out_dir = os.path.dirname(output_path)
+    if out_dir and not out_dir.startswith("root://"):
+        os.makedirs(out_dir, exist_ok=True)
 
     try:
         # --- Create RDataFrame ---
@@ -104,5 +158,11 @@ for line_number, input_file in enumerate(lines):
 
         print(f"✔ Done. Output saved to:\n{output_path}")
 
+        # Update resume state
+        if idx not in resume["done"]:
+            resume["done"].append(idx)
+        save_resume(resume_path, resume)
+
     except Exception as e:
         print(f"❌ Failed to process {input_file}: {e}")
+        continue

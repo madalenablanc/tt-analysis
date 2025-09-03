@@ -17,7 +17,7 @@ ROOT.EnableImplicitMT()
 # ---------- Parameters ----------
 line_number   = -1   # -1 => process all; >=0 => only that line index
 input_list    = "Data_MuTau_phase0_2018.txt"  # one /store/... (or full PFN) per line
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_mutau/Data_2018_UL_skimmed_MuTau_nano_"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_new/Data_2018_UL_skimmed_MuTau_nano_"
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase0_resume.json"
 overwrite     = False
@@ -244,12 +244,12 @@ for idx in indices:
             df.Filter("lumi_filter(run, luminosityBlock)", "Certified lumi")
               .Filter("HLT_IsoMu24 == 1", "HLT single-muon 2018")
               .Filter("Muon_pt.size() > 0 && Tau_pt.size() > 0", "Muon and tau present")
-              .Filter("Muon_mvaId[0] >= 3", "Muon ID (>= Medium)")
-              .Filter("Tau_idDeepTau2017v2p1VSjet[0] >= 63", "Tau VSjet")
-              .Filter("Tau_idDeepTau2017v2p1VSe[0]   >= 7",  "Tau VSe")
-              .Filter("Tau_idDeepTau2017v2p1VSmu[0]  >= 1",  "Tau VSmu")
-              .Filter("Muon_pt[0] > 35. && Tau_pt[0] > 100.", "pT thresholds")
-              .Filter("Muon_charge[0] * Tau_charge[0] < 0", "Opposite sign")
+            #   .Filter("Muon_mvaId[0] >= 3", "Muon ID (>= Medium)")
+            #   .Filter("Tau_idDeepTau2017v2p1VSjet[0] >= 63", "Tau VSjet")
+            #   .Filter("Tau_idDeepTau2017v2p1VSe[0]   >= 7",  "Tau VSe")
+            #   .Filter("Tau_idDeepTau2017v2p1VSmu[0]  >= 1",  "Tau VSmu")
+            #   .Filter("Muon_pt[0] > 35. && Tau_pt[0] > 100.", "pT thresholds")
+            #   .Filter("Muon_charge[0] * Tau_charge[0] < 0", "Opposite sign")
         )
 
         # Physics variables for leading mu & tau

@@ -1,29 +1,91 @@
+#!/usr/bin/python
+
+import subprocess, sys
+
+command = "voms-proxy-init --rfc --voms cms --valid 172:00"
+
+subprocess.run(command, shell = True, executable="/bin/bash")
+
+
 import ROOT
 import math
 import os
+import json
+import signal
+import sys
 
 ROOT.EnableImplicitMT()
 
 # === Parameters ===
-input_list = "DY_2018_UL.txt"
-prefix = "root://cms-xrd-global.cern.ch//"
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/DY_2018_UL_skimmed_MuTau_nano_"
+line_number   = -1   # -1 => process all; >=0 => only that line index
+input_list    = "DY_2018_UL.txt"
+prefix        = "root://cms-xrd-global.cern.ch//"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_DY/DY_2018_UL_skimmed_MuTau_nano_"
+resume_path   = ".mutau_phase0_dy_resume.json"
+overwrite     = True
+
+# ---------- Resume helpers ----------
+def load_resume(path):
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except Exception:
+        return {"done": []}
+
+def save_resume(path, state):
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(state, f, indent=2, sort_keys=True)
+    os.replace(tmp, path)
+
+resume = load_resume(resume_path)
+
+def _sig_handler(signum, frame):
+    print("\n📝 Caught signal, writing resume file…")
+    save_resume(resume_path, resume)
+    sys.exit(1)
+
+signal.signal(signal.SIGINT, _sig_handler)
+signal.signal(signal.SIGTERM, _sig_handler)
 
 # === Load list of files ===
 with open(input_list) as f:
     lines = [l.strip() for l in f if l.strip()]
 
-for i, line in enumerate(lines):
-    input_file = prefix + line
+if line_number >= 0 and line_number >= len(lines):
+    raise IndexError(f"line_number {line_number} >= number of files {len(lines)}")
+
+indices = range(len(lines)) if line_number < 0 else [line_number]
+
+# Output columns (DY includes generator info)
+columns = [
+    "mu_id", "tau_id1", "tau_id2", "tau_id3", "mu_pt", "tau_pt",
+    "mu_charge", "tau_charge", "mu_eta", "tau_eta",
+    "mu_n", "tau_n", "mu_phi", "tau_phi", "mu_mass", "tau_mass",
+    "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
+    "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
+    "weight", "n_b_jet", "generator_weight", "tau_decay", "tau_genmatch"
+]
+
+total_files = len(indices)
+for file_idx, i in enumerate(indices):
+    line = lines[i]
+    input_file = prefix + line if not line.startswith("root://") else line
     output_file = f"{output_prefix}{i}.root"
 
-    print(f"📦 Processing file {i+1}/{len(lines)}:")
+    print(f"\n📦 Processing file {file_idx+1}/{total_files} (index {i}):")
     print(f"    Input : {input_file}")
     print(f"    Output: {output_file}")
 
-    if not os.path.exists(os.path.dirname(output_file)):
-        print(f"❌ Output directory doesn't exist: {os.path.dirname(output_file)}. Skipping...")
+    # Skip if already completed (unless overwrite)
+    if not overwrite and (os.path.exists(output_file) or i in resume.get("done", [])):
+        print(f"⏭️  Skipping index {i} (already done).")
         continue
+
+    # Ensure output directory exists
+    out_dir = os.path.dirname(output_file)
+    if out_dir and not out_dir.startswith("root://"):
+        os.makedirs(out_dir, exist_ok=True)
 
     try:
         df = ROOT.RDataFrame("Events", input_file)
@@ -32,13 +94,13 @@ for i, line in enumerate(lines):
                .Filter("Muon_pt.size() > 0 && Tau_pt.size() > 0", "Has Muon and Tau")
 
         df = (
-            df.Define("muon_pt", "Muon_pt[0]")
-              .Define("muon_eta", "Muon_eta[0]")
-              .Define("muon_phi", "Muon_phi[0]")
-              .Define("muon_mass", "Muon_mass[0]")
-              .Define("muon_charge", "Muon_charge[0]")
-              .Define("muon_id", "Muon_mvaId[0]")
-              .Define("muon_n", "int(Muon_pt.size())")
+            df.Define("mu_pt", "Muon_pt[0]")
+              .Define("mu_eta", "Muon_eta[0]")
+              .Define("mu_phi", "Muon_phi[0]")
+              .Define("mu_mass", "Muon_mass[0]")
+              .Define("mu_charge", "Muon_charge[0]")
+              .Define("mu_id", "Muon_mvaId[0]")
+              .Define("mu_n", "int(Muon_pt.size())")
 
               .Define("tau_pt", "Tau_pt[0]")
               .Define("tau_eta", "Tau_eta[0]")
@@ -50,14 +112,14 @@ for i, line in enumerate(lines):
               .Define("tau_id3", "Tau_idDeepTau2017v2p1VSmu[0]")
               .Define("tau_n", "int(Tau_pt.size())")
 
-              .Define("muon", "TLorentzVector mu; mu.SetPtEtaPhiM(muon_pt, muon_eta, muon_phi, muon_mass); return mu;")
+              .Define("muon", "TLorentzVector mu; mu.SetPtEtaPhiM(mu_pt, mu_eta, mu_phi, mu_mass); return mu;")
               .Define("tau",  "TLorentzVector t; t.SetPtEtaPhiM(tau_pt, tau_eta, tau_phi, tau_mass); return t;")
               .Define("sist", "return muon + tau;")
               .Define("sist_mass", "sist.M()")
               .Define("sist_pt",   "sist.Pt()")
               .Define("sist_rap",  "sist.Rapidity()")
               .Define("acop", """
-                  double dphi = fabs(muon_phi - tau_phi);
+                  double dphi = fabs(mu_phi - tau_phi);
                   if (dphi > M_PI) dphi = 2 * M_PI - dphi;
                   return fabs(dphi) / M_PI;
               """)
@@ -83,17 +145,14 @@ for i, line in enumerate(lines):
               .Define("tau_genmatch", "Tau_genPartFlav[0]")
         )
 
-        columns = [
-            "muon_id", "tau_id1", "tau_id2", "tau_id3", "muon_pt", "tau_pt",
-            "muon_charge", "tau_charge", "muon_eta", "tau_eta",
-            "muon_n", "tau_n", "muon_phi", "tau_phi", "muon_mass", "tau_mass",
-            "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
-            "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
-            "weight", "n_b_jet", "generator_weight", "tau_decay", "tau_genmatch"
-        ]
-
         df.Snapshot("tree", output_file, columns)
         print("✅ Done.")
 
+        # Update resume state
+        if i not in resume["done"]:
+            resume["done"].append(i)
+        save_resume(resume_path, resume)
+
     except Exception as e:
         print(f"❌ Failed on file {i}: {e}")
+        continue
