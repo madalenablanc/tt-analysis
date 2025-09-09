@@ -1,6 +1,6 @@
-mu_pt, Muon pT; pT [GeV]; Events, 80, 0, 600,0
-tau_pt, Tau pT; pT [GeV]; Events, 80, 0, 600,0
-mu_eta, Muon Eta; #eta; Events, 80, -3, 3,0
-tau_eta, Tau Eta; #eta; Events, 80, -3, 3,0
-sist_mass,System Invariant Mass; Mass [GeV]; Events, 75, 0, 1000,0
-sist_rap, System Rapidity; Rapidity; Events, 75, -2, 2,0
+mu_pt, Muon pT; pT [GeV]; Events, 50, 0, 600,0
+tau_pt, Tau pT; pT [GeV]; Events, 50, 0, 600,0
+mu_eta, Muon Eta; #eta; Events, 50, -3, 3,0
+tau_eta, Tau Eta; #eta; Events, 50, -3, 3,0
+sist_mass,System Invariant Mass; Mass [GeV]; Events, 60, 0, 1000,0
+sist_rap, System Rapidity; Rapidity; Events, 60, -2, 2,0

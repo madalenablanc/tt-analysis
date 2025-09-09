@@ -31,7 +31,7 @@ def check_branch(event, branch_name):
 
 
 
-def create_hist(input,vars,dest,pileup):
+def create_hist(input,vars,dest,pileup,sample_type):
 
     file = ROOT.TFile.Open(input)
 
@@ -39,7 +39,7 @@ def create_hist(input,vars,dest,pileup):
         print(f"Error: Could not open file {input}")
         exit(1)
 
-    tree_name = "tree_out"  # Replace with the actual TTree name
+    tree_name = "tree"  # Replace with the actual TTree name
     tree = file.Get(tree_name)
 
     if not tree:
@@ -57,16 +57,18 @@ def create_hist(input,vars,dest,pileup):
     for v in vars:
         # v0=v[0].replace("'",'')
         # v1=v[1].replace("'",'')
-
-        if pileup:
-            title="No pileup: "+v[1]
-            bins=v[5]
-        else:
-            title=v[1]
-            bins=v[2]
-        print(v[0])
-        print(v[1])
-        print(v[2])
+        title=sample_type + v[1]
+        bins=v[5]
+        print("Title: "+title)
+        # if pileup:
+        #     title=sample_type+ " ;After proton pileup: "+v[1]
+        #     bins=v[5]
+        # else:
+        #     title=sample_type+ " ;Before proton pileup: "+v[1] 
+        #     bins=v[2]
+        # print(v[0])
+        # print(v[1])
+        # print(v[2])
 
         hist=ROOT.TH1F(v[0],title,int(v[2]),float(v[3]),float(v[4]))
         #hist=ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 80, 0, 600)
@@ -78,7 +80,7 @@ def create_hist(input,vars,dest,pileup):
             else:
                 print(f"Branch '{v[0]}' does not exist. Skipping...")
                 
-        filenam=dest+"hist_"+v[0]+".png"
+        filenam=dest+sample_type+"-hist-"+v[0]+".png"
         save_histogram(hist,filenam)
     file.Close()
 
@@ -90,9 +92,9 @@ for line in f:
     vars.append(line.strip().split(","))
 
 
-
-filename="/eos/user/m/mblancco/samples_2018_mutau/ficheiros_fase1/merged.root"
-filename_no_pileup="/eos/user/m/mblancco/samples_2018_tautau/fase0_2/ttJetscode_GammaGammaTauTau_SignalMC_SM_18UL_23k_NANOAODSIM_fase0_no_pileups.root"
+sample="Data"
+filename_with_pileup="/eos/user/m/mblancco/samples_2018_mutau/"+sample+"_2018_UL_MuTau_nano_merged_pileup_protons.root"
+filename_no_pileup="/eos/user/m/mblancco/samples_2018_mutau/"+sample+"_2018_UL_MuTau_nano_merged.root"
 
 filename_2="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Fundo_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root"
 
@@ -106,12 +108,12 @@ filename_2="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSampl
 
 #create_hist(filename,vars,save_dir,pileup)
 
-create_hist(filename,vars,"/eos/user/m/mblancco/tau_analysis/plots_mutau/tt_jets;/",pileup=False)
+# create_hist(filename,vars,"/eos/user/m/mblancco/tau_analysis/plots_mutau/tt_jets;/",pileup=False)
 
 
-""" create_hist(filename,vars,"/eos/user/m/mblancco/tau_analysis/plots/fase0/",pileup=False)
-create_hist(filename_no_pileup,vars,"/eos/user/m/mblancco/tau_analysis/plots/fase0_no_pileup/",pileup=True)
- """
+create_hist(filename_with_pileup,vars,"/eos/user/m/mblancco/tau_analysis/plots/mutau/",pileup=True,sample_type=sample+"-with-pileup")
+create_hist(filename_no_pileup,vars,"/eos/user/m/mblancco/tau_analysis/plots/mutau/",pileup=False,sample_type=sample+"-no-pileup")
+
 # # Create histograms
 # hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 80, 0, 600)
 # hist_tau1_pt = ROOT.TH1F("tau1_pt", "Tau- pT; pT [GeV]; Events", 80, 0, 600)

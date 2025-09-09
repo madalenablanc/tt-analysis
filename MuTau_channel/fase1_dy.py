@@ -2,7 +2,7 @@
 
 import subprocess, sys
 
-# Init grid proxy (consistent with other phase1 scripts)
+# Ensure grid proxy (mirrors fase1_data structure)
 command = "voms-proxy-init --rfc --voms cms --valid 172:00"
 subprocess.run(command, shell=True, executable="/bin/bash")
 
@@ -18,16 +18,16 @@ ROOT.EnableImplicitMT()
 
 # ---------- Parameters ----------
 line_number   = -1   # -1 => process all; >=0 => only that line index
-input_list    = "TTJets_MuTau_skimmed_2018.txt"  # paths to phase0 TTJets outputs (one per line)
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_ttjets/ttjets_2018_UL_skimmed_MuTau_cuts_"
-resume_path   = ".mutau_phase1_ttjets_resume.json"
+input_list    = "DY_MuTau_skimmed_2018.txt"  # paths to phase0 DY outputs (one per line)
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_dy/DY_2018_UL_skimmed_MuTau_cuts_"
+resume_path   = ".mutau_phase1_dy_resume.json"
 overwrite     = True
-prefix        = "/eos/user/m/mblancco/samples_2018_mutau/"
+prefix        = "/eos/user/m/mblancco/samples_2018_mutau/fase0_DY/"
 
-print("Processing TTJets - phase1\n")
+print("Processing DY - phase1\n")
 print(f"Output directory: {os.path.dirname(output_prefix)}")
 
-# ---------- Muon scale factors (POG tables) ----------
+# ---------- Muon scale factors (from POG tables) ----------
 sf_decl = r"""
 #include <vector>
 #include <array>
@@ -159,6 +159,7 @@ if line_number >= 0 and line_number >= len(lines):
 indices = range(len(lines)) if line_number < 0 else [line_number]
 total_files = len(indices)
 
+# Keep generator_weight for MC
 columns = [
     "mu_id", "tau_id1", "tau_id2", "tau_id3", "mu_pt", "tau_pt",
     "mu_charge", "tau_charge", "mu_eta", "tau_eta",
@@ -166,31 +167,37 @@ columns = [
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
     "weight", "n_b_jet", "generator_weight",
+    # SFs and their systematics
     "mu_trig_sf", "mu_idiso_sf", "mu_reco_sf",
     "mu_trig_syst", "mu_idiso_syst", "mu_reco_syst",
+    # optional combined weight (no XS here)
     "event_weight"
 ]
 
 # ---------- Main loop ----------
 for file_idx, idx in enumerate(indices):
-    path = lines[idx]
+    path = lines[idx]  # relative path or PFN
     out_file = f"{output_prefix}{idx}.root"
 
     print(f"\n📦 Processing file {file_idx+1} of {total_files}:")
     print(f" → {path}")
 
+    # Skip if already completed (unless overwrite)
     if not overwrite and (os.path.exists(out_file) or idx in resume.get("done", [])):
         print(f"⏭️  Skipping index {idx} (already done).")
         continue
 
+    # Build input path: phase0 outputs are plain EOS paths
     input_path = prefix + path if not path.startswith("root://") and not path.startswith("/") else path
 
     print(f"📦 Input : {input_path}")
     print(f"📤 Output: {out_file}")
 
     try:
+        # Create RDataFrame on phase0 tree
         df = ROOT.RDataFrame("tree", input_path)
 
+        # Add deltaR from existing four-vector components
         df_added = (
             df
             .Define("muon", "TLorentzVector mu; mu.SetPtEtaPhiM(mu_pt, mu_eta, mu_phi, mu_mass); return mu;")
@@ -198,6 +205,7 @@ for file_idx, idx in enumerate(indices):
             .Define("delta_r", "return tau.DeltaR(muon);")
         )
 
+        # Apply cuts identical to open_DY.cpp
         df_filtered = (
             df_added
             .Filter("mu_id >= 3", "Muon ID (tight enough)")
@@ -208,23 +216,27 @@ for file_idx, idx in enumerate(indices):
             .Filter("fabs(tau_eta) < 2.4 && fabs(mu_eta) < 2.4", "Acceptance")
             .Filter("mu_pt > 35. && tau_pt > 100.", "pT thresholds")
             .Filter("mu_charge * tau_charge < 0", "Opposite-sign")
+            # DY muon SFs (nominal + syst) and simple event weight
             .Define("mu_trig_sf",  "MuonTrigSF(mu_pt, mu_eta, mu_charge, 0)")
             .Define("mu_idiso_sf", "MuonIDISOSF(mu_pt, mu_eta, 0)")
             .Define("mu_reco_sf",  "muRecoSF(mu_pt, mu_eta, 0)")
             .Define("mu_trig_syst",  "MuonTrigSF(mu_pt, mu_eta, mu_charge, 1)")
             .Define("mu_idiso_syst", "MuonIDISOSF(mu_pt, mu_eta, 1)")
             .Define("mu_reco_syst",  "muRecoSF(mu_pt, mu_eta, 1)")
-            .Define("event_weight", "0.15 * mu_trig_sf * mu_idiso_sf * mu_reco_sf")
+            .Define("event_weight", "(double)generator_weight * mu_trig_sf * mu_idiso_sf * mu_reco_sf")
         )
 
+        # Create output directory if needed
         out_dir = os.path.dirname(out_file)
         if out_dir and not out_dir.startswith("root://"):
             os.makedirs(out_dir, exist_ok=True)
 
+        # Snapshot selected columns
         df_filtered.Snapshot("tree", out_file, columns)
 
         print(f"✅ Done. Output saved to:\n{out_file}")
 
+        # Update resume state
         if idx not in resume["done"]:
             resume["done"].append(idx)
         save_resume(resume_path, resume)
@@ -233,5 +245,4 @@ for file_idx, idx in enumerate(indices):
         print(f"❌ Failed to process {path}: {e}")
         continue
 
-print("✅ TTJets phase1 cuts completed for requested files.")
-
+print("✅ DY phase1 cuts completed for requested files.")

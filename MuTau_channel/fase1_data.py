@@ -19,11 +19,11 @@ ROOT.EnableImplicitMT()
 # ---------- Parameters ----------
 line_number   = -1   # -1 => process all; >=0 => only that line index
 input_list    = "Data_QCD_MuTau_skimmed_2018.txt"  # one /store/... (or full PFN) per line
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data/DATA_2018_UL_skimmed_MuTau_cuts_"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data/Data_2018_UL_skimmed_MuTau_cuts_"
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase1_qcd_resume.json"
 overwrite     = True
-prefix        = "/eos/user/m/mblancco/samples_2018_mutau/fase0_new/"
+prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_new/"
 
 print("Processing Data - phase1\n")
 print(f"Output directory: {os.path.dirname(output_prefix)}")
@@ -92,7 +92,7 @@ for file_idx, idx in enumerate(indices):
 
     try:
         # Create RDataFrame
-        df = ROOT.RDataFrame("Events", input_path)
+        df = ROOT.RDataFrame("tree", input_path)
 
 
         df_added=(
@@ -101,8 +101,8 @@ for file_idx, idx in enumerate(indices):
             .Define("muon", "TLorentzVector mu; mu.SetPtEtaPhiM(mu_pt, mu_eta, mu_phi, mu_mass); return mu;")
             .Define("tau", "TLorentzVector t; t.SetPtEtaPhiM(tau_pt, tau_eta, tau_phi, tau_mass); return t;")
             .Define("delta_r","""
-                double dr=tau.DeltaR(muon)
-                return dr
+                double dr=tau.DeltaR(muon);
+                return dr;
             """)
 
         )
@@ -111,13 +111,14 @@ for file_idx, idx in enumerate(indices):
         df_filtered = (
             # df.Filter("lumi_filter(run, luminosityBlock)", "Certified lumi")
             #   .Filter("HLT_IsoMu24 == 1", "HLT single-muon 2018")
-              df_added.Filter("mu_pt.size() > 0 && tau_pt.size() > 0", "Muon and tau present")
+              df_added
+            #   .Filter("mu_pt.size() > 0 && tau_pt.size() > 0", "Muon and tau present")
               .Filter("mu_id >= 3", "Muon ID (>= Medium)")
               .Filter("tau_id1 > 63", "Tau VSjet")
               .Filter("tau_id2   > 7",  "Tau VSe")
               .Filter("tau_id3  > 1",  "Tau VSmu")
-              .Filter("mu_pt[0] > 35. && tau_pt[0] > 100.", "pT thresholds")
-              .Filter("mu_charge[0] * tau_charge[0] < 0", "Opposite sign")
+              .Filter("mu_pt > 35. && tau_pt > 100.", "pT thresholds")
+              .Filter("mu_charge * tau_charge < 0", "Opposite sign")
               .Filter("delta_r>0.4", "Delta R accepance")
               .Filter("fabs(tau_eta)<2.4 && fabs(mu_eta)<2.4","Geometrical acceptance")
         )
