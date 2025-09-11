@@ -309,7 +309,7 @@ xi_sist_2->Fit("xi_sist_inter_2");
 
  TLorentzVector ele, tau, nu; 
 
- TFile fundo ("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/TauhTauh/GammaGammaTauTau_2018_UL_MuTau_SMandBSMweights_ntuplesfromminiJuly.root");
+ TFile fundo ("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau/GammaGammaTauTau_2018_UL_MuTau_SMandBSMweights_ntuplesfromminiJuly.root");
  TTree* ntp1 = (TTree*) fundo.Get("ntp1");
  TFile output ("./MuTau_sinal_SM_2018_july.root", "RECREATE", "");
  double weight_sample =0.;
@@ -809,8 +809,8 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 		    //Adicionar seletor de periodo
 
 
-		    TFile file_multi("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_multiRP_reMiniAOD.root");
-		    TFile file_rad("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_radiation_reMiniAOD.root");
+		    TFile file_multi("pixelEfficiencies_multiRP_reMiniAOD.root");
+		    TFile file_rad("pixelEfficiencies_radiation_reMiniAOD.root");
 
 		    weight=1.;
 

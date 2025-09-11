@@ -25,11 +25,11 @@ int main(){
 	string luminosity;
 // samples for DY  region
           //TFile data("/eos/user/m/mpisano/samples_2018_emu/fase1/Dados_fase1_PICskimmed_EMu_2018_total.root");
-          TFile dy("DY_total-protons.root");
-          TFile ttjets("ttjets_total-protons.root");
-          TFile qcd("QCD_total-protons.root");
+          TFile dy("/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root");
+          TFile ttjets("/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root");
+          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pileup_protons.root");
 
-	TFile sinal("../MuTau_sinal_SM_2018_july.root");
+	TFile sinal("MuTau_sinal_SM_2018_july.root");
 
 
 	TFile output("DY_CR_e_mu_UL_2018_shapes.root","RECREATE","");
