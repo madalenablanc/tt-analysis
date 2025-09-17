@@ -12,10 +12,10 @@ ROOT.EnableImplicitMT()
 # ---------- Parameters ----------
 line_number   = -1   # -1 => process all; >=0 => only that line index
 input_list    = "Data_MuTau_phase0_2018.txt"  # one /store/... (or full PFN) per line
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_new/Data_2018_UL_skimmed_MuTau_nano_"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_with_proton_vars/Data_2018_UL_skimmed_MuTau_nano_"
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase0_resume.json"
-overwrite     = False
+overwrite     = True
 prefix        = "root://cms-xrd-global.cern.ch//"
 
 print("Processing QCD/Data - phase0 with lumi filtering\n")
@@ -99,6 +99,7 @@ if line_number >= 0 and line_number >= len(lines):
 
 indices = range(len(lines)) if line_number < 0 else [line_number]
 total_files = len(indices)
+processing_times = []
 
 # ---------- Output columns (Data - no MC variables) ----------
 columns = [
@@ -107,6 +108,7 @@ columns = [
     "mu_n", "tau_n", "mu_phi", "tau_phi", "mu_mass", "tau_mass",
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
+    "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
     "weight", "n_b_jet"
 ]
 
@@ -129,6 +131,7 @@ for file_idx, idx in enumerate(indices):
     print(f"📦 Input : {input_path}")
     print(f"📤 Output: {out_file}")
 
+    start_time = time.time()
     try:
         # Create RDataFrame
         df = ROOT.RDataFrame("Events", input_path)
@@ -192,6 +195,12 @@ for file_idx, idx in enumerate(indices):
                     if (b > 0.4506) count++;
                 return count;
             """)
+            .Define("proton_available", "Proton_multiRP_xi.size() > 0")
+            .Define("proton_xi", "proton_available ? Proton_multiRP_xi[0] : -999.")
+            .Define("proton_arm", "proton_available ? Proton_multiRP_arm[0] : -1.")
+            .Define("proton_thx", "proton_available ? Proton_multiRP_thetaX[0] : -999.")
+            .Define("proton_thy", "proton_available ? Proton_multiRP_thetaY[0] : -999.")
+            .Define("n_pu", "double(Proton_multiRP_xi.size())")
 
             # Data weights (no generator info)
             .Define("weight", "1.0")
@@ -205,7 +214,9 @@ for file_idx, idx in enumerate(indices):
         # Snapshot
         df_defs.Snapshot("tree", out_file, columns)
 
-        print(f"✅ Done. Output saved to:\n{out_file}")
+        elapsed = time.time() - start_time
+        processing_times.append(elapsed)
+        print(f"✅ Done in {elapsed:.1f} s. Output saved to:\n{out_file}")
 
         # Update resume state
         if idx not in resume["done"]:
@@ -215,5 +226,11 @@ for file_idx, idx in enumerate(indices):
     except Exception as e:
         print(f"❌ Failed to process {path}: {e}")
         continue
+
+if processing_times:
+    avg_time = sum(processing_times) / len(processing_times)
+    print(f"⏱️ Average processing time over {len(processing_times)} files: {avg_time:.1f} s")
+else:
+    print("⏱️ No files processed successfully; average time unavailable.")
 
 print("✅ QCD/Data phase-0 skimming completed for requested files.")

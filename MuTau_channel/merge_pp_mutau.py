@@ -148,7 +148,7 @@ def main():
     xi_arm1_2 = array("d", [-1.0])
     xi_arm2_1 = array("d", [-1.0])
     xi_arm2_2 = array("d", [-1.0])
-    t_out.Branch("xi_arm1_1", xi_arm1_1, "xi_arm1_1/D")
+    t_out.Branch("`xi_arm1_1`", xi_arm1_1, "xi_arm1_1/D")
     t_out.Branch("xi_arm1_2", xi_arm1_2, "xi_arm1_2/D")
     t_out.Branch("xi_arm2_1", xi_arm2_1, "xi_arm2_1/D")
     t_out.Branch("xi_arm2_2", xi_arm2_2, "xi_arm2_2/D")
