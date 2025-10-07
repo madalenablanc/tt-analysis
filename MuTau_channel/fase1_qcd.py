@@ -68,6 +68,7 @@ columns = [
     "mu_n", "tau_n", "mu_phi", "tau_phi", "mu_mass", "tau_mass",
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
+    "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
     "weight", "n_b_jet"
 ]
 
@@ -107,6 +108,13 @@ for file_idx, idx in enumerate(indices):
 
         )
 
+        required_proton_cols = ["proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu"]
+        missing_proton_cols = [col for col in required_proton_cols if not df_added.HasColumn(col)]
+        if missing_proton_cols:
+            raise RuntimeError(f"Input tree is missing proton branches: {missing_proton_cols}")
+        if not (df_added.HasColumn("xi_arm1_1") and df_added.HasColumn("xi_arm2_1")):
+            raise RuntimeError("Input tree is missing proton arm branches 'xi_arm1_1' and/or 'xi_arm2_1'")
+
         # Apply event selection with lumi filtering
         df_filtered = (
             # df.Filter("lumi_filter(run, luminosityBlock)", "Certified lumi")
@@ -121,6 +129,7 @@ for file_idx, idx in enumerate(indices):
               .Filter("mu_charge * tau_charge > 0", "Same sign")
               .Filter("delta_r>0.4", "Delta R accepance")
               .Filter("fabs(tau_eta)<2.4 && fabs(mu_eta)<2.4","Geometrical acceptance")
+              .Filter("xi_arm1_1 >= 0 && xi_arm2_1 >= 0", "At least one reconstructed proton per PPS arm")
         )
 
         # Define derived variables

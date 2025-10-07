@@ -23,7 +23,7 @@ output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data/Data_2018_UL
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase1_qcd_resume.json"
 overwrite     = True
-prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_new/"
+prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_with_proton_vars/"
 
 print("Processing Data - phase1\n")
 print(f"Output directory: {os.path.dirname(output_prefix)}")
@@ -68,6 +68,10 @@ columns = [
     "mu_n", "tau_n", "mu_phi", "tau_phi", "mu_mass", "tau_mass",
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
+    "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
+    "xi_arm1_1", "xi_arm1_2", "xi_arm2_1", "xi_arm2_2",
+    "n_protons_arm0", "n_protons_arm1",
+    "pps_has_arm0", "pps_has_arm1", "pps_has_both_arms",
     "weight", "n_b_jet"
 ]
 
@@ -107,6 +111,16 @@ for file_idx, idx in enumerate(indices):
 
         )
 
+        required_proton_cols = [
+            "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
+            "xi_arm1_1", "xi_arm1_2", "xi_arm2_1", "xi_arm2_2",
+            "n_protons_arm0", "n_protons_arm1",
+            "pps_has_arm0", "pps_has_arm1", "pps_has_both_arms",
+        ]
+        missing_proton_cols = [col for col in required_proton_cols if not df_added.HasColumn(col)]
+        if missing_proton_cols:
+            raise RuntimeError(f"Input tree is missing proton branches: {missing_proton_cols}")
+
         # Apply event selection with lumi filtering
         df_filtered = (
             # df.Filter("lumi_filter(run, luminosityBlock)", "Certified lumi")
@@ -121,6 +135,7 @@ for file_idx, idx in enumerate(indices):
               .Filter("mu_charge * tau_charge < 0", "Opposite sign")
               .Filter("delta_r>0.4", "Delta R accepance")
               .Filter("fabs(tau_eta)<2.4 && fabs(mu_eta)<2.4","Geometrical acceptance")
+              .Filter("pps_has_both_arms == 1", "At least one reconstructed proton per PPS arm")
         )
 
         # Define derived variables

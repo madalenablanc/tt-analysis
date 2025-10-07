@@ -90,6 +90,36 @@ cpp_lumi += [
 ]
 ROOT.gInterpreter.Declare("\n".join(cpp_lumi))
 
+# Proton per-arm helpers (first/second xi and counts per arm)
+ROOT.gInterpreter.Declare("""
+#include <cstddef>
+template <typename XiVec, typename ArmVec>
+double proton_first_xi(const XiVec &xi, const ArmVec &arm, int targetArm, int occurrence) {
+    int seen = 0;
+    const auto n = arm.size();
+    for (std::size_t i = 0; i < n; ++i) {
+        if (arm[i] == targetArm) {
+            if (seen == occurrence) {
+                return static_cast<double>(xi[i]);
+            }
+            ++seen;
+        }
+    }
+    return -999.;
+}
+
+template <typename ArmVec>
+int proton_count_arm(const ArmVec &arm, int targetArm) {
+    int count = 0;
+    for (const auto &value : arm) {
+        if (value == targetArm) {
+            ++count;
+        }
+    }
+    return count;
+}
+""")
+
 # ---------- Read input list ----------
 with open(input_list) as f:
     lines = [ln.strip() for ln in f if ln.strip()]
@@ -109,6 +139,9 @@ columns = [
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
     "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
+    "xi_arm1_1", "xi_arm1_2", "xi_arm2_1", "xi_arm2_2",
+    "n_protons_arm0", "n_protons_arm1",
+    "pps_has_arm0", "pps_has_arm1", "pps_has_both_arms",
     "weight", "n_b_jet"
 ]
 
@@ -201,6 +234,15 @@ for file_idx, idx in enumerate(indices):
             .Define("proton_thx", "proton_available ? Proton_multiRP_thetaX[0] : -999.")
             .Define("proton_thy", "proton_available ? Proton_multiRP_thetaY[0] : -999.")
             .Define("n_pu", "double(Proton_multiRP_xi.size())")
+            .Define("xi_arm1_1", "proton_first_xi(Proton_multiRP_xi, Proton_multiRP_arm, 0, 0)")
+            .Define("xi_arm1_2", "proton_first_xi(Proton_multiRP_xi, Proton_multiRP_arm, 0, 1)")
+            .Define("xi_arm2_1", "proton_first_xi(Proton_multiRP_xi, Proton_multiRP_arm, 1, 0)")
+            .Define("xi_arm2_2", "proton_first_xi(Proton_multiRP_xi, Proton_multiRP_arm, 1, 1)")
+            .Define("n_protons_arm0", "proton_count_arm(Proton_multiRP_arm, 0)")
+            .Define("n_protons_arm1", "proton_count_arm(Proton_multiRP_arm, 1)")
+            .Define("pps_has_arm0", "int(n_protons_arm0 > 0)")
+            .Define("pps_has_arm1", "int(n_protons_arm1 > 0)")
+            .Define("pps_has_both_arms", "int(n_protons_arm0 > 0 && n_protons_arm1 > 0)")
 
             # Data weights (no generator info)
             .Define("weight", "1.0")
