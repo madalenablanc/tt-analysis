@@ -133,7 +133,7 @@ for file_idx, idx in enumerate(indices):
               .Filter("tau_id3  > 1",  "Tau VSmu")
               .Filter("mu_pt > 35. && tau_pt > 100.", "pT thresholds")
               .Filter("mu_charge * tau_charge < 0", "Opposite sign")
-              .Filter("delta_r>0.4", "Delta R accepance")
+              .Filter("delta_r>0.4", "Delta R acceptance")
               .Filter("fabs(tau_eta)<2.4 && fabs(mu_eta)<2.4","Geometrical acceptance")
               .Filter("pps_has_both_arms == 1", "At least one reconstructed proton per PPS arm")
         )

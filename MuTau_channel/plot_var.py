@@ -1,9 +1,9 @@
 import ROOT
 
 # --- User Configurable ---
-input_file = "/eos/user/m/mblancco/tau_analysis/MuTau_channel/MuTau_sinal_SM_2018_july.root"    # Change to your file
+input_file = "/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root"    # Change to your file
 tree_name = "tree"                # TTree name
-variable = "xi_arm2_1"                # Variable to plot
+variable = "xi_arm1_1"                # Variable to plot
 bins = 50                         # Number of bins
 x_min = 0                         # X-axis min
 x_max = 0.2                     # X-axis max

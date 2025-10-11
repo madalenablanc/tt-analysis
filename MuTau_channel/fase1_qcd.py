@@ -23,7 +23,7 @@ output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_qcd/QCD_2018_UL_s
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase1_qcd_resume.json"
 overwrite     = True
-prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_new/"
+prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_with_proton_vars/"
 
 print("Processing QCD - phase1\n")
 print(f"Output directory: {os.path.dirname(output_prefix)}")
@@ -69,6 +69,9 @@ columns = [
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
     "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
+    "xi_arm1_1", "xi_arm1_2", "xi_arm2_1", "xi_arm2_2",
+    "n_protons_arm0", "n_protons_arm1",
+    "pps_has_arm0", "pps_has_arm1", "pps_has_both_arms",
     "weight", "n_b_jet"
 ]
 
@@ -108,7 +111,12 @@ for file_idx, idx in enumerate(indices):
 
         )
 
-        required_proton_cols = ["proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu"]
+        required_proton_cols = [
+            "proton_xi", "proton_arm", "proton_thx", "proton_thy", "n_pu",
+            "xi_arm1_1", "xi_arm1_2", "xi_arm2_1", "xi_arm2_2",
+            "n_protons_arm0", "n_protons_arm1",
+            "pps_has_arm0", "pps_has_arm1", "pps_has_both_arms",
+        ]
         missing_proton_cols = [col for col in required_proton_cols if not df_added.HasColumn(col)]
         if missing_proton_cols:
             raise RuntimeError(f"Input tree is missing proton branches: {missing_proton_cols}")
