@@ -1,0 +1,15 @@
+Collecting scikit-learn
+  Downloading scikit_learn-1.6.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (18 kB)
+Requirement already satisfied: numpy>=1.19.5 in /eos/home-m/mblancco/python_venv/bdt_mutau/lib/python3.9/site-packages (from scikit-learn) (2.0.2)
+Requirement already satisfied: scipy>=1.6.0 in /eos/home-m/mblancco/python_venv/bdt_mutau/lib/python3.9/site-packages (from scikit-learn) (1.13.1)
+Collecting joblib>=1.2.0 (from scikit-learn)
+  Downloading joblib-1.5.2-py3-none-any.whl.metadata (5.6 kB)
+Collecting threadpoolctl>=3.1.0 (from scikit-learn)
+  Downloading threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Downloading scikit_learn-1.6.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.5/13.5 MB 2.2 MB/s  0:00:06
+Downloading joblib-1.5.2-py3-none-any.whl (308 kB)
+Downloading threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Installing collected packages: threadpoolctl, joblib, scikit-learn
+
+Successfully installed joblib-1.5.2 scikit-learn-1.6.1 threadpoolctl-3.6.0

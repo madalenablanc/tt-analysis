@@ -92,13 +92,14 @@ for line in f:
     vars.append(line.strip().split(","))
 
 
-sample="QCD"
+sample="background"
 filename_with_pileup="/eos/user/m/mblancco/samples_2018_mutau/"+sample+"_2018_UL_MuTau_nano_merged_pileup_protons.root"
 filename_no_pileup="/eos/user/m/mblancco/samples_2018_mutau/"+sample+"_2018_UL_MuTau_nano_merged_proton_vars.root"
 
 filename_2="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Fundo_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root"
 
 
+filename_background="/eos/home-m/mblancco/samples_2018_mutau/background_total-protons_syst.root"
 # if len(sys.argv)!=4:
 #     raise Exception("Number of arguments is incorrect")
 # pileup=False
@@ -112,7 +113,7 @@ filename_2="/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSampl
 
 
 # create_hist(filename_with_pileup,vars,"/eos/user/m/mblancco/tau_analysis/plots/mutau/",pileup=True,sample_type=sample+"-with-pileup")
-create_hist(filename_no_pileup,vars,"/eos/user/m/mblancco/tau_analysis/plots/mutau/",pileup=False,sample_type=sample+": ")
+create_hist(filename_background,vars,"/eos/user/m/mblancco/tau_analysis/plots/mutau/",pileup=False,sample_type=sample+": ")
 
 # # Create histograms
 # hist_tau0_pt = ROOT.TH1F("tau0_pt", "Tau+ pT; pT [GeV]; Events", 80, 0, 600)

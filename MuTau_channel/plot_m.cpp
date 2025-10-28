@@ -24,17 +24,16 @@ int main(){
 
 	string luminosity;
 // samples for DY  region
-          //TFile data("/eos/user/m/mpisano/samples_2018_emu/fase1/Dados_fase1_PICskimmed_EMu_2018_total.root");
+          TFile data("/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root");
           TFile dy("/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root");
           TFile ttjets("/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root");
-          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pileup_protons.root");
+          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_proton_vars.root");
 
 	TFile sinal("MuTau_sinal_SM_2018_july.root");
 
 
 	TFile output("DY_CR_e_mu_UL_2018_shapes.root","RECREATE","");
 
-        //double w_data=1.;
         double w_qcd=1.;
         double w_ttjets=0.15;
         double w_dy=1.81;
@@ -99,28 +98,28 @@ int main(){
 	l_tau->SetBorderSize(0);
 	l_met->SetBorderSize(0);
 
-        //TH1D aco_data("aco_data","aco_data",bin_aco, min_aco, max_aco);
+        TH1D aco_data("aco_data","aco_data",bin_aco, min_aco, max_aco);
         TH1D aco_qcd("aco_qcd","aco_qcd",bin_aco, min_aco, max_aco);
         TH1D aco_dy("aco_dy","aco_dy",bin_aco, min_aco, max_aco);
         TH1D aco_ttjets("aco_ttjets","aco_ttjets",bin_aco, min_aco, max_aco);
         TH1D sum_aco("sum_aco_ttjets","sum_aco_ttjets",bin_aco, min_aco, max_aco);
 	TH1D aco_sinal("aco_sinal","aco_sinal",bin_aco, min_aco, max_aco);
 
-        //TH1D m_data("m_data","m_data",bin_m, min_m, max_m);
+        TH1D m_data("m_data","m_data",bin_m, min_m, max_m);
         TH1D m_qcd("m_qcd","m_qcd",bin_m, min_m, max_m);
         TH1D m_dy("m_dy","m_dy",bin_m, min_m, max_m);
         TH1D m_ttjets("m_ttjets","m_ttjets",bin_m, min_m, max_m);
         TH1D sum_m("sum_m_ttjets","sum_m_ttjets",bin_m, min_m, max_m);
 	TH1D m_sinal("m_sinal","m_sinal",bin_m, min_m, max_m);
 
-        //TH1D r_data("r_data","r_data",bin_r, min_r, max_r);
+        TH1D r_data("r_data","r_data",bin_r, min_r, max_r);
         TH1D r_qcd("r_qcd","r_qcd",bin_r, min_r, max_r);
         TH1D r_dy("r_dy","r_dy",bin_r, min_r, max_r);
         TH1D r_ttjets("r_ttjets","r_ttjets",bin_r, min_r, max_r);
         TH1D sum_r("sum_r_ttjets","sum_r_ttjets",bin_r, min_r, max_r);
 	TH1D r_sinal("r_sinal","r_sinal",bin_r, min_r, max_r);
 
-	//TH1D pt_data("pt_data","pt_data",bin_pt, min_pt, max_pt);
+	TH1D pt_data("pt_data","pt_data",bin_pt, min_pt, max_pt);
         TH1D pt_qcd("pt_qcd","pt_qcd",bin_pt, min_pt, max_pt);
         TH1D pt_dy("pt_dy","pt_dy",bin_pt, min_pt, max_pt);
         TH1D pt_ttjets("pt_ttjets","pt_ttjets",bin_pt, min_pt, max_pt);
@@ -128,28 +127,28 @@ int main(){
 	TH1D pt_sinal("pt_sinal","pt_sinal",bin_pt, min_pt, max_pt);
 
 
-	//TH1D mm_data("mm_data","mm_data",bin_mm, min_mm, max_mm);
+	TH1D mm_data("mm_data","mm_data",bin_mm, min_mm, max_mm);
         TH1D mm_qcd("mm_qcd","mm_qcd",bin_mm, min_mm, max_mm);
         TH1D mm_dy("mm_dy","mm_dy",bin_mm, min_mm, max_mm);
         TH1D mm_ttjets("mm_ttjets","mm_ttjets",bin_mm, min_mm, max_mm);
         TH1D sum_mm("sum_mm_ttjets","sum_mm_ttjets",bin_mm, min_mm, max_mm);
         TH1D mm_sinal("mm_sinal","mm_sinal",bin_mm, min_mm, max_mm);
 
-	//TH1D ra_data("ra_data","ra_data",bin_ra, min_ra, max_ra);
+	TH1D ra_data("ra_data","ra_data",bin_ra, min_ra, max_ra);
         TH1D ra_qcd("ra_qcd","ra_qcd",bin_ra, min_ra, max_ra);
         TH1D ra_dy("ra_dy","ra_dy",bin_ra, min_ra, max_ra);
         TH1D ra_ttjets("ra_ttjets","ra_ttjets",bin_ra, min_ra, max_ra);
         TH1D sum_ra("sum_ra_ttjets","sum_ra_ttjets",bin_ra, min_ra, max_ra);
         TH1D ra_sinal("ra_sinal","ra_sinal",bin_ra, min_ra, max_ra);
 
-	//TH1D tau_data("tau_data","tau_data",bin_tau, min_tau, max_tau);
+	TH1D tau_data("tau_data","tau_data",bin_tau, min_tau, max_tau);
         TH1D tau_qcd("tau_qcd","tau_qcd",bin_tau, min_tau, max_tau);
         TH1D tau_dy("tau_dy","tau_dy",bin_tau, min_tau, max_tau);
         TH1D tau_ttjets("tau_ttjets","tau_ttjets",bin_tau, min_tau, max_tau);
         TH1D sum_tau("sum_tau_ttjets","sum_tau_ttjets",bin_tau, min_tau, max_tau);
         TH1D tau_sinal("tau_sinal","tau_sinal",bin_tau, min_tau, max_tau);
 
-	//TH1D met_data("met_data","met_data",bin_met, min_met, max_met);
+	TH1D met_data("met_data","met_data",bin_met, min_met, max_met);
         TH1D met_qcd("met_qcd","met_qcd",bin_met, min_met, max_met);
         TH1D met_dy("met_dy","met_dy",bin_met, min_met, max_met);
         TH1D met_ttjets("met_ttjets","met_ttjets",bin_met, min_met, max_met);
@@ -157,35 +156,35 @@ int main(){
         TH1D met_sinal("met_sinal","met_sinal",bin_met, min_met, max_met);
 
 
-        //TH1D aco_fraction("aco_fraction","aco_fraction", bin_aco, min_aco, max_aco);
-        //TH1D m_fraction("m_fraction","m_fraction", bin_m, min_m, max_m);
-        //TH1D r_fraction("r_fraction","r_fraction", bin_r, min_r, max_r);
-	//TH1D pt_fraction("pt_fraction","pt_fraction", bin_pt, min_pt, max_pt);
+        TH1D aco_fraction("aco_fraction","aco_fraction", bin_aco, min_aco, max_aco);
+        TH1D m_fraction("m_fraction","m_fraction", bin_m, min_m, max_m);
+        TH1D r_fraction("r_fraction","r_fraction", bin_r, min_r, max_r);
+	TH1D pt_fraction("pt_fraction","pt_fraction", bin_pt, min_pt, max_pt);
 
-        //TTree* tree_data=(TTree*) data.Get("tree");
+        TTree* tree_data=(TTree*) data.Get("tree");
         TTree* tree_dy = (TTree*) dy.Get("tree");
         TTree* tree_qcd= (TTree*) qcd.Get("tree");
         TTree* tree_ttjets= (TTree*) ttjets.Get("tree");
 	TTree* tree_sinal= (TTree*) sinal.Get("tree");
 
-        //int n_evt_data=tree_data->GetEntries();
+        int n_evt_data=tree_data->GetEntries();
         int n_evt_dy=tree_dy->GetEntries();
         int n_evt_qcd=tree_qcd->GetEntries();
         int n_evt_ttjets=tree_ttjets->GetEntries();
 	int n_evt_sinal = tree_sinal->GetEntries();
 
-        //cout<<tree_dy->GetEntries() <<endl;
+        cout<<tree_dy->GetEntries() <<endl;
 
-        //for(int i=0; i<n_evt_data; i++){
-        //        int o=tree_data->GetEvent(i);
-		//if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("sist_acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
-		//w_data = tree_data->GetLeaf("weight")->GetValue(0);
-	        //aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0),w_data);
-                //m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
-                //r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
-		//pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
-        //}
-        //}
+        for(int i=0; i<n_evt_data; i++){
+               int o=tree_data->GetEvent(i);
+		if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("sist_acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
+		double w_data = tree_data->GetLeaf("weight")->GetValue(0);
+	        aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0),w_data);
+                m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
+                r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
+		pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
+        }
+        }
        
         double n_qcd=0;
         for(int i=0; i<n_evt_qcd; i++){
@@ -320,10 +319,10 @@ int main(){
 	tau_sinal.SetLineColor(kBlack);
 	met_sinal.SetLineColor(kBlack);
 
-        //aco_fraction=aco_data;
-        //m_fraction=m_data;
-        //r_fraction=r_data;
-	//pt_fraction=pt_data;
+        aco_fraction=aco_data;
+        m_fraction=m_data;
+        r_fraction=r_data;
+	pt_fraction=pt_data;
 
         sum_aco=aco_dy;
         sum_aco.Add(&aco_qcd);
@@ -361,54 +360,44 @@ int main(){
         aco->Add(&aco_qcd);
         aco->Add(&aco_dy);
 
-        //aco_fraction.Divide(&sum_aco);
+        aco_fraction.Divide(&sum_aco);
 
         m->Add(&m_ttjets);
         m->Add(&m_qcd);
         m->Add(&m_dy);
 
-        //m_fraction.Divide(&sum_m);
+        m_fraction.Divide(&sum_m);
 
 	r->Add(&r_ttjets);
         r->Add(&r_qcd);
         r->Add(&r_dy);
 
-        //r_fraction.Divide(&sum_r);
+        r_fraction.Divide(&sum_r);
 
 	pt->Add(&pt_ttjets);
         pt->Add(&pt_qcd);
         pt->Add(&pt_dy);
 
-        //pt_fraction.Divide(&sum_pt);
-
 	mm->Add(&mm_ttjets);
         mm->Add(&mm_qcd);
         mm->Add(&mm_dy);
-
-        //pt_fraction.Divide(&sum_pt);
 
 	ra->Add(&ra_ttjets);
         ra->Add(&ra_qcd);
         ra->Add(&ra_dy);
 
-        //ra_fraction.Divide(&sum_ra);
-
 	met->Add(&met_ttjets);
         met->Add(&met_qcd);
         met->Add(&met_dy);
-
-        //met_fraction.Divide(&sum_met);
 
 	tau->Add(&tau_ttjets);
         tau->Add(&tau_qcd);
         tau->Add(&tau_dy);
 
-        //tau_fraction.Divide(&sum_tau);
-
 	aco_dy.Write();
-	//aco_qcd.Write();
+	aco_qcd.Write();
 	aco_ttjets.Write();
-	//aco_data.Write();
+	aco_data.Write();
 	output.Close();
 
         TF1 f1 ("f1","1",0,1);
@@ -417,7 +406,7 @@ int main(){
 	c1.SetCanvasSize(700,800);
 	gPad->SetPad(0.1, 0.1, 1.0, 1.0);
 	gPad->Draw();
-	//l_aco->AddEntry(&aco_data, "Data (2018)", "lep");
+	l_aco->AddEntry(&aco_data, "Data (2018)", "lep");
         l_aco->AddEntry(&aco_ttjets, "t \\bar{t}", "f");
         l_aco->AddEntry(&aco_dy, "Drell Yan", "f");
         l_aco->AddEntry(&aco_qcd, "QCD (Data driven)", "f");
@@ -427,10 +416,10 @@ int main(){
 	aco_sinal.SetLineWidth(3);
         aco->GetXaxis()->SetTitle("Acoplanarity of the central system");
 	aco->GetYaxis()->SetTitle("Events");
-        //aco_data.Draw("same && E");
-	//aco_data.SetLineColor(kBlack);
-	//aco_data.SetLineWidth(2);
-        //gPad->SetLogy();
+        aco_data.Draw("same && E");
+	aco_data.SetLineColor(kBlack);
+	aco_data.SetLineWidth(2);
+        gPad->SetLogy();
         l_aco->Draw();
 	aco->GetXaxis()->SetNdivisions(5);
   	aco->GetYaxis()->SetNdivisions(5);
@@ -442,7 +431,7 @@ int main(){
   	aco->GetYaxis()->SetLabelOffset(0.01);
   	aco->GetXaxis()->SetTitleOffset(1.);
 	aco->GetYaxis()->SetRangeUser(0.1,200);
-	//aco_data.SetMarkerStyle(20);
+	aco_data.SetMarkerStyle(20);
 
 	TLatex cmsLabel;
 	cmsLabel.SetTextAlign(31);
@@ -468,7 +457,7 @@ int main(){
 	c2.SetCanvasSize(700,800);
         gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();             // Draw the upper pad: pad1
-	//l_m->AddEntry(&m_data, "Data (2018)", "lep");
+	l_m->AddEntry(&m_data, "Data (2018)", "lep");
         l_m->AddEntry(&m_ttjets, "t \\bar{t}", "f");
         l_m->AddEntry(&m_dy, "Drell Yan", "f");
         l_m->AddEntry(&m_qcd, "QCD (Data driven)", "f");
@@ -478,10 +467,10 @@ int main(){
 	m->GetYaxis()->SetTitle("Events");
         m_sinal.Draw("same && histo");
 	m_sinal.SetLineWidth(3);
-        //m_data.Draw("same && E");
-	//m_data.SetLineColor(kBlack);
-        //m_data.SetLineWidth(2);
-        //gPad->SetLogy();
+        m_data.Draw("same && E");
+	m_data.SetLineColor(kBlack);
+        m_data.SetLineWidth(2);
+        gPad->SetLogy();
         l_m->Draw();
 	m->GetXaxis()->SetNdivisions(5);
         m->GetYaxis()->SetNdivisions(5);
@@ -493,7 +482,7 @@ int main(){
         m->GetYaxis()->SetLabelOffset(0.01);
         m->GetXaxis()->SetTitleOffset(1.);
         m->GetYaxis()->SetRangeUser(0.1,200);
-        //m_data.SetMarkerStyle(20);
+        m_data.SetMarkerStyle(20);
 
         TLatex cmsLabel2;
         cmsLabel2.SetTextAlign(31);
@@ -513,9 +502,9 @@ int main(){
 	TCanvas c3;
 	c3.SetCanvasSize(700,800);
 	gPad->SetPad(0.1, 0.1, 1.0, 1.0);
-        //gPad->Draw();             // Draw the upper pad: pad1
+        gPad->Draw();             // Draw the upper pad: pad1
         gPad->Draw();
-	//l_r->AddEntry(&r_data, "Data (2018)", "lep");
+	l_r->AddEntry(&r_data, "Data (2018)", "lep");
         l_r->AddEntry(&r_ttjets, "t \\bar{t}", "f");
         l_r->AddEntry(&r_dy, "Drell Yan", "f");
         l_r->AddEntry(&r_qcd, "QCD (Data driven)", "f");
@@ -536,11 +525,11 @@ int main(){
         r->GetYaxis()->SetLabelOffset(0.01);
         r->GetXaxis()->SetTitleOffset(1.);
         r->GetYaxis()->SetRangeUser(0.1,200);
-        //r_data.SetMarkerStyle(20);
-        //gPad->SetLogy();
-	//r_data.SetLineColor(kBlack);
-        //r_data.SetLineWidth(2);
-	//r_data.Draw("same && E");
+        r_data.SetMarkerStyle(20);
+        gPad->SetLogy();
+	r_data.SetLineColor(kBlack);
+        r_data.SetLineWidth(2);
+	r_data.Draw("same && E");
 
 	TLatex cmsLabel4;
         cmsLabel4.SetTextAlign(31);
@@ -561,7 +550,7 @@ int main(){
 	c4.SetCanvasSize(700,800);
 	gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-	//l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+	l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_pt->AddEntry(&pt_ttjets, "t \\bar{t}", "f");
         l_pt->AddEntry(&pt_dy, "Drell Yan", "f");
         l_pt->AddEntry(&pt_qcd, "QCD (Data driven)", "f");
@@ -581,11 +570,11 @@ int main(){
         pt->GetXaxis()->SetLabelOffset(0.01);
         pt->GetYaxis()->SetLabelOffset(0.01);
         pt->GetXaxis()->SetTitleOffset(1.);
-        //pt_data.Draw("same && E");
-	//pt_data.SetLineColor(kBlack);
-        //pt_data.SetLineWidth(2);
-	//pt_data.SetMarkerStyle(20);
-        //gPad->SetLogy();
+        pt_data.Draw("same && E");
+	pt_data.SetLineColor(kBlack);
+        pt_data.SetLineWidth(2);
+	pt_data.SetMarkerStyle(20);
+        gPad->SetLogy();
 	TLatex cmsLabel6;
         cmsLabel6.SetTextAlign(31);
         cmsLabel6.SetTextSize(0.04);
@@ -604,7 +593,7 @@ int main(){
         c5.SetCanvasSize(700,800);
         gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_mm->AddEntry(&mm_ttjets, "t \\bar{t}", "f");
         l_mm->AddEntry(&mm_dy, "Drell Yan", "f");
         l_mm->AddEntry(&mm_qcd, "QCD (Data driven)", "f");
@@ -624,11 +613,11 @@ int main(){
         mm->GetXaxis()->SetLabelOffset(0.01);
         mm->GetYaxis()->SetLabelOffset(0.01);
         mm->GetXaxis()->SetTitleOffset(1.);
-        //pt_data.Draw("same && E");
-        //pt_data.SetLineColor(kBlack);
-        //pt_data.SetLineWidth(2);
-        //pt_data.SetMarkerStyle(20);
-        //gPad->SetLogy();
+        pt_data.Draw("same && E");
+        pt_data.SetLineColor(kBlack);
+        pt_data.SetLineWidth(2);
+        pt_data.SetMarkerStyle(20);
+        gPad->SetLogy();
         TLatex cmsLabel8;
         cmsLabel8.SetTextAlign(31);
         cmsLabel8.SetTextSize(0.04);
@@ -647,7 +636,7 @@ int main(){
         c6.SetCanvasSize(700,800);
         gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_ra->AddEntry(&ra_ttjets, "t \\bar{t}", "f");
         l_ra->AddEntry(&ra_dy, "Drell Yan", "f");
         l_ra->AddEntry(&ra_qcd, "QCD (Data driven)", "f");
@@ -666,11 +655,11 @@ int main(){
         ra->GetXaxis()->SetLabelOffset(0.01);
         ra->GetYaxis()->SetLabelOffset(0.01);
         ra->GetXaxis()->SetTitleOffset(1.);
-        //pt_data.Draw("same && E");
-        //pt_data.SetLineColor(kBlack);
-        //pt_data.SetLineWidth(2);
-        //pt_data.SetMarkerStyle(20);
-        //gPad->SetLogy();
+        pt_data.Draw("same && E");
+        pt_data.SetLineColor(kBlack);
+        pt_data.SetLineWidth(2);
+        pt_data.SetMarkerStyle(20);
+        gPad->SetLogy();
         l_ra->Draw();
         TLatex cmsLabel10;
         cmsLabel10.SetTextAlign(31);
@@ -690,7 +679,7 @@ int main(){
         c7.SetCanvasSize(700,800);
         gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_tau->AddEntry(&tau_ttjets, "t \\bar{t}", "f");
         l_tau->AddEntry(&tau_dy, "Drell Yan", "f");
         l_tau->AddEntry(&tau_qcd, "QCD (Data driven)", "f");
@@ -709,11 +698,11 @@ int main(){
         tau->GetXaxis()->SetLabelOffset(0.01);
         tau->GetYaxis()->SetLabelOffset(0.01);
         tau->GetXaxis()->SetTitleOffset(1.);
-        //pt_data.Draw("same && E");
-        //pt_data.SetLineColor(kBlack);
-        //pt_data.SetLineWidth(2);
-        //pt_data.SetMarkerStyle(20);
-        //gPad->SetLogy();
+        pt_data.Draw("same && E");
+        pt_data.SetLineColor(kBlack);
+        pt_data.SetLineWidth(2);
+        pt_data.SetMarkerStyle(20);
+        gPad->SetLogy();
         l_tau->Draw();
        	TLatex cmsLabel12;
         cmsLabel12.SetTextAlign(31);
@@ -733,7 +722,7 @@ int main(){
         c8.SetCanvasSize(700,800);
         gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_met->AddEntry(&met_ttjets, "t \\bar{t}", "f");
         l_met->AddEntry(&met_dy, "Drell Yan", "f");
         l_met->AddEntry(&met_qcd, "QCD (Data driven)", "f");
@@ -752,11 +741,11 @@ int main(){
         met->GetXaxis()->SetLabelOffset(0.01);
         met->GetYaxis()->SetLabelOffset(0.01);
         met->GetXaxis()->SetTitleOffset(1.);
-        //pt_data.Draw("same && E");
-        //pt_data.SetLineColor(kBlack);
-        //pt_data.SetLineWidth(2);
-        //pt_data.SetMarkerStyle(20);
-        //gPad->SetLogy();
+        pt_data.Draw("same && E");
+        pt_data.SetLineColor(kBlack);
+        pt_data.SetLineWidth(2);
+        pt_data.SetMarkerStyle(20);
+        gPad->SetLogy();
         l_met->Draw();
        	TLatex cmsLabel14;
         cmsLabel14.SetTextAlign(31);
@@ -773,10 +762,12 @@ int main(){
         c8.Update();
 
 
-        app.Run("true");
+        bool interactive = false;
+
+        if (interactive) {
+        app.Run(true);
+        }
 
         return 0;
 
 }
-
-

@@ -386,7 +386,7 @@ def main():
         if len(e_charge) == 0 or len(tau_charge) == 0:
             continue
 
-        weight_sample = 54900.0 * weight_sm[0] / (4000.0 * 1000.0)
+        weight_sample = 54900.0 * weight_sm[0] / (4000.0 * 10.0)
 
         phi_e = e_phi[0]
         phi_tau = tau_phi[0]

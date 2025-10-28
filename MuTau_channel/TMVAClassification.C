@@ -252,7 +252,7 @@ int TMVAClassification( TString myMethodList = "" )
    TFile *inputSIGN(0);
 
 
-   TString fnameBKG = "background_total-protons_syst.root";
+   TString fnameBKG = "/eos/home-m/mblancco/samples_2018_mutau/background_total-protons_syst.root";
 
    TString fnameSIGN = "../MuTau_sinal_SM_2018_july.root";
 

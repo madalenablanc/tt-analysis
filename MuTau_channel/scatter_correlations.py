@@ -15,7 +15,7 @@ from typing import Iterable, List, Tuple
 import numpy as np
 import ROOT
 
-# Friendly defaults – tweak or override with --pairs-file as needed.
+
 DEFAULT_PAIRS: List[Tuple[str, str]] = [
     ("sist_mass", "mu_pt"),
     ("sist_mass", "tau_pt"),
