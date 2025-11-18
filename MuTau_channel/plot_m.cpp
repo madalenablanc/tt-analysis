@@ -176,10 +176,13 @@ int main(){
         cout<<tree_dy->GetEntries() <<endl;
 
         for(int i=0; i<n_evt_data; i++){
+                cout<<"Processing Data"<<endl; 
+                cout<<"get event"<<endl; 
                int o=tree_data->GetEvent(i);
-		if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("sist_acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
+               cout<<"get event"<<endl; 
+		if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
 		double w_data = tree_data->GetLeaf("weight")->GetValue(0);
-	        aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0),w_data);
+	        aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0),w_data);
                 m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
                 r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
 		pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
@@ -188,12 +191,14 @@ int main(){
        
         double n_qcd=0;
         for(int i=0; i<n_evt_qcd; i++){
+                cout<<"Processing QCD"<<endl;
                 int o=tree_qcd->GetEvent(i);
 		if(tree_qcd->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		//NAO ATIVAR//w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
                 n_qcd = n_qcd + w_qcd;
-                aco_qcd.Fill(tree_qcd->GetLeaf("sist_acop")->GetValue(0),w_qcd);
+                aco_qcd.Fill(tree_qcd->GetLeaf("acop")->GetValue(0),w_qcd);
                 m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0),w_qcd);
+                
                 r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)/tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
 		pt_qcd.Fill(tree_qcd->GetLeaf("sist_pt")->GetValue(0),w_qcd);
 		mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)*tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
@@ -229,7 +234,7 @@ int main(){
 		if(tree_dy->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		w_dy = tree_dy->GetLeaf("weight")->GetValue(0);
                 n_dy = n_dy + w_dy;
-                aco_dy.Fill(tree_dy->GetLeaf("sist_acop")->GetValue(0),w_dy);
+                aco_dy.Fill(tree_dy->GetLeaf("acop")->GetValue(0),w_dy);
                 m_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0),w_dy);
 		r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)/tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
                 pt_dy.Fill(tree_dy->GetLeaf("sist_pt")->GetValue(0),w_dy);
@@ -265,7 +270,7 @@ int main(){
                 if(tree_ttjets->GetLeaf("sist_mass") ->GetValue(0)>=0){
 		w_ttjets = tree_ttjets->GetLeaf("weight")->GetValue(0);
                 n_tt=n_tt+w_ttjets;
-                aco_ttjets.Fill(tree_ttjets->GetLeaf("sist_acop")->GetValue(0),w_ttjets);
+                aco_ttjets.Fill(tree_ttjets->GetLeaf("acop")->GetValue(0),w_ttjets);
                 m_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0),w_ttjets);
 		r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)/tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
 		pt_ttjets.Fill(tree_ttjets->GetLeaf("sist_pt")->GetValue(0),w_ttjets);
@@ -300,7 +305,7 @@ int main(){
                 if(tree_sinal->GetLeaf("sist_mass") ->GetValue(0)>=0){
                 w_sinal = tree_sinal->GetLeaf("weight")->GetValue(0)*5000;
                 m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0),w_sinal);
-		aco_sinal.Fill(tree_sinal->GetLeaf("sist_acop")->GetValue(0),w_sinal);
+		aco_sinal.Fill(tree_sinal->GetLeaf("acop")->GetValue(0),w_sinal);
 		r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
 		pt_sinal.Fill(tree_sinal->GetLeaf("sist_pt")->GetValue(0),w_sinal);
 		mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)*tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
@@ -419,7 +424,7 @@ int main(){
         aco_data.Draw("same && E");
 	aco_data.SetLineColor(kBlack);
 	aco_data.SetLineWidth(2);
-        gPad->SetLogy();
+        // gPad->SetLogy();
         l_aco->Draw();
 	aco->GetXaxis()->SetNdivisions(5);
   	aco->GetYaxis()->SetNdivisions(5);
@@ -451,6 +456,9 @@ int main(){
 
 	c1.Update();
 
+        c1.Update();
+        c1.SaveAs("SR_plots/aco.png");
+
         TF1 f2 ("f2","1",-1100,1100);
 
         TCanvas c2;
@@ -470,7 +478,7 @@ int main(){
         m_data.Draw("same && E");
 	m_data.SetLineColor(kBlack);
         m_data.SetLineWidth(2);
-        gPad->SetLogy();
+        // gPad->SetLogy();
         l_m->Draw();
 	m->GetXaxis()->SetNdivisions(5);
         m->GetYaxis()->SetNdivisions(5);
@@ -498,6 +506,7 @@ int main(){
 
         c2.Update();
 
+        c2.SaveAs("SR_plots/m.png");
 
 	TCanvas c3;
 	c3.SetCanvasSize(700,800);
@@ -526,7 +535,7 @@ int main(){
         r->GetXaxis()->SetTitleOffset(1.);
         r->GetYaxis()->SetRangeUser(0.1,200);
         r_data.SetMarkerStyle(20);
-        gPad->SetLogy();
+        // gPad->SetLogy();
 	r_data.SetLineColor(kBlack);
         r_data.SetLineWidth(2);
 	r_data.Draw("same && E");
@@ -544,7 +553,7 @@ int main(){
         cmsLabel5.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c3.Update();
-
+        c3.SaveAs("SR_plots/rap.png");
 
 	TCanvas c4;
 	c4.SetCanvasSize(700,800);
@@ -574,7 +583,7 @@ int main(){
 	pt_data.SetLineColor(kBlack);
         pt_data.SetLineWidth(2);
 	pt_data.SetMarkerStyle(20);
-        gPad->SetLogy();
+        // gPad->SetLogy();
 	TLatex cmsLabel6;
         cmsLabel6.SetTextAlign(31);
         cmsLabel6.SetTextSize(0.04);
@@ -588,6 +597,7 @@ int main(){
         cmsLabel7.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c4.Update();
+        c4.SaveAs("SR_plots/pt.png");
 
 	TCanvas c5;
         c5.SetCanvasSize(700,800);
@@ -617,7 +627,7 @@ int main(){
         pt_data.SetLineColor(kBlack);
         pt_data.SetLineWidth(2);
         pt_data.SetMarkerStyle(20);
-        gPad->SetLogy();
+        // gPad->SetLogy();
         TLatex cmsLabel8;
         cmsLabel8.SetTextAlign(31);
         cmsLabel8.SetTextSize(0.04);
@@ -631,6 +641,7 @@ int main(){
         cmsLabel9.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c5.Update();
+        c5.SaveAs("SR_plots/pt.png");
 
 	TCanvas c6;
         c6.SetCanvasSize(700,800);
@@ -659,7 +670,7 @@ int main(){
         pt_data.SetLineColor(kBlack);
         pt_data.SetLineWidth(2);
         pt_data.SetMarkerStyle(20);
-        gPad->SetLogy();
+        // gPad->SetLogy();
         l_ra->Draw();
         TLatex cmsLabel10;
         cmsLabel10.SetTextAlign(31);
@@ -674,6 +685,7 @@ int main(){
         cmsLabel11.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c6.Update();
+        c6.SaveAs("SR_plots/rap_central.png");
 
 	TCanvas c7;
         c7.SetCanvasSize(700,800);
@@ -702,7 +714,7 @@ int main(){
         pt_data.SetLineColor(kBlack);
         pt_data.SetLineWidth(2);
         pt_data.SetMarkerStyle(20);
-        gPad->SetLogy();
+        // gPad->SetLogy();
         l_tau->Draw();
        	TLatex cmsLabel12;
         cmsLabel12.SetTextAlign(31);
@@ -717,6 +729,7 @@ int main(){
         cmsLabel13.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c7.Update();
+        c7.SaveAs("SR_plots/tau_pt.png");
 
 	TCanvas c8;
         c8.SetCanvasSize(700,800);
@@ -745,7 +758,7 @@ int main(){
         pt_data.SetLineColor(kBlack);
         pt_data.SetLineWidth(2);
         pt_data.SetMarkerStyle(20);
-        gPad->SetLogy();
+        // gPad->SetLogy();
         l_met->Draw();
        	TLatex cmsLabel14;
         cmsLabel14.SetTextAlign(31);
@@ -760,6 +773,7 @@ int main(){
         cmsLabel15.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c8.Update();
+        c8.SaveAs("SR_plots/muon_pt.png");
 
 
         bool interactive = false;

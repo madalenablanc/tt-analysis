@@ -1,0 +1,6 @@
+{
+  "auc_train": 0.5,
+  "auc_test": 0.5,
+  "n_trees": 0,
+  "feature_importance": {}
+}

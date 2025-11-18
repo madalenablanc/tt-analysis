@@ -1,0 +1,13 @@
+{
+  "features": [
+    "acop",
+    "sist_pt",
+    "sist_mass",
+    "sist_rap",
+    "met_pt",
+    "mu_pt",
+    "tau_pt",
+    "mass_matching",
+    "rap_matching"
+  ]
+}

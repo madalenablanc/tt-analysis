@@ -34,7 +34,7 @@ def load_data_uproot(file_path, tree_name='tree', max_events=None):
 
         # Define branches to read
         branches = [
-            'sist_acop', 'sist_pt', 'sist_mass', 'sist_rap',
+            'acop', 'sist_pt', 'sist_mass', 'sist_rap',
             'met_pt', 'mu_pt', 'tau_pt',
             'xi_arm1_1', 'xi_arm2_1', 'weight'
         ]
@@ -59,7 +59,7 @@ def load_data_root(file_path, tree_name='tree', max_events=None):
 
     # Read data into lists
     data = {
-        'sist_acop': [],
+        'acop': [],
         'sist_pt': [],
         'sist_mass': [],
         'sist_rap': [],
@@ -131,7 +131,7 @@ def prepare_data(signal_file, background_file, test_size=0.3, random_state=42):
 
     # Feature list (matching TMVA variables)
     features = [
-        'sist_acop',      # Central system acoplanarity
+        'acop',      # Central system acoplanarity
         'sist_pt',        # Total momentum
         'sist_mass',      # Invariant mass
         'sist_rap',       # System rapidity
@@ -330,7 +330,7 @@ def main():
 
     # Configuration
     SIGNAL_FILE = "MuTau_sinal_SM_2018_july.root"
-    BACKGROUND_FILE = "background_total-protons_syst.root"
+    BACKGROUND_FILE = "/eos/home-m/mblancco/samples_2018_mutau/background_total-protons_syst.root"
     OUTPUT_DIR = "bdt_output"
     MODEL_FILE = "bdt_model_mutau.json"
 

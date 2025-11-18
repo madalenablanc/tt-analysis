@@ -91,6 +91,7 @@ def draw_and_save(
     name,
     stack,
     signal_hist,
+    data_hist,
     legend,
     x_title,
     y_title,
@@ -106,6 +107,7 @@ def draw_and_save(
     pad.SetRightMargin(0.06)
     pad.SetTopMargin(0.16)
     pad.SetBottomMargin(0.14)
+    # pad.SetLogy()
     pad.Draw()
 
     stack.Draw("hist")
@@ -114,6 +116,9 @@ def draw_and_save(
     signal_hist.SetLineWidth(3)
     signal_hist.SetLineStyle(1)
     signal_hist.Draw("hist same")
+
+    # Draw data with error bars
+    data_hist.Draw("same E")
 
     legend.Draw()
     add_standard_labels()
@@ -250,7 +255,7 @@ def main():
     ]:
         hist.Sumw2()
 
-    w_qcd = 1.0
+    w_qcd = 2.0
     n_qcd = 0.0
     for event in tree_qcd:
         mass = get_value(event, "sist_mass", default=-1.0)
@@ -280,6 +285,7 @@ def main():
         mass = get_value(event, "sist_mass", default=-1.0)
         if mass < 0:
             continue
+        # w_dy=w_dy
         w_dy = get_value(event, "weight", default=1.81)
         n_dy += w_dy
         acop = get_value(event, "acop", "sist_acop")
@@ -305,6 +311,7 @@ def main():
         mass = get_value(event, "sist_mass", default=-1.0)
         if mass < 0:
             continue
+        # w_ttjets=w_ttjets
         w_ttjets = get_value(event, "weight", default=0.15)
         n_ttjets += w_ttjets
         acop = get_value(event, "acop", "sist_acop")
@@ -351,7 +358,7 @@ def main():
         mass = get_value(event, "sist_mass", default=-1.0)
         if mass < 0:
             continue
-        weight = get_value(event, "weight", default=1.0)
+        weight = 2.0#get_value(event, "weight", default=1.0)
         acop = get_value(event, "acop", "sist_acop")
         aco_data.Fill(acop, weight)
         m_data.Fill(mass, weight)
@@ -428,10 +435,10 @@ def main():
         tau_data,
         met_data,
     ]:
-        hist.SetFillColor(ROOT.kBlue)
-        hist.SetFillStyle(3544)  # Hatched pattern
-        hist.SetLineColor(ROOT.kBlue)
-        hist.SetLineWidth(1)
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(2)
+        hist.SetMarkerStyle(20)
+        hist.SetMarkerColor(ROOT.kBlack)
 
     sum_aco = aco_dy.Clone("sum_aco_ttjets")
     sum_aco.Add(aco_qcd)
@@ -469,104 +476,96 @@ def main():
     aco.Add(aco_ttjets)
     aco.Add(aco_qcd)
     aco.Add(aco_dy)
-    aco.Add(aco_data)
 
     m_stack = ROOT.THStack("m", "")
     m_stack.Add(m_ttjets)
     m_stack.Add(m_qcd)
     m_stack.Add(m_dy)
-    m_stack.Add(m_data)
 
     r_stack = ROOT.THStack("r", "")
     r_stack.Add(r_ttjets)
     r_stack.Add(r_qcd)
     r_stack.Add(r_dy)
-    r_stack.Add(r_data)
 
     pt_stack = ROOT.THStack("pt", "")
     pt_stack.Add(pt_ttjets)
     pt_stack.Add(pt_qcd)
     pt_stack.Add(pt_dy)
-    pt_stack.Add(pt_data)
 
     mm_stack = ROOT.THStack("mm", "")
     mm_stack.Add(mm_ttjets)
     mm_stack.Add(mm_qcd)
     mm_stack.Add(mm_dy)
-    mm_stack.Add(mm_data)
 
     ra_stack = ROOT.THStack("ra", "")
     ra_stack.Add(ra_ttjets)
     ra_stack.Add(ra_qcd)
     ra_stack.Add(ra_dy)
-    ra_stack.Add(ra_data)
 
     tau_stack = ROOT.THStack("tau", "")
     tau_stack.Add(tau_ttjets)
     tau_stack.Add(tau_qcd)
     tau_stack.Add(tau_dy)
-    tau_stack.Add(tau_data)
 
     met_stack = ROOT.THStack("met", "")
     met_stack.Add(met_ttjets)
     met_stack.Add(met_qcd)
     met_stack.Add(met_dy)
-    met_stack.Add(met_data)
 
     l_aco = create_legend()
+    l_aco.AddEntry(aco_data, "Data (2018)", "lep")
     l_aco.AddEntry(aco_ttjets, "t \\bar{t}", "f")
     l_aco.AddEntry(aco_dy, "Drell Yan", "f")
     l_aco.AddEntry(aco_qcd, "QCD (Data driven)", "f")
-    l_aco.AddEntry(aco_data, "Data", "f")
     l_aco.AddEntry(aco_sinal, "Signal (x5000)", "l")
 
     l_m = create_legend()
+    l_m.AddEntry(m_data, "Data (2018)", "lep")
     l_m.AddEntry(m_ttjets, "t \\bar{t}", "f")
     l_m.AddEntry(m_dy, "Drell Yan", "f")
     l_m.AddEntry(m_qcd, "QCD (Data driven)", "f")
-    l_m.AddEntry(m_data, "Data", "f")
     l_m.AddEntry(m_sinal, "Signal (x 5000)", "l")
 
     l_r = create_legend()
+    l_r.AddEntry(r_data, "Data (2018)", "lep")
     l_r.AddEntry(r_ttjets, "t \\bar{t}", "f")
     l_r.AddEntry(r_dy, "Drell Yan", "f")
     l_r.AddEntry(r_qcd, "QCD (Data driven)", "f")
-    l_r.AddEntry(r_data, "Data", "f")
     l_r.AddEntry(r_sinal, "Signal (x 5000)", "l")
 
     l_pt = create_legend()
+    l_pt.AddEntry(pt_data, "Data (2018)", "lep")
     l_pt.AddEntry(pt_ttjets, "t \\bar{t}", "f")
     l_pt.AddEntry(pt_dy, "Drell Yan", "f")
     l_pt.AddEntry(pt_qcd, "QCD (Data driven)", "f")
-    l_pt.AddEntry(pt_data, "Data", "f")
     l_pt.AddEntry(pt_sinal, "Signal (x 5000)", "l")
 
     l_mm = create_legend()
+    l_mm.AddEntry(mm_data, "Data (2018)", "lep")
     l_mm.AddEntry(mm_ttjets, "t \\bar{t}", "f")
     l_mm.AddEntry(mm_dy, "Drell Yan", "f")
     l_mm.AddEntry(mm_qcd, "QCD (Data driven)", "f")
-    l_mm.AddEntry(mm_data, "Data", "f")
     l_mm.AddEntry(mm_sinal, "Signal (x 5000)", "l")
 
     l_ra = create_legend()
+    l_ra.AddEntry(ra_data, "Data (2018)", "lep")
     l_ra.AddEntry(ra_ttjets, "t \\bar{t}", "f")
     l_ra.AddEntry(ra_dy, "Drell Yan", "f")
     l_ra.AddEntry(ra_qcd, "QCD (Data driven)", "f")
-    l_ra.AddEntry(ra_data, "Data", "f")
     l_ra.AddEntry(ra_sinal, "Signal (x 5000)", "l")
 
     l_tau = create_legend()
+    l_tau.AddEntry(tau_data, "Data (2018)", "lep")
     l_tau.AddEntry(tau_ttjets, "t \\bar{t}", "f")
     l_tau.AddEntry(tau_dy, "Drell Yan", "f")
     l_tau.AddEntry(tau_qcd, "QCD (Data driven)", "f")
-    l_tau.AddEntry(tau_data, "Data", "f")
     l_tau.AddEntry(tau_sinal, "Signal (x 5000)", "l")
 
     l_met = create_legend()
+    l_met.AddEntry(met_data, "Data (2018)", "lep")
     l_met.AddEntry(met_ttjets, "t \\bar{t}", "f")
     l_met.AddEntry(met_dy, "Drell Yan", "f")
     l_met.AddEntry(met_qcd, "QCD (Data driven)", "f")
-    l_met.AddEntry(met_data, "Data", "f")
     l_met.AddEntry(met_sinal, "Signal (x 5000)", "l")
 
     output_root = ROOT.TFile("DY_CR_e_mu_UL_2018_shapes.root", "RECREATE")
@@ -581,88 +580,88 @@ def main():
         "c1",
         aco,
         aco_sinal,
+        aco_data,
         l_aco,
         "Acoplanarity of the central system",
         "Events",
         output_dir / "aco.png",
-        y_range=auto_y_range(aco, aco_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c2",
         m_stack,
         m_sinal,
+        m_data,
         l_m,
         "Invariant mass of the central system [GeV]",
         "Events",
         output_dir / "mass.png",
-        y_range=auto_y_range(m_stack, m_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c3",
         r_stack,
         r_sinal,
+        r_data,
         l_r,
         "Rapidity matching",
         "Events",
         output_dir / "rapidity_matching.png",
-        y_range=auto_y_range(r_stack, r_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c4",
         pt_stack,
         pt_sinal,
+        pt_data,
         l_pt,
         "Transverse momentum of the central system [GeV]",
         "Events",
         output_dir / "pt.png",
-        y_range=auto_y_range(pt_stack, pt_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c5",
         mm_stack,
         mm_sinal,
+        mm_data,
         l_mm,
         "Mass difference (CMS-PPS) [GeV]",
         "Events",
         output_dir / "mass_difference.png",
-        y_range=auto_y_range(mm_stack, mm_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c6",
         ra_stack,
         ra_sinal,
+        ra_data,
         l_ra,
         "Rapidity of the central system",
         "Events",
         output_dir / "rapidity.png",
-        y_range=auto_y_range(ra_stack, ra_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c7",
         tau_stack,
         tau_sinal,
+        tau_data,
         l_tau,
         "Transverse momentum of the hadronic tau [GeV]",
         "Events",
         output_dir / "tau_pt.png",
-        y_range=auto_y_range(tau_stack, tau_sinal, ymin=0.0),
     )
 
     draw_and_save(
         "c8",
         met_stack,
         met_sinal,
+        met_data,
         l_met,
         "Muon transverse momentum [GeV]",
         "Events",
         output_dir / "muon_pt.png",
-        y_range=auto_y_range(met_stack, met_sinal, ymin=0.0),
     )
 
     dy_file.Close()

@@ -1,0 +1,1000 @@
+   85  cd TauTau_Channel/
+   86  cd tau_analysis/TauTau_Channel/
+   87  g++ -o plot_cr plot_cr.cpp `root-config --cflags --libs`
+   88  ./plot_cr
+   89  python3 combine_cr_plots.py 
+   90  mkdir /eos/user/m/mblancco/samples_2018_tautau/fase0_try_parallel/
+   91  ./launch_ttJets_fase0.sh 
+   92  exit
+   93  cd tau_analysis/
+   94  çs
+   95  ls
+   96  cd MuTau_channel/
+   97  ls
+   98  chmod u+x launch_ttjets_fase1.sh 
+   99  chmod u+x launch.sh 
+  100  ls
+  101  ./launch
+  102  ./launch.sh
+  103  mkdir /eos/user/m/mblancco/samples_2018_mutau/
+  104  ./launch.sh
+  105  exit
+  106  voms-proxy-init --rfc --voms cms --valid 172:00
+  107  jupyter-notebook
+  108  ls
+  109  chmod +x swan_init.sh 
+  110  exit
+  111  voms-proxy-init --rfc --voms cms --valid 172:00
+  112  exit
+  113  cd tau_analysis/MuTau_channel/
+  114  chmod u+x lauch_fase0.sh 
+  115  ./lauch_fase0.sh 
+  116  exit
+  117  cd tau_analysis/
+  118  ls
+  119  git status
+  120  git add .
+  121  git commit -m "add mutau code and background analysis (fase0)"
+  122  git push origin main
+  123  ls /eos/cms/store/group/phys_smp/Exclusive_DiTau/
+  124  ls /eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/
+  125  ls /eos/cms/store/group/phys_smp/Exclusive_DiTau/
+  126  ls /eos/cms/store/group/phys_smp/Exclusive_DiTau/ttjets_ntuples_UL/
+  127  ls -la /eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/
+  128  exit
+  129  cd samples_2018_
+  130  ls
+  131  cd samples_2018_mutau/
+  132  ls
+  133  grep "ttjets_*"
+  134  cat ttjets
+  135  ls –a | grep [prs] /usr
+  136  ls –a | grep [prs] .
+  137   ls -a /usr | grep '^[prs]'
+  138   ls -a . | grep '^[prt]'
+  139   ls -a . | grep '^[prt]'>> /eos/user/m/mblancco/tau_analysis/MuTau_channel/ttjets_reading.txt
+  140   ls -a . | grep '^[prt]'>> /eos/user/m/mblancco/tau_analysis/MuTau_channel/ttjets_reading_new.txt
+  141  cd ..
+  142  ls
+  143  cd tau_analysis/
+  144  ls
+  145  cd MuTau_channel/
+  146  ls
+  147  python3 fase1_ttjets.py 
+  148  cd ..
+  149  git status
+  150  git add .
+  151  git status
+  152  git commit -m "change phase1 code"
+  153  git push origin main
+  154  exit
+  155  cd tau_analysis/MuTau_channel/
+  156  ./launch_ttjets_fase1.sh 
+  157  root
+  158  python3 plot_var.py 
+  159  cd ..
+  160  cd samples_2018_mutau/ficheiros_fase1/
+  161  ls
+  162  hadd merged.root ttjets_ou*.root
+  163  ld
+  164  ls
+  165  root
+  166  cd ..
+  167  cd tau_analysis/M
+  168  cd tau_analysis/MuTau_channel/
+  169  python3 plot_var.py 
+  170  .l;;
+  171  python3 plot_all_variables.py 
+  172  python3 corrs_matrix.py 
+  173  exit
+  174  cd tau_analysis/MuTau_channel/
+  175  ls
+  176  python3 fase1_ttjets.py 
+  177  python3 fase1_ttjets_new.py.py 
+  178  python3 fase1_ttjets_new.py
+  179  voms-proxy-init --rfc --voms cms --valid 172:00
+  180  g++ -O2 -std=c++17 -lROOT -lTMVA -lMinuit -o open_ttjets open_ttjets.cpp
+  181  g++ -O2 -std=c++17 -lROOT -lTMVA -lMinuit -o open_ttjets open_ttjets.cpp `root-config --cflags --glibs`
+  182  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  183  ./open_ttjets 
+  184  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  185  ./open_ttjets 
+  186  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  187  ./open_ttjets 
+  188  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  189  ./open_ttjets 
+  190  root
+  191  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  192  ./open_ttjets 
+  193  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  194  ./open_ttjets 
+  195  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  196  ./open_ttjets 
+  197  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  198  ./open_ttjets 
+  199  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  200  ./open_ttjets 
+  201  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  202  ./open_ttjets 
+  203  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  204  ./open_ttjets 
+  205  g++ -O2 -std=c++17 open_ttjets.cpp $(root-config --cflags --libs) -o open_ttjets
+  206  ./open_ttjets 
+  207  exit
+  208  cd tau_analysis/
+  209  git  status
+  210  git add .
+  211  git commit -m "change ttjets phase1 over to cpp -> improve thread safety and memory leaks happening in python"
+  212  git push origin main
+  213  exit
+  214  ls eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau/
+  215  eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/
+  216  ls eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena
+  217  ls
+  218  ls eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  219  ls  /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau/
+  220  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  221  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples
+  222  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau
+  223  exit
+  224  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau
+  225  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples
+  226  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau
+  227  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh
+  228  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau
+  229  exit 
+  230  ls
+  231  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau
+  232  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau
+  233  la
+  234  exit 
+  235  dasgoclient --query='dataset=/*Tau*/*UL2018_MiniAODv2_NanoAODv9-v*/NANOAOD'
+  236  voms-proxy-init -voms cms -rfc
+  237  dasgoclient --query='dataset=/*Tau*/*UL2018_MiniAODv2_NanoAODv9-v*/NANOAOD'
+  238  dasgoclient --query='file dataset=B'
+  239  dasgoclient --query='dataset=B'
+  240  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau
+  241  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/
+  242  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  243  exit
+  244  dasgoclient --query='dataset=/*Tau*/*UL2018_MiniAODv2_NanoAODv9-v*/NANOAOD'
+  245  voms-proxy-init -voms cms -rfc
+  246  dasgoclient --query='dataset=/*Tau*/*UL2018_MiniAODv2_NanoAODv9-v*/NANOAOD'
+  247  dasgoclient --query='dataset=/store/data/ª/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v*/*'
+  248  dasgoclient --query='dataset=/store/data/*/Si'
+  249  dasgoclient --query='dataset=/Run2018*/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v*/*'
+  250  dasgoclient --limit=0 --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9*/NANOAOD'dasgoclient --limit=0 --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9*/NANOAOD'
+  251  dasgoclient --query='dataset=/Run2018*/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v*/*'
+  252  dasgoclient --limit=0 --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9*/NANOAOD'dasgoclient --limit=0 --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9*/NANOAOD'
+  253  dasgoclient --limit=0 --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9*/NANOAOD'dasgoclient --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9*/NANOAOD'
+  254  dasgoclient --query='dataset=/*Tau*/*UL2018_MiniAODv2_NanoAODv9-v*/NANOAOD'
+  255  dasgoclient --query='dataset=/*Tau*/Run2018A/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-'
+  256  dasgoclient --query='dataset=*/Run2018A/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-'
+  257  dasgoclient --query='dataset=*/Run2018A/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-*'
+  258  dasgoclient --query='dataset=*/Run2018A/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-'kiinnnnnnnnnnn
+  259  dasgoclient --query='dataset=/Run2018A/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-*'
+  260  dasgoclient --query='dataset=/Run2018*/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-*'
+  261  dasgoclient -query="dataset=/ZMM*/*/*"
+  262  dasgoclient -query="dataset=/Run2028*/*/*"
+  263  dasgoclient -query="dataset=/Run2018*/*/*"
+  264  dasgoclient -query="dataset=/*/Run2018*/*/*"
+  265  dasgoclient --instance=prod/global --limit=0   --query='dataset=/SingleMuon/Run2018*-UL2018*/NANOAOD' | sort
+  266  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*/NANOAOD' | sort
+  267  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*/NANOAOD instance=prod/global' | sort
+  268  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*/NANOAODv9 instance=prod/global' | sort
+  269  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*/NANOAODv9ª instance=prod/global' | sort
+  270  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*/NANOAODv9* instance=prod/global' | sort
+  271  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*v9*/NANOAOD instance=prod/global' | sort
+  272  dasgoclient   --query='dataset=/SingleMuon/Run2018*-UL2018*NanoAODv9*/NANOAOD instance=prod/global' | sort
+  273  dasgoclient --instance=prod/global --limit=0   --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD' > files_Run2018A_SingleMuon_ULNanoV9.txt
+  274  dasgoclient  --limit=0   --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD' > files_Run2018A_SingleMuon_ULNanoV9.txt
+  275  dasgoclient  --limit=0   --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD instance=prod/global' > files_Run2018A_SingleMuon_ULNanoV9.txt
+  276  dasgoclient  --limit=0   --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD instance=prod/global' 
+  277  dasgoclient  --limit=0   --query='file dataset=/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD instance=prod/global' | wc -l
+  278  for D in /SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD /SingleMuon/Run2018B-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD /SingleMuon/Run2018C-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD /SingleMuon/Run2018D-UL2018_MiniAODv2_NanoAODv9-v1/NANOAOD; do   N=$(dasgoclient --instance=prod/global --limit=0 --query="file dataset=${D}" | wc -l);   printf "%7d  %s\n" "$N" "$D"; done
+  279  printf "yours (unique): %7d\n" "$(sort -u pfns.txt | wc -l)"
+  280  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau
+  281  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  282  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/
+  283  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau/
+  284  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/
+  285  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau/
+  286  exit
+  287  cxd tau_analysis/ETau_channel/
+  288  cd tau_analysis/ETau_channel/
+  289  g++ -O2 -std=c++17 nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  290  ./etau_skim_vec
+  291  voms-proxy-init --rfc --voms cms --valid 172:00
+  292  g++ -O2 -std=c++17 nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  293  g++  nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  294  ./etau_skim_vec 
+  295  g++  nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  296  ./etau_skim_vec 
+  297  python3 plot_var_vect.py 
+  298  g++  nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  299  ./etau_skim_vec 
+  300  g++  nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  301  ./etau_skim_vec 
+  302  python3 plot_var_vect.py 
+  303  exit
+  304  cd tau_analysis/ETau_channel/
+  305  python3 plot_var_vect.py 
+  306  g++  nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  307  ./etau_skim_vec 
+  308  g++  nanotry_data_new.cpp $(root-config --cflags --libs) -o etau_skim_vec
+  309  ./etau_skim_vec 
+  310  python3 plot_var_vect.py 
+  311  python3 fase1_data_rdf.py 
+  312  pip install vector
+  313  python3 fase1_data_rdf.py 
+  314  python3 ../MuTau_channel/plot_var.py 
+  315  exit
+  316  ls
+  317  cd samples_2018_mutau/
+  318  ls
+  319  cd fase0_mutau/
+  320  ls
+  321  hadd -f -k phase0_merged_data_mutau.root *.root
+  322  rooy -l phase0_merged_data_mutau.root 
+  323  root -l phase0_merged_data_mutau.root 
+  324  ls
+  325  cd ..
+  326  ls
+  327  ls -la
+  328  cd ..
+  329  ls
+  330  cd tau_analysis/MuTau_channel/
+  331  ls
+  332  ls -la
+  333  grep *.root | ls -la
+  334  grep .root | ls -la
+  335  root -l Data_2018_UL_skimmed_MuTau_nano_rdf.root
+  336  ls -la
+  337  root -l ttjets_2018_UL_skimmed_ETau_nano_cortes.root 
+  338  ls -la
+  339  cd ..
+  340  ls
+  341  cd samples_2018_mutau/
+  342  ls
+  343  cd fase0_try_parallel/
+  344  ls
+  345  ls -la
+  346  cd ..
+  347  ls -la
+  348  hadd -f QCD_2018_UL_skimmed_MuTau_nano_merged.root QCD_2018_UL_skimmed_MuTau_nano_*.root
+  349  ls
+  350  root
+  351  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/
+  352  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  353  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/
+  354  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau/
+  355  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau/
+  356  root 
+  357  exit
+  358  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  359  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/ETau/
+  360  voms-proxy-init --rfc --voms cms --valid 172:00
+  361  cd tau_analysis/ETau_channel/
+  362  ls
+  363  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  364  ./sinal
+  365  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  366  ./sinal
+  367  cd ..
+  368  ls
+  369  cd POGCorrections/
+  370  pwd
+  371  ls -la
+  372  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  373  cd ../ETau_channel/
+  374  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  375  ./sinal
+  376  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  377  ./sinal
+  378  ls -la 
+  379  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  380  ./sinal
+  381  exit
+  382  cd tau_analysis/ETau_channel/
+  383  g++  sinal.cpp $(root-config --cflags --libs) -o sinal
+  384  ./sinal
+  385  root -l ETau_sinal_SM_july.root 
+  386  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/ETau/
+  387  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/
+  388  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/
+  389  exit
+  390  cd tau_analysis/ETau_channel/
+  391  g++  plot_m.cpp $(root-config --cflags --libs) -o plot_m
+  392  ./plot_m \
+  393  ./plot_m 
+  394  exit
+  395  cd tau_analysis/ETau_channel/
+  396  g++  plot_m.cpp $(root-config --cflags --libs) -o plot_m
+  397  ./plot_m 
+  398  mkdir output_plots
+  399  ./plot_m 
+  400  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  401  ./plot_m_new 
+  402  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  403  ./plot_m_new 
+  404  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/
+  405  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  406  ./plot_m_new 
+  407  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  408  ./plot_m_new 
+  409  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  410  ./plot_m_new 
+  411  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  412  ./plot_m_new 
+  413  g++  plot_m_new.cpp $(root-config --cflags --libs) -o plot_m_new
+  414  ./plot_m_new 
+  415  g++  plot_m.cpp $(root-config --cflags --libs) -o plot_m
+  416  ./plot_m
+  417  python3 plot_m.py
+  418  root -l ETau_sinal_SM_july.root
+  419  python3 plot_m.py
+  420  #!/usr/bin/env python3
+  421  import ROOT
+  422  import math
+  423  import os
+  424  def main():
+  425      # Set ROOT to batch mode to avoid display issues
+  426      ROOT.gROOT.SetBatch(True)
+  427      
+  428      # Create output directory if it doesn't exist
+  429      if not os.path.exists("output_plots"):
+  430          os.makedirs("output_plots")
+  431      
+  432      # Open input ROOT files
+  433      dy_file = ROOT.TFile("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/DY_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root")
+  434      ttjets_file = ROOT.TFile("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/ttJets_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root")
+  435      qcd_file = ROOT.TFile("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/QCD_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root")
+  436      sinal_file = ROOT.TFile("ETau_sinal_SM_july.root")
+  437      
+  438      # Create output file
+  439      output_file = ROOT.TFile("DY_CR_e_tau_UL_2018_shapes.root", "RECREATE")
+  440      
+  441      # Define weights
+  442      w_qcd = 1.0
+  443      w_ttjets = 0.15
+  444      w_dy = 1.81
+  445      
+  446      # Define histogram parameters for mass (simplifying to just mass plot first)
+  447      min_m, max_m, bin_m = 0, 1200, 30
+  448      
+  449      # Create histograms for mass only first
+  450      m_qcd = ROOT.TH1D("m_qcd", "m_qcd", bin_m, min_m, max_m)
+  451      m_dy = ROOT.TH1D("m_dy", "m_dy", bin_m, min_m, max_m)
+  452      m_ttjets = ROOT.TH1D("m_ttjets", "m_ttjets", bin_m, min_m, max_m)
+  453      m_sinal = ROOT.TH1D("m_sinal", "m_sinal", bin_m, min_m, max_m)
+  454      
+  455      # Get trees
+  456      tree_dy = dy_file.Get("tree")
+  457      tree_qcd = qcd_file.Get("tree")
+  458      tree_ttjets = ttjets_file.Get("tree")
+  459      tree_sinal = sinal_file.Get("tree")
+  460      
+  461      # Get number of events
+  462      n_evt_dy = tree_dy.GetEntries()
+  463      n_evt_qcd = tree_qcd.GetEntries()
+  464      n_evt_ttjets = tree_ttjets.GetEntries()
+  465      n_evt_sinal = tree_sinal.GetEntries()
+  466      
+  467      print(f"Processing {n_evt_qcd} QCD events...")
+  468      
+  469      # Fill QCD histograms
+  470      n_qcd = 0
+  471      for i in range(n_evt_qcd):
+  472          tree_qcd.GetEvent(i)
+  473          if tree_qcd.GetLeaf("sist_mass").GetValue(0) >= 0:
+  474              n_qcd += w_qcd
+  475              sist_mass = tree_qcd.GetLeaf("sist_mass").GetValue(0)
+  476              m_qcd.Fill(sist_mass, w_qcd)
+  477      
+  478      print(f"QCD events processed: {n_qcd}")
+  479      
+  480      # Fill DY histograms
+  481      print(f"Processing {n_evt_dy} DY events...")
+  482      n_dy = 0
+  483      for i in range(n_evt_dy):
+  484          tree_dy.GetEvent(i)
+  485          if tree_dy.GetLeaf("sist_mass").GetValue(0) >= 0:
+  486              w_dy_event = tree_dy.GetLeaf("weight").GetValue(0)
+  487              n_dy += w_dy_event
+  488              sist_mass = tree_dy.GetLeaf("sist_mass").GetValue(0)
+  489              m_dy.Fill(sist_mass, w_dy_event)
+  490      
+  491      print(f"DY events processed: {n_dy * 1.81}")
+  492      
+  493      # Fill ttjets histograms
+  494      print(f"Processing {n_evt_ttjets} ttjets events...")
+  495      n_tt = 0
+  496      for i in range(n_evt_ttjets):
+  497          tree_ttjets.GetEvent(i)
+  498          if tree_ttjets.GetLeaf("sist_mass").GetValue(0) >= 0:
+  499              w_ttjets_event = tree_ttjets.GetLeaf("weight").GetValue(0)
+  500              n_tt += w_ttjets_event
+  501              sist_mass = tree_ttjets.GetLeaf("sist_mass").GetValue(0)
+  502              m_ttjets.Fill(sist_mass, w_ttjets_event)
+  503      
+  504      print(f"ttjets events processed: {n_tt * 0.15}")
+  505      
+  506      # Fill signal histograms
+  507      print(f"Processing {n_evt_sinal} signal events...")
+  508      for i in range(n_evt_sinal):
+  509          tree_sinal.GetEvent(i)
+  510          if tree_sinal.GetLeaf("sist_mass").GetValue(0) >= 0:
+  511              w_sinal = tree_sinal.GetLeaf("weight_sm").GetValue(0) * 5000
+  512              sist_mass = tree_sinal.GetLeaf("sist_mass").GetValue(0)
+  513              m_sinal.Fill(sist_mass, w_sinal)
+  514      
+  515      print("Signal events processed successfully")
+  516      
+  517      # Set histogram properties
+  518      m_qcd.SetFillColor(ROOT.kRed)
+  519      m_qcd.SetLineWidth(0)
+  520      
+  521      m_dy.SetFillColor(ROOT.kYellow)
+  522      m_dy.SetLineWidth(0)
+  523      
+  524      m_ttjets.SetFillColor(ROOT.kGreen)
+  525      m_ttjets.SetLineWidth(0)
+  526      
+  527      m_sinal.SetLineColor(ROOT.kBlack)
+  528      m_sinal.SetLineWidth(3)
+  529      
+  530      # Write histograms to output file
+  531      m_dy.Write()     m_ttjets.Write()
+  532      output_file.Close()          print("Creating mass plot...")
+  533      
+  534      # Create mass plot without THStack to avoid segfaults
+  535      canvas = ROOT.TCanvas("c1", "c1", 700, 800)
+  536      canvas.cd()     
+  537      m_stack = m_ttjets.Clone("m_stack")
+  538      m_stack.Add(m_qcd)
+  539      m_stack.Add(m_dy)
+  540      
+  541      # Create legend
+  542      legend = ROOT.TLegend(0.18, 0.7, 0.48, 0.9)
+  543      legend.SetBorderSize(0)
+  544      legend.AddEntry(m_ttjets, "t #bar{t}", "f")
+  545      legend.AddEntry(m_dy, "Drell Yan", "f")
+  546      legend.AddEntry(m_qcd, "QCD (Data driven)", "f")
+  547      legend.AddEntry(m_sinal, "Signal (x5000)", "l")
+  548      
+  549      # Draw histograms
+  550      m_ttjets.Draw("hist")
+  551      m_qcd.Draw("hist same")
+  552      m_dy.Draw("hist same")
+  553      m_sinal.Draw("hist same")
+  554      
+  555      # Set axis properties
+  556      m_ttjets.GetXaxis().SetTitle("Invariant mass of the central system [GeV]")
+  557      m_ttjets.GetYaxis().SetTitle("Events")
+  558      m_ttjets.GetXaxis().SetNdivisions(5)
+  559      m_ttjets.GetYaxis().SetNdivisions(5)
+  560      m_ttjets.GetXaxis().SetTitleSize(0.03)
+  561      m_ttjets.GetYaxis().SetTitleSize(0.03)
+  562      m_ttjets.GetXaxis().SetLabelSize(0.03)
+  563      m_ttjets.GetYaxis().SetLabelSize(0.03)
+  564      m_ttjets.GetXaxis().SetLabelOffset(0.01)
+  565      m_ttjets.GetYaxis().SetLabelOffset(0.01)
+  566      m_ttjets.GetXaxis().SetTitleOffset(1.0)
+  567      m_ttjets.GetYaxis().SetRangeUser(0.1, 200)
+  568      
+  569      # Draw legend
+  570      legend.Draw()     
+  571      cms_label = ROOT.TLatex()
+  572      cms_label.SetTextAlign(31)
+  573      cms_label.SetTextSize(0.04)
+  574      cms_label.SetTextFont(62)
+  575      cms_label.DrawLatexNDC(0.90, 0.92, "54.9 fb^{-1} (13 TeV)")
+  576      
+  577      cms_label1 = ROOT.TLatex()
+  578      cms_label1.SetTextAlign(31)
+  579      cms_label1.SetTextSize(0.04)
+  580      cms_label1.SetTextFont(62)
+  581      cms_label1.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary")
+  582      
+  583      canvas.Update()     canvas.SaveAs("output_plots/mass_etau.png")
+  584      
+  585      print("Mass plot created successfully: output_plots/mass_etau.png")
+  586      
+  587      # Clean up
+  588      canvas.Clear()     del canvas
+  589      
+  590      # Close files
+  591      dy_file.Close()     ttjets_file.Close()
+  592      qcd_file.Close()     sinal_file.Close()
+  593      
+  594      print("Script completed successfully!")
+  595      return 0
+  596  if __name__ == "__main__":;     main()
+  597  python3 plot_m.py
+  598  cd ..
+  599  git status
+  600  git add MuTau_channel/*
+  601  git status
+  602  git commit -m "mu tau processing fase0 data"
+  603  git status
+  604  git add .
+  605  git commit -m "etau fase0 and signal processing"
+  606  git push origin main
+  607  cd ETau_channel/
+  608  python3 plot_m.py
+  609  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  610  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`\
+  611  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  612  ./plot_analysis
+  613  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  614  ./plot_analysis
+  615  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  616  ./plot_analysis
+  617  cd ..
+  618  git status
+  619  git add .
+  620  git commit -m "etau plotting -> TODO: fix signal not showing"
+  621  git push origin main
+  622  cd ETau_channel/
+  623  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  624  ./plot_analysis
+  625  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  626  ./plot_analysis
+  627  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  628  ./plot_analysis
+  629  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  630  ./plot_analysis
+  631  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  632  ./plot_analysis
+  633  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  634  ./plot_analysis
+  635  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  636  ./plot_analysis
+  637  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  638  ./plot_analysis
+  639  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  640  ./plot_analysis
+  641  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  642  ./plot_analysis
+  643  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  644  ./plot_analysis
+  645  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  646  ./plot_analysis
+  647  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  648  ./plot_analysis
+  649  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  650  ./plot_analysis
+  651  cd ..
+  652  git status
+  653  git add .
+  654  git commit -m "fix etau signal scaling"
+  655  cd ETau_channel/
+  656  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  657  cd ETau_channel/
+  658  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  659  ./plot_analysis
+  660  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/
+  661  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  662  ./plot_analysis
+  663  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  664  ./plot_analysis\
+  665  ./plot_analysis
+  666  g++ -o plot_analysis plot_m_new.cpp `root-config --cflags --libs`
+  667  ./plot_analysis
+  668  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root
+  669  root
+  670  root -l root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root
+  671  edmDumpEventContent root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root	
+  672  v
+  673      cms_label1 = ROOT.TLatex()
+  674  root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root	
+  675  voms-proxy-init --rfc --voms cms --valid 172:00
+  676  root -l root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root
+  677  edmDumpEventContent 	root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root	
+  678  root.exe -b -l -e "auto f = TFile::Open(\" root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root  \"); \
+  679                    if (for D in /SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD /SingleMuon/Run2018B-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD /SingleMuon/Run2018C-UL2018_MiniAODv2_NanoAODv9-v2/NANOAOD /SingleMuon/Run2018D-UL2018_MiniAODv2_NanoAODv9-v1/NANOAOD; do   N=$(dasgoclient --instance=prod/global --limit=0 --query="file dataset=${D}" | wc -l);   printf "%7d  %s\n" "$N" "$D"; done || f->IsZombie()) exit(1); \
+  680                    if (f->TestBit(TFile::kRecovered)) std::cout << \"[!] Recovered during opening.\" << std::endl; \
+  681                    else std::cout << \"Opened cleanly.\" << std::endl; \
+  682                    exit(0);"
+  683  nano checkIntegrity.C
+  684  root -l 'root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root'
+  685  root -l 'checkIntegrity.C("root://eoscms.cern.ch//eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root")'
+  686  xrdfs eoscms.cern.ch stat /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root
+  687  xrdfs eoscms.cern.ch ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/
+  688  root
+  689  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/DY_2018_UL_skimmed_ETau_nano_fase1total-protons_2018.root
+  690  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/Dados_2018_UL_skimmed_ETau_nano_fase1total_2018.root
+  691  exit
+  692  cd tau_analysis/ETau_channel/
+  693  root -l -b -q 'countEvents.C("QCD_2018_UL.txt", "Events")'
+  694  voms-proxy-init --rfc --voms cms --valid 172:00
+  695  root -l -b -q 'countEvents.C("QCD_2018_UL.txt", "Events")'
+  696  root -l -b -q 'countEvents.C("QCD_2018_UL.txt")'
+  697  ls -la
+  698  root -l -b -q 'countEvents.C("DY_2018_UL.txt")'
+  699  root -l -b -q 'countEvents.C("ttjets_2018_UL.txt")'
+  700  root -l -b -q 'countEvents.C("ttJets_2018_UL.txt")'
+  701  cd ..
+  702  ls
+  703  cd TauTau2018AnalysisCode/\
+  704  cd TauTau2018AnalysisCode
+  705  ls
+  706  cd MuTau_channel/\
+  707  cd MuTau_channel/
+  708  ls
+  709  root -l -b -q '../../tau_analysis/ETau/countEvents.C("QCD_2018_UL.txt")'
+  710  pqd
+  711  pwd
+  712  root -l -b -q '../../tau_analysis/ETau_channel/countEvents.C("QCD_2018_UL.txt")'
+  713  root -l -b -q '../../tau_analysis/ETau_channel/countEvents.C("/eos/home-m/mblancco/TauTau2018AnalysisCode/MuTau_channel/QCD_2018_UL.txt")'
+  714  cd ..
+  715  cd EMu_channel/
+  716  ls
+  717  root -l -b -q '../../tau_analysis/ETau_channel/countEvents.C("/eos/home-m/mblancco/TauTau2018AnalysisCode/EMu_channel/QCD_2018_UL.txt")'
+  718  root -l -b -q '../../tau_analysis/ETau_channel/countEvents.C("/eos/home-m/mblancco/TauTau2018AnalysisCode/EMu_channel/data_2018_UL.txt")'
+  719  cd ..
+  720  ./plot_analysissdd
+  721  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/
+  722  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/
+  723  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  724  root -l ttJets_2018_UL_skimmed_TauTau_nano_fase0_merge.root
+  725  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/ttJets_2018_UL_skimmed_TauTau_nano_fase0_merge.root
+  726  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  727  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/ttJets_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root
+  728  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  729  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/QCD_2018_UL_skimmed_TauTau_nano_fase0_merge.root
+  730  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/QCD_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root
+  731  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  732  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Dados_2018_UL_skimmed_TauTau_nano_fase0_march_merge.root
+  733  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  734  root -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Dados_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root
+  735  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  736  nano countEventsInFile.C
+  737  for f in /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/*.root; do     echo -n "$f : "
+  738      root -l -q -b "$f" -e 'if(gDirectory->Get("tree")) cout << ((TTree*)gDirectory->Get("tree"))->GetEntries() << endl;
+  739  nano parseDirectory.sh
+  740  nano count_events.sh
+  741  chmod +x count_events.sh
+  742  ./count_events.sh /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/*.root
+  743  nano count_events.sh
+  744  ./count_events.sh /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/*.root
+  745  chmod +x count_events.sh
+  746  ./count_events.sh /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/*.root
+  747  chmod +x count_events.sh
+  748  ./count_events.sh /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/*.root
+  749  exit
+  750  ls
+  751  cd samples_2018_tautau/
+  752  ls
+  753  ls -l /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  754  /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  755  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/
+  756  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/ETau/
+  757  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/MuTau/
+  758  ls
+  759  ls fase2
+  760  ls fase1
+  761  ls fase1_2
+  762  cd ..
+  763  \ls
+  764  ls
+  765  cd samples_2018_mutau/
+  766  ls
+  767  ./count_events.sh QCD*.root
+  768  cd tau_analysis/MuTau_channel/
+  769  ls
+  770  python3 fase0.py
+  771  voms-proxy-init --rfc --voms cms --valid 172:00
+  772  python3 fase0.py
+  773  cd ..
+  774  ./count_events.sh /eos/user/m/mblancco/samples_2018_mutau/*.root
+  775  ./count_events.sh /eos/user/m/mblancco/samples_2018_mutau/ttjets*
+  776  exit\
+  777  cd tau_analysis/MuTau_channel/
+  778  python3 fase0.py 
+  779  cd .. 
+  780  cd ..
+  781  ./count_events.sh /eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/*,root
+  782  ./count_events.sh /eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/*.root
+  783  cd tau_analysis/MuTau_channel/
+  784  ls 
+  785  ls /eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/ >> Data_QCD_MuTau_skimmed_2018
+  786  ls /eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/ >> Data_QCD_MuTau_skimmed_2018.txt
+  787  cat Data_QCD_MuTau_skimmed_2018.txt
+  788  python3 fase1_data.py 
+  789  ls
+  790  ls /eos/user/m/mblancco/samples_2018_mutau/
+  791  python3 fase1_data.py 
+  792  cd ..
+  793  git status
+  794  git add .
+  795  git commit -m "phase0 complete for all samples"
+  796  git push origin main
+  797  cd MuTau_channel/
+  798  exit
+  799  pwd
+  800  cd tau_analysis/MuTau_channel/
+  801  python3 fase1_data.py 
+  802  rm Data_QCD_MuTau_skimmed_2018.txt
+  803  rm Data_QCD_MuTau_skimmed_2018
+  804  ls /eos/user/m/mblancco/samples_2018_mutau/fase0_new/ >> Data_QCD_MuTau_skimmed_2018.txt
+  805  python3 fase1_data.py 
+  806  ls  /eos/user/m/mblancco/samples_2018_mutau/fase0_DY/ >> DY_MuTau_skimmed_2018.txt
+  807  cat DY_MuTau_skimmed_2018.txt
+  808  python3 fase1_dy.py 
+  809  ls  /eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/ >> ~TTJets_MuTau_skimmed_2018.txt
+  810  ls  /eos/user/m/mblancco/samples_2018_mutau/fase0_ttjets/ >> TTJets_MuTau_skimmed_2018.txt
+  811  cat TTJets_MuTau_skimmed_2018.txt 
+  812  python3 fase1_ttjets.py 
+  813  root -l /eos/user/m/mblancco/samples_2018_mutau/fase1_ttjets/ttjets_2018_UL_skimmed_MuTau_cuts_353.root
+  814  python3 fase1_qcd.py 
+  815  exit
+  816  ls
+  817  ls samples_2018_mutau/
+  818  rm *.root
+  819  rm QCD*
+  820  rm samples_2018_mutau/*.root
+  821  ls samples_2018_mutau/
+  822  help hadd
+  823  nak 
+  824  man hadd
+  825  cd samples_2018_mutau/
+  826  hadd ttjets_2018_UL_MuTau_nano_merged.root /fase1_ttjets/*.root
+  827  cd fase1_ttjets/
+  828  hadd ../ttjets_2018_UL_MuTau_nano_merged.root *.root
+  829  cd ..
+  830  ls
+  831  root -l ttjets_2018_UL_MuTau_nano_merged.root 
+  832  exit
+  833  root -l /eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/proton_pool_2018.root
+  834  cd tau_analysis/MuTau_channel/
+  835  ls
+  836  python3 merge_pileup_protons_mutau.py 
+  837  python3 merge_pp_mutau.py 
+  838  /eos/user/m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root
+  839  root -l /eos/user/m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root
+  840  python3 plot_all_variables.py 
+  841  cd ..
+  842  cd samples_2018_mutau/
+  843  ls
+  844  cd fase1_dy
+  845  ls
+  846  hadd ../DY_2018_UL_MuTau_nano_merged.root *.root
+  847  cd ..
+  848  ls
+  849  cd fase1_qcd
+  850  hadd ../QCD_2018_UL_MuTau_nano_merged.root *.root
+  851  cd ..
+  852  ls
+  853  cd fase1_data
+  854  ls
+  855  hadd ../Data_2018_UL_MuTau_nano_merged.root *.root
+  856  cd ..
+  857  ls
+  858  cd ..
+  859  cd tau_analysis/MuTau_channel/
+  860  python3 merge_pp_mutau.py 
+  861  python3 plot_all_variables.py 
+  862  python3 merge_pp_mutau.py 
+  863  python3 plot_all_variables.py 
+  864  ls ../../samples_2018_mutau/
+  865  python3 merge_pp_mutau.py 
+  866  ls ../../samples_2018_mutau/
+  867  python3 plot_all_variables.py 
+  868  exit
+  869  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/
+  870  ls /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau/
+  871  voms-proxy-init --rfc --voms cms --valid 172:00
+  872  cd tau_analysis/
+  873  git status
+  874  git commit -m "mutau channel -> adding pileup protons"
+  875  git add .
+  876  git commit -m "mutau channel -> adding pileup protons"
+  877  git push origin main
+  878  cd MuTau_channel/
+  879  make analysis
+  880  ./analysis
+  881  make analysis
+  882  ./analysis
+  883  exit
+  884  cd tau_analysis/MuTau_channel/
+  885  ls
+  886  make analysis
+  887  ./analysis
+  888  make analysis
+  889  ./analysis
+  890  root -l MuTau_sinal_SM_2018_july.root
+  891  exit
+  892  cd tau_analysis/MuTau_channel/
+  893  python3 fase0_qcd_data.py 
+  894  cd tau_analysis/MuTau_channel/
+  895  python3 fase0_qcd_data.py 
+  896  voms-proxy-init --rfc --voms cms --valid 172:00
+  897  python3 fase0_qcd_data.py 
+  898  rm .mutau_phase0_resume.json
+  899  python3 fase0_qcd_data.py 
+  900  exit
+  901  cd tau_analysis/MuTau_channel/
+  902  ls
+  903  exit
+  904  ls
+  905  cd samples_2018_mutau/
+  906  ls
+  907  cd fase1_da
+  908  cd fase1_data/
+  909  ls
+  910   hadd ../Data_2018_UL_MuTau_nano_merged.root *.root
+  911   hadd ../Data_2018_UL_MuTau_nano_merged_proton_vars.root *.root
+  912  cd ..
+  913  ls
+  914  pwd
+  915  cd ..
+  916  cd tau_analysis/MuTau_channel/
+  917  ls
+  918  python3 plot_var.py
+  919  python3 plot_all_variables.py 
+  920  exit
+  921  ls
+  922  cd samples_2018_mutau/
+  923  ls
+  924  cd ..
+  925  ls
+  926  cd tau_analysis/
+  927  ls
+  928  cd MuTau_channel/
+  929  ls
+  930  python3 plot_m.py 
+  931  cd ..
+  932  git add .
+  933  git commit -m ""dding data to the signak region plotsa
+  934  git commit -m "ading data to the signal region plots"
+  935  cd MuTau_channel/
+  936  python3 plot_m.py 
+  937  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+  938  ./plot_m
+  939  python3 plot_m.py 
+  940  exit
+  941  cd tau_analysis/MuTau_channel/
+  942  python3 plot_m.py 
+  943  python3 plot_m.py
+  944  exit
+  945  cd tau_analysis/MuTau_channel/
+  946  ls
+  947  pip install -r requirements_bdt.txt
+  948  python train_bdt.py
+  949  python3 train_bdt.py
+  950  pip3 install xgboost
+  951  cd
+  952  ls
+  953  rm -r code_tries/
+  954  ls -l
+  955  rm out.txt 
+  956  rm ttJets_2018_UL.txt 
+  957  ls
+  958  cd Madalena/
+  959  ls
+  960  cd ..
+  961  cd Madalena/
+  962  rm .
+  963  ls -la
+  964  rm cortes_cinematicos_fase1_QCD.txt 
+  965  rm launch_*
+  966  ls
+  967  rm nanotry*
+  968  ls
+  969  rm ttJets_2018_UL.txt 
+  970  cd ..
+  971  ls
+  972  cd private/
+  973  ls
+  974  cd ..
+  975  cd public/
+  976  ls
+  977  cd ..
+  978  cd tautaucentralexclusive/
+  979  ;s
+  980  ls
+  981  exit
+  982  cd
+  983  ls -lR
+  984  ls
+  985  cp tautaucentralexclusive/ /eos/home-m/mblancco/
+  986  cp -r tautaucentralexclusive/ /eos/home-m/mblancco/
+  987  rm -r tautaucentralexclusive/
+  988  exit
+  989  ls
+  990  pwd
+  991  eos quota
+  992  fs quota
+  993  export EOS_MGM_URL=root://eosuser.cern.ch
+  994  eos quota
+  995  fs examine
+  996  export EOS_MGM_URL=root://eosuser.cern.ch
+  997  cd
+  998  pwd
+  999  ls
+ 1000  ls -lR
+ 1001  cd /eos/home-m/mblancco/
+ 1002  ls
+ 1003  xport EOS_MGM_URL=root://eosuser.cern.ch
+ 1004  export EOS_MGM_URL=root://eosuser.cern.ch
+ 1005  cd tau_analysis/
+ 1006  ls
+ 1007  cd MuTau_channel/
+ 1008  pip install -r requirements_bdt.txt
+ 1009  chmod +x setup_bdt_environment.sh
+ 1010  ./setup_bdt_environment.sh
+ 1011  chmod +x setup_bdt_simple.sh
+ 1012  ./setup_bdt_environment.sh
+ 1013  exit
+ 1014  cd tau_analysis/MuTau_channel/
+ 1015  ./setup_bdt_simple.sh
+ 1016  chmod +x setup_bdt_simple.sh
+ 1017  ./setup_bdt_simple.sh
+ 1018  source /eos/home-m/mblancco/activate_bdt_lcg.sh
+ 1019  python train_bdt.py
+ 1020  exit
+ 1021  cd tau_analysis/
+ 1022  git status
+ 1023  git add .
+ 1024  git commit -m "add data to plots and update bdt framework"
+ 1025  git push origin main
+ 1026  exit
+ 1027  cd tau_analysis/MuTau_channel/
+ 1028  ks
+ 1029  ls
+ 1030  nano sinal.py
+ 1031  python3 sinal.
+ 1032  python3 sinal.py 
+ 1033  python3 plot_m.py 
+ 1034  python3 sinal.py 
+ 1035  python3 plot_m.py 
+ 1036  python3 sinal.py 
+ 1037  python3 plot_m.py 
+ 1038  ls ../../
+ 1039  ls ../../samples_2018_mutau/
+ 1040  python3 plot_all_variables.py 
+ 1041  exit
+ 1042  cd tau_analysis/MuTau_channel/
+ 1043  ls
+ 1044  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1045  ./plot_m.cpp
+ 1046  ./plot_m
+ 1047  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1048  ./plot_m
+ 1049  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1050  ./plot_m
+ 1051  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1052  ./plot_m
+ 1053  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1054  ./plot_m
+ 1055  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1056  ./plot_m
+ 1057  mkdir SR_plots
+ 1058  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1059  ./plot_m
+ 1060  g++ -O2 -std=c++17 plot_m.cpp $(root-config --cflags --libs) -o plot_m
+ 1061  ./plot_m
+ 1062  python train_bdt.py
+ 1063  python3 train_bdt.py
+ 1064  source /cvmfs/sft.cern.ch/lcg/views/LCG_105/x86_64-el9-gcc13-opt/setup.sh
+ 1065  source /eos/home-m/mblancco/python_venv/bdt_mutau/bin/activate
+ 1066  python3 train_bdt.py
+ 1067  ./setup_bdt_simple.sh
+ 1068  source /eos/home-m/mblancco/activate_bdt_lcg.sh
+ 1069  python3 train_bdt.py
+ 1070  python apply_bdt.py --input your_file.root --output output.pkl
+ 1071  exit
+ 1072  cd tau_analysis/MuTau_channel/
+ 1073  ls
+ 1074  python3 plot_m.py
+ 1075  exit
+ 1076  cd tau_analysis/MuTau_channel/
+ 1077  python3 plot_m.py
+ 1078  root -l /eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root
+ 1079  python3 plot_all_variables.py 
+ 1080  exit
+ 1081  cd tau_analysis/MuTau_channel/
+ 1082  ls
+ 1083  pwd
+ 1084  history > history_for_print.txt

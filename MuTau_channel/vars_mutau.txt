@@ -4,3 +4,4 @@ mu_eta, Muon Eta; #eta; Events, 50, -3, 3,0
 tau_eta, Tau Eta; #eta; Events, 50, -3, 3,0
 sist_mass,System Invariant Mass; Mass [GeV]; Events, 60, 0, 1000,0
 sist_rap, System Rapidity; Rapidity; Events, 60, -2, 2,0
+n_protons_arm0, N of protons; N of protons; Events; 5, 0, 5, 0
