@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>PRESENTATION_TAU_ID_ISSUE</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section>
+<section id="investigation-factor-of-2-discrepancy-in-mutau-analysis"
+class="title-slide slide level1">
+<h1>Investigation: Factor of 2 Discrepancy in MuTau Analysis</h1>
+
+</section>
+<section id="simple-slide-presentation" class="slide level2">
+<h2>Simple Slide Presentation</h2>
+</section>
+<section id="slide-1-the-problem" class="slide level2">
+<h2>Slide 1: The Problem</h2>
+<h3 id="what-we-observed">What We Observed</h3>
+<ul>
+<li><strong>Data events: ~1,700</strong> (expected ~3,400)</li>
+<li><strong>QCD events: ~234</strong> (expected ~468)</li>
+<li>Both at approximately <strong>half</strong> their expected
+values</li>
+</ul>
+<h3 id="temporary-solution">Temporary Solution</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>weight <span class="op">=</span> <span class="fl">2.0</span>  <span class="co"># Compensating for unknown factor</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>w_qcd <span class="op">=</span> <span class="fl">2.0</span></span></code></pre></div>
+<h3 id="the-question">The Question</h3>
+<p><strong>Why are both Data and QCD at ~50% of expected?</strong></p>
+</section>
+<section id="slide-2-the-suspected-cause" class="slide level2">
+<h2>Slide 2: The Suspected Cause</h2>
+<h3 id="processing-method-changed">Processing Method Changed</h3>
+<p><strong>Old Method (DY/ttjets):</strong></p>
+<pre><code>NanoAOD → Cuts → Merge → Add artificial pileup protons
+                         (merge_pp_mutau.py, weight=0.13)</code></pre>
+<p>✓ 100% of events get artificial protons</p>
+<p><strong>New Method (Data/QCD):</strong></p>
+<pre><code>NanoAOD → Fase0 (save real proton vars) → Fase1 (cuts + proton filter) → Merge</code></pre>
+<p>✓ Only ~16.9% of events have real protons</p>
+<h3 id="expected-impact">Expected Impact</h3>
+<p>Switching from 100% → 16.9% should give <strong>6x
+reduction</strong>, not 2x!</p>
+<p><strong>Something else was wrong…</strong></p>
+</section>
+<section id="slide-3-the-investigation" class="slide level2">
+<h2>Slide 3: The Investigation</h2>
+<h3 id="diagnostic-apply-cuts-sequentially">Diagnostic: Apply Cuts
+Sequentially</h3>
+<p>Ran diagnostic on one fase0 file (1M events):</p>
+<pre><code>Starting events:          1,023,514
+After Lumi + HLT:         1,023,514 ✓
+Has protons:                172,895 (16.9%) ✓
++ Muon ID:                  138,903 (80% pass) ✓
++ TAU ID:                        65 (99.95% REJECTED!) ✗
++ pT cuts:                        1
++ Eta cuts:                       1
+
+Final: 1 Data event, 0 QCD events</code></pre>
+<h3 id="the-smoking-gun">The Smoking Gun</h3>
+<p><strong>Tau ID cuts rejected 99.95% of events!</strong></p>
+<p>This is NOT normal.</p>
+</section>
+<section id="slide-4-root-cause-1---fase0-has-no-cuts"
+class="slide level2">
+<h2>Slide 4: Root Cause #1 - Fase0 Has No Cuts</h2>
+<h3 id="in-fase0_qcd_data.py-lines-177-182">In fase0_qcd_data.py (lines
+177-182):</h3>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ALL QUALITY CUTS ARE COMMENTED OUT:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Muon_mvaId[0] &gt;= 3&quot;, &quot;Muon ID (&gt;= Medium)&quot;)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Tau_idDeepTau2017v2p1VSjet[0] &gt;= 63&quot;, &quot;Tau VSjet&quot;)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Tau_idDeepTau2017v2p1VSe[0]   &gt;= 7&quot;,  &quot;Tau VSe&quot;)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Tau_idDeepTau2017v2p1VSmu[0]  &gt;= 1&quot;,  &quot;Tau VSmu&quot;)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Muon_pt[0] &gt; 35. &amp;&amp; Tau_pt[0] &gt; 100.&quot;, &quot;pT cuts&quot;)</span></span></code></pre></div>
+<h3 id="result">Result</h3>
+<p>Fase0 saves <strong>taus of ANY quality</strong> (including
+tau_id=0)</p>
+<h3 id="then-fase1-applies-strict-cuts">Then Fase1 Applies Strict
+Cuts:</h3>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;tau_id1 &gt; 63&quot;</span>, <span class="st">&quot;Tau VSjet&quot;</span>)  <span class="co"># Requires VTight</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;tau_id2 &gt; 7&quot;</span>,  <span class="st">&quot;Tau VSe&quot;</span>)    <span class="co"># Requires Loose</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;tau_id3 &gt; 1&quot;</span>,  <span class="st">&quot;Tau VSmu&quot;</span>)   <span class="co"># Requires Loose</span></span></code></pre></div>
+<p><strong>Almost everything is rejected!</strong></p>
+</section>
+<section id="slide-5-root-cause-2---vsmu-mystery" class="slide level2">
+<h2>Slide 5: Root Cause #2 - VSmu Mystery</h2>
+<h3 id="tau-id-distribution-analysis">Tau ID Distribution Analysis</h3>
+<p>Ran diagnostic on tau ID values in fase0:</p>
+<table>
+<thead>
+<tr>
+<th>Discriminator</th>
+<th>Threshold</th>
+<th>Events Passing</th>
+<th>Acceptance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>tau_id1 (VSjet)</strong></td>
+<td>&gt; 63</td>
+<td>852,802</td>
+<td><strong>83.3%</strong> ✓</td>
+</tr>
+<tr>
+<td><strong>tau_id2 (VSe)</strong></td>
+<td>&gt; 7</td>
+<td>870,796</td>
+<td><strong>85.1%</strong> ✓</td>
+</tr>
+<tr>
+<td><strong>tau_id3 (VSmu)</strong></td>
+<td>&gt; 1</td>
+<td>22,479</td>
+<td><strong>2.2%</strong> ✗</td>
+</tr>
+<tr>
+<td><strong>Combined</strong></td>
+<td>All three</td>
+<td>1,197</td>
+<td><strong>0.12%</strong> ✗</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-bottleneck">The Bottleneck</h3>
+<p><strong>Only 3.09% of taus have ANY VSmu score &gt; 0!</strong></p>
+<p>This is extremely suspicious.</p>
+</section>
+<section id="slide-6-understanding-vsmu" class="slide level2">
+<h2>Slide 6: Understanding VSmu</h2>
+<h3 id="what-is-tau-vsmu">What is Tau VSmu?</h3>
+<p><strong>DeepTau Discriminators:</strong> - <strong>VSjet:</strong>
+Tau vs QCD jets (most important) - <strong>VSe:</strong> Tau vs
+electrons - <strong>VSmu:</strong> Tau vs muons ← Problem here!</p>
+<h3 id="why-vsmu-is-critical-in-mutau">Why VSmu is Critical in
+MuTau</h3>
+<p>In MuTau channel: - One real <strong>muon</strong> (from W/Z decay) -
+One <strong>tau</strong> (signal)</p>
+<p>VSmu discriminator: <strong>“Is this tau actually a
+muon?”</strong></p>
+<h3 id="the-mystery">The Mystery</h3>
+<p>97% of taus have <strong>NO VSmu discrimination</strong> (value =
+0)</p>
+<p>Possible causes: 1. VSmu branch not filled in NanoAOD 2. VSmu working
+point too strict 3. Taus genuinely look like muons (unlikely - we have
+real taus)</p>
+</section>
+<section id="slide-7-the-evidence" class="slide level2">
+<h2>Slide 7: The Evidence</h2>
+<h3 id="tau-quality-distribution">Tau Quality Distribution</h3>
+<pre><code>tau_id1 = 255 (maximum quality): 836,368 events (81.7%)</code></pre>
+<p><strong>Most taus ARE high quality for VSjet!</strong></p>
+<p>But:</p>
+<pre><code>tau_id3 (VSmu):
+  &gt; 0: 31,672 (3.09%)
+  &gt; 1: 22,479 (2.20%)
+  &gt; 2: 22,479 (2.20%)</code></pre>
+<p><strong>But fail VSmu discrimination.</strong></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>The tau quality is good (81.7% have perfect VSjet scores), but the
+<strong>VSmu branch appears to be not properly filled</strong> or the
+working point is inappropriate for MuTau channel.</p>
+</section>
+<section id="slide-8-why-this-explains-everything" class="slide level2">
+<h2>Slide 8: Why This Explains Everything</h2>
+<h3 id="the-event-loss-chain">The Event Loss Chain</h3>
+<pre><code>Raw NanoAOD:                    ~Millions
+    ↓ Lumi + HLT (fase0)
+Fase0 output:                   1,023,514 per file
+    ↓ Proton requirement (16.9%)
+With protons:                     172,895
+    ↓ Muon ID (80%)
+After mu_id:                      138,903
+    ↓ TAU ID (0.05%!) ← THE KILLER
+After tau ID:                          65
+    ↓ pT + geometry
+Final per file:                         1
+
+× 393 files:                      ~400 total events</code></pre>
+<h3 id="compare-to-expected">Compare to Expected</h3>
+<p>If fase0 had proper quality cuts, we’d expect: -
+<strong>Thousands</strong> of Data events - <strong>Thousands</strong>
+of QCD events</p>
+<p>Instead we get: - 1,708 Data - 234 QCD</p>
+<p>Still very low, confirming the tau ID issue.</p>
+</section>
+<section id="slide-9-why-weight2.0-was-wrong" class="slide level2">
+<h2>Slide 9: Why weight=2.0 Was Wrong</h2>
+<h3 id="what-weight2.0-was-doing">What weight=2.0 Was Doing</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>weight <span class="op">=</span> <span class="fl">2.0</span>  <span class="co"># Artificially doubling event weights</span></span></code></pre></div>
+<ul>
+<li>Compensated for “factor of 2” discrepancy</li>
+<li>Made histograms look better</li>
+<li><strong>But didn’t fix the underlying problem!</strong></li>
+</ul>
+<h3 id="the-real-issue">The Real Issue</h3>
+<p>We’re not losing 50% of events…</p>
+<p><strong>We’re losing 99.95% of events to tau ID cuts!</strong></p>
+<p>The factor of 2 was a <strong>red herring</strong> - a symptom of
+comparing to an incorrect reference, not the root cause.</p>
+</section>
+<section id="slide-10-the-fix---option-1-recommended"
+class="slide level2">
+<h2>Slide 10: The Fix - Option 1 (Recommended)</h2>
+<h3 id="uncomment-cuts-in-fase0">Uncomment Cuts in Fase0</h3>
+<p>In <code>fase0_qcd_data.py</code>, uncomment lines 177-182:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change from:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Tau_idDeepTau2017v2p1VSjet[0] &gt;= 63&quot;, &quot;Tau VSjet&quot;)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Tau_idDeepTau2017v2p1VSe[0]   &gt;= 7&quot;,  &quot;Tau VSe&quot;)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   .Filter(&quot;Tau_idDeepTau2017v2p1VSmu[0]  &gt;= 1&quot;,  &quot;Tau VSmu&quot;)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># To:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;Tau_idDeepTau2017v2p1VSjet[0] &gt;= 63&quot;</span>, <span class="st">&quot;Tau VSjet&quot;</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;Tau_idDeepTau2017v2p1VSe[0]   &gt;= 7&quot;</span>,  <span class="st">&quot;Tau VSe&quot;</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;Tau_idDeepTau2017v2p1VSmu[0]  &gt;= 1&quot;</span>,  <span class="st">&quot;Tau VSmu&quot;</span>)  <span class="co"># Or &gt; 0</span></span></code></pre></div>
+<h3 id="then">Then:</h3>
+<ol type="1">
+<li><strong>Reprocess from fase0</strong> (all 393 files)</li>
+<li>Run fase1 on new fase0 output</li>
+<li>Merge</li>
+<li><strong>Remove weight=2.0</strong> from plot_m.py</li>
+</ol>
+<h3 id="expected-result">Expected Result:</h3>
+<p><strong>Much higher event counts</strong> without artificial
+weights!</p>
+</section>
+<section id="slide-11-the-fix---option-2-quick-test"
+class="slide level2">
+<h2>Slide 11: The Fix - Option 2 (Quick Test)</h2>
+<h3 id="if-you-cant-reprocess-yet">If You Can’t Reprocess Yet</h3>
+<p>Temporarily relax cuts in <code>fase1_data.py</code> and
+<code>fase1_qcd.py</code>:</p>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change from:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;tau_id3 &gt; 1&quot;</span>, <span class="st">&quot;Tau VSmu&quot;</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># To:</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>.Filter(<span class="st">&quot;tau_id3 &gt; 0&quot;</span>, <span class="st">&quot;Tau VSmu (VLoose)&quot;</span>)  <span class="co"># Or comment out entirely</span></span></code></pre></div>
+<h3 id="this-will">This Will:</h3>
+<ul>
+<li>✓ Give you more events immediately</li>
+<li>✓ Test if VSmu is the problem</li>
+<li>✗ Include lower-quality taus</li>
+<li>✗ Not a proper physics solution</li>
+</ul>
+<p><strong>Use only for testing!</strong></p>
+</section>
+<section id="slide-12-before-you-reprocess" class="slide level2">
+<h2>Slide 12: Before You Reprocess</h2>
+<h3 id="critical-checks-needed">Critical Checks Needed</h3>
+<ol type="1">
+<li><p><strong>Verify VSmu branch in NanoAOD:</strong></p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root</span> <span class="at">-l</span> root://cms-xrd-global.cern.ch///store/<span class="pp">[</span><span class="ss">your_file</span><span class="pp">]</span>.root</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Events-</span><span class="op">&gt;</span>Scan<span class="er">(</span><span class="st">&quot;Tau_idDeepTau2017v2p1VSmu&quot;</span><span class="ex">,</span> <span class="st">&quot;&quot;</span>, <span class="st">&quot;&quot;</span>, 100<span class="kw">)</span></span></code></pre></div>
+<p>Check if values are mostly 0 or properly distributed.</p></li>
+<li><p><strong>Check with your advisor:</strong></p>
+<ul>
+<li>What tau ID cuts did old processing use?</li>
+<li>Is VSmu &gt; 1 correct for MuTau channel?</li>
+<li>Why were fase0 cuts commented out?</li>
+</ul></li>
+<li><p><strong>Compare with TauTau channel:</strong></p>
+<ul>
+<li>What VSmu working point do they use?</li>
+<li>Do they apply cuts in fase0 or later?</li>
+</ul></li>
+<li><p><strong>Check TauPOG recommendations:</strong></p>
+<ul>
+<li>2018 UL MuTau channel tau ID working points</li>
+<li>Official recommendations for VSmu</li>
+</ul></li>
+</ol>
+</section>
+<section id="slide-13-comparison-with-old-method" class="slide level2">
+<h2>Slide 13: Comparison with Old Method</h2>
+<h3 id="old-processing-dyttjets-style">Old Processing (DY/ttjets
+style)</h3>
+<pre><code>NanoAOD → Fase1 (all quality cuts applied) → Merge → Add pileup protons
+          ↑
+          Probably had LOOSER tau ID cuts,
+          or NO VSmu cut at all</code></pre>
+<h3 id="new-processing-current-dataqcd">New Processing (Current
+Data/QCD)</h3>
+<pre><code>NanoAOD → Fase0 (NO quality cuts!) → Fase1 (STRICT cuts) → Merge
+          ↑                           ↑
+          Bug: cuts commented out     Rejects 99.95%</code></pre>
+<h3 id="the-change">The Change</h3>
+<p>When switching from artificial to real protons, the quality cuts were
+<strong>accidentally removed</strong> from fase0, causing the massive
+rejection.</p>
+</section>
+<section id="slide-14-working-points-reference" class="slide level2">
+<h2>Slide 14: Working Points Reference</h2>
+<h3 id="deeptau2017v2p1-bit-values">DeepTau2017v2p1 Bit Values</h3>
+<p><strong>VSjet (tau_id1):</strong> - 1=VVVLoose, 2=VVLoose, 4=VLoose,
+8=Loose - 16=Medium, 32=Tight, <strong>64=VTight</strong> ← Your cut:
+&gt; 63 - 128=VVTight</p>
+<p><strong>VSe (tau_id2):</strong> - 1=VVVLoose, 2=VVLoose, 4=VLoose,
+<strong>8=Loose</strong> ← Your cut: &gt; 7 - 16=Medium, 32=Tight,
+64=VTight, 128=VVTight</p>
+<p><strong>VSmu (tau_id3):</strong> - 1=VLoose, <strong>2=Loose</strong>
+← Your cut: &gt; 1 - 4=Medium, 8=Tight</p>
+<h3 id="your-current-cuts">Your Current Cuts</h3>
+<ul>
+<li>VSjet: VTight or better ✓ (appropriate)</li>
+<li>VSe: Loose or better ✓ (appropriate)</li>
+<li>VSmu: Loose or better ✗ (possibly too strict, or branch issue)</li>
+</ul>
+</section>
+<section id="slide-15-action-plan" class="slide level2">
+<h2>Slide 15: Action Plan</h2>
+<h3 id="immediate-today">Immediate (Today)</h3>
+<ol type="1">
+<li>✅ Run diagnostics (completed)</li>
+<li>✅ Identify root cause (completed)</li>
+<li>⏳ Verify VSmu branch in raw NanoAOD</li>
+<li>⏳ Consult with advisor about cuts</li>
+</ol>
+<h3 id="short-term-this-week">Short-term (This Week)</h3>
+<ol start="5" type="1">
+<li>⏳ Test with relaxed VSmu cut (&gt; 0 or commented out)</li>
+<li>⏳ Compare with old processing scripts</li>
+<li>⏳ Check TauPOG recommendations</li>
+</ol>
+<h3 id="medium-term-when-ready">Medium-term (When Ready)</h3>
+<ol start="8" type="1">
+<li>⏳ Uncomment correct cuts in fase0</li>
+<li>⏳ Reprocess all 393 files from fase0</li>
+<li>⏳ Remove weight=2.0 from plot_m.py</li>
+</ol>
+<h3 id="long-term-future-analyses">Long-term (Future Analyses)</h3>
+<ol start="11" type="1">
+<li>⏳ Consider TauTau architecture (cuts in plotting, not
+processing)</li>
+<li>⏳ Document final selection clearly</li>
+</ol>
+</section>
+<section id="slide-16-key-takeaways" class="slide level2">
+<h2>Slide 16: Key Takeaways</h2>
+<h3 id="what-we-learned">What We Learned</h3>
+<ol type="1">
+<li><strong>The “factor of 2” was a red herring</strong>
+<ul>
+<li>Real issue: 99.95% event rejection</li>
+<li>Not a simple normalization problem</li>
+</ul></li>
+<li><strong>Fase0 has a critical bug</strong>
+<ul>
+<li>All quality cuts commented out</li>
+<li>Saves low-quality taus that fail later</li>
+</ul></li>
+<li><strong>VSmu is the bottleneck</strong>
+<ul>
+<li>Only 2.2% of taus pass VSmu &gt; 1</li>
+<li>Only 3.09% have ANY VSmu score</li>
+<li>Suggests branch issue or wrong working point</li>
+</ul></li>
+<li><strong>weight=2.0 was masking the problem</strong>
+<ul>
+<li>Compensated for symptoms, not cause</li>
+<li>Should be removed after proper fix</li>
+</ul></li>
+</ol>
+<h3 id="bottom-line">Bottom Line</h3>
+<p><strong>Reprocess from fase0 with proper cuts, and event counts
+should be correct without artificial weights.</strong></p>
+</section>
+<section id="slide-17-documents-created" class="slide level2">
+<h2>Slide 17: Documents Created</h2>
+<h3 id="analysis-documents">Analysis Documents</h3>
+<ol type="1">
+<li><strong>FACTOR_OF_2_ROOT_CAUSE.md</strong>
+<ul>
+<li>Complete root cause analysis</li>
+<li>5 hypotheses investigated</li>
+<li>Comparison with TauTau channel</li>
+</ul></li>
+<li><strong>ANALYSIS_TAU_ID_ISSUE.md</strong>
+<ul>
+<li>Detailed tau ID analysis</li>
+<li>Working points reference</li>
+<li>Decision matrix for fixes</li>
+</ul></li>
+</ol>
+<h3 id="diagnostic-scripts">Diagnostic Scripts</h3>
+<ol start="3" type="1">
+<li><strong>investigate_factor_of_2.py</strong>
+<ul>
+<li>Sequential cut analysis</li>
+<li>Revealed 99.95% rejection</li>
+</ul></li>
+<li><strong>check_tau_id_distribution.py</strong>
+<ul>
+<li>Tau ID distributions</li>
+<li>Identified VSmu bottleneck</li>
+</ul></li>
+</ol>
+<p>All ready to use for further investigation!</p>
+</section>
+<section id="slide-18-questions-to-answer" class="slide level2">
+<h2>Slide 18: Questions to Answer</h2>
+<h3 id="before-reprocessing">Before Reprocessing</h3>
+<ol type="1">
+<li><strong>What VSmu values exist in raw NanoAOD?</strong>
+<ul>
+<li>Are they mostly 0?</li>
+<li>Is the branch filled correctly?</li>
+</ul></li>
+<li><strong>What cuts did old processing use?</strong>
+<ul>
+<li>Same VSmu &gt; 1?</li>
+<li>Or looser / no VSmu cut?</li>
+</ul></li>
+<li><strong>Why were fase0 cuts commented out?</strong>
+<ul>
+<li>Intentional flexibility?</li>
+<li>Or accidental during development?</li>
+</ul></li>
+<li><strong>What do TauPOG recommend?</strong>
+<ul>
+<li>For 2018 UL MuTau channel</li>
+<li>VSmu working point</li>
+</ul></li>
+</ol>
+<h3 id="after-testing">After Testing</h3>
+<ol start="5" type="1">
+<li><strong>Does relaxing VSmu help?</strong>
+<ul>
+<li>Try VSmu &gt; 0 instead of &gt; 1</li>
+<li>Or remove entirely</li>
+</ul></li>
+<li><strong>How many events do we expect?</strong>
+<ul>
+<li>With proper cuts</li>
+<li>Realistic physics estimate</li>
+</ul></li>
+</ol>
+</section>
+<section id="slide-19-expected-timeline" class="slide level2">
+<h2>Slide 19: Expected Timeline</h2>
+<h3 id="phase-1-verification-1-2-days">Phase 1: Verification (1-2
+days)</h3>
+<ul>
+<li>Check VSmu in NanoAOD</li>
+<li>Test relaxed cuts</li>
+<li>Consult advisor</li>
+</ul>
+<h3 id="phase-2-decision-1-day">Phase 2: Decision (1 day)</h3>
+<ul>
+<li>Determine correct working points</li>
+<li>Plan reprocessing strategy</li>
+</ul>
+<h3 id="phase-3-reprocessing-1-2-weeks">Phase 3: Reprocessing (1-2
+weeks)</h3>
+<ul>
+<li>Uncomment cuts in fase0</li>
+<li>Reprocess 393 files</li>
+<li>Run fase1 on new output</li>
+</ul>
+<h3 id="phase-4-validation-1-2-days">Phase 4: Validation (1-2 days)</h3>
+<ul>
+<li>Check event counts</li>
+<li>Remove weight=2.0</li>
+<li>Verify physics distributions</li>
+<li>Update plots</li>
+</ul>
+<h3 id="total-2-3-weeks">Total: ~2-3 weeks</h3>
+<p>(Assuming no unexpected issues)</p>
+</section>
+<section id="slide-20-summary" class="slide level2">
+<h2>Slide 20: Summary</h2>
+<h3 id="the-journey">The Journey</h3>
+<p><strong>Started with:</strong> “Why is everything at 50%?”</p>
+<p><strong>Discovered:</strong> - Fase0 has no quality cuts (bug) -
+99.95% rejection at tau ID - VSmu only 2.2% acceptance (mystery)</p>
+<p><strong>Root Causes:</strong> 1. Commented-out cuts in fase0 2. VSmu
+branch issue or wrong working point 3. weight=2.0 compensating for wrong
+problem</p>
+<h3 id="the-solution">The Solution</h3>
+<ol type="1">
+<li>Fix fase0 cuts</li>
+<li>Verify VSmu working point</li>
+<li>Reprocess</li>
+<li>Remove artificial weights</li>
+</ol>
+<h3 id="the-lesson">The Lesson</h3>
+<p><strong>Always trace the full processing chain when
+debugging!</strong></p>
+<p>The apparent “factor of 2” was hiding a much larger issue that could
+only be found by checking each step sequentially.</p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="end-of-presentation" class="title-slide slide level1">
+<h1>End of Presentation</h1>
+
+</section>
+<section id="contact-questions" class="slide level2">
+<h2>Contact / Questions</h2>
+<p>All diagnostic scripts and analysis documents are in:
+<code>/Users/utilizador/cernbox/tau_analysis/MuTau_channel/</code></p>
+<p>For questions, consult: - Your advisor - TauPOG contacts - CMS TWiki:
+https://twiki.cern.ch/twiki/bin/view/CMS/TauIDRecommendationForRun2</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
