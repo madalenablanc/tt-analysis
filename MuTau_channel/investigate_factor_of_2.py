@@ -104,13 +104,3 @@ except Exception as e:
     import traceback
     traceback.print_exc()
 
-print("\n" + "=" * 80)
-print("CONCLUSION:")
-print("=" * 80)
-print("If the reduction factor is ~2x, then weight=2.0 compensates for:")
-print("  (a) Some systematic cut difference between old and new processing")
-print("  (b) A bug in how events are being counted or processed")
-print("  (c) An intentional correction factor")
-print("")
-print("Run this script on lxplus to see the actual numbers!")
-print("=" * 80)
