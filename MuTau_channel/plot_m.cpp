@@ -178,9 +178,9 @@ int main(){
 
         //for(int i=0; i<n_evt_data; i++){
         //        int o=tree_data->GetEvent(i);
-		//if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("sist_acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
+		//if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
 		//w_data = tree_data->GetLeaf("weight")->GetValue(0);
-	        //aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0),w_data);
+	        //aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0),w_data);
                 //m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
                 //r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
 		//pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
@@ -188,12 +188,14 @@ int main(){
         //}
        
         double n_qcd=0;
+        cout << "Processing QCD" << endl;
         for(int i=0; i<n_evt_qcd; i++){
+                
                 int o=tree_qcd->GetEvent(i);
 		if(tree_qcd->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		//NAO ATIVAR//w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
                 n_qcd = n_qcd + w_qcd;
-                aco_qcd.Fill(tree_qcd->GetLeaf("sist_acop")->GetValue(0),w_qcd);
+                aco_qcd.Fill(tree_qcd->GetLeaf("acop")->GetValue(0),w_qcd);
                 m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0),w_qcd);
                 r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)/tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
 		pt_qcd.Fill(tree_qcd->GetLeaf("sist_pt")->GetValue(0),w_qcd);
@@ -225,12 +227,13 @@ int main(){
         met_qcd.SetLineWidth(0);
 
         double n_dy=0;
+        cout << "Processing DY" << endl;
         for(int i=0; i<n_evt_dy; i++){
                 int o=tree_dy->GetEvent(i);
 		if(tree_dy->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		w_dy = tree_dy->GetLeaf("weight")->GetValue(0);
                 n_dy = n_dy + w_dy;
-                aco_dy.Fill(tree_dy->GetLeaf("sist_acop")->GetValue(0),w_dy);
+                aco_dy.Fill(tree_dy->GetLeaf("acop")->GetValue(0),w_dy);
                 m_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0),w_dy);
 		r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)/tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
                 pt_dy.Fill(tree_dy->GetLeaf("sist_pt")->GetValue(0),w_dy);
@@ -261,12 +264,13 @@ int main(){
         met_dy.SetLineWidth(0);
 
         double n_tt=0;
+        cout << "Processing ttjets" << endl;
         for(int i=0; i<n_evt_ttjets; i++){
                 int o=tree_ttjets->GetEvent(i);
                 if(tree_ttjets->GetLeaf("sist_mass") ->GetValue(0)>=0){
 		w_ttjets = tree_ttjets->GetLeaf("weight")->GetValue(0);
                 n_tt=n_tt+w_ttjets;
-                aco_ttjets.Fill(tree_ttjets->GetLeaf("sist_acop")->GetValue(0),w_ttjets);
+                aco_ttjets.Fill(tree_ttjets->GetLeaf("acop")->GetValue(0),w_ttjets);
                 m_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0),w_ttjets);
 		r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)/tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
 		pt_ttjets.Fill(tree_ttjets->GetLeaf("sist_pt")->GetValue(0),w_ttjets);
@@ -296,6 +300,7 @@ int main(){
         tau_ttjets.SetLineWidth(0);   
         met_ttjets.SetLineWidth(0);
 
+        cout << "Processing sinal" << endl;
 	for(int i=0; i<n_evt_sinal; i++){
                 int o=tree_sinal->GetEvent(i);
                 if(tree_sinal->GetLeaf("sist_mass") ->GetValue(0)>=0){
@@ -310,6 +315,7 @@ int main(){
                 met_sinal.Fill(tree_sinal->GetLeaf("mu_pt")->GetValue(0),w_sinal);
         }
 	}
+        cout << "Processing finished signal" << endl;
 
         m_sinal.SetLineColor(kBlack);
 	aco_sinal.SetLineColor(kBlack);
@@ -462,6 +468,9 @@ int main(){
 
 	c1.Update();
 
+        c1.Update();
+        c1.SaveAs("SR_plots/aco.png");
+
         TF1 f2 ("f2","1",-1100,1100);
 
         TCanvas c2;
@@ -509,6 +518,7 @@ int main(){
 
         c2.Update();
 
+        c2.SaveAs("SR_plots/m.png");
 
 	TCanvas c3;
 	c3.SetCanvasSize(700,800);
@@ -556,6 +566,7 @@ int main(){
 
         c3.Update();
 
+        c3.SaveAs("SR_plots/rap.png");
 
 	TCanvas c4;
 	c4.SetCanvasSize(700,800);
@@ -599,6 +610,7 @@ int main(){
         cmsLabel7.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c4.Update();
+        c4.SaveAs("SR_plots/pt.png");
 
 	TCanvas c5;
         c5.SetCanvasSize(700,800);
@@ -642,6 +654,7 @@ int main(){
         cmsLabel9.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c5.Update();
+        c5.SaveAs("SR_plots/pt.png");
 
 	TCanvas c6;
         c6.SetCanvasSize(700,800);
@@ -685,6 +698,7 @@ int main(){
         cmsLabel11.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c6.Update();
+        c6.SaveAs("SR_plots/rap_central.png");
 
 	TCanvas c7;
         c7.SetCanvasSize(700,800);
@@ -728,6 +742,7 @@ int main(){
         cmsLabel13.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c7.Update();
+        c7.SaveAs("SR_plots/tau_pt.png");
 
 	TCanvas c8;
         c8.SetCanvasSize(700,800);
@@ -771,9 +786,15 @@ int main(){
         cmsLabel15.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c8.Update();
+        c8.SaveAs("SR_plots/muon_pt.png");
 
 
-        app.Run("true");
+        bool interactive = false;
+
+        if (interactive) {
+        app.Run(true);
+        }
+
 
         return 0;
 
