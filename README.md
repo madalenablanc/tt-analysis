@@ -2,18 +2,18 @@
 
 Instructions to run analysis
 
-### Key points:
+## Key points:
 - ttjets, dy, signal are **simulated** samples;
 - qcd and data samles are **real** data - qcd is data driven;
 
-### Changes from original analysis to new framework:
+## Changes from original analysis to new framework:
 - In original analysis, 
 - switch from C++ to python 
 
 ___
 
-## MuTau Channel
-### Old analysis
+# MuTau Channel
+## Old analysis
 
 
 ``` 
@@ -41,7 +41,7 @@ g++ -O2 -std=c++17 sinal.cpp $(root-config --cflags --libs) -o sinal
 ```
 
 
-### New analysis
+## New analysis
 ```
 # Phase0 samples
 python3 fase0_dy.py
