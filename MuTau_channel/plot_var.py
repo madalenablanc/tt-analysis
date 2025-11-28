@@ -1,13 +1,13 @@
 import ROOT
 
 # --- User Configurable ---
-input_file = "/eos/user/m/mblancco/samples_2018_etau/phase0_etau_merged.root"    # Change to your file
+input_file = "MuTau_sinal_SM_2018_july.root"    # Change to your file
 tree_name = "tree"                # TTree name
-variable = "tau_pt"                # Variable to plot
+variable = "sist_mass"                # Variable to plot
 bins = 50                         # Number of bins
 x_min = 0                         # X-axis min
-x_max = 500                       # X-axis max
-output_plot = "tau_pt_plot_phase0_merged_etau.png"    # Output image file
+x_max = 1000                     # X-axis max
+output_plot = "sist_mass_sinal_pmutau.png"    # Output image file
 
 # --- Open the ROOT file ---
 f = ROOT.TFile.Open(input_file)

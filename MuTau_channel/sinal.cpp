@@ -998,6 +998,7 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 	jet_b_n=0;
 
 	entry_65=weight_sample*weight*mu_trig_sf*mu_idiso_sf*mu_reco_sf;
+	cout <<
 
         entry_76=entry_14+xi_sist_inter_1.Eval(entry_14);
         entry_77=entry_14-xi_sist_inter_1.Eval(entry_14);

@@ -17,6 +17,33 @@
 
 using namespace std;
 
+// Format the stack histograms (THStack)
+void stylePlot(THStack* stack) {
+        stack->GetXaxis()->SetTitleSize(0.045);
+        stack->GetYaxis()->SetTitleSize(0.045);
+        stack->GetXaxis()->SetLabelSize(0.04);
+        stack->GetYaxis()->SetLabelSize(0.04);
+        stack->GetXaxis()->SetTitleOffset(1.2);
+        stack->GetYaxis()->SetTitleOffset(1.6);
+        stack->GetXaxis()->SetLabelOffset(0.01);
+        stack->GetYaxis()->SetLabelOffset(0.01);
+        stack->GetXaxis()->SetNdivisions(505);
+        stack->GetYaxis()->SetNdivisions(505);
+    }
+    
+    // Format the canvas and gPad
+    void styleCanvas(TCanvas& c) {
+        c.SetCanvasSize(700, 800);
+        c.cd();
+        gPad->SetLeftMargin(0.15);
+        gPad->SetRightMargin(0.05);
+        gPad->SetTopMargin(0.10);
+        gPad->SetBottomMargin(0.13);
+        gPad->SetTicks();  // adds ticks on all sides
+        gPad->Update();
+    }
+    
+
 
 int main(){
 
@@ -24,7 +51,12 @@ int main(){
 
 	string luminosity;
 // samples for DY  region
-          //TFile data("/eos/user/m/mpisano/samples_2018_emu/fase1/Dados_fase1_PICskimmed_EMu_2018_total.root");
+        //   TFile data("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/Dados_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root");;
+        //   TFile dy("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/DY_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root");
+        //   TFile ttjets("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/ttJets_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root");
+        //   TFile qcd("/eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/BackgroundSamples/TauhTauh/QCD_2018_UL_skimmed_TauTau_nano_fase1total-protons_2018.root");
+
+	// TFile sinal("TauTau_sinal_PIC_july_2018.root");
           TFile dy("/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root");
           TFile ttjets("/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root");
           TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pileup_protons.root");
@@ -33,33 +65,33 @@ int main(){
 	TFile sinal("MuTau_sinal_SM_2018_july.root");
 
 
-	TFile output("DY_CR_e_mu_UL_2018_shapes.root","RECREATE","");
+	TFile output("DY_CR_e_mu_UL_2018_shapes_1.root","RECREATE","");
 
         double w_data=1.;
         double w_qcd=1.;
         double w_ttjets=0.15;
         double w_dy=1.81;
-	double w_sinal;
+	double w_sinal=0.5;
 
         double min_aco=0.0;
         double max_aco=1.0;
-        int bin_aco=20;
+        int bin_aco=10;
 
         double min_m=0;
         double max_m=1200;
-        int  bin_m=30;
+        int  bin_m=10;
 
         double min_r=-2.2;
         double max_r=2.2;
         int bin_r=10;
 
-	double min_pt=100;
+	double min_pt=0;
         double max_pt=600;
-        int bin_pt=20;
+        int bin_pt=10;
 
 	double min_mm=-1500;
         double max_mm=200;
-        int bin_mm=20;
+        int bin_mm=10;
 
 	double min_ra=-2.2;
         double max_ra=2.2;
@@ -82,14 +114,14 @@ int main(){
 	THStack *tau =new THStack("tau","");
 	THStack *met =new THStack("met","");
 
-        auto l_aco = new TLegend(0.18,0.7,0.48,0.9);
-        auto l_m = new TLegend(0.18,0.7,0.48,0.9);
-        auto l_r = new TLegend(0.18,0.7,0.48,0.9);
-	auto l_pt =new TLegend(0.18,0.7,0.48,0.9);
-	auto l_mm =new TLegend(0.18,0.7,0.48,0.9);
-	auto l_ra =new TLegend(0.18,0.7,0.48,0.9);
-	auto l_tau =new TLegend(0.18,0.7,0.48,0.9);
-	auto l_met =new TLegend(0.18,0.7,0.48,0.9);
+        auto l_aco = new TLegend(0.2, 0.7, 0.5, 0.9); // acoplanarity
+        auto l_m = new TLegend(0.6, 0.7, 0.9, 0.9); // inv mass central system
+        auto l_r = new TLegend(0.7,0.7,0.9,0.9); // rapidity matching
+	auto l_pt =new TLegend(0.6, 0.7, 0.9, 0.9); // pt of central system
+	auto l_mm =new TLegend(0.7, 0.75, 0.9, 0.90); // mass difference
+	auto l_ra =new TLegend(0.7, 0.7, 0.9, 0.9); // rapidity of central system
+	auto l_tau =new TLegend(0.6, 0.7, 0.9, 0.9); // tau pt
+	auto l_met =new TLegend(0.6, 0.7, 0.9, 0.9); // MET
 
 	l_aco->SetBorderSize(0);
 	l_m->SetBorderSize(0);
@@ -100,103 +132,140 @@ int main(){
 	l_tau->SetBorderSize(0);
 	l_met->SetBorderSize(0);
 
-        TH1D aco_data("aco_data","aco_data",bin_aco, min_aco, max_aco);
+        //TH1D aco_data("aco_data","aco_data",bin_aco, min_aco, max_aco);
         TH1D aco_qcd("aco_qcd","aco_qcd",bin_aco, min_aco, max_aco);
         TH1D aco_dy("aco_dy","aco_dy",bin_aco, min_aco, max_aco);
         TH1D aco_ttjets("aco_ttjets","aco_ttjets",bin_aco, min_aco, max_aco);
         TH1D sum_aco("sum_aco_ttjets","sum_aco_ttjets",bin_aco, min_aco, max_aco);
 	TH1D aco_sinal("aco_sinal","aco_sinal",bin_aco, min_aco, max_aco);
+        TH1D aco_data("aco_data","aco_data",bin_aco, min_aco, max_aco);
 
-        TH1D m_data("m_data","m_data",bin_m, min_m, max_m);
+        //TH1D m_data("m_data","m_data",bin_m, min_m, max_m);
         TH1D m_qcd("m_qcd","m_qcd",bin_m, min_m, max_m);
         TH1D m_dy("m_dy","m_dy",bin_m, min_m, max_m);
         TH1D m_ttjets("m_ttjets","m_ttjets",bin_m, min_m, max_m);
         TH1D sum_m("sum_m_ttjets","sum_m_ttjets",bin_m, min_m, max_m);
 	TH1D m_sinal("m_sinal","m_sinal",bin_m, min_m, max_m);
+        TH1D m_data("m_data","m_data",bin_m, min_m, max_m);
 
-        TH1D r_data("r_data","r_data",bin_r, min_r, max_r);
+        //TH1D r_data("r_data","r_data",bin_r, min_r, max_r);
         TH1D r_qcd("r_qcd","r_qcd",bin_r, min_r, max_r);
         TH1D r_dy("r_dy","r_dy",bin_r, min_r, max_r);
         TH1D r_ttjets("r_ttjets","r_ttjets",bin_r, min_r, max_r);
         TH1D sum_r("sum_r_ttjets","sum_r_ttjets",bin_r, min_r, max_r);
 	TH1D r_sinal("r_sinal","r_sinal",bin_r, min_r, max_r);
+	TH1D r_data("r_data","r_data",bin_r, min_r, max_r);
 
-	TH1D pt_data("pt_data","pt_data",bin_pt, min_pt, max_pt);
+	//TH1D pt_data("pt_data","pt_data",bin_pt, min_pt, max_pt);
         TH1D pt_qcd("pt_qcd","pt_qcd",bin_pt, min_pt, max_pt);
         TH1D pt_dy("pt_dy","pt_dy",bin_pt, min_pt, max_pt);
         TH1D pt_ttjets("pt_ttjets","pt_ttjets",bin_pt, min_pt, max_pt);
         TH1D sum_pt("sum_pt_ttjets","sum_pt_ttjets",bin_pt, min_pt, max_pt);
 	TH1D pt_sinal("pt_sinal","pt_sinal",bin_pt, min_pt, max_pt);
+	TH1D pt_data("pt_data","pt_data",bin_pt, min_pt, max_pt);
 
-
-	TH1D mm_data("mm_data","mm_data",bin_mm, min_mm, max_mm);
+	//TH1D mm_data("mm_data","mm_data",bin_mm, min_mm, max_mm);
         TH1D mm_qcd("mm_qcd","mm_qcd",bin_mm, min_mm, max_mm);
         TH1D mm_dy("mm_dy","mm_dy",bin_mm, min_mm, max_mm);
         TH1D mm_ttjets("mm_ttjets","mm_ttjets",bin_mm, min_mm, max_mm);
         TH1D sum_mm("sum_mm_ttjets","sum_mm_ttjets",bin_mm, min_mm, max_mm);
         TH1D mm_sinal("mm_sinal","mm_sinal",bin_mm, min_mm, max_mm);
+	TH1D mm_data("mm_data","mm_data",bin_mm, min_mm, max_mm);
 
-	TH1D ra_data("ra_data","ra_data",bin_ra, min_ra, max_ra);
+	//TH1D ra_data("ra_data","ra_data",bin_ra, min_ra, max_ra);
         TH1D ra_qcd("ra_qcd","ra_qcd",bin_ra, min_ra, max_ra);
         TH1D ra_dy("ra_dy","ra_dy",bin_ra, min_ra, max_ra);
         TH1D ra_ttjets("ra_ttjets","ra_ttjets",bin_ra, min_ra, max_ra);
         TH1D sum_ra("sum_ra_ttjets","sum_ra_ttjets",bin_ra, min_ra, max_ra);
         TH1D ra_sinal("ra_sinal","ra_sinal",bin_ra, min_ra, max_ra);
+	TH1D ra_data("ra_data","ra_data",bin_ra, min_ra, max_ra);
 
-	TH1D tau_data("tau_data","tau_data",bin_tau, min_tau, max_tau);
+	//TH1D tau_data("tau_data","tau_data",bin_tau, min_tau, max_tau);
         TH1D tau_qcd("tau_qcd","tau_qcd",bin_tau, min_tau, max_tau);
         TH1D tau_dy("tau_dy","tau_dy",bin_tau, min_tau, max_tau);
         TH1D tau_ttjets("tau_ttjets","tau_ttjets",bin_tau, min_tau, max_tau);
         TH1D sum_tau("sum_tau_ttjets","sum_tau_ttjets",bin_tau, min_tau, max_tau);
         TH1D tau_sinal("tau_sinal","tau_sinal",bin_tau, min_tau, max_tau);
+	TH1D tau_data("tau_data","tau_data",bin_tau, min_tau, max_tau);
 
-	TH1D met_data("met_data","met_data",bin_met, min_met, max_met);
+	//TH1D met_data("met_data","met_data",bin_met, min_met, max_met);
         TH1D met_qcd("met_qcd","met_qcd",bin_met, min_met, max_met);
         TH1D met_dy("met_dy","met_dy",bin_met, min_met, max_met);
         TH1D met_ttjets("met_ttjets","met_ttjets",bin_met, min_met, max_met);
         TH1D sum_met("sum_met_ttjets","sum_met_ttjets",bin_met, min_met, max_met);
         TH1D met_sinal("met_sinal","met_sinal",bin_met, min_met, max_met);
+	TH1D met_data("met_data","met_data",bin_met, min_met, max_met);
 
 
-        TH1D aco_fraction("aco_fraction","aco_fraction", bin_aco, min_aco, max_aco);
-        TH1D m_fraction("m_fraction","m_fraction", bin_m, min_m, max_m);
-        TH1D r_fraction("r_fraction","r_fraction", bin_r, min_r, max_r);
-	TH1D pt_fraction("pt_fraction","pt_fraction", bin_pt, min_pt, max_pt);
+        //TH1D aco_fraction("aco_fraction","aco_fraction", bin_aco, min_aco, max_aco);
+        //TH1D m_fraction("m_fraction","m_fraction", bin_m, min_m, max_m);
+        //TH1D r_fraction("r_fraction","r_fraction", bin_r, min_r, max_r);
+	//TH1D pt_fraction("pt_fraction","pt_fraction", bin_pt, min_pt, max_pt);
 
-        TTree* tree_data=(TTree*) data.Get("tree");
+        //TTree* tree_data=(TTree*) data.Get("tree");
         TTree* tree_dy = (TTree*) dy.Get("tree");
         TTree* tree_qcd= (TTree*) qcd.Get("tree");
         TTree* tree_ttjets= (TTree*) ttjets.Get("tree");
 	TTree* tree_sinal= (TTree*) sinal.Get("tree");
+	TTree* tree_data= (TTree*) data.Get("tree");
 
-        int n_evt_data=tree_data->GetEntries();
+        //int n_evt_data=tree_data->GetEntries();
         int n_evt_dy=tree_dy->GetEntries();
         int n_evt_qcd=tree_qcd->GetEntries();
         int n_evt_ttjets=tree_ttjets->GetEntries();
 	int n_evt_sinal = tree_sinal->GetEntries();
+	int n_evt_data = tree_data->GetEntries();
 
-        cout<<tree_dy->GetEntries() <<endl;
+        //cout<<tree_dy->GetEntries() <<endl;
 
-        cout << "Processing DATA" << endl;
+        //for(int i=0; i<n_evt_data; i++){
+        //        int o=tree_data->GetEvent(i);
+		//if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("sist_acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
+		//w_data = tree_data->GetLeaf("weight")->GetValue(0);
+	        //aco_data.Fill(tree_data->GetLeaf("sist_acop")->GetValue(0),w_data);
+                //m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
+                //r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
+		//pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
+        //}
+        //}
+
+	double n_data=0;
+    cout << "Processing DATA" << endl;
         for(int i=0; i<n_evt_data; i++){
-
-               int o=tree_data->GetEvent(i);
-		if(tree_data->GetLeaf("sist_mass") ->GetValue(0) <=100 && tree_data->GetLeaf("acop")->GetValue(0)<=0.3 && tree_data->GetLeaf("n_b_jet")->GetValue(0)==0){
-		w_data = tree_data->GetLeaf("weight")->GetValue(0);
-	        aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0),w_data);
+                int o=tree_data->GetEvent(i);
+                if(tree_data->GetLeaf("sist_mass") ->GetValue(0) >=0){
+                        // w_data = tree_data->GetLeaf("weight")->GetValue(0);
+                        w_data=1;
+                        w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+                        cout<<"q_qcd"<<w_qcd<<endl;
+                        
+                n_data = n_data + w_data;
+                // cout << "i am here 1" << endl;
+                aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0),w_data);
+                // cout << "i am here 2" << endl;
                 m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
-                r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
-		pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
+		r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)/tree_data->GetLeaf("xi_arm2_1")->GetValue(0)),w_data);
+        // cout << "i am here 3" << endl;
+                pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
+                // cout << "i am here 4" << endl;
+                mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)*tree_data->GetLeaf("xi_arm2_1")->GetValue(0)),w_data);
+                // cout << "i am here 5" << endl;
+                ra_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
+                // cout << "i am here 6" << endl;
+                tau_data.Fill(tree_data->GetLeaf("tau_pt")->GetValue(0),w_data);
+                // cout << "i am here 7" << endl;
+                met_data.Fill(tree_data->GetLeaf("met_pt")->GetValue(0),w_data);
+                
         }
-        }
+	}
        
         double n_qcd=0;
         cout << "Processing QCD" << endl;
         for(int i=0; i<n_evt_qcd; i++){
-                
                 int o=tree_qcd->GetEvent(i);
 		if(tree_qcd->GetLeaf("sist_mass") ->GetValue(0) >=0){
-		//NAO ATIVAR//w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+		// w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+                w_qcd=1;
                 n_qcd = n_qcd + w_qcd;
                 aco_qcd.Fill(tree_qcd->GetLeaf("acop")->GetValue(0),w_qcd);
                 m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0),w_qcd);
@@ -205,7 +274,8 @@ int main(){
 		mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)*tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
 		ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0),w_qcd);
 		tau_qcd.Fill(tree_qcd->GetLeaf("tau_pt")->GetValue(0),w_qcd);
-		met_qcd.Fill(tree_qcd->GetLeaf("mu_pt")->GetValue(0),w_qcd);
+		met_qcd.Fill(tree_qcd->GetLeaf("met_pt")->GetValue(0),w_qcd);
+                cout<<"pt tt"<<tree_qcd->GetLeaf("sist_pt")->GetValue(0)<<endl;
  	}
         }
 
@@ -235,6 +305,7 @@ int main(){
                 int o=tree_dy->GetEvent(i);
 		if(tree_dy->GetLeaf("sist_mass") ->GetValue(0) >=0){
 		w_dy = tree_dy->GetLeaf("weight")->GetValue(0);
+                // w_dy=1.81;
                 n_dy = n_dy + w_dy;
                 aco_dy.Fill(tree_dy->GetLeaf("acop")->GetValue(0),w_dy);
                 m_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0),w_dy);
@@ -243,7 +314,7 @@ int main(){
 		mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)*tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
 		ra_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0),w_dy);
 		tau_dy.Fill(tree_dy->GetLeaf("tau_pt")->GetValue(0),w_dy);
-                met_dy.Fill(tree_dy->GetLeaf("mu_pt")->GetValue(0),w_dy);
+                met_dy.Fill(tree_dy->GetLeaf("met_pt")->GetValue(0),w_dy);
 	}
         }
         cout<<n_dy*1.81<<endl;
@@ -258,20 +329,21 @@ int main(){
 	met_dy.SetFillColor(kYellow);
 
 	aco_dy.SetLineWidth(0);
-        m_dy.SetLineWidth(0);   
+	m_dy.SetLineWidth(0);
         r_dy.SetLineWidth(0);   
         pt_dy.SetLineWidth(0);   
         mm_dy.SetLineWidth(0);   
         ra_dy.SetLineWidth(0);   
         tau_dy.SetLineWidth(0);   
-        met_dy.SetLineWidth(0);
+        met_dy.SetLineWidth(0);  
 
         double n_tt=0;
-        cout << "Processing ttjets" << endl;
+        cout << "Processing TTjets" << endl;
         for(int i=0; i<n_evt_ttjets; i++){
                 int o=tree_ttjets->GetEvent(i);
                 if(tree_ttjets->GetLeaf("sist_mass") ->GetValue(0)>=0){
 		w_ttjets = tree_ttjets->GetLeaf("weight")->GetValue(0);
+                // w_ttjets=0.15;
                 n_tt=n_tt+w_ttjets;
                 aco_ttjets.Fill(tree_ttjets->GetLeaf("acop")->GetValue(0),w_ttjets);
                 m_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0),w_ttjets);
@@ -280,7 +352,7 @@ int main(){
 		mm_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)*tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
 		ra_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0),w_ttjets);
 		tau_ttjets.Fill(tree_ttjets->GetLeaf("tau_pt")->GetValue(0),w_ttjets);
-                met_ttjets.Fill(tree_ttjets->GetLeaf("mu_pt")->GetValue(0),w_ttjets);
+                met_ttjets.Fill(tree_ttjets->GetLeaf("met_pt")->GetValue(0),w_ttjets);
         }
         }
         cout<<n_tt*0.15<<endl;
@@ -295,19 +367,21 @@ int main(){
 	met_ttjets.SetFillColor(kGreen);
 
 	aco_ttjets.SetLineWidth(0);
-        m_ttjets.SetLineWidth(0);   
-        r_ttjets.SetLineWidth(0);   
-        pt_ttjets.SetLineWidth(0);   
-        mm_ttjets.SetLineWidth(0);   
-        ra_ttjets.SetLineWidth(0);   
-        tau_ttjets.SetLineWidth(0);   
+	m_ttjets.SetLineWidth(0);
+        r_ttjets.SetLineWidth(0);
+        pt_ttjets.SetLineWidth(0);
+        mm_ttjets.SetLineWidth(0);
+        ra_ttjets.SetLineWidth(0);
+        tau_ttjets.SetLineWidth(0);
         met_ttjets.SetLineWidth(0);
 
-        cout << "Processing sinal" << endl;
+
 	for(int i=0; i<n_evt_sinal; i++){
                 int o=tree_sinal->GetEvent(i);
-                if(tree_sinal->GetLeaf("sist_mass") ->GetValue(0)>=0){
-                w_sinal = tree_sinal->GetLeaf("weight")->GetValue(0)*5000;
+                if(tree_sinal->GetLeaf("sist_mass")->GetValue(0)>=0){
+                // w_sinal = tree_sinal->GetLeaf("weight")->GetValue(0);
+                // w_sinal=1*50;
+                // cout<<"w_sinal: "<<w_sinal<<endl;
                 m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0),w_sinal);
 		aco_sinal.Fill(tree_sinal->GetLeaf("sist_acop")->GetValue(0),w_sinal);
 		r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
@@ -315,10 +389,9 @@ int main(){
 		mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)*tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
 		ra_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0),w_sinal);
 		tau_sinal.Fill(tree_sinal->GetLeaf("tau_pt")->GetValue(0),w_sinal);
-                met_sinal.Fill(tree_sinal->GetLeaf("mu_pt")->GetValue(0),w_sinal);
+                met_sinal.Fill(tree_sinal->GetLeaf("met_pt")->GetValue(0),w_sinal);
         }
 	}
-        cout << "Processing finished signal" << endl;
 
         m_sinal.SetLineColor(kBlack);
 	aco_sinal.SetLineColor(kBlack);
@@ -329,42 +402,111 @@ int main(){
 	tau_sinal.SetLineColor(kBlack);
 	met_sinal.SetLineColor(kBlack);
 
-        aco_fraction=aco_data;
-        m_fraction=m_data;
-        r_fraction=r_data;
-	pt_fraction=pt_data;
+        //aco_fraction=aco_data;
+        //m_fraction=m_data;
+        //r_fraction=r_data;
+	//pt_fraction=pt_data;
 
         sum_aco=aco_dy;
         sum_aco.Add(&aco_qcd);
         sum_aco.Add(&aco_ttjets);
+	sum_aco.SetFillColor(kGray+1);
+	sum_aco.SetFillStyle(3354);
+
+        cout << "DY CR - Data events: " << aco_data.GetEntries() << endl;
+        cout << "DY CR - DY MC events: " << aco_dy.GetEntries() << endl;
+        cout << "DY CR - QCD MC events: " << aco_qcd.GetEntries() << endl;
+        cout << "DY CR - ttjets MC events: " << aco_ttjets.GetEntries() << endl;
+
+	for (int i = 1; i <= sum_aco.GetNbinsX(); ++i) {
+           double content = sum_aco.GetBinContent(i);
+           double error = sqrt(content);
+           sum_aco.SetBinError(i, error);
+        }
 
 	sum_ra=ra_dy;
         sum_ra.Add(&ra_qcd);
         sum_ra.Add(&ra_ttjets);
+	sum_ra.SetFillColor(kGray+1);
+        sum_ra.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_ra.GetNbinsX(); ++i) {
+           double content = sum_ra.GetBinContent(i);
+           double error = sqrt(content);
+           sum_ra.SetBinError(i, error);
+        }
 
         sum_m=m_ttjets;
         sum_m.Add(&m_qcd);
         sum_m.Add(&m_dy);
+	sum_m.SetFillColor(kGray+1);
+        sum_m.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_m.GetNbinsX(); ++i) {
+           double content = sum_m.GetBinContent(i);
+           double error = sqrt(content);
+           sum_m.SetBinError(i, error);
+        }
 
         sum_r=r_dy;
         sum_r.Add(&r_qcd);
         sum_r.Add(&r_ttjets);
+	sum_r.SetFillColor(kGray+1);
+        sum_r.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_r.GetNbinsX(); ++i) {
+           double content = sum_r.GetBinContent(i);
+           double error = sqrt(content);
+           sum_r.SetBinError(i, error);
+        }
 
 	sum_pt=pt_dy;
         sum_pt.Add(&pt_qcd);
         sum_pt.Add(&pt_ttjets);
+	sum_pt.SetFillColor(kGray+1);
+        sum_pt.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_pt.GetNbinsX(); ++i) {
+           double content = sum_pt.GetBinContent(i);
+           double error = sqrt(content);
+           sum_pt.SetBinError(i, error);
+        }
 
 	sum_mm=mm_dy;
         sum_mm.Add(&mm_qcd);
         sum_mm.Add(&mm_ttjets);
+	sum_mm.SetFillColor(kGray+1);
+        sum_mm.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_mm.GetNbinsX(); ++i) {
+           double content = sum_mm.GetBinContent(i);
+           double error = sqrt(content);
+           sum_mm.SetBinError(i, error);
+        }
 
 	sum_tau=tau_dy;
         sum_tau.Add(&tau_qcd);
         sum_tau.Add(&tau_ttjets);
+	sum_tau.SetFillColor(kGray+1);
+        sum_tau.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_tau.GetNbinsX(); ++i) {
+           double content = sum_tau.GetBinContent(i);
+           double error = sqrt(content);
+           sum_tau.SetBinError(i, error);
+        }
 
 	sum_met=met_dy;
         sum_met.Add(&met_qcd);
         sum_met.Add(&met_ttjets);
+	sum_met.SetFillColor(kGray+1);
+        sum_met.SetFillStyle(3354);
+
+        for (int i = 1; i <= sum_met.GetNbinsX(); ++i) {
+           double content = sum_met.GetBinContent(i);
+           double error = sqrt(content);
+           sum_met.SetBinError(i, error);
+        }
 
         aco->Add(&aco_ttjets);
         aco->Add(&aco_qcd);
@@ -420,25 +562,28 @@ int main(){
 	//aco_data.Write();
 	output.Close();
 
-        TF1 f1 ("f1","1",0,1);
+        //TF1 f1 ("f1","1",0,1);
 
         TCanvas c1;
 	c1.SetCanvasSize(700,800);
-	gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+	//gPad->SetPad(0.1, 0.1, 1.0, 1.0);
 	gPad->Draw();
-	l_aco->AddEntry(&aco_data, "Data (2018)", "lep");
+	//l_aco->AddEntry(&aco_data, "Data (2018)", "lep");
         l_aco->AddEntry(&aco_ttjets, "t \\bar{t}", "f");
         l_aco->AddEntry(&aco_dy, "Drell Yan", "f");
         l_aco->AddEntry(&aco_qcd, "QCD (Data driven)", "f");
-	l_aco->AddEntry(&aco_sinal, "Signal (x5000)", "l");
+	l_aco->AddEntry(&aco_sinal, "Signal", "l");
+	l_aco->AddEntry(&aco_data, "Data", "c");
         aco->Draw("histo");
 	aco_sinal.Draw("same && histo");
+	aco_data.Draw("same && E");
+        sum_aco.Draw("same && E2");
 	aco_sinal.SetLineWidth(3);
         aco->GetXaxis()->SetTitle("Acoplanarity of the central system");
 	aco->GetYaxis()->SetTitle("Events");
-        aco_data.Draw("same && E");
-	aco_data.SetLineColor(kBlack);
-	aco_data.SetLineWidth(2);
+        //aco_data.Draw("same && E");
+	//aco_data.SetLineColor(kBlack);
+	//aco_data.SetLineWidth(2);
         //gPad->SetLogy();
         l_aco->Draw();
 	aco->GetXaxis()->SetNdivisions(5);
@@ -450,8 +595,8 @@ int main(){
 	aco->GetXaxis()->SetLabelOffset(0.01);
   	aco->GetYaxis()->SetLabelOffset(0.01);
   	aco->GetXaxis()->SetTitleOffset(1.);
-	aco->GetYaxis()->SetRangeUser(0.1,200);
-	aco_data.SetMarkerStyle(20);
+	// aco->GetYaxis()->SetRangeUser(0.1,200);  // Commented out to auto-scale
+	//aco_data.SetMarkerStyle(20);
 
 	TLatex cmsLabel;
 	cmsLabel.SetTextAlign(31);
@@ -467,32 +612,33 @@ int main(){
 
 	c1.Update();
 
-        f1.Draw("same");
+        //f1.Draw("same");
 
 	c1.Update();
+        c1.SaveAs("output_plots/aco.png");
 
-        c1.Update();
-        c1.SaveAs("SR_plots/aco.png");
-
-        TF1 f2 ("f2","1",-1100,1100);
+        //TF1 f2 ("f2","1",-1100,1100);
 
         TCanvas c2;
 	c2.SetCanvasSize(700,800);
-        gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+        //gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();             // Draw the upper pad: pad1
-	l_m->AddEntry(&m_data, "Data (2018)", "lep");
+	//l_m->AddEntry(&m_data, "Data (2018)", "lep");
         l_m->AddEntry(&m_ttjets, "t \\bar{t}", "f");
         l_m->AddEntry(&m_dy, "Drell Yan", "f");
         l_m->AddEntry(&m_qcd, "QCD (Data driven)", "f");
-	l_m->AddEntry(&m_sinal, "Signal x 5000", "l");
+	l_m->AddEntry(&m_sinal, "Signal x 500", "l");
+	l_m->AddEntry(&m_data, "Data", "c");
         m->Draw("histo");
         m->GetXaxis()->SetTitle("Invariant mass of the central system [GeV]");
 	m->GetYaxis()->SetTitle("Events");
         m_sinal.Draw("same && histo");
-	m_sinal.SetLineWidth(3);
         m_data.Draw("same && E");
-	m_data.SetLineColor(kBlack);
-        m_data.SetLineWidth(2);
+	sum_m.Draw("same && E2");
+	m_sinal.SetLineWidth(3);
+        //m_data.Draw("same && E");
+	//m_data.SetLineColor(kBlack);
+        //m_data.SetLineWidth(2);
         //gPad->SetLogy();
         l_m->Draw();
 	m->GetXaxis()->SetNdivisions(5);
@@ -504,8 +650,8 @@ int main(){
         m->GetXaxis()->SetLabelOffset(0.01);
         m->GetYaxis()->SetLabelOffset(0.01);
         m->GetXaxis()->SetTitleOffset(1.);
-        m->GetYaxis()->SetRangeUser(0.1,200);
-        m_data.SetMarkerStyle(20);
+        // m->GetYaxis()->SetRangeUser(0.1,200);  // Commented out to auto-scale
+        //m_data.SetMarkerStyle(20);
 
         TLatex cmsLabel2;
         cmsLabel2.SetTextAlign(31);
@@ -520,23 +666,26 @@ int main(){
         cmsLabel3.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c2.Update();
+        c2.SaveAs("output_plots/mass.png");
 
-        c2.SaveAs("SR_plots/m.png");
 
 	TCanvas c3;
 	c3.SetCanvasSize(700,800);
-	gPad->SetPad(0.1, 0.1, 1.0, 1.0);
-        gPad->Draw();             // Draw the upper pad: pad1
+	//gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+        //gPad->Draw();             // Draw the upper pad: pad1
         gPad->Draw();
-	l_r->AddEntry(&r_data, "Data (2018)", "lep");
+	//l_r->AddEntry(&r_data, "Data (2018)", "lep");
         l_r->AddEntry(&r_ttjets, "t \\bar{t}", "f");
         l_r->AddEntry(&r_dy, "Drell Yan", "f");
         l_r->AddEntry(&r_qcd, "QCD (Data driven)", "f");
-	l_r->AddEntry(&r_sinal, "Signal (x 5000)", "l");
+	l_r->AddEntry(&r_sinal, "Signal (x 500)", "l");
+        l_r->AddEntry(&r_data, "Data", "c");
         r->Draw("histo");
         r->GetXaxis()->SetTitle("Rapidity matching");
 	r->GetYaxis()->SetTitle("Events");
 	r_sinal.Draw("histo && same");
+	r_data.Draw("same && E");
+	sum_r.Draw("same && E2");
 	r_sinal.SetLineWidth(3);
 	l_r->Draw();
 	r->GetXaxis()->SetNdivisions(5);
@@ -548,12 +697,12 @@ int main(){
         r->GetXaxis()->SetLabelOffset(0.01);
         r->GetYaxis()->SetLabelOffset(0.01);
         r->GetXaxis()->SetTitleOffset(1.);
-        r->GetYaxis()->SetRangeUser(0.1,200);
-        r_data.SetMarkerStyle(20);
+        // r->GetYaxis()->SetRangeUser(0.1,200);  // Commented out to auto-scale
+        //r_data.SetMarkerStyle(20);
         //gPad->SetLogy();
-	r_data.SetLineColor(kBlack);
-        r_data.SetLineWidth(2);
-	r_data.Draw("same && E");
+	//r_data.SetLineColor(kBlack);
+        //r_data.SetLineWidth(2);
+	//r_data.Draw("same && E");
 
 	TLatex cmsLabel4;
         cmsLabel4.SetTextAlign(31);
@@ -568,22 +717,25 @@ int main(){
         cmsLabel5.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c3.Update();
+        c3.SaveAs("output_plots/rapidity_matching.png");
 
-        c3.SaveAs("SR_plots/rap.png");
 
 	TCanvas c4;
 	c4.SetCanvasSize(700,800);
-	gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+	//gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-	l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+	//l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_pt->AddEntry(&pt_ttjets, "t \\bar{t}", "f");
         l_pt->AddEntry(&pt_dy, "Drell Yan", "f");
         l_pt->AddEntry(&pt_qcd, "QCD (Data driven)", "f");
-	l_pt->AddEntry(&pt_sinal, "Signal (x 5000)", "l");
+	l_pt->AddEntry(&pt_sinal, "Signal (x 500)", "l");
+	l_pt->AddEntry(&pt_data, "Data", "c");
         pt->Draw("histo");
         pt->GetXaxis()->SetTitle("Transverse momentum of the central system [GeV]");
 	pt->GetYaxis()->SetTitle("Events");
 	pt_sinal.Draw("same && histo");
+	pt_data.Draw("same && E");
+        sum_pt.Draw("same && E2");
 	pt_sinal.SetLineWidth(3);
 	l_pt->Draw();
 	pt->GetXaxis()->SetNdivisions(5);
@@ -595,10 +747,10 @@ int main(){
         pt->GetXaxis()->SetLabelOffset(0.01);
         pt->GetYaxis()->SetLabelOffset(0.01);
         pt->GetXaxis()->SetTitleOffset(1.);
-        pt_data.Draw("same && E");
-	pt_data.SetLineColor(kBlack);
-        pt_data.SetLineWidth(2);
-	pt_data.SetMarkerStyle(20);
+        //pt_data.Draw("same && E");
+	//pt_data.SetLineColor(kBlack);
+        //pt_data.SetLineWidth(2);
+	//pt_data.SetMarkerStyle(20);
         //gPad->SetLogy();
 	TLatex cmsLabel6;
         cmsLabel6.SetTextAlign(31);
@@ -613,21 +765,25 @@ int main(){
         cmsLabel7.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c4.Update();
-        c4.SaveAs("SR_plots/pt.png");
+        c4.SaveAs("output_plots/pt_central.png");
+
 
 	TCanvas c5;
         c5.SetCanvasSize(700,800);
-        gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+        //gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_mm->AddEntry(&mm_ttjets, "t \\bar{t}", "f");
         l_mm->AddEntry(&mm_dy, "Drell Yan", "f");
         l_mm->AddEntry(&mm_qcd, "QCD (Data driven)", "f");
-        l_mm->AddEntry(&mm_sinal, "Signal (x 5000)", "l");
+        l_mm->AddEntry(&mm_sinal, "Signal (x 500)", "l");
+	l_mm->AddEntry(&mm_data, "Data", "c");
         mm->Draw("histo");
         mm->GetXaxis()->SetTitle("Mass difference (CMS-PPS) [GeV]");
         mm->GetYaxis()->SetTitle("Events");
         mm_sinal.Draw("same && histo");
+	mm_data.Draw("same && E");
+        sum_mm.Draw("same && E2");
 	mm_sinal.SetLineWidth(3);
 	l_mm->Draw();
         mm->GetXaxis()->SetNdivisions(5);
@@ -639,10 +795,10 @@ int main(){
         mm->GetXaxis()->SetLabelOffset(0.01);
         mm->GetYaxis()->SetLabelOffset(0.01);
         mm->GetXaxis()->SetTitleOffset(1.);
-        pt_data.Draw("same && E");
-        pt_data.SetLineColor(kBlack);
-        pt_data.SetLineWidth(2);
-        pt_data.SetMarkerStyle(20);
+        //pt_data.Draw("same && E");
+        //pt_data.SetLineColor(kBlack);
+        //pt_data.SetLineWidth(2);
+        //pt_data.SetMarkerStyle(20);
         //gPad->SetLogy();
         TLatex cmsLabel8;
         cmsLabel8.SetTextAlign(31);
@@ -657,21 +813,25 @@ int main(){
         cmsLabel9.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c5.Update();
-        c5.SaveAs("SR_plots/pt.png");
+        c5.SaveAs("output_plots/mass_diff.png");
+
 
 	TCanvas c6;
         c6.SetCanvasSize(700,800);
-        gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+        //gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_ra->AddEntry(&ra_ttjets, "t \\bar{t}", "f");
         l_ra->AddEntry(&ra_dy, "Drell Yan", "f");
         l_ra->AddEntry(&ra_qcd, "QCD (Data driven)", "f");
-        l_ra->AddEntry(&ra_sinal, "Signal (x 5000)", "l");
+        l_ra->AddEntry(&ra_sinal, "Signal (x 500)", "l");
+	l_ra->AddEntry(&ra_data, "Data", "c");
         ra->Draw("histo");
         ra->GetXaxis()->SetTitle("Rapidity of the central system");
         ra->GetYaxis()->SetTitle("Events");
         ra_sinal.Draw("same && histo");
+	ra_data.Draw("same && E");
+        sum_ra.Draw("same && E2");
 	ra_sinal.SetLineWidth(3);
         ra->GetXaxis()->SetNdivisions(5);
         ra->GetYaxis()->SetNdivisions(5);
@@ -682,10 +842,10 @@ int main(){
         ra->GetXaxis()->SetLabelOffset(0.01);
         ra->GetYaxis()->SetLabelOffset(0.01);
         ra->GetXaxis()->SetTitleOffset(1.);
-        pt_data.Draw("same && E");
-        pt_data.SetLineColor(kBlack);
-        pt_data.SetLineWidth(2);
-        pt_data.SetMarkerStyle(20);
+        //pt_data.Draw("same && E");
+        //pt_data.SetLineColor(kBlack);
+        //pt_data.SetLineWidth(2);
+        //pt_data.SetMarkerStyle(20);
         //gPad->SetLogy();
         l_ra->Draw();
         TLatex cmsLabel10;
@@ -701,21 +861,25 @@ int main(){
         cmsLabel11.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c6.Update();
-        c6.SaveAs("SR_plots/rap_central.png");
+        c6.SaveAs("output_plots/rapidity_central.png");
+
 
 	TCanvas c7;
         c7.SetCanvasSize(700,800);
-        gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+        //gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_tau->AddEntry(&tau_ttjets, "t \\bar{t}", "f");
         l_tau->AddEntry(&tau_dy, "Drell Yan", "f");
         l_tau->AddEntry(&tau_qcd, "QCD (Data driven)", "f");
-        l_tau->AddEntry(&tau_sinal, "Signal (x 5000)", "l");
+        l_tau->AddEntry(&tau_sinal, "Signal (x 500)", "l");
+	l_tau->AddEntry(&tau_data, "Data", "c");
         tau->Draw("histo");
         tau->GetXaxis()->SetTitle("Transverse momentum of the hadronic tau [GeV]");
         tau->GetYaxis()->SetTitle("Events");
         tau_sinal.Draw("same && histo");
+	tau_data.Draw("same && E");
+        sum_tau.Draw("same && E2");
 	tau_sinal.SetLineWidth(3);
         tau->GetXaxis()->SetNdivisions(5);
         tau->GetYaxis()->SetNdivisions(5);
@@ -726,10 +890,10 @@ int main(){
         tau->GetXaxis()->SetLabelOffset(0.01);
         tau->GetYaxis()->SetLabelOffset(0.01);
         tau->GetXaxis()->SetTitleOffset(1.);
-        pt_data.Draw("same && E");
-        pt_data.SetLineColor(kBlack);
-        pt_data.SetLineWidth(2);
-        pt_data.SetMarkerStyle(20);
+        //pt_data.Draw("same && E");
+        //pt_data.SetLineColor(kBlack);
+        //pt_data.SetLineWidth(2);
+        //pt_data.SetMarkerStyle(20);
         //gPad->SetLogy();
         l_tau->Draw();
        	TLatex cmsLabel12;
@@ -745,21 +909,25 @@ int main(){
         cmsLabel13.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c7.Update();
-        c7.SaveAs("SR_plots/tau_pt.png");
+        c7.SaveAs("output_plots/tau_pt.png");
+
 
 	TCanvas c8;
         c8.SetCanvasSize(700,800);
-        gPad->SetPad(0.1, 0.1, 1.0, 1.0);
+        //gPad->SetPad(0.1, 0.1, 1.0, 1.0);
         gPad->Draw();
-        l_pt->AddEntry(&r_data, "Data (2018)", "lep");
+        //l_pt->AddEntry(&r_data, "Data (2018)", "lep");
         l_met->AddEntry(&met_ttjets, "t \\bar{t}", "f");
         l_met->AddEntry(&met_dy, "Drell Yan", "f");
         l_met->AddEntry(&met_qcd, "QCD (Data driven)", "f");
-        l_met->AddEntry(&met_sinal, "Signal (x 5000)", "l");
+        l_met->AddEntry(&met_sinal, "Signal (x 500)", "l");
+	l_met->AddEntry(&met_data, "Data", "c");
         met->Draw("histo");
-        met->GetXaxis()->SetTitle("Muon transverse momentum [GeV]");
+        met->GetXaxis()->SetTitle("MET [GeV]");
         met->GetYaxis()->SetTitle("Events");
         met_sinal.Draw("same && histo");
+	met_data.Draw("same && E");
+        sum_met.Draw("same && E2");
 	met_sinal.SetLineWidth(3);
         met->GetXaxis()->SetNdivisions(5);
         met->GetYaxis()->SetNdivisions(5);
@@ -770,10 +938,10 @@ int main(){
         met->GetXaxis()->SetLabelOffset(0.01);
         met->GetYaxis()->SetLabelOffset(0.01);
         met->GetXaxis()->SetTitleOffset(1.);
-        pt_data.Draw("same && E");
-        pt_data.SetLineColor(kBlack);
-        pt_data.SetLineWidth(2);
-        pt_data.SetMarkerStyle(20);
+        //pt_data.Draw("same && E");
+        //pt_data.SetLineColor(kBlack);
+        //pt_data.SetLineWidth(2);
+        //pt_data.SetMarkerStyle(20);
         //gPad->SetLogy();
         l_met->Draw();
        	TLatex cmsLabel14;
@@ -789,8 +957,18 @@ int main(){
         cmsLabel15.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c8.Update();
-        c8.SaveAs("SR_plots/muon_pt.png");
+        c8.SaveAs("output_plots/met.png");
 
+
+        // system("mkdir -p output_plots");
+        // c1.SaveAs("output_plots/aco.png");
+        // c2.SaveAs("output_plots/mass.png");
+        // c3.SaveAs("output_plots/rapidity_matching.png");
+        // c4.SaveAs("output_plots/pt_central.png");
+        // c5.SaveAs("output_plots/mass_diff.png");
+        // c6.SaveAs("output_plots/rapidity_central.png");
+        // c7.SaveAs("output_plots/tau_pt.png");
+        // c8.SaveAs("output_plots/met.png");
 
         bool interactive = false;
 
@@ -798,9 +976,7 @@ int main(){
         app.Run(true);
         }
 
-
         return 0;
 
 }
-
 
