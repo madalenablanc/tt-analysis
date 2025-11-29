@@ -71,15 +71,15 @@ int main(){
         double w_qcd=1.;
         double w_ttjets=0.15;
         double w_dy=1.81;
-	double w_sinal=0.5;
+	    double w_sinal=0.02;
 
         double min_aco=0.0;
         double max_aco=1.0;
-        int bin_aco=10;
+        int bin_aco=20;
 
         double min_m=0;
         double max_m=1200;
-        int  bin_m=10;
+        int  bin_m=30;
 
         double min_r=-2.2;
         double max_r=2.2;
@@ -87,11 +87,11 @@ int main(){
 
 	double min_pt=0;
         double max_pt=600;
-        int bin_pt=10;
+        int bin_pt=30;
 
 	double min_mm=-1500;
         double max_mm=200;
-        int bin_mm=10;
+        int bin_mm=20;
 
 	double min_ra=-2.2;
         double max_ra=2.2;
@@ -235,9 +235,9 @@ int main(){
                 int o=tree_data->GetEvent(i);
                 if(tree_data->GetLeaf("sist_mass") ->GetValue(0) >=0){
                         // w_data = tree_data->GetLeaf("weight")->GetValue(0);
-                        w_data=1;
-                        w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
-                        cout<<"q_qcd"<<w_qcd<<endl;
+                        // w_data=1;
+                        // w_qcd = tree_qcd->GetLeaf("weight")->GetValue(0);
+                        // cout<<"q_qcd"<<w_qcd<<endl;
                         
                 n_data = n_data + w_data;
                 // cout << "i am here 1" << endl;
@@ -383,7 +383,7 @@ int main(){
                 // w_sinal=1*50;
                 // cout<<"w_sinal: "<<w_sinal<<endl;
                 m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0),w_sinal);
-		aco_sinal.Fill(tree_sinal->GetLeaf("sist_acop")->GetValue(0),w_sinal);
+		aco_sinal.Fill(tree_sinal->GetLeaf("acop")->GetValue(0),w_sinal);
 		r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
 		pt_sinal.Fill(tree_sinal->GetLeaf("sist_pt")->GetValue(0),w_sinal);
 		mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)*tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);

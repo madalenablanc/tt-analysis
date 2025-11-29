@@ -1,13 +1,13 @@
 import ROOT
 
 # --- User Configurable ---
-input_file = "MuTau_sinal_SM_2018_july.root"    # Change to your file
+input_file = "/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root"    # Change to your file
 tree_name = "tree"                # TTree name
 variable = "sist_mass"                # Variable to plot
 bins = 50                         # Number of bins
 x_min = 0                         # X-axis min
 x_max = 1000                     # X-axis max
-output_plot = "sist_mass_sinal_pmutau.png"    # Output image file
+output_plot = "sist_mass_ttjets_pmutau.png"    # Output image file
 
 # --- Open the ROOT file ---
 f = ROOT.TFile.Open(input_file)
