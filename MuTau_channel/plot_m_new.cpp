@@ -615,7 +615,7 @@ int main(){
         //f1.Draw("same");
 
 	c1.Update();
-        c1.SaveAs("output_plots/aco.png");
+        c1.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/aco.png");
 
         //TF1 f2 ("f2","1",-1100,1100);
 
@@ -666,7 +666,7 @@ int main(){
         cmsLabel3.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c2.Update();
-        c2.SaveAs("output_plots/mass.png");
+        c2.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/mass.png");
 
 
 	TCanvas c3;
@@ -717,7 +717,7 @@ int main(){
         cmsLabel5.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c3.Update();
-        c3.SaveAs("output_plots/rapidity_matching.png");
+        c3.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/rapidity_matching.png");
 
 
 	TCanvas c4;
@@ -765,7 +765,7 @@ int main(){
         cmsLabel7.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c4.Update();
-        c4.SaveAs("output_plots/pt_central.png");
+        c4.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/pt_central.png");
 
 
 	TCanvas c5;
@@ -813,7 +813,7 @@ int main(){
         cmsLabel9.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c5.Update();
-        c5.SaveAs("output_plots/mass_diff.png");
+        c5.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/mass_diff.png");
 
 
 	TCanvas c6;
@@ -861,7 +861,7 @@ int main(){
         cmsLabel11.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c6.Update();
-        c6.SaveAs("output_plots/rapidity_central.png");
+        c6.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/rapidity_central.png");
 
 
 	TCanvas c7;
@@ -909,7 +909,7 @@ int main(){
         cmsLabel13.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c7.Update();
-        c7.SaveAs("output_plots/tau_pt.png");
+        c7.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/tau_pt.png");
 
 
 	TCanvas c8;
@@ -957,11 +957,11 @@ int main(){
         cmsLabel15.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c8.Update();
-        c8.SaveAs("output_plots/met.png");
+        c8.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/met.png");
 
 
         // system("mkdir -p output_plots");
-        // c1.SaveAs("output_plots/aco.png");
+        // c1.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/aco.png");
         // c2.SaveAs("output_plots/mass.png");
         // c3.SaveAs("output_plots/rapidity_matching.png");
         // c4.SaveAs("output_plots/pt_central.png");
