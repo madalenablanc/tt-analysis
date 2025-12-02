@@ -18,10 +18,10 @@ ROOT.EnableImplicitMT()
 # ----------------------------- Configuration ------------------------------
 line_number   = -1   # -1 => process all lines; >=0 => only that index
 input_list    = "Data_MuTau_phase0_2018.txt"     # one /store/... path (or full PFN) per line
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_mutau/Data_2018_UL_skimmed_MuTau_nano_"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase0_mutau_proton_vars/Data_2018_UL_skimmed_MuTau_nano_"
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase0_resume.json"
-overwrite     = False
+overwrite     = True
 proxy_min_left_sec = 30*60             # auto-renew proxy if < 30 min left
 
 CACHE_DIR     = os.path.expanduser("~/.mutau_cache")
@@ -211,7 +211,13 @@ COLUMNS = [
     "sist_mass","acop","sist_pt","sist_rap",
     "met_pt","met_phi",
     "jet_pt","jet_eta","jet_phi","jet_mass","jet_btag",
-    "weight","n_b_jet","generator_weight"
+    "weight","n_b_jet","generator_weight",
+    # Proton collections (full flexibility for later cuts)
+    "nproton_multi", "nproton_single",
+    "proton_multi_xi", "proton_multi_arm", "proton_multi_t",
+    "proton_multi_thetaX", "proton_multi_thetaY",
+    "proton_multi_time", "proton_multi_timeUnc",
+    "proton_single_xi"
 ]
 
 # ------------------------------ Worker logic ------------------------------
@@ -263,6 +269,17 @@ def build_df_defs(df):
         .Define("n_b_jet",  "int nb=0; for (auto b: Jet_btagDeepB) if (b>0.4506) ++nb; return nb;")
         .Define("generator_weight", "1.0")
         .Define("weight",          "1.0")
+        # Proton variables - save full collections for flexible cuts later
+        .Define("nproton_multi",       "int(nProton_multiRP)")
+        .Define("nproton_single",      "int(nProton_singleRP)")
+        .Define("proton_multi_xi",     "Proton_multiRP_xi")
+        .Define("proton_multi_arm",    "Proton_multiRP_arm")
+        .Define("proton_multi_t",      "Proton_multiRP_t")
+        .Define("proton_multi_thetaX", "Proton_multiRP_thetaX")
+        .Define("proton_multi_thetaY", "Proton_multiRP_thetaY")
+        .Define("proton_multi_time",   "Proton_multiRP_time")
+        .Define("proton_multi_timeUnc","Proton_multiRP_timeUnc")
+        .Define("proton_single_xi",    "Proton_singleRP_xi")
     )
     return df_defs
 
