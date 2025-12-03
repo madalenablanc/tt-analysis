@@ -67,8 +67,30 @@
 
 ### --> Looks like the issue is the change in code to save proton related variables in phase1 
 
-### TODO: re-run analysis ; back to original code and then go from there
+----
+
+### DONE: running phase0 (had to re-do because I ran the wrong script)
+
+```
+# PHASE0
+python3 fase0_data_mutau.py -> saved new samples to 
+/eos/user/m/mblancco/samples_2018_mutau/fase0_mutau_proton_vars/Data_2018_UL_skimmed_MuTau_nano...
+
+#PHASE1
+```
+
+### Variables saved:
+-nProton_multiRP
+-nProton_singleRP
+-Proton_multiRP_xi
+-Proton_multiRP_arm
+-Proton_multiRP_t
+-Proton_multiRP_thetaX
+-Proton_multiRP_thetaY
+-Proton_multiRP_time
+-Proton_multiRP_timeUnc
+-Proton_singleRP_x
 
 
-
+### TODO: run phase1 for qcd and data separately  
 

@@ -19,11 +19,11 @@ ROOT.EnableImplicitMT()
 # ---------- Parameters ----------
 line_number   = -1   # -1 => process all; >=0 => only that line index
 input_list    = "Data_QCD_MuTau_skimmed_2018.txt"  # one /store/... (or full PFN) per line
-output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data/Data_2018_UL_skimmed_MuTau_cuts_"
+output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data_proton_vars/Data_2018_UL_skimmed_MuTau_cuts_"
 lumi_file     = "dadosluminosidade.txt"
 resume_path   = ".mutau_phase1_qcd_resume.json"
 overwrite     = True
-prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_new/"
+prefix        = "/eos/home-m/mblancco/samples_2018_mutau/fase0_mutau_proton_vars/"
 
 print("Processing Data - phase1\n")
 print(f"Output directory: {os.path.dirname(output_prefix)}")
@@ -63,12 +63,18 @@ total_files = len(indices)
 
 
 columns = [
-    "mu_id", "tau_id1", "tau_id2", "tau_id3", "mu_pt", "tau_pt",
-    "mu_charge", "tau_charge", "mu_eta", "tau_eta",
-    "mu_n", "tau_n", "mu_phi", "tau_phi", "mu_mass", "tau_mass",
+    "muon_id", "tau_id1", "tau_id2", "tau_id3", "muon_pt", "tau_pt",
+    "muon_charge", "tau_charge", "muon_eta", "tau_eta",
+    "muon_n", "tau_n", "muon_phi", "tau_phi", "muon_mass", "tau_mass",
     "sist_mass", "acop", "sist_pt", "sist_rap", "met_pt", "met_phi",
     "jet_pt", "jet_eta", "jet_phi", "jet_mass", "jet_btag",
-    "weight", "n_b_jet"
+    "weight", "n_b_jet",
+    # Proton collections (from phase 0)
+    "nproton_multi", "nproton_single",
+    "proton_multi_xi", "proton_multi_arm", "proton_multi_t",
+    "proton_multi_thetaX", "proton_multi_thetaY",
+    "proton_multi_time", "proton_multi_timeUnc",
+    "proton_single_xi"
 ]
 
 # ---------- Main loop ----------
@@ -98,7 +104,7 @@ for file_idx, idx in enumerate(indices):
         df_added=(
             df
 
-            .Define("muon", "TLorentzVector mu; mu.SetPtEtaPhiM(mu_pt, mu_eta, mu_phi, mu_mass); return mu;")
+            .Define("muon", "TLorentzVector mu; mu.SetPtEtaPhiM(muon_pt, muon_eta, muon_phi, muon_mass); return mu;")
             .Define("tau", "TLorentzVector t; t.SetPtEtaPhiM(tau_pt, tau_eta, tau_phi, tau_mass); return t;")
             .Define("delta_r","""
                 double dr=tau.DeltaR(muon);
@@ -112,15 +118,15 @@ for file_idx, idx in enumerate(indices):
             # df.Filter("lumi_filter(run, luminosityBlock)", "Certified lumi")
             #   .Filter("HLT_IsoMu24 == 1", "HLT single-muon 2018")
               df_added
-            #   .Filter("mu_pt.size() > 0 && tau_pt.size() > 0", "Muon and tau present")
-              .Filter("mu_id >= 3", "Muon ID (>= Medium)")
+              # muon_pt and tau_pt are scalars from phase 0, not vectors - no .size() needed
+              .Filter("muon_id >= 3", "Muon ID (>= Medium)")
               .Filter("tau_id1 > 63", "Tau VSjet")
               .Filter("tau_id2   > 7",  "Tau VSe")
               .Filter("tau_id3  > 1",  "Tau VSmu")
-              .Filter("mu_pt > 35. && tau_pt > 100.", "pT thresholds")
-              .Filter("mu_charge * tau_charge < 0", "Opposite sign")
+              .Filter("muon_pt > 35. && tau_pt > 100.", "pT thresholds")
+              .Filter("muon_charge * tau_charge < 0", "Opposite sign")
               .Filter("delta_r>0.4", "Delta R accepance")
-              .Filter("fabs(tau_eta)<2.4 && fabs(mu_eta)<2.4","Geometrical acceptance")
+              .Filter("fabs(tau_eta)<2.4 && fabs(muon_eta)<2.4","Geometrical acceptance")
         )
 
         # Define derived variables

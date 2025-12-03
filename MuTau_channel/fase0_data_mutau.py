@@ -226,13 +226,13 @@ def build_df_defs(df):
     df_sel = (
         df.Filter("lumi_filter(run, luminosityBlock)", "Certified lumi")
           .Filter("HLT_IsoMu24 == 1", "HLT single-muon 2018")
-          .Filter("Muon_pt.size() > 0 && Tau_pt.size() > 0", "Muon and tau present")
-          .Filter("Muon_mvaId[0] >= 3", "Muon ID (>= Medium)")
-          .Filter("Tau_idDeepTau2017v2p1VSjet[0] >= 63", "Tau VSjet (>= VeryTight bit)")
-          .Filter("Tau_idDeepTau2017v2p1VSe[0]   >= 7",  "Tau VSe (>= Tight bit)")
-          .Filter("Tau_idDeepTau2017v2p1VSmu[0]  >= 1",  "Tau VSmu (>= Loose bit)")
-          .Filter("Muon_pt[0] > 35. && Tau_pt[0] > 100.", "pT thresholds")
-          .Filter("Muon_charge[0] * Tau_charge[0] < 0", "Opposite sign")
+        #   .Filter("Muon_pt.size() > 0 && Tau_pt.size() > 0", "Muon and tau present")
+        #   .Filter("Muon_mvaId[0] >= 3", "Muon ID (>= Medium)")
+        #   .Filter("Tau_idDeepTau2017v2p1VSjet[0] >= 63", "Tau VSjet (>= VeryTight bit)")
+        #   .Filter("Tau_idDeepTau2017v2p1VSe[0]   >= 7",  "Tau VSe (>= Tight bit)")
+        #   .Filter("Tau_idDeepTau2017v2p1VSmu[0]  >= 1",  "Tau VSmu (>= Loose bit)")
+        #   .Filter("Muon_pt[0] > 35. && Tau_pt[0] > 100.", "pT thresholds")
+        #   .Filter("Muon_charge[0] * Tau_charge[0] < 0", "Opposite sign")
     )
     df_defs = (
         df_sel
