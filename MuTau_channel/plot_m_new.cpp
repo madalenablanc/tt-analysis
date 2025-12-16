@@ -59,8 +59,8 @@ int main(){
 	// TFile sinal("TauTau_sinal_PIC_july_2018.root");
           TFile dy("/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root");
           TFile ttjets("/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root");
-          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pileup_protons.root");
-          TFile data("/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_pileup_protons.root");
+          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pps.root");
+          TFile data("/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_pps.root");
 
 	TFile sinal("MuTau_sinal_SM_2018_july.root");
 
@@ -79,7 +79,7 @@ int main(){
 
         double min_m=0;
         double max_m=1200;
-        int  bin_m=30;
+        int  bin_m=70;
 
         double min_r=-2.2;
         double max_r=2.2;
@@ -240,20 +240,20 @@ int main(){
                         // cout<<"q_qcd"<<w_qcd<<endl;
                         
                 n_data = n_data + w_data;
-                // cout << "i am here 1" << endl;
+                cout << "i am here 1" << endl;
                 aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0),w_data);
-                // cout << "i am here 2" << endl;
+                cout << "i am here 2" << endl;
                 m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0),w_data);
-		r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)/tree_data->GetLeaf("xi_arm2_1")->GetValue(0)),w_data);
-        // cout << "i am here 3" << endl;
+		// r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)/tree_data->GetLeaf("xi_arm2_1")->GetValue(0)),w_data);
+        cout << "i am here 3" << endl;
                 pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0),w_data);
-                // cout << "i am here 4" << endl;
-                mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)*tree_data->GetLeaf("xi_arm2_1")->GetValue(0)),w_data);
-                // cout << "i am here 5" << endl;
+                cout << "i am here 4" << endl;
+                // mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_data->GetLeaf("xi_arm1_1")->GetValue(0)*tree_data->GetLeaf("xi_arm2_1")->GetValue(0)),w_data);
+                cout << "i am here 5" << endl;
                 ra_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0),w_data);
-                // cout << "i am here 6" << endl;
+                cout << "i am here 6" << endl;
                 tau_data.Fill(tree_data->GetLeaf("tau_pt")->GetValue(0),w_data);
-                // cout << "i am here 7" << endl;
+                cout << "i am here 7" << endl;
                 met_data.Fill(tree_data->GetLeaf("met_pt")->GetValue(0),w_data);
                 
         }
@@ -269,9 +269,9 @@ int main(){
                 n_qcd = n_qcd + w_qcd;
                 aco_qcd.Fill(tree_qcd->GetLeaf("acop")->GetValue(0),w_qcd);
                 m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0),w_qcd);
-                r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)/tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
+                // r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)/tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
 		pt_qcd.Fill(tree_qcd->GetLeaf("sist_pt")->GetValue(0),w_qcd);
-		mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)*tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
+		// mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)*tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
 		ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0),w_qcd);
 		tau_qcd.Fill(tree_qcd->GetLeaf("tau_pt")->GetValue(0),w_qcd);
 		met_qcd.Fill(tree_qcd->GetLeaf("met_pt")->GetValue(0),w_qcd);
@@ -309,9 +309,9 @@ int main(){
                 n_dy = n_dy + w_dy;
                 aco_dy.Fill(tree_dy->GetLeaf("acop")->GetValue(0),w_dy);
                 m_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0),w_dy);
-		r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)/tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
+		// r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)/tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
                 pt_dy.Fill(tree_dy->GetLeaf("sist_pt")->GetValue(0),w_dy);
-		mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)*tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
+		// mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)*tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
 		ra_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0),w_dy);
 		tau_dy.Fill(tree_dy->GetLeaf("tau_pt")->GetValue(0),w_dy);
                 met_dy.Fill(tree_dy->GetLeaf("met_pt")->GetValue(0),w_dy);
@@ -347,9 +347,9 @@ int main(){
                 n_tt=n_tt+w_ttjets;
                 aco_ttjets.Fill(tree_ttjets->GetLeaf("acop")->GetValue(0),w_ttjets);
                 m_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0),w_ttjets);
-		r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)/tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
+		// r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)/tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
 		pt_ttjets.Fill(tree_ttjets->GetLeaf("sist_pt")->GetValue(0),w_ttjets);
-		mm_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)*tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
+		// mm_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0)*tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0)),w_ttjets);
 		ra_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0),w_ttjets);
 		tau_ttjets.Fill(tree_ttjets->GetLeaf("tau_pt")->GetValue(0),w_ttjets);
                 met_ttjets.Fill(tree_ttjets->GetLeaf("met_pt")->GetValue(0),w_ttjets);
@@ -384,9 +384,9 @@ int main(){
                 // cout<<"w_sinal: "<<w_sinal<<endl;
                 m_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0),w_sinal);
 		aco_sinal.Fill(tree_sinal->GetLeaf("acop")->GetValue(0),w_sinal);
-		r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
+		// r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0)-0.5*log(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)/tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
 		pt_sinal.Fill(tree_sinal->GetLeaf("sist_pt")->GetValue(0),w_sinal);
-		mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)*tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
+		// mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0)*tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0)),w_sinal);
 		ra_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0),w_sinal);
 		tau_sinal.Fill(tree_sinal->GetLeaf("tau_pt")->GetValue(0),w_sinal);
                 met_sinal.Fill(tree_sinal->GetLeaf("met_pt")->GetValue(0),w_sinal);
@@ -666,7 +666,7 @@ int main(){
         cmsLabel3.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c2.Update();
-        c2.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/mass.png");
+        c2.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/mass.png");
 
 
 	TCanvas c3;
@@ -717,7 +717,7 @@ int main(){
         cmsLabel5.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c3.Update();
-        c3.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/rapidity_matching.png");
+        c3.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/rapidity_matching.png");
 
 
 	TCanvas c4;
@@ -765,7 +765,7 @@ int main(){
         cmsLabel7.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c4.Update();
-        c4.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/pt_central.png");
+        c4.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/pt_central.png");
 
 
 	TCanvas c5;
@@ -813,7 +813,7 @@ int main(){
         cmsLabel9.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c5.Update();
-        c5.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/mass_diff.png");
+        c5.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/mass_diff.png");
 
 
 	TCanvas c6;
@@ -861,7 +861,7 @@ int main(){
         cmsLabel11.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c6.Update();
-        c6.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/rapidity_central.png");
+        c6.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/rapidity_central.png");
 
 
 	TCanvas c7;
@@ -909,7 +909,7 @@ int main(){
         cmsLabel13.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c7.Update();
-        c7.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/tau_pt.png");
+        c7.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/tau_pt.png");
 
 
 	TCanvas c8;
@@ -957,13 +957,13 @@ int main(){
         cmsLabel15.DrawLatexNDC(0.5, 0.92, "CMS-TOTEM Preliminary");
 
         c8.Update();
-        c8.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/met.png");
+        c8.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/met.png");
 
 
-        // system("mkdir -p output_plots");
-        // c1.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots/aco.png");
-        // c2.SaveAs("output_plots/mass.png");
-        // c3.SaveAs("output_plots/rapidity_matching.png");
+        // system("mkdir -p output_plots_qcd_data_proton_requirements");
+        // c1.SaveAs("/eos/home-m/mblancco/tau_analysis/output_plots_qcd_data_proton_requirements/aco.png");
+        // c2.SaveAs("output_plots_qcd_data_proton_requirements/mass.png");
+        // c3.SaveAs("output_plots_qcd_data_proton_requirements/rapidity_matching.png");
         // c4.SaveAs("output_plots/pt_central.png");
         // c5.SaveAs("output_plots/mass_diff.png");
         // c6.SaveAs("output_plots/rapidity_central.png");

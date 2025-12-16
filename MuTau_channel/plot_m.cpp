@@ -25,11 +25,10 @@ int main(){
 	string luminosity;
 // samples for DY  region
           //TFile data("/eos/user/m/mpisano/samples_2018_emu/fase1/Dados_fase1_PICskimmed_EMu_2018_total.root");
-          TFile dy("/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root");
+           TFile dy("/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root");
           TFile ttjets("/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root");
-          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pileup_protons.root");
-          TFile data("/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_pileup_protons.root");
-
+          TFile qcd("/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_proton_vars.root");
+          TFile data("/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root");
 	TFile sinal("MuTau_sinal_SM_2018_july.root");
 
 
@@ -39,13 +38,13 @@ int main(){
         double w_qcd=1.;
         double w_ttjets=0.15;
         double w_dy=1.81;
-	double w_sinal;
+	double w_sinal=0.02;
 
         double min_aco=0.0;
         double max_aco=1.0;
         int bin_aco=20;
 
-        double min_m=0;
+        double min_m=0;ß
         double max_m=1200;
         int  bin_m=30;
 
@@ -205,7 +204,7 @@ int main(){
 		mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_qcd->GetLeaf("xi_arm1_1")->GetValue(0)*tree_qcd->GetLeaf("xi_arm2_1")->GetValue(0)),w_qcd);
 		ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0),w_qcd);
 		tau_qcd.Fill(tree_qcd->GetLeaf("tau_pt")->GetValue(0),w_qcd);
-		met_qcd.Fill(tree_qcd->GetLeaf("mu_pt")->GetValue(0),w_qcd);
+		met_qcd.Fill(tree_qcd->GetLeaf("muon_pt")->GetValue(0),w_qcd);
  	}
         }
 
@@ -243,7 +242,7 @@ int main(){
 		mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0)-13000.*sqrt(tree_dy->GetLeaf("xi_arm1_1")->GetValue(0)*tree_dy->GetLeaf("xi_arm2_1")->GetValue(0)),w_dy);
 		ra_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0),w_dy);
 		tau_dy.Fill(tree_dy->GetLeaf("tau_pt")->GetValue(0),w_dy);
-                met_dy.Fill(tree_dy->GetLeaf("mu_pt")->GetValue(0),w_dy);
+                met_dy.Fill(tree_dy->GetLeaf("muon_pt")->GetValue(0),w_dy);
 	}
         }
         cout<<n_dy*1.81<<endl;
