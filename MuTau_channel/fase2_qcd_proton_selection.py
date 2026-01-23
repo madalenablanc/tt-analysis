@@ -21,7 +21,7 @@ ROOT.EnableImplicitMT()
 
 # ---------- Parameters ----------
 line_number   = -1   # -1 => process all; >=0 => only that line index
-input_list    QCD_MuTau_phase1_2018.txt"  #phase1 QCD output files
+input_list    = "QCD_MuTau_phase1_2018.txt"  #phase1 QCD output files
 output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase2_qcd_pps/QCD_2018_UL_PPS_selection_"
 resume_path   = ".mutau_phase2_qcd_pps_resume.json"
 overwrite     = True

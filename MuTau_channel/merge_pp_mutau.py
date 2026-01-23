@@ -12,8 +12,19 @@ PROTON_FILE = "/eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/pr
 INPUT_FILE = "/eos/user/m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged.root"
 OUTPUT_FILE = "/eos/user/m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_pileup_protons.root"
 
-# Fixed weight to store in 'weight' branch
-FIXED_WEIGHT = 0.13 # related too probabilities on the pps
+# Proton acceptance/efficiency weight (probability to have ≥1 proton per arm)
+FIXED_WEIGHT = 0.13  # P = 0.13 from 2018 PPS data
+
+# IMPORTANT: The output weight branch will contain:
+#   weight = event_weight × FIXED_WEIGHT
+# where event_weight (if present in input) includes:
+#   - generator_weight
+#   - muon trigger/ID/ISO/reco scale factors
+#
+# For plotting, you still need to apply cross-section normalization:
+#   - DY: multiply by 1.81 (N_MC / N_2018, where N_2018 = lumi × xsec)
+#   - ttbar: multiply by 0.15
+# So final weight = weight_from_tree × cross_section_factor
 
 # Probabilities matching the tau-tau C++
 P11 = 0.08
@@ -139,7 +150,15 @@ def main():
             inputs[name] = inbuf
             t_in.SetBranchAddress(name, inbuf)
 
-    # Fixed weight branch (override whatever is in input)
+    # Weight branch: multiply input event_weight by proton acceptance (0.13)
+    # Check if input has event_weight branch
+    has_event_weight = ensure_branch(t_in, "event_weight")
+    if has_event_weight:
+        event_weight_in = array("d", [1.0])
+        t_in.SetBranchAddress("event_weight", event_weight_in)
+    else:
+        event_weight_in = None
+
     weight = array("d", [float(FIXED_WEIGHT)])
     t_out.Branch("weight", weight, "weight/D")
 
@@ -188,6 +207,9 @@ def main():
             xi = float(t_protons.GetLeaf("proton_xi").GetValue())
             if arm == 0 and xi_arm1_1[0] < 0: xi_arm1_1[0] = xi
             if arm == 1 and xi_arm2_1[0] < 0: xi_arm2_1[0] = xi
+
+            if xi_arm1_1[0]
+
             if xi_arm1_1[0] >= 0 and xi_arm2_1[0] >= 0:
                 break
 
@@ -213,7 +235,12 @@ def main():
                     xi_arm1_2[0] = float(t_protons.GetLeaf("proton_xi").GetValue())
                     break
 
-        # weight is fixed per event (already set)
+        # Calculate final weight: event_weight × proton acceptance (0.13)
+        if event_weight_in is not None:
+            weight[0] = event_weight_in[0] * FIXED_WEIGHT
+        else:
+            weight[0] = FIXED_WEIGHT
+
         t_out.Fill()
 
     print("Enrichment completed.")

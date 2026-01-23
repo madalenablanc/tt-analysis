@@ -1,0 +1,61 @@
+## Quick One-Liner Method to Check Proton Acceptance
+## =====================================================
+
+This is what Jonathan mentioned he did:
+
+### Step 1: Open ROOT and your data file
+```bash
+root -l /eos/user/m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root
+```
+
+### Step 2: In ROOT, run this command to see proton multiplicities:
+```cpp
+tree->Draw("Sum$(proton_multi_arm==0):Sum$(proton_multi_arm==1)","","text")
+```
+
+This creates a 2D histogram showing:
+- X-axis: Number of protons on arm 0 per event
+- Y-axis: Number of protons on arm 1 per event
+
+### Step 3: Count events with at least 1 proton per arm
+To get the acceptance fraction, you need to count events where BOTH axes are ≥1.
+
+#### Method A: Visual inspection
+Look at the text output - events in cells where x≥1 AND y≥1 are "good events"
+
+#### Method B: Use a cut in ROOT
+```cpp
+// Count total events
+Long64_t total = tree->GetEntries();
+
+// Count events with at least 1 proton on BOTH arms
+Long64_t good = tree->GetEntries("Sum$(proton_multi_arm==0)>=1 && Sum$(proton_multi_arm==1)>=1");
+
+// Calculate acceptance
+double acceptance = (double)good / (double)total;
+
+cout << "Total events: " << total << endl;
+cout << "Events with ≥1 proton per arm: " << good << endl;
+cout << "Acceptance P = " << acceptance << " (" << (acceptance*100) << "%)" << endl;
+```
+
+### Alternative if your branch is named differently:
+If the branch is `Proton_multiRP_arm` instead of `proton_multi_arm`:
+```cpp
+tree->Draw("Sum$(Proton_multiRP_arm==0):Sum$(Proton_multiRP_arm==1)","","text")
+```
+
+And for counting:
+```cpp
+Long64_t good = tree->GetEntries("Sum$(Proton_multiRP_arm==0)>=1 && Sum$(Proton_multiRP_arm==1)>=1");
+```
+
+### Why the discrepancy between 0.13 and 0.20?
+
+The difference could be due to:
+1. **Different event selections**: Matteo might have applied trigger/physics cuts before measuring
+2. **Different data samples**: He might have used a subset of the data
+3. **Different time periods**: Early 2018 vs full year
+4. **Definition differences**: Maybe he counted differently (e.g., only multiRP protons vs all protons)
+
+The safest approach is to measure it yourself from YOUR final data sample with YOUR exact event selection!

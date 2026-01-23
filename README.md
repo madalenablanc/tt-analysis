@@ -14,13 +14,13 @@
 - For the samples where the proton related variables are saved from the beginning the number of events **should be the same**
     - this was done because adding pileup protons to real data was not the most correct procedure
 
-### Plots with proton-requirements for data only
+<!-- ### Plots with proton-requirements for data only
 |           |   | |
 :-------------------------:|:-------------------------:|:-------------------------:
 ![](output_plots/mass.png)  |  ![](output_plots/rapidity_central.png) | ![](output_plots/rapidity_matching.png)|
 |![](output_plots/pt_central.png)|![](output_plots/tau_pt.png)| ![](output_plots/rapidity_matching.png)|
 |![](output_plots/mass_diff.png)|![](output_plots/mass.png)|![](output_plots/aco.png)|
-|![](output_plots/met.png)|||
+|![](output_plots/met.png)||| -->
 
 ### Plots with proton-requirements for data and qcd samples
 |           |   | |
@@ -55,7 +55,7 @@
 | tau id2               | >7               | >7               | >7               | >7               |
 | tau id3               | >1               | >1               | >1               | >1               |
 | tau pt                | >100             | >100             | >100             | >100             |
-| mu id                 | ≥3               | ≥3               | ≥3               | ≥3               |
+| mu id                 | >3               | >3               | >3               | >3               |
 | mu pt                 | >35              | >35              | >35              | >35              |
 | ele id                |                  |                  |                  |                  |
 | ele pt                |                  |                  |                  |                  |
@@ -131,7 +131,7 @@ These allow downstream analysis to use a single, well-defined proton per arm rat
 |DY|195,510,810|41,388,654|1,704|
 |signal|299,979|NA|13,893|
 
-** Is the samples that save the proton related variables instead of adding pileup protons later. 
+** samples that save the proton related variables instead of adding pileup protons later. 
 
 ### --> Looks like the issue is the change in code to save proton related variables in phase1 
 
@@ -159,6 +159,18 @@ python3 fase0_data_mutau.py -> saved new samples to
 -Proton_multiRP_timeUnc
 -Proton_singleRP_x
 
+--- 
+## Comparison of the sample used to enrich mc samples with pileup protons and data (n_pu-> number of pileup protons)
 
-### TODO: run phase1 for qcd and data separately  
+POR IMAGEM
+
+
+# Pileup proton enrichement logic
+1. Read proton pool file and file to be enriched
+2. Copy even information 
+3. Assign protons to each event
+    - always assigns one proton per arm
+    - with the probabilities defined P11 (8%), P12 (2%), P21 (2%), P22 (0.05%) to determine configurations adds 2nd protons based on position in the event samples
+4. Adds fixed weight - the 0.13 for all events - related to pps acceptance/efficiency
+
 

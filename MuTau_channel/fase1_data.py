@@ -119,7 +119,7 @@ for file_idx, idx in enumerate(indices):
             #   .Filter("HLT_IsoMu24 == 1", "HLT single-muon 2018")
               df_added
               # muon_pt and tau_pt are scalars from phase 0, not vectors - no .size() needed
-              .Filter("muon_id >= 3", "Muon ID (>= Medium)")
+              .Filter("muon_id > 3", "Muon ID (> Medium)")
               .Filter("tau_id1 > 63", "Tau VSjet")
               .Filter("tau_id2   > 7",  "Tau VSe")
               .Filter("tau_id3  > 1",  "Tau VSmu")
