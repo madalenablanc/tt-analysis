@@ -255,7 +255,9 @@ def main():
     ]:
         hist.Sumw2()
 
-    w_qcd = 2.0
+    # QCD normalization: data-driven from same-sign selection
+    # Fixed scale factor for normalization
+    w_qcd = 1.0
     n_qcd = 0.0
     for event in tree_qcd:
         mass = get_value(event, "sist_mass", default=-1.0)
@@ -279,14 +281,18 @@ def main():
         tau_qcd.Fill(get_value(event, "tau_pt"), w_qcd)
         met_qcd.Fill(get_value(event, "mu_pt"), w_qcd)
 
-    w_dy = 1.81
+    # DY normalization (same approach as TauTau channel):
+    # Fixed weight = cross-section_factor × proton_acceptance
+    # This ignores event_weight from tree (which has generator_weight issues)
+    PROTON_ACCEPTANCE = 0.245
+    DY_FIXED_WEIGHT = 1.81 * PROTON_ACCEPTANCE  # = 0.44345
     n_dy = 0.0
     for event in tree_dy:
         mass = get_value(event, "sist_mass", default=-1.0)
         if mass < 0:
             continue
-        # w_dy=w_dy
-        w_dy = get_value(event, "weight", default=1.81)
+        # Use fixed weight like TauTau channel does
+        w_dy = DY_FIXED_WEIGHT
         n_dy += w_dy
         acop = get_value(event, "acop", "sist_acop")
         aco_dy.Fill(acop, w_dy)
@@ -305,14 +311,16 @@ def main():
         tau_dy.Fill(get_value(event, "tau_pt"), w_dy)
         met_dy.Fill(get_value(event, "mu_pt"), w_dy)
 
-    w_ttjets = 0.15
+    # ttbar normalization (same approach as TauTau channel):
+    # Fixed weight = cross-section_factor × proton_acceptance
+    TTBAR_FIXED_WEIGHT = 0.15 * PROTON_ACCEPTANCE  # = 0.03675
     n_ttjets = 0.0
     for event in tree_ttjets:
         mass = get_value(event, "sist_mass", default=-1.0)
         if mass < 0:
             continue
-        # w_ttjets=w_ttjets
-        w_ttjets = get_value(event, "weight", default=0.15)
+        # Use fixed weight like TauTau channel does
+        w_ttjets = TTBAR_FIXED_WEIGHT
         n_ttjets += w_ttjets
         acop = get_value(event, "acop", "sist_acop")
         aco_ttjets.Fill(acop, w_ttjets)
@@ -373,6 +381,24 @@ def main():
         ra_data.Fill(rap, weight)
         tau_data.Fill(get_value(event, "tau_pt"), weight)
         met_data.Fill(get_value(event, "mu_pt"), weight)
+        n_data += weight
+
+    # Diagnostic output: print sum of weights and histogram integrals
+    print("\n" + "="*60)
+    print("WEIGHT DIAGNOSTICS")
+    print("="*60)
+    print(f"QCD:    sum of weights = {n_qcd:.2f}, hist integral = {m_qcd.Integral():.2f}")
+    print(f"DY:     sum of weights = {n_dy:.2f}, hist integral = {m_dy.Integral():.2f}")
+    print(f"ttbar:  sum of weights = {n_ttjets:.2f}, hist integral = {m_ttjets.Integral():.2f}")
+    print(f"Data:   sum of weights = {n_data:.2f}, hist integral = {m_data.Integral():.2f}")
+    print(f"Total MC: {n_qcd + n_dy + n_ttjets:.2f}")
+    print("="*60)
+
+    # Check for negative weights
+    print("\nHistogram min values (negative = negative weights present):")
+    print(f"  DY mass hist min:    {m_dy.GetMinimum():.4f}")
+    print(f"  ttbar mass hist min: {m_ttjets.GetMinimum():.4f}")
+    print("="*60 + "\n")
 
     for hist in [
         aco_qcd,
@@ -573,7 +599,7 @@ def main():
     aco_ttjets.Write()
     output_root.Close()
 
-    output_dir = Path(__file__).resolve().parent / "plots_py"
+    output_dir = Path(__file__).resolve().parent / "plots_py_new_weights"
     os.makedirs(output_dir, exist_ok=True)
 
     draw_and_save(

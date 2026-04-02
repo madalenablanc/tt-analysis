@@ -93,7 +93,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    // Mutidimensional likelihood and Nearest-Neighbour methods
 
-   Use["PDERS"]           = 1;
+   Use["PDERS"]           = 0;
 
    Use["PDERSD"]          = 0;
 
@@ -139,7 +139,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    // Neural Networks (all are feed-forward Multilayer Perceptrons)
 
-   Use["MLP"]             = 1; // Recommended ANN
+   Use["MLP"]             = 0; // Recommended ANN
 
    Use["MLPBFGS"]         = 0; // Recommended ANN with optional training method
 
@@ -147,7 +147,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    Use["CFMlpANN"]        = 0; // Depreciated ANN from ALEPH
 
-   Use["TMlpANN"]         = 0; // ROOT's own ANN
+   Use["TMlpANN"]         = 1; // ROOT's own ANN
 
 #ifdef R__HAS_TMVAGPU
 
@@ -254,7 +254,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    TString fnameBKG = "background_total-protons_syst.root";
 
-   TString fnameSIGN = "../MuTau_sinal_SM_2018_july.root";
+   TString fnameSIGN = "MuTau_sinal_SM_2018_july.root";
 
    //TString fnameSIGN = "/eos/user/m/mpisano/Canal_Etau/skimmed_correct/ETau_2017_UL_sgn_BSM_up_skimmed.root";
 
@@ -300,7 +300,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
 
-   TString outfileName( "TMVA_allBkg_Mutau_2018.root");
+   TString outfileName( "TMVA_allBkg_Mutau_2018_likelihood.root");
 
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
@@ -366,7 +366,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    //dataloader->AddVariable( "tau_pair_deltaR", "Central system angular distance", "", 'F' );
 
-   dataloader->AddVariable( "sist_acop", "Central system acoplanarity", "", 'F' );
+   dataloader->AddVariable( "acop", "Central system acoplanarity", "", 'F' );
 
    dataloader->AddVariable( "sist_pt", "Total Momentum", "GeV",'F');
 

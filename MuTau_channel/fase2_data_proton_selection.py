@@ -25,7 +25,7 @@ input_list    = "Data_MuTau_phase1_2018.txt"  #phase1 output files
 output_prefix = "/eos/user/m/mblancco/samples_2018_mutau/fase2_data_pps/Data_2018_UL_PPS_selection_"
 resume_path   = ".mutau_phase2_pps_resume.json"
 overwrite     = True
-prefix        = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data_proton_vars/"
+prefix        = "/eos/user/m/mblancco/samples_2018_mutau/fase1_data_proton_vars/
 
 print("Processing Data - Phase 2 (PPS Selection)\n")
 print(f"Output directory: {os.path.dirname(output_prefix)}")

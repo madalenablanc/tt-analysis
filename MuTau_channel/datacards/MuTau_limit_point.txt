@@ -1,0 +1,7 @@
+Estimate	Limit
+Observed	476
+Expected	180
+Expected-1sigma	104
+Expected+1sigma	339
+Expected-2sigma	66.8
+Expected+2sigma	546

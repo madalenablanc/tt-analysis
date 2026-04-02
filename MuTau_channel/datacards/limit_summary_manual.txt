@@ -1,0 +1,6 @@
+ObservedLimit	3133.29
+Expected2p5	970.45
+Expected16	1308.69
+Expected50	1854.00
+Expected84	2718.64
+Expected97p5	3893.13

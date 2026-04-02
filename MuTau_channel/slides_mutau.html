@@ -1,0 +1,1135 @@
+<!DOCTYPE html><html><head>
+      <title>BDT training and application</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/utilizador/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.8.21/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script>
+    </head>
+    <body for="html-export">
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="1-overview">1. Overview </h1>
+<h3 id="samples-used">Samples Used </h3>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Description</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data</strong></td>
+<td>2018 UL SingleMuon</td>
+<td>Real collision data</td>
+</tr>
+<tr>
+<td><strong>DY</strong></td>
+<td>Drell-Yan Z/gamma* to tau-tau</td>
+<td>MC simulation</td>
+</tr>
+<tr>
+<td><strong>ttbar</strong></td>
+<td>tt to tau-tau + X</td>
+<td>MC simulation</td>
+</tr>
+<tr>
+<td><strong>QCD</strong></td>
+<td>Multi-jet background</td>
+<td>Data-driven (same-sign)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="2-processing-pipeline">2. Processing Pipeline </h1>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>NanoAOD --&gt; Phase0 --&gt; Phase1 --&gt; Merge --&gt; Proton Mixing --&gt; Plots
+</code></pre><h3 id="scripts">Scripts </h3>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Data</th>
+<th>DY</th>
+<th>ttbar</th>
+<th>QCD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase0</td>
+<td>fase0_data_mutau.py</td>
+<td>fase0_dy.py</td>
+<td><a href="http://fase0.py">fase0.py</a></td>
+<td>-</td>
+</tr>
+<tr>
+<td>Phase1</td>
+<td>fase1_data.py</td>
+<td>fase1_dy.py</td>
+<td>fase1_ttjets.py</td>
+<td>fase1_qcd.py</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="3-phase0-initial-skimming">3. Phase0: initial skimming </h1>
+<h3 id="scripts-1">Scripts </h3>
+<ul>
+<li><code>fase0_data_mutau.py</code> (Data)</li>
+<li><code>fase0_dy.py</code> (Drell-Yan)</li>
+<li><code>fase0.py</code> (ttbar)</li>
+</ul>
+<h3 id="structure-of-scripts">Structure of scripts </h3>
+<ol>
+<li><strong>Trigger selection</strong>: <code>HLT_IsoMu24</code> (single muon trigger)</li>
+<li><strong>Luminosity filtering</strong>: Only certified good runs (dadosluminosidade.txt)</li>
+<li><strong>Object selection</strong>: At least 1 muon and 1 tau</li>
+<li><strong>Variable extraction</strong>: Muon, Tau, Jets, MET kinematics</li>
+</ol>
+<hr>
+<h1 id="4-phase1-selection-cuts">4. Phase1: Selection cuts </h1>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Cut</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>muon_id</code></td>
+<td>&gt; 3</td>
+<td>Medium MVA ID</td>
+</tr>
+<tr>
+<td><code>tau_id1</code> (VSjet)</td>
+<td>&gt; 63</td>
+<td>VeryTight DeepTau vs jets</td>
+</tr>
+<tr>
+<td><code>tau_id2</code> (VSe)</td>
+<td>&gt; 7</td>
+<td>Tight DeepTau vs electrons</td>
+</tr>
+<tr>
+<td><code>tau_id3</code> (VSmu)</td>
+<td>&gt; 1</td>
+<td>Loose DeepTau vs muons</td>
+</tr>
+<tr>
+<td><code>muon_pt</code></td>
+<td>&gt; 35 GeV</td>
+<td>muon transverse momentum</td>
+</tr>
+<tr>
+<td><code>tau_pt</code></td>
+<td>&gt; 100 GeV</td>
+<td>tau transverse momentum</td>
+</tr>
+<tr>
+<td>charge product</td>
+<td>&lt; 0</td>
+<td>opposite sign</td>
+</tr>
+<tr>
+<td>Delta R</td>
+<td>&gt; 0.4</td>
+<td>Angular separation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: QCD uses <strong>same-sign</strong> (SS) selection</p>
+<hr>
+<h1 id="5-event-weights-in-phase1">5. Event weights in Phase1 </h1>
+<h3 id="data">Data </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>event_weight <span class="token operator">=</span> <span class="token number">1.0</span>  <span class="token comment"># Real data no correction needed</span>
+</code></pre><h3 id="drell-yan-dy">Drell-Yan (DY) </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>event_weight <span class="token operator">=</span> generator_weight x mu_trig_sf x mu_idiso_sf x mu_reco_sf
+</code></pre><h3 id="ttbar">ttbar </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>event_weight <span class="token operator">=</span> <span class="token number">0.15</span> x mu_trig_sf x mu_idiso_sf x mu_reco_sf
+</code></pre><p><strong>Important</strong>: 0.15 already included - should be fixed later for consistency</p>
+<h3 id="qcd">QCD </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>event_weight <span class="token operator">=</span> <span class="token number">1.0</span>  <span class="token comment"># data driven</span>
+</code></pre><hr>
+<h1 id="6-where-event-weights-are-applied">6. Where event weights are applied </h1>
+<h3 id="data-no-proton-mixing-needed">Data (no proton mixing needed) </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Phase0: weight=1.0 -&gt; Phase1: weight=1.0 -&gt; Plotting: 1.0
+</code></pre><h3 id="drell-yan">Drell-Yan </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Phase1: event_weight = generator_weight x muon_SFs
+Proton Mixing: weight = event_weight x 0.13
+Plotting: final_weight = weight x 1.81
+</code></pre><hr>
+<h1 id="7-where-event-weights-are-applied-cont">7. Where event weights are applied (cont) </h1>
+<h3 id="ttbar-1">ttbar </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Phase1: event_weight = 0.15 x muon_SFs  &lt;- 0.15 included here
+Proton Mixing: weight = event_weight x 0.13
+Plotting: final_weight = weight x 1.0
+</code></pre><h3 id="qcd-data-driven">QCD (data-driven) </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Phase1: weight=1.0 -&gt; Plotting: final_weight=1.0
+</code></pre><hr>
+<h1 id="8-cross-section-normalization-factors">8. Cross-Section normalization factors </h1>
+<h3 id="formula-used">Formula used </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>weight = N_MC / N_expected
+where N_expected = Luminosity x Cross-section
+</code></pre><h3 id="values-used">Values used </h3>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Factor</th>
+<th>Included Where?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DY</strong></td>
+<td>1.81</td>
+<td>Applied in plotting</td>
+</tr>
+<tr>
+<td><strong>ttbar</strong></td>
+<td>0.15</td>
+<td>Already in Phase 1 event_weight</td>
+</tr>
+</tbody>
+</table>
+<p>This does not change the outcome but should be fixed for consistency</p>
+<hr>
+<h1 id="9-files">9. Files </h1>
+<h3 id="processing-scripts">Processing scripts </h3>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fase0_data_mutau.py</code></td>
+<td>Phase0 for Data</td>
+</tr>
+<tr>
+<td><code>fase0_dy.py</code></td>
+<td>Phase0 for DY</td>
+</tr>
+<tr>
+<td><code>fase1_data.py</code></td>
+<td>Phase1 for Data</td>
+</tr>
+<tr>
+<td><code>fase1_dy.py</code></td>
+<td>Phase1 for DY</td>
+</tr>
+<tr>
+<td><code>fase1_ttjets.py</code></td>
+<td>Phase1 for ttbar</td>
+</tr>
+<tr>
+<td><code>merge_pp_mutau.py</code></td>
+<td>Proton mixing</td>
+</tr>
+<tr>
+<td><code>plot_m.py</code></td>
+<td>Plotting</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="10-proton-acceptance-measurement-code">10. Proton acceptance measurement code </h1>
+<h3 id="method-in-root">Method in ROOT: </h3>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>TFile<span class="token operator">*</span> f <span class="token operator">=</span> <span class="token class-name">TFile</span><span class="token double-colon punctuation">::</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"Data_merged_proton_vars.root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+TTree<span class="token operator">*</span> tree <span class="token operator">=</span> <span class="token punctuation">(</span>TTree<span class="token operator">*</span><span class="token punctuation">)</span>f<span class="token operator">-&gt;</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token string">"tree"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Long64_t total <span class="token operator">=</span> tree<span class="token operator">-&gt;</span><span class="token function">GetEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Long64_t good <span class="token operator">=</span> tree<span class="token operator">-&gt;</span><span class="token function">GetEntries</span><span class="token punctuation">(</span>
+    <span class="token string">"Sum$(proton_multi_arm==0)&gt;=1 &amp;&amp; Sum$(proton_multi_arm==1)&gt;=1"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-double">double</span> P <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword keyword-double">double</span><span class="token punctuation">)</span>good <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword keyword-double">double</span><span class="token punctuation">)</span>total<span class="token punctuation">;</span>
+cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Proton acceptance P = "</span> <span class="token operator">&lt;&lt;</span> P <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+</code></pre><h3 id="result">Result: </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>total events: 6,970
+good events: 1,708
+P = 0.245 (24.5%)
+</code></pre><hr>
+<h1 id="11-single-lepton-plots-cuts-applied">11. Single Lepton Plots: Cuts Applied </h1>
+<h3 id="proton-requirements">Proton requirements </h3>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Cut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data/QCD</td>
+<td><code>Sum$(proton_multi_arm==0)&gt;0 &amp;&amp; Sum$(proton_multi_arm==1)&gt;0</code></td>
+</tr>
+<tr>
+<td>MC (DY, ttbar)</td>
+<td><code>xi_arm1_1 &gt;= 0 &amp;&amp; xi_arm2_1 &gt;= 0</code></td>
+</tr>
+<tr>
+<td>Signal</td>
+<td><code>xi_arm1_1 &gt;= 0 &amp;&amp; xi_arm2_1 &gt;= 0</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="12-weights-applied">12. Weights applied </h1>
+<h3 id="weights-applied">Weights applied </h3>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data</td>
+<td>None</td>
+</tr>
+<tr>
+<td>QCD</td>
+<td>None</td>
+</tr>
+<tr>
+<td>DY</td>
+<td>Proton acceptance (0.245) - xsec normalization already included</td>
+</tr>
+<tr>
+<td>ttbar</td>
+<td>Proton acceptance (0.245) x Scale(0.15)</td>
+</tr>
+<tr>
+<td>Signal</td>
+<td><code>weight</code> branch (lumi x xsec x SFs x rad. damage) x 5000 (visualization)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="13-weight-fix-old-vs-new-approach">13. Weight fix: old vs new approach </h1>
+<h3 id="old-weights-mutauplots_weight_comparisonc">Old weights (<code>MuTauPlots_weight_comparison.C</code>) </h3>
+<ul>
+<li>MC filled with <strong>flat</strong> weight = <code>0.245</code> (proton acceptance, no <code>weight</code> branch)</li>
+<li>Then <code>Scale(1.81)</code> for DY, <code>Scale(0.15)</code> for ttbar</li>
+<li>No generator_weight, no muon scale factors</li>
+</ul>
+<h3 id="new-weights-corrected">New weights (corrected) </h3>
+<ul>
+<li>MC filled using <strong><code>weight</code> branch</strong> = <code>generator_weight x muon_SFs x 0.245</code></li>
+<li>Then <code>Scale(1.004e-4)</code> for DY (= L x sigma / Sum_w), <code>Scale(1.0)</code> for ttbar</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Old</th>
+<th>New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DY weight</strong></td>
+<td><code>0.245 x Scale(1.81)</code></td>
+<td><code>weight branch x Scale(1.004e-4)</code></td>
+</tr>
+<tr>
+<td><strong>ttbar weight</strong></td>
+<td><code>0.245 x Scale(0.15)</code></td>
+<td><code>weight branch x Scale(1.0)</code></td>
+</tr>
+<tr>
+<td><strong>DY Scale</strong></td>
+<td>1.81 (empirical)</td>
+<td>1.004e-4 (= 54900 x 6077.22 / 3.323e12)</td>
+</tr>
+<tr>
+<td><strong>ttbar Scale</strong></td>
+<td>0.15 (empirical)</td>
+<td>1.0 (already ~correct via 0.15 in Phase1)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="18-muon-pt">18. Muon pT </h1>
+<p><img src="plot_muon_pt.png" alt="Muon pT"></p>
+<hr>
+<h1 id="19-muon-eta">19. Muon eta </h1>
+<p><img src="plot_muon_eta.png" alt="Muon eta"></p>
+<hr>
+<h1 id="20-muon-mass">20. Muon mass </h1>
+<p><img src="plot_muon_mass.png" alt="Muon mass"></p>
+<hr>
+<h1 id="21-tau-pt">21. Tau pT </h1>
+<p><img src="plot_tau_pt.png" alt="Tau pT"></p>
+<hr>
+<h1 id="22-tau-eta">22. Tau eta </h1>
+<p><img src="plot_tau_eta.png" alt="Tau eta"></p>
+<hr>
+<h1 id="23-tau-mass">23. Tau mass </h1>
+<p><img src="plot_tau_mass.png" alt="Tau mass"></p>
+<hr>
+<h1 id="24-single-distributions-after-proton-merging">24. Single Distributions After Proton Merging </h1>
+<p>The following plots show individual kinematic distributions after requiring protons on both PPS arms.</p>
+<h3 id="variables-shown">Variables shown </h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sist_mass</code></td>
+<td>Invariant mass m(mu,tau)</td>
+</tr>
+<tr>
+<td><code>acop</code></td>
+<td>Acoplanarity</td>
+</tr>
+<tr>
+<td><code>sist_pt</code></td>
+<td>System transverse momentum</td>
+</tr>
+<tr>
+<td><code>sist_rap</code></td>
+<td>System rapidity</td>
+</tr>
+<tr>
+<td><code>tau_pt</code></td>
+<td>Tau transverse momentum</td>
+</tr>
+<tr>
+<td><code>met_pt</code></td>
+<td>Missing transverse energy</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="25-invariant-mass-after-proton-requirements">25. Invariant Mass (after proton requirements) </h1>
+<p><img src="plot_mass_after.png" alt="Mass after"></p>
+<hr>
+<h1 id="26-acoplanarity-after-proton-requirements">26. Acoplanarity (after proton requirements) </h1>
+<p><img src="plot_acop_after.png" alt="Acop after"></p>
+<hr>
+<h1 id="27-system-pt-after-proton-requirements">27. System pT (after proton requirements) </h1>
+<p><img src="plot_pt_after.png" alt="pT after"></p>
+<hr>
+<h1 id="28-system-rapidity-after-proton-requirements">28. System Rapidity (after proton requirements) </h1>
+<p><img src="plot_rap_after.png" alt="Rapidity after"></p>
+<hr>
+<h1 id="29-tau-pt-after-proton-requirements">29. Tau pT (after proton requirements) </h1>
+<p><img src="plot_tau_pt_after.png" alt="Tau pT after"></p>
+<hr>
+<h1 id="30-met-after-proton-requirements">30. MET (after proton requirements) </h1>
+<p><img src="plot_met_after.png" alt="MET after"></p>
+<hr>
+<h1 id="31-sinalpy-sfs-corrections">31. <a href="http://sinal.py">sinal.py</a>: SFs Corrections </h1>
+<h3 id="muon-scale-factors-applied">Muon Scale Factors Applied </h3>
+<table>
+<thead>
+<tr>
+<th>SF Type</th>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trigger</td>
+<td><code>muon_trig_sf()</code></td>
+<td>IsoMu24 trigger efficiency</td>
+</tr>
+<tr>
+<td>ID+Iso</td>
+<td><code>muon_idiso_sf()</code></td>
+<td>Identification and isolation</td>
+</tr>
+<tr>
+<td>Reco</td>
+<td><code>mu_reco_sf()</code></td>
+<td>Reconstruction efficiency</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tables-loaded-from-pogcorrections">Tables loaded from POGCorrections/ </h3>
+<ul>
+<li><code>muon_neg18_lowTrig.txt</code> - Negative muon, pT &lt; 200 GeV</li>
+<li><code>muon_pos18_lowTrig.txt</code> - Positive muon, pT &lt; 200 GeV</li>
+<li><code>muon_18_highTrig.txt</code> - High pT muons (&gt; 200 GeV)</li>
+<li><code>muon_IdISO.txt</code> - ID and isolation corrections</li>
+</ul>
+<hr>
+<h1 id="32-sinalpy-event-selection-cuts-applied">32. <a href="http://sinal.py">sinal.py</a>: Event Selection cuts applied </h1>
+<table>
+<thead>
+<tr>
+<th>Cut</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic</td>
+<td>At least 1 muon and 1 tau</td>
+</tr>
+<tr>
+<td>ID</td>
+<td><code>tau_id_full &gt; 0.5</code> and <code>mu_id &gt; 0.5</code></td>
+</tr>
+<tr>
+<td>Eta</td>
+<td><code>tau_eta &lt; 2.4</code> and <code>mu_eta &lt; 2.4</code></td>
+</tr>
+<tr>
+<td>Delta R</td>
+<td>Angular separation &gt; 0.4</td>
+</tr>
+<tr>
+<td>pT</td>
+<td><code>tau_pt &gt; 100 GeV</code>, <code>mu_pt &gt; 35 GeV</code></td>
+</tr>
+<tr>
+<td>Charge</td>
+<td>Opposite sign (product &lt; 0)</td>
+</tr>
+<tr>
+<td>Protons</td>
+<td>Exactly 2 reconstructed protons</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="33-bdt-summary-workflow">33. BDT summary: workflow </h1>
+<h3 id="pipeline">Pipeline </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>corrs_matrix.py --&gt; TMVAClassification.C --&gt; TMVAClassificationApplication.C
+(feature QA)        (training)               (evaluation)
+</code></pre><h3 id="files">Files </h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>corrs_matrix.py</code></td>
+<td>Correlation heatmaps from <code>variables2.txt</code> to select features</td>
+</tr>
+<tr>
+<td><code>TMVAClassification.C</code></td>
+<td>TMVA factory: train BDT + Likelihood + Fisher + MLP + PDERS</td>
+</tr>
+<tr>
+<td><code>TMVAClassificationApplication.C</code></td>
+<td>TMVA reader: apply trained weights, produce MVA score histograms</td>
+</tr>
+<tr>
+<td><code>dataset/weights/*.weights.xml</code></td>
+<td>Serialized trained models</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="34-bdt-summary-training-inputs-and-variables">34. BDT summary: training inputs and variables </h1>
+<h3 id="input-samples">Input samples </h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>File</th>
+<th>Tree</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Signal</td>
+<td><code>MuTau_sinal_SM_2018_july.root</code></td>
+<td><code>tree</code></td>
+</tr>
+<tr>
+<td>Background</td>
+<td><code>background_total-protons_syst.root</code></td>
+<td><code>tree</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="event-weights-in-tmva">Event weights in TMVA </h3>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>dataloader<span class="token operator">-&gt;</span><span class="token function">SetSignalWeightExpression</span><span class="token punctuation">(</span><span class="token string">"weight*weights_bsm_sf[51]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+dataloader<span class="token operator">-&gt;</span><span class="token function">SetBackgroundWeightExpression</span><span class="token punctuation">(</span><span class="token string">"weight"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// Global scale factors:</span>
+<span class="token keyword keyword-double">double</span> signalWeight <span class="token operator">=</span> <span class="token number">0.00021</span><span class="token punctuation">;</span>   <span class="token keyword keyword-double">double</span> backgroundWeight <span class="token operator">=</span> <span class="token number">104.</span><span class="token punctuation">;</span>
+</code></pre><hr>
+<h3 id="9-training-variables">9 training variables </h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sist_rap</code></td>
+<td>System rapidity</td>
+</tr>
+<tr>
+<td><code>acop</code></td>
+<td>System acoplanarity</td>
+</tr>
+<tr>
+<td><code>sist_pt</code></td>
+<td>System transverse momentum</td>
+</tr>
+<tr>
+<td><code>mu_pt</code>, <code>tau_pt</code></td>
+<td>Lepton transverse momenta</td>
+</tr>
+<tr>
+<td><code>sist_mass</code></td>
+<td>Invariant mass m(mu,tau)</td>
+</tr>
+<tr>
+<td><code>met_pt</code></td>
+<td>Missing transverse energy</td>
+</tr>
+<tr>
+<td><code>sist_mass - sqrt(13000^2 * xi_arm1_1 * xi_arm2_1)</code></td>
+<td>Mass matching (central vs proton)</td>
+</tr>
+<tr>
+<td><code>sist_rap - 0.5*log(xi_arm1_1/xi_arm2_1)</code></td>
+<td>Rapidity matching (central vs proton)</td>
+</tr>
+</tbody>
+</table>
+<p>The last two compare the central mu+tau system with the forward proton kinematics. For true exclusive events they peak at zero.</p>
+<hr>
+<h1 id="bdt-results-using-simple-classificator">BDT results: using simple classificator </h1>
+<p>Only BDT with (AdaBoost) is enabled with the default hyperparameters</p>
+<p>TMVAClassification --&gt; run_all_bdt.sh --&gt; bdt_output.cpp</p>
+<p>trains classificator, applies to each sample the results and produces corresponding histograms, plots the histogram of BDT results</p>
+<hr>
+<h1 id="bdt-results-using-simple-classificator-1">BDT results: using simple classificator </h1>
+<p><img src="bdt_output.png" alt=""></p>
+<hr>
+<h1 id="35-bdt-summary-configuration-and-output">35. BDT summary: configuration and output </h1>
+<h3 id="bdt-adaboost-hyperparameters">BDT (AdaBoost) hyperparameters </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>NTrees=850, MaxDepth=3, MinNodeSize=2.5%, AdaBoostBeta=0.5,
+UseBaggedBoost, BaggedSampleFraction=0.5, GiniIndex, nCuts=20
+</code></pre><h3 id="traintest-split">Train/test split </h3>
+<ul>
+<li>6500 signal + 15000 background for training, rest for testing</li>
+<li>Random split, <code>NormMode=NumEvents</code></li>
+<li>No additional preselection cuts inside TMVA</li>
+</ul>
+<hr>
+<h1 id="36-tmva-methods-used">36. TMVA methods used </h1>
+<p>5 classifiers are enabled in <code>TMVAClassification.C</code> by default:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Type</th>
+<th>Key idea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BDT</strong></td>
+<td>Boosted Decision Tree</td>
+<td>Ensemble of 850 shallow trees (depth 3), AdaBoost, GiniIndex splitting</td>
+</tr>
+<tr>
+<td><strong>Likelihood</strong></td>
+<td>Naive Bayes</td>
+<td>Per-variable PDF estimation (Spline2 interpolation), assumes uncorrelated inputs</td>
+</tr>
+<tr>
+<td><strong>Fisher</strong></td>
+<td>Linear discriminant</td>
+<td>Optimal linear combination of variables maximizing S/B separation</td>
+</tr>
+<tr>
+<td><strong>MLP</strong></td>
+<td>Neural network</td>
+<td>Multilayer perceptron with tanh activation, hidden layer of N+5 neurons, 600 training cycles</td>
+</tr>
+<tr>
+<td><strong>PDERS</strong></td>
+<td>Probability density</td>
+<td>Adaptive range search in multi-dim space, Gaussian kernel estimator</td>
+</tr>
+</tbody>
+</table>
+<p>All five produce per-event MVA scores stored in <code>TMVApp_sinal.root</code>.</p>
+<hr>
+<h3 id="application-tmvaclassificationapplicationc">Application (TMVAClassificationApplication.C) </h3>
+<ul>
+<li>Reads trained weights from <code>dataset/weights/</code></li>
+<li>Computes derived matching variables in the event loop from <code>xi_arm1_1</code>, <code>xi_arm2_1</code></li>
+<li>Per-event <code>weight</code> branch used as tree weight</li>
+<li>BDT score histogram: 20 bins in [-0.8, 0.8]</li>
+<li>Output: <code>TMVApp_sinal.root</code> (contains <code>MVA_BDT</code>, <code>MVA_Likelihood</code>, <code>MVA_Fisher</code>, <code>MVA_MLP</code>, <code>MVA_PDERS</code>)</li>
+</ul>
+<hr>
+<h1 id="38-bdt-code-files-tmvaclassificationc">38. BDT code files: TMVAClassification.C </h1>
+<p>TMVA factory script that trains the BDT classifier (and optionally other MVA methods). This is the core training step.</p>
+<h3 id="input">Input </h3>
+<ul>
+<li>Signal: <code>MuTau_sinal_SM_2018_july.root</code> (tree: <code>tree</code>)</li>
+<li>Background: <code>background_total-protons_syst.root</code> (tree: <code>tree</code>)</li>
+</ul>
+<ol>
+<li>Registers 9 training variables (kinematic + proton matching)</li>
+<li>Sets per-event weight expressions:
+<ul>
+<li>Signal: <code>weight * weights_bsm_sf[51]</code>, global scale = 0.00021</li>
+<li>Background: <code>weight</code>, global scale = 104.0</li>
+</ul>
+</li>
+<li>Prepares train/test split: 6500 signal + 15000 background for training, random split</li>
+<li>Books the BDT method with AdaBoost (NTrees=850, MaxDepth=3, GiniIndex, nCuts=20)</li>
+<li>Calls <code>TrainAllMethods()</code>, <code>TestAllMethods()</code>, <code>EvaluateAllMethods()</code></li>
+</ol>
+<h3 id="output">Output </h3>
+<ul>
+<li><code>TMVA_allBkg_Mutau_2018.root</code> - TMVA output with training/testing histograms, ROC curves</li>
+<li><code>dataset/weights/TMVAClassification_BDT.weights.xml</code> - Serialized trained BDT model</li>
+</ul>
+<hr>
+<h1 id="39-bdt-code-files-tmvaclassificationapplicationc">39. BDT code files: TMVAClassificationApplication.C </h1>
+<p>Applies the trained BDT model to the <strong>signal</strong> sample, producing MVA score histograms for evaluation.</p>
+<h3 id="input-1">Input </h3>
+<ul>
+<li>ROOT file: <code>MuTau_sinal_SM_2018_july.root</code> (tree: <code>tree</code>)</li>
+<li>Trained weights: <code>dataset/weights/TMVAClassification_BDT.weights.xml</code></li>
+</ul>
+<ol>
+<li>Creates a TMVA Reader and registers the same 9 variables used in training</li>
+<li>Reads branches: <code>acop</code>, <code>sist_pt</code>, <code>sist_mass</code>, <code>sist_rap</code>, <code>met_pt</code>, <code>xi_arm1_1</code>, <code>xi_arm2_1</code>, <code>weight</code>, <code>tau_pt</code>, <code>mu_pt</code></li>
+<li>For each event, computes the derived matching variables:
+<ul>
+<li>Mass matching: <code>sist_mass - sqrt(13000^2 * xi1 * xi2)</code></li>
+<li>Rapidity matching: <code>sist_rap - 0.5 * log(xi1/xi2)</code></li>
+</ul>
+</li>
+<li>Skips events without valid protons on both arms (<code>xi &lt;= 0</code>)</li>
+<li>Evaluates BDT score via <code>reader-&gt;EvaluateMVA("BDT method")</code></li>
+<li>Fills BDT score histogram (20 bins, [-0.8, 0.8])</li>
+</ol>
+<h3 id="output-1">Output </h3>
+<ul>
+<li><code>TMVApp_sinal.root</code> - Contains <code>MVA_BDT</code> histogram for signal</li>
+</ul>
+<hr>
+<h1 id="40-bdt-code-files-run_bdt_allc">40. BDT code files: run_bdt_all.C </h1>
+<p>Standalone BDT application script that can be run on <strong>any</strong> sample type (signal, DY, ttbar, QCD, data). Unlike <code>TMVAClassificationApplication.C</code>, this handles the different branch naming and structure across sample types.</p>
+<h3 id="input-2">Input </h3>
+<ul>
+<li>Three arguments: <code>inputFile</code>, <code>outputFile</code>, <code>sampleType</code></li>
+<li>Sample types: <code>"signal"</code>, <code>"dy"</code>, <code>"ttbar"</code>, <code>"qcd"</code>, <code>"data"</code></li>
+<li>Trained weights: <code>dataset/weights/TMVAClassification_BDT.weights.xml</code></li>
+</ul>
+<ol>
+<li>Creates a TMVA Reader with the same 9 training variables</li>
+<li>Adapts to sample-specific branch differences:
+<ul>
+<li>Data/QCD: muon pT branch = <code>muon_pt</code>, proton xi from vectors (<code>proton_multi_arm</code>, <code>proton_multi_xi</code>)</li>
+<li>MC (signal/DY/ttbar): muon pT branch = <code>mu_pt</code>, proton xi from scalars (<code>xi_arm1_1</code>, <code>xi_arm2_1</code>)</li>
+</ul>
+</li>
+<li>Loops over events, requires protons on both arms (<code>xi1 &gt; 0 &amp;&amp; xi2 &gt; 0</code>)</li>
+<li>Computes derived matching variables, evaluates BDT score</li>
+<li>Fills weighted histogram <code>MVA_BDT</code> (20 bins, [-0.8, 0.8]) using the <code>weight</code> branch</li>
+</ol>
+<h3 id="output-2">Output </h3>
+<ul>
+<li>Single ROOT file with <code>MVA_BDT</code> histogram (name given by <code>outputFile</code> argument)</li>
+</ul>
+<hr>
+<h1 id="41-bdt-code-files-run_bdt_allsh">41. BDT code files: run_bdt_all.sh </h1>
+<h3 id="input-3">Input </h3>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>Input file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Signal</td>
+<td><code>MuTau_sinal_SM_2018_july.root</code> (local)</td>
+</tr>
+<tr>
+<td>DY</td>
+<td><code>/eos/home-m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root</code></td>
+</tr>
+<tr>
+<td>ttbar</td>
+<td><code>/eos/home-m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root</code></td>
+</tr>
+<tr>
+<td>QCD</td>
+<td><code>/eos/home-m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_pileup_protons.root</code></td>
+</tr>
+<tr>
+<td>Data</td>
+<td><code>/eos/home-m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-3">Output </h3>
+<table>
+<thead>
+<tr>
+<th>Output file</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TMVApp_sinal.root</code></td>
+<td>Signal BDT scores</td>
+</tr>
+<tr>
+<td><code>TMVApp_DY.root</code></td>
+<td>DY BDT scores</td>
+</tr>
+<tr>
+<td><code>TMVApp_ttjets.root</code></td>
+<td>ttbar BDT scores</td>
+</tr>
+<tr>
+<td><code>TMVApp_QCD.root</code></td>
+<td>QCD BDT scores</td>
+</tr>
+<tr>
+<td><code>TMVApp_data.root</code></td>
+<td>Data BDT scores</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="42-bdt-code-files-bdt_outputcpp">42. BDT code files: bdt_output.cpp </h1>
+<p>Plotting script that creates a stacked histogram of BDT output scores, overlaying all backgrounds, signal, and data.</p>
+<h3 id="input-4">Input </h3>
+<ul>
+<li><code>TMVApp_DY.root</code> - DY BDT scores</li>
+<li><code>TMVApp_QCD.root</code> - QCD BDT scores</li>
+<li><code>TMVApp_ttjets.root</code> - ttbar BDT scores</li>
+<li><code>TMVApp_sinal.root</code> - Signal BDT scores</li>
+<li><code>TMVApp_data.root</code> - Data BDT scores</li>
+</ul>
+<h3 id="what-it-does">What it does </h3>
+<ol>
+<li>Opens all five <code>TMVApp_*.root</code> files and extracts the <code>MVA_BDT</code> histogram from each</li>
+<li>Rebins all histograms by factor 4 (20 bins -&gt; 5 bins)</li>
+<li>Applies normalization: DY <code>Scale(1.004e-4)</code>, Signal <code>Scale(5000)</code> for visibility</li>
+<li>Builds a THStack with colored backgrounds: DY (yellow), QCD (red), ttbar (green)</li>
+<li>Overlays signal (black, line width 3) and data (black points with errors)</li>
+<li>Draws total background uncertainty band (gray hatched)</li>
+<li>Uses log scale on Y axis, range [0.01, 10000]</li>
+</ol>
+<h3 id="output-4">Output </h3>
+<ul>
+<li><code>bdt_output.png</code> - Stacked BDT output distribution plot</li>
+</ul>
+<hr>
+<h1 id="43-combine-tool-workflow-overview">43. Combine tool: workflow overview </h1>
+<h3 id="full-pipeline-to-compute-the-95-cl-upper-limit">Full pipeline to compute the 95% CL upper limit </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>save_shapes.cpp         mutau_mass_shape.txt         combine
+(build histograms)  --&gt;  (datacard)            --&gt;  (AsymptoticLimits)
+       |                                                    |
+MuTau_shapes.root                              higgsCombineMuTau.AsymptoticLimits.mH120.root
+                                                            |
+                                               plot_single_limit.py
+                                                            |
+                                               MuTau_limits.png / limits.json
+</code></pre><h3 id="commands-run">Commands run </h3>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token comment"># 1. Build shape histograms</span>
+g++ save_shapes.cpp <span class="token parameter variable">-o</span> save_shapes <span class="token variable"><span class="token variable">$(</span>root-config <span class="token parameter variable">--cflags</span> <span class="token parameter variable">--libs</span><span class="token variable">)</span></span> <span class="token operator">&amp;&amp;</span> ./save_shapes
+
+<span class="token comment"># 2. Convert datacard to workspace</span>
+text2workspace.py datacards/mutau_mass_shape.txt <span class="token punctuation">\</span>
+    <span class="token parameter variable">-o</span> datacards/mutau_mass_shape_workspace.root <span class="token punctuation">\</span>
+    <span class="token parameter variable">-m</span> <span class="token number">120</span>
+
+<span class="token comment"># 3. Run asymptotic limits</span>
+combine <span class="token parameter variable">-M</span> AsymptoticLimits datacards/mutau_mass_shape_workspace.root <span class="token punctuation">\</span>
+    <span class="token parameter variable">-m</span> <span class="token number">120</span> <span class="token parameter variable">-n</span> MuTau <span class="token parameter variable">--cl</span> <span class="token number">0.95</span>
+
+<span class="token comment"># 4. Plot result</span>
+python3 datacards/plot_single_limit.py <span class="token punctuation">\</span>
+    higgsCombineMuTau.AsymptoticLimits.mH120.root <span class="token punctuation">\</span>
+    <span class="token parameter variable">--mass</span> <span class="token number">120</span> <span class="token parameter variable">--output</span> datacards/MuTau_limits
+</code></pre><hr>
+<h1 id="44-combine-tool-save_shapescpp">44. Combine tool: save_shapes.cpp </h1>
+<h3 id="purpose">Purpose </h3>
+<p>Produces the input ROOT file (<code>MuTau_shapes.root</code>) containing the per-sample invariant mass histograms that Combine reads as shapes.</p>
+<h3 id="inputs">Inputs </h3>
+<table>
+<thead>
+<tr>
+<th>Sample</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data</td>
+<td><code>Data_2018_UL_MuTau_nano_merged_proton_vars.root</code></td>
+</tr>
+<tr>
+<td>DY</td>
+<td><code>DY_2018_UL_MuTau_nano_merged_pileup_protons.root</code></td>
+</tr>
+<tr>
+<td>ttbar</td>
+<td><code>ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root</code></td>
+</tr>
+<tr>
+<td>QCD</td>
+<td><code>QCD_2018_UL_MuTau_nano_merged_proton_vars_new.root</code></td>
+</tr>
+<tr>
+<td>Signal</td>
+<td><code>MuTau_sinal_SM_2018_july.root</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-it-does-1">What it does </h3>
+<ol>
+<li>Loops over all events in each sample</li>
+<li>Requires <code>sist_mass &gt; 0</code> and protons on both arms (<code>xi1 &gt; 0 &amp;&amp; xi2 &gt; 0</code> for MC)</li>
+<li>Fills histograms for 8 variables: <code>acop</code>, <code>sist_mass</code>, <code>sist_pt</code>, <code>sist_rap</code>, <code>tau_pt</code>, <code>met_pt</code>, rapidity matching, mass matching</li>
+<li>Applies MC normalization scales after loops: DY <code>× 1.004e-4</code>, ttbar <code>× 1.0</code></li>
+<li>Data and QCD use weight = 1.0 (data-driven)</li>
+</ol>
+<h3 id="outputs">Outputs </h3>
+<ul>
+<li><code>MuTau_shapes.root</code> — contains <code>m_data</code>, <code>m_sinal</code>, <code>m_dy</code>, <code>m_ttjets</code>, <code>m_qcd</code> (plus 7 other variables × 5 samples)</li>
+</ul>
+<hr>
+<h1 id="45-combine-tool-datacard-mutau_mass_shapetxt">45. Combine tool: datacard (mutau_mass_shape.txt) </h1>
+<h3 id="structure">Structure </h3>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>imax 1   # 1 channel: mutau
+jmax 3   # 3 backgrounds: DY, ttbar, QCD
+kmax *   # all nuisances
+</code></pre><h3 id="shape-sources">Shape sources </h3>
+<p>All histograms read from <code>../MuTau_shapes.root</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Process</th>
+<th>Histogram</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data_obs</code></td>
+<td><code>m_data</code></td>
+</tr>
+<tr>
+<td><code>sinal</code></td>
+<td><code>m_sinal</code></td>
+</tr>
+<tr>
+<td><code>dy</code></td>
+<td><code>m_dy</code></td>
+</tr>
+<tr>
+<td><code>ttjets</code></td>
+<td><code>m_ttjets</code></td>
+</tr>
+<tr>
+<td><code>qcd</code></td>
+<td><code>m_qcd</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="normalization">Normalization </h3>
+<p>All rates set to <code>-1</code> → Combine reads them directly from histogram integrals.</p>
+<hr>
+<h1 id="46-combine-tool-systematic-uncertainties">46. Combine tool: systematic uncertainties </h1>
+<h3 id="lognormal-lnn-systematics">Lognormal (lnN) systematics </h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Signal</th>
+<th>DY</th>
+<th>ttbar</th>
+<th>QCD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Luminosity</td>
+<td>1.5%</td>
+<td>1.5%</td>
+<td>1.5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>tau ID vs jet</td>
+<td>5.0%</td>
+<td>4.0%</td>
+<td>4.0%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>tau ID vs e</td>
+<td>2.5%</td>
+<td>2.5%</td>
+<td>2.5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>tau ID vs mu</td>
+<td>3.1%</td>
+<td>3.2%</td>
+<td>2.6%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Muon trigger</td>
+<td>0.5%</td>
+<td>0.07%</td>
+<td>0.07%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Muon ID+Iso</td>
+<td>0.02%</td>
+<td>0.04%</td>
+<td>0.04%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Muon reco</td>
+<td>0.06%</td>
+<td>0.05%</td>
+<td>0.05%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Proton xi</td>
+<td>50%</td>
+<td>50%</td>
+<td>50%</td>
+<td>50%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="normalization-floats-rateparam">Normalization floats (rateParam) </h3>
+<ul>
+<li><code>beta_dy</code>, <code>beta_tt</code>, <code>beta_qcd</code> — free floating in [0, 5], constrained by <code>dy_norm</code> (30%), <code>ttjets_norm</code> (50%), <code>qcd_norm</code> (50%)</li>
+</ul>
+<h3 id="statistical">Statistical </h3>
+<ul>
+<li><code>autoMCStats 10</code> — Barlow-Beeston-lite for MC statistical uncertainties</li>
+</ul>
+<hr>
+<h1 id="47-combine-tool-results">47. Combine tool: results </h1>
+<h3 id="method-asymptoticlimits-at-95-cl-mh--120-gev">Method: AsymptoticLimits at 95% CL, mH = 120 GeV </h3>
+<table>
+<thead>
+<tr>
+<th>Estimate</th>
+<th>Limit on signal strength <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expected −2σ</td>
+<td>3156</td>
+</tr>
+<tr>
+<td>Expected −1σ</td>
+<td>3987</td>
+</tr>
+<tr>
+<td><strong>Expected (median)</strong></td>
+<td><strong>4000</strong></td>
+</tr>
+<tr>
+<td>Expected +1σ</td>
+<td>8050</td>
+</tr>
+<tr>
+<td>Expected +2σ</td>
+<td>12131</td>
+</tr>
+<tr>
+<td><strong>Observed</strong></td>
+<td><strong>13891</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Signal strength <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> is defined as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mtext>obs</mtext></msub><mi mathvariant="normal">/</mi><msub><mi>σ</mi><mtext>SM</mtext></msub></mrow><annotation encoding="application/x-tex">\sigma_\text{obs} / \sigma_\text{SM}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord text mtight"><span class="mord mtight">obs</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">/</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord text mtight"><span class="mord mtight">SM</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.<br>
+The large values indicate the analysis is not yet sensitive to the SM signal with current statistics and selection.</p>
+<hr>
+<h1 id="48-combine-tool-limit-plot">48. Combine tool: limit plot </h1>
+<p><img src="datacards/MuTau_limits.png" alt="MuTau limits"></p>
+<hr>
+<h1 id="49-combine-tool-plot_single_limitpy">49. Combine tool: plot_single_limit.py </h1>
+<h3 id="purpose-1">Purpose </h3>
+<p>Reads the Combine output ROOT file and produces a summary text file and a ROOT-based limit plot.</p>
+<h3 id="input-5">Input </h3>
+<ul>
+<li><code>higgsCombineMuTau.AsymptoticLimits.mH120.root</code> — Combine output tree <code>limit</code></li>
+<li><code>--mass 120</code> — x-axis mass value</li>
+<li><code>--output MuTau_limits</code> — output file prefix</li>
+</ul>
+<h3 id="what-it-does-2">What it does </h3>
+<ol>
+<li>Iterates over entries in the <code>limit</code> tree, identifies each quantile by <code>quantileExpected</code>:
+<ul>
+<li><code>−1</code> → observed, <code>0.5</code> → median expected, <code>0.16/0.84</code> → ±1σ, <code>0.025/0.975</code> → ±2σ</li>
+</ul>
+</li>
+<li>Writes a plain-text summary table (<code>MuTau_limits.txt</code>)</li>
+<li>Draws a TMultiGraph with yellow (±2σ) and green (±1σ) bands, dashed expected line, and observed point</li>
+<li>Saves as PNG and PDF</li>
+</ol>
+<h3 id="outputs-1">Outputs </h3>
+<ul>
+<li><code>MuTau_limits.txt</code> — plain-text table of all six limit values</li>
+<li><code>MuTau_limits.png</code> / <code>MuTau_limits.pdf</code> — limit plot</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

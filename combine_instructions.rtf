@@ -1,0 +1,91 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red254\green233\blue234;\red0\green0\blue0;\red254\green234\blue234;
+\red255\green236\blue236;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c93333\c93333;\cssrgb\c0\c1\c1;\cssrgb\c100000\c93427\c93302;
+\cssrgb\c100000\c94213\c94088\c10196;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 \
+## create and prepare environment \
+\
+cmssw-el7                                         # launches an SL7 container on lxplus\
+export SCRAM_ARCH=slc7_amd64_gcc12                # matches CMSSW_14_1_0_pre4 + Combine v10.5.1\
+cd /eos/home-m/mblancco/cmssw/CMSSW_14_1_0_pre4/src\
+cmsenv                                            # sets PATH/LIBS for this release\
+export PATH=$CMSSW_BASE/src/HiggsAnalysis/CombinedLimit/scripts:$PATH\
+\
+\
+\
+## rebuild shapes if input has changed\
+\
+cd /eos/home-m/mblancco/tau_analysis/MuTau_channel\
+g++ save_shapes.cpp -o save_shapes $(root-config --cflags --libs)\
+./save_shapes                                     # writes MuTau_shapes.root\
+\
+\
+## create workspace and run combine\
+\
+cd /eos/home-m/mblancco/tau_analysis/MuTau_channel/datacards\
+\
+text2workspace.py mutau_mass_shape.txt \\\
+    -o mutau_mass_shape_workspace.root\
+\
+combine -M AsymptoticLimits mutau_mass_shape_workspace.root -n MuTau\
+combine -M Significance    mutau_mass_shape_workspace.root -n MuTau --significance\
+combine -M GoodnessOfFit   mutau_mass_shape_workspace.root --algo saturated -n MuTau\
+\
+\
+## summarise \
+\
+combineTool.py -M CollectLimits higgsCombineMuTau.AsymptoticLimits*.root\
+\
+\
+## plots\
+\
+plotLimits.py limits_MuTau_default.json --y-title "95% CL limit on r" \\\
+    --auto-style --output MuTau_limits\
+\
+## significance / p-value\
+\
+combineTool.py -M Significance higgsCombineMuTau.Significance*.root \\\
+    --sig-name MuTau\
+\
+\
+## goodness of fit comparison\
+\
+# Generate 200 toys (adjust as needed)\
+combine -M GoodnessOfFit mutau_mass_shape_workspace.root --algo saturated \\\
+    --toys 200 -n MuTau_toys\
+\
+# Reference data point already produced by the earlier GoF command\
+combineTool.py -M GoodnessOfFit --algo saturated \\\
+    --plot \\\
+    --input higgsCombineMuTau.GoodnessOfFit.mH120.root \\\
+            higgsCombineMuTau_toys.GoodnessOfFit.mH120.root \\\
+    --output MuTau_gof\
+\
+\
+## 
+\f1 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \'a0I\cf3 \strokec4 mpact plots (requires\'a0
+\f2\b \cf3 \cb5 \strokec4 fitDiagnostics
+\f1\b0 \cf3 \cb1 \strokec4 )\cf2 \strokec2 \
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+combineTool.py -M Impacts -d mutau_mass_shape_workspace.root -m 125 \\\
+    --doInitialFit --robustFit 1 -n MuTau\
+\
+combineTool.py -M Impacts -d mutau_mass_shape_workspace.root -m 125 \\\
+    --robustFit 1 --doFits -n MuTau\
+\
+combineTool.py -M Impacts -d mutau_mass_shape_workspace.root -m 125 \\\
+    -o impacts_MuTau.json -n MuTau\
+\
+plotImpacts.py -i impacts_MuTau.json -o impacts_MuTau\
+\
+\
+\
+}

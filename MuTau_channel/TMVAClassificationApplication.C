@@ -40,7 +40,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    Use["LikelihoodMIX"]   = 0;
    //
    // Mutidimensional likelihood and Nearest-Neighbour methods
-   Use["PDERS"]           = 1;
+   Use["PDERS"]           = 0;
    Use["PDERSD"]          = 0;
    Use["PDERSPCA"]        = 0;
    Use["PDEFoam"]         = 0;
@@ -63,7 +63,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    Use["FDA_MCMT"]        = 0;
    //
    // Neural Networks (all are feed-forward Multilayer Perceptrons)
-   Use["MLP"]             = 1; // Recommended ANN
+   Use["MLP"]             = 0; // Recommended ANN
    Use["MLPBFGS"]         = 0; // Recommended ANN with optional training method
    Use["MLPBNN"]          = 0; // Recommended ANN with BFGS training method and bayesian regulator
    Use["CFMlpANN"]        = 0; // Depreciated ANN from ALEPH
@@ -125,7 +125,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    Float_t var1, var2, var3, var4, var5, var6, var7;
    Float_t var8, var9, var10;
    reader->AddVariable( "sist_rap",                &var4 );
-   reader->AddVariable( "sist_acop", &var1 );
+   reader->AddVariable( "acop", &var1 );
    reader->AddVariable( "sist_pt", &var2 );
    reader->AddVariable( "mu_pt", &var8);
    reader->AddVariable( "tau_pt", &var7);
@@ -258,7 +258,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    // we'll later on use only the "signal" events for the test in this example.
    //
    TFile *input(0);
-   TString fname = "../MuTau_sinal_SM_2018_july.root";
+   TString fname = "MuTau_sinal_SM_2018_july.root";
    if (!gSystem->AccessPathName( fname )) {
       input = TFile::Open( fname ); // check if file in local directory exists
    }
@@ -282,7 +282,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    std::cout << "--- Select signal sample" << std::endl;
    TTree* theTree = (TTree*)input->Get("tree");
    Double_t userVar1, userVar2, userVar3, userVar4, userVar5, userVar6, userVar7, userVar8, userVar9, userVar10;
-   theTree->SetBranchAddress( "sist_acop", &userVar1 );
+   theTree->SetBranchAddress( "acop", &userVar1 );
    theTree->SetBranchAddress( "sist_pt", &userVar2 );
    theTree->SetBranchAddress( "sist_mass", &userVar3 );
    theTree->SetBranchAddress( "sist_rap", &userVar4 );
@@ -310,6 +310,9 @@ void TMVAClassificationApplication( TString myMethodList = "" )
  
       theTree->GetEntry(ievt);
 
+      // Skip events without valid protons on both arms
+      if (userVar6 <= 0 || userVar7 <= 0) continue;
+
 	var1 = userVar1;
 	var2 = userVar2;
 	var3 = userVar3;
@@ -318,7 +321,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
 	var6 = var3-sqrt(13000.*13000.*userVar6*userVar7);
         var7 = userVar9;
  	var8 = userVar10;
-	var9 = var4-log(userVar6/userVar7);
+	var9 = var4-0.5*log(userVar6/userVar7);
 
       // Return the MVA outputs and fill into histograms
 

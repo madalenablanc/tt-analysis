@@ -9,11 +9,11 @@ import ROOT
 # -------- Hardcoded configuration (paths, weight, probabilities) --------
 PROTON_FILE = "/eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/proton_pool_2018.root"
 # Use your merged MuTau phase1 file here (tree name will be auto-detected between 'tree' and 'tree_out')
-INPUT_FILE = "/eos/user/m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged.root"
-OUTPUT_FILE = "/eos/user/m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_pileup_protons.root"
+INPUT_FILE = "/eos/user/m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged.root"
+OUTPUT_FILE = "/eos/user/m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root"
 
 # Proton acceptance/efficiency weight (probability to have ≥1 proton per arm)
-FIXED_WEIGHT = 0.13  # P = 0.13 from 2018 PPS data
+FIXED_WEIGHT = 0.245  # P = 0.245 measured from 2018 MuTau data (1708/6970 events)
 
 # IMPORTANT: The output weight branch will contain:
 #   weight = event_weight × FIXED_WEIGHT
@@ -207,8 +207,6 @@ def main():
             xi = float(t_protons.GetLeaf("proton_xi").GetValue())
             if arm == 0 and xi_arm1_1[0] < 0: xi_arm1_1[0] = xi
             if arm == 1 and xi_arm2_1[0] < 0: xi_arm2_1[0] = xi
-
-            if xi_arm1_1[0]
 
             if xi_arm1_1[0] >= 0 and xi_arm2_1[0] >= 0:
                 break

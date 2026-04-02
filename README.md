@@ -165,7 +165,7 @@ python3 fase0_data_mutau.py -> saved new samples to
 POR IMAGEM
 
 
-# Pileup proton enrichement logic
+# Pileup proton enrichment logic
 1. Read proton pool file and file to be enriched
 2. Copy even information 
 3. Assign protons to each event
@@ -174,3 +174,8 @@ POR IMAGEM
 4. Adds fixed weight - the 0.13 for all events - related to pps acceptance/efficiency
 
 
+## Proton enrichment logic
+
+
+
+What is wqrony 
