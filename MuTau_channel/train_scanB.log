@@ -1,0 +1,542 @@
+
+Processing TMVAClassification_scan.C...
+
+==> Start TMVAClassification
+--- TMVAClassification       : Using input BKG file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/background_total-protons_syst.root
+--- TMVAClassification       : Using input SIGNAL file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/MuTau_sinal_SM_2018_july.root
+DataSetInfo              : [dataset] : Added class "Signal"
+DataSetInfo              : [dataset] : Added class "Background"
+                         : Add Tree tree of type Signal with 21398 events
+                         : Add Tree tree of type Background with 29364 events
+Factory                  : Booking method: [1mLikelihood[0m
+                         : 
+Factory                  : Booking method: [1mFisher[0m
+                         : 
+Factory                  : Booking method: [1mBDT[0m
+                         : 
+                         : Rebuilding Dataset dataset
+                         : Building event vectors for type 2 Signal
+                         : Dataset[dataset] :  create input formulas for tree tree
+                         : Building event vectors for type 2 Background
+                         : Dataset[dataset] :  create input formulas for tree tree
+DataSetFactory           : [dataset] : Number of events in input trees
+                         : 
+                         : 
+                         : Number of training and testing events
+                         : ---------------------------------------------------------------------------
+                         : Signal     -- training events            : 6500
+                         : Signal     -- testing events             : 14898
+                         : Signal     -- training and testing events: 21398
+                         : Background -- training events            : 15000
+                         : Background -- testing events             : 14364
+                         : Background -- training and testing events: 29364
+                         : 
+DataSetInfo              : Correlation matrix (Signal):
+                         : -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         :                                                  sist_rap    acop sist_pt   mu_pt  tau_pt sist_mass sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_  met_pt sist_rap_M_0.5_T_log_xi1_D_xi2_
+                         :                                        sist_rap:   +1.000  +0.023  -0.007  -0.026  -0.023    -0.058                                          -0.182  -0.002                          +0.823
+                         :                                            acop:   +0.023  +1.000  +0.035  +0.198  +0.169    +0.059                                          +0.037  +0.070                          +0.043
+                         :                                         sist_pt:   -0.007  +0.035  +1.000  -0.137  +0.715    +0.024                                          -0.036  +0.916                          -0.060
+                         :                                           mu_pt:   -0.026  +0.198  -0.137  +1.000  +0.594    +0.759                                          +0.370  -0.078                          -0.067
+                         :                                          tau_pt:   -0.023  +0.169  +0.715  +0.594  +1.000    +0.556                                          +0.232  +0.689                          -0.096
+                         :                                       sist_mass:   -0.058  +0.059  +0.024  +0.759  +0.556    +1.000                                          +0.427  +0.076                          -0.119
+                         : sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_:   -0.182  +0.037  -0.036  +0.370  +0.232    +0.427                                          +1.000  -0.016                          -0.158
+                         :                                          met_pt:   -0.002  +0.070  +0.916  -0.078  +0.689    +0.076                                          -0.016  +1.000                          -0.054
+                         :                 sist_rap_M_0.5_T_log_xi1_D_xi2_:   +0.823  +0.043  -0.060  -0.067  -0.096    -0.119                                          -0.158  -0.054                          +1.000
+                         : -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DataSetInfo              : Correlation matrix (Background):
+                         : -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         :                                                  sist_rap    acop sist_pt   mu_pt  tau_pt sist_mass sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_  met_pt sist_rap_M_0.5_T_log_xi1_D_xi2_
+                         :                                        sist_rap:   +1.000  -0.100  +0.115  +0.070  +0.047    -0.012                                          +0.046  -0.058                          +0.966
+                         :                                            acop:   -0.100  +1.000  -0.753  +0.341  +0.008    +0.751                                          +0.297  -0.008                          -0.087
+                         :                                         sist_pt:   +0.115  -0.753  +1.000  -0.171  +0.585    -0.400                                          -0.163  +0.305                          +0.120
+                         :                                           mu_pt:   +0.070  +0.341  -0.171  +1.000  +0.347    +0.749                                          +0.268  +0.064                          +0.062
+                         :                                          tau_pt:   +0.047  +0.008  +0.585  +0.347  +1.000    +0.446                                          +0.144  +0.466                          +0.063
+                         :                                       sist_mass:   -0.012  +0.751  -0.400  +0.749  +0.446    +1.000                                          +0.389  +0.178                          +0.006
+                         : sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_:   +0.046  +0.297  -0.163  +0.268  +0.144    +0.389                                          +1.000  +0.019                          +0.075
+                         :                                          met_pt:   -0.058  -0.008  +0.305  +0.064  +0.466    +0.178                                          +0.019  +1.000                          -0.082
+                         :                 sist_rap_M_0.5_T_log_xi1_D_xi2_:   +0.966  -0.087  +0.120  +0.062  +0.063    +0.006                                          +0.075  -0.082                          +1.000
+                         : -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DataSetFactory           : [dataset] :  
+                         : 
+<WARNING>                :  you specified the option NegWeightTreatment=PairNegWeightsGlobal : This option is still considered EXPERIMENTAL !! 
+Factory                  : [1mTrain all methods[0m
+Factory                  : [dataset] : Create Transformation "I" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'sist_rap' <---> Output : variable 'sist_rap'
+                         : Input : variable 'acop' <---> Output : variable 'acop'
+                         : Input : variable 'sist_pt' <---> Output : variable 'sist_pt'
+                         : Input : variable 'mu_pt' <---> Output : variable 'mu_pt'
+                         : Input : variable 'tau_pt' <---> Output : variable 'tau_pt'
+                         : Input : variable 'sist_mass' <---> Output : variable 'sist_mass'
+                         : Input : variable 'sist_mass-sqrt(13000.0*13000.0*xi1*xi2)' <---> Output : variable 'sist_mass-sqrt(13000.0*13000.0*xi1*xi2)'
+                         : Input : variable 'met_pt' <---> Output : variable 'met_pt'
+                         : Input : variable 'sist_rap-0.5*log(xi1/xi2)' <---> Output : variable 'sist_rap-0.5*log(xi1/xi2)'
+TFHandler_Factory        :                                Variable                                       Mean                                       RMS                               [        Min                                       Max ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         :                                sist_rap:                                0.0011595                                  0.96031   [                                  -2.3176                                   2.3863 ]
+                         :                                    acop:                                  0.71675                                  0.37258   [                                0.0012434                                   1.0000 ]
+                         :                                 sist_pt:                                   121.49                                   80.462   [                                  0.21500                                   1082.8 ]
+                         :                                   mu_pt:                                   79.825                                   43.706   [                                   35.004                                   1016.9 ]
+                         :                                  tau_pt:                                   163.97                                   70.122   [                                   100.00                                   1254.8 ]
+                         :                               sist_mass:                                   224.65                                   157.18   [                                   28.465                                   2139.6 ]
+                         : sist_mass-sqrt(13000.0*13000.0*xi1*xi2):                                  -763.69                                   381.00   [                                  -2125.5                                   1439.3 ]
+                         :                                  met_pt:                                   95.203                                   68.974   [                                   1.1103                                   1143.7 ]
+                         :               sist_rap-0.5*log(xi1/xi2):                                  0.15447                                  0.97341   [                                  -2.5970                                   3.1170 ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         : Ranking input variables (method unspecific)...
+IdTransformation         : Ranking result (top variable is best ranked)
+                         : ----------------------------------------------------
+                         : Rank : Variable                    : Separation
+                         : ----------------------------------------------------
+                         :    1 : Central system acoplanarity : 6.245e-01
+                         :    2 : Invariant Mass              : 4.864e-01
+                         :    3 : Central system rapidity     : 4.042e-01
+                         :    4 : Rapidity matching           : 3.272e-01
+                         :    5 : Invariant Mass Matching     : 3.175e-01
+                         :    6 : tau pt                      : 1.600e-01
+                         :    7 : Total Momentum              : 1.424e-01
+                         :    8 : muon pt                     : 1.199e-01
+                         :    9 : Missing energy              : 1.195e-01
+                         : ----------------------------------------------------
+Factory                  : Train method: Likelihood for Classification
+                         : 
+                         : 
+                         : [1m================================================================[0m
+                         : [1mH e l p   f o r   M V A   m e t h o d   [ Likelihood ] :[0m
+                         : 
+                         : [1m--- Short description:[0m
+                         : 
+                         : The maximum-likelihood classifier models the data with probability 
+                         : density functions (PDF) reproducing the signal and background
+                         : distributions of the input variables. Correlations among the 
+                         : variables are ignored.
+                         : 
+                         : [1m--- Performance optimisation:[0m
+                         : 
+                         : Required for good performance are decorrelated input variables
+                         : (PCA transformation via the option "VarTransform=Decorrelate"
+                         : may be tried). Irreducible non-linear correlations may be reduced
+                         : by precombining strongly correlated input variables, or by simply
+                         : removing one of the variables.
+                         : 
+                         : [1m--- Performance tuning via configuration options:[0m
+                         : 
+                         : High fidelity PDF estimates are mandatory, i.e., sufficient training 
+                         : statistics is required to populate the tails of the distributions
+                         : It would be a surprise if the default Spline or KDE kernel parameters
+                         : provide a satisfying fit to the data. The user is advised to properly
+                         : tune the events per bin and smooth options in the spline cases
+                         : individually per variable. If the KDE kernel is used, the adaptive
+                         : Gaussian kernel may lead to artefacts, so please always also try
+                         : the non-adaptive one.
+                         : 
+                         : All tuning parameters must be adjusted individually for each input
+                         : variable!
+                         : 
+                         : <Suppress this message by specifying "!H" in the booking option>
+                         : [1m================================================================[0m
+                         : 
+                         : Filling reference histograms
+                         : Building PDF out of reference histograms
+                         : Elapsed time for training with 21500 events: 0.111 sec         
+Likelihood               : [dataset] : Evaluation of Likelihood on training sample (21500 events)
+0%, time left: unknown
+7%, time left: 0 sec
+13%, time left: 0 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+32%, time left: 0 sec
+38%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+57%, time left: 0 sec
+63%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+82%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for evaluation of 21500 events: 0.0309 sec       
+                         : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_Likelihood.weights.xml[0m
+                         : Creating standalone class: [0;36mdataset/weights/TMVAClassification_Likelihood.class.C[0m
+                         : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_Likelihood/Likelihood
+Factory                  : Training finished
+                         : 
+Factory                  : Train method: Fisher for Classification
+                         : 
+                         : 
+                         : [1m================================================================[0m
+                         : [1mH e l p   f o r   M V A   m e t h o d   [ Fisher ] :[0m
+                         : 
+                         : [1m--- Short description:[0m
+                         : 
+                         : Fisher discriminants select events by distinguishing the mean 
+                         : values of the signal and background distributions in a trans- 
+                         : formed variable space where linear correlations are removed.
+                         : 
+                         :    (More precisely: the "linear discriminator" determines
+                         :     an axis in the (correlated) hyperspace of the input 
+                         :     variables such that, when projecting the output classes 
+                         :     (signal and background) upon this axis, they are pushed 
+                         :     as far as possible away from each other, while events
+                         :     of a same class are confined in a close vicinity. The  
+                         :     linearity property of this classifier is reflected in the 
+                         :     metric with which "far apart" and "close vicinity" are 
+                         :     determined: the covariance matrix of the discriminating
+                         :     variable space.)
+                         : 
+                         : [1m--- Performance optimisation:[0m
+                         : 
+                         : Optimal performance for Fisher discriminants is obtained for 
+                         : linearly correlated Gaussian-distributed variables. Any deviation
+                         : from this ideal reduces the achievable separation power. In 
+                         : particular, no discrimination at all is achieved for a variable
+                         : that has the same sample mean for signal and background, even if 
+                         : the shapes of the distributions are very different. Thus, Fisher 
+                         : discriminants often benefit from suitable transformations of the 
+                         : input variables. For example, if a variable x in [-1,1] has a 
+                         : a parabolic signal distributions, and a uniform background
+                         : distributions, their mean value is zero in both cases, leading 
+                         : to no separation. The simple transformation x -> |x| renders this 
+                         : variable powerful for the use in a Fisher discriminant.
+                         : 
+                         : [1m--- Performance tuning via configuration options:[0m
+                         : 
+                         : <None>
+                         : 
+                         : <Suppress this message by specifying "!H" in the booking option>
+                         : [1m================================================================[0m
+                         : 
+Fisher                   : Results for Fisher coefficients:
+                         : ---------------------------------------------------------------------------------
+                         :                                Variable:                             Coefficient:
+                         : ---------------------------------------------------------------------------------
+                         :                                sist_rap:                                  -0.084
+                         :                                    acop:                                  +0.769
+                         :                                 sist_pt:                                  +0.001
+                         :                                   mu_pt:                                  -0.002
+                         :                                  tau_pt:                                  -0.002
+                         :                               sist_mass:                                  +0.002
+                         : sist_mass-sqrt(13000.0*13000.0*xi1*xi2):                                  +0.001
+                         :                                  met_pt:                                  +0.002
+                         :               sist_rap-0.5*log(xi1/xi2):                                  +0.101
+                         :                                (offset):                                  -0.671
+                         : ---------------------------------------------------------------------------------
+                         : Elapsed time for training with 21500 events: 0.0224 sec         
+Fisher                   : [dataset] : Evaluation of Fisher on training sample (21500 events)
+0%, time left: unknown
+7%, time left: 0 sec
+13%, time left: 0 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+32%, time left: 0 sec
+38%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+57%, time left: 0 sec
+63%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+82%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for evaluation of 21500 events: 0.00659 sec       
+                         : <CreateMVAPdfs> Separation from histogram (PDF): 0.635 (0.000)
+                         : Dataset[dataset] : Evaluation of Fisher on training sample
+0%, time left: unknown
+7%, time left: 0 sec
+13%, time left: 0 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+32%, time left: 0 sec
+38%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+57%, time left: 0 sec
+63%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+82%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+                         : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_Fisher.weights.xml[0m
+                         : Creating standalone class: [0;36mdataset/weights/TMVAClassification_Fisher.class.C[0m
+Factory                  : Training finished
+                         : 
+Factory                  : Train method: BDT for Classification
+                         : 
+<WARNING>                : Events with negative event weights are found and  will be removed prior to the actual BDT training by global  paring (and subsequent annihilation) with positiv weight events
+                         : Events with weight == 0 are going to be simply ignored 
+                         : found a total of -10150.1 of negative event weights which I am going to try to pair with positive events to annihilate them
+                         : found a total of 31650.1 of events with positive weights
+                         : --> total sum of weights = 21500 = 21500
+                         : Found a total of -10150.1 in negative weights out of 21498 training events 
+0%, time left: unknown
+6%, time left: 116 sec
+13%, time left: 100 sec
+19%, time left: 142 sec
+25%, time left: 122 sec
+32%, time left: 114 sec
+38%, time left: 97 sec
+44%, time left: 79 sec
+50%, time left: 68 sec
+56%, time left: 54 sec
+63%, time left: 43 sec
+69%, time left: 36 sec
+75%, time left: 29 sec
+82%, time left: 21 sec
+88%, time left: 14 sec
+94%, time left: 6 sec
+                         : <Negative Event Pairing> took: 107 sec                              
+                         :  after PreProcessing, the Event sample is left with 14701 events (unweighted), all with positive weights, adding up to 21500
+                         :  nSig=6498 sigWeight=6500 nBkg=8203 bkgWeight=15000
+BDT                      : #events: (reweighted) sig: 7350.5 bkg: 7350.5
+                         : #events: (unweighted) sig: 6498 bkg: 8203
+                         : Training 850 Decision Trees ... patience please
+0%, time left: unknown
+6%, time left: 2 sec
+12%, time left: 2 sec
+18%, time left: 2 sec
+25%, time left: 2 sec
+31%, time left: 2 sec
+37%, time left: 2 sec
+43%, time left: 1 sec
+50%, time left: 1 sec
+56%, time left: 1 sec
+62%, time left: 1 sec
+68%, time left: 1 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for training with 21500 events: 110 sec         
+BDT                      : [dataset] : Evaluation of BDT on training sample (21500 events)
+0%, time left: unknown
+7%, time left: 0 sec
+13%, time left: 0 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+32%, time left: 0 sec
+38%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+57%, time left: 0 sec
+63%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+82%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for evaluation of 21500 events: 1 sec       
+                         : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_BDT.weights.xml[0m
+                         : Creating standalone class: [0;36mdataset/weights/TMVAClassification_BDT.class.C[0m
+                         : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_BDT/BDT
+Factory                  : Training finished
+                         : 
+                         : Ranking input variables (method specific)...
+Likelihood               : Ranking result (top variable is best ranked)
+                         : ------------------------------------------------------------------------------
+                         : Rank : Variable                                        : Delta Separation
+                         : ------------------------------------------------------------------------------
+                         :    1 : sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_ : 5.966e-02
+                         :    2 : sist_rap_M_0.5_T_log_xi1_D_xi2_                 : -2.053e-01
+                         :    3 : acop                                            : -2.222e-01
+                         :    4 : mu_pt                                           : -4.044e-01
+                         :    5 : sist_pt                                         : -4.486e-01
+                         :    6 : sist_mass                                       : -7.720e-01
+                         :    7 : tau_pt                                          : -1.289e+00
+                         :    8 : sist_rap                                        : -2.901e+00
+                         :    9 : met_pt                                          : -3.917e+00
+                         : ------------------------------------------------------------------------------
+Fisher                   : Ranking result (top variable is best ranked)
+                         : ------------------------------------------------------------------
+                         : Rank : Variable                                : Discr. power
+                         : ------------------------------------------------------------------
+                         :    1 : sist_mass                               : 1.887e-01
+                         :    2 : acop                                    : 1.862e-01
+                         :    3 : sist_mass-sqrt(13000.0*13000.0*xi1*xi2) : 1.443e-01
+                         :    4 : mu_pt                                   : 3.797e-02
+                         :    5 : tau_pt                                  : 3.492e-02
+                         :    6 : sist_pt                                 : 2.895e-02
+                         :    7 : met_pt                                  : 2.830e-02
+                         :    8 : sist_rap                                : 8.567e-04
+                         :    9 : sist_rap-0.5*log(xi1/xi2)               : 1.518e-04
+                         : ------------------------------------------------------------------
+BDT                      : Ranking result (top variable is best ranked)
+                         : -------------------------------------------------------------------------
+                         : Rank : Variable                                : Variable Importance
+                         : -------------------------------------------------------------------------
+                         :    1 : acop                                    : 1.758e-01
+                         :    2 : sist_rap                                : 1.331e-01
+                         :    3 : sist_rap-0.5*log(xi1/xi2)               : 1.179e-01
+                         :    4 : sist_mass-sqrt(13000.0*13000.0*xi1*xi2) : 1.101e-01
+                         :    5 : sist_mass                               : 1.086e-01
+                         :    6 : met_pt                                  : 1.045e-01
+                         :    7 : mu_pt                                   : 8.877e-02
+                         :    8 : sist_pt                                 : 8.631e-02
+                         :    9 : tau_pt                                  : 7.497e-02
+                         : -------------------------------------------------------------------------
+Factory                  : === Destroy and recreate all methods via weight files for testing ===
+                         : 
+                         : Reading weight file: [0;36mdataset/weights/TMVAClassification_Likelihood.weights.xml[0m
+                         : Reading weight file: [0;36mdataset/weights/TMVAClassification_Fisher.weights.xml[0m
+                         : Reading weight file: [0;36mdataset/weights/TMVAClassification_BDT.weights.xml[0m
+Factory                  : [1mTest all methods[0m
+Factory                  : Test method: Likelihood for Classification performance
+                         : 
+Likelihood               : [dataset] : Evaluation of Likelihood on testing sample (29262 events)
+0%, time left: unknown
+6%, time left: 0 sec
+12%, time left: 0 sec
+18%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+43%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+68%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for evaluation of 29262 events: 0.0398 sec       
+Factory                  : Test method: Fisher for Classification performance
+                         : 
+Fisher                   : [dataset] : Evaluation of Fisher on testing sample (29262 events)
+0%, time left: unknown
+6%, time left: 0 sec
+12%, time left: 0 sec
+18%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+43%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+68%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for evaluation of 29262 events: 0.00722 sec       
+                         : Dataset[dataset] : Evaluation of Fisher on testing sample
+0%, time left: unknown
+6%, time left: 0 sec
+12%, time left: 0 sec
+18%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+43%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+68%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+Factory                  : Test method: BDT for Classification performance
+                         : 
+BDT                      : [dataset] : Evaluation of BDT on testing sample (29262 events)
+0%, time left: unknown
+6%, time left: 1 sec
+12%, time left: 0 sec
+18%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+43%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+68%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for evaluation of 29262 events: 1.09 sec       
+Factory                  : [1mEvaluate all methods[0m
+Factory                  : Evaluate classifier: Likelihood
+                         : 
+Likelihood               : [dataset] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_Likelihood     :                                Variable                                       Mean                                       RMS                               [        Min                                       Max ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         :                                sist_rap:                                -0.090027                                   1.0400   [                                  -2.3071                                   2.3476 ]
+                         :                                    acop:                                  0.49088                                  0.38325   [                               0.00015542                                   1.0000 ]
+                         :                                 sist_pt:                                   151.26                                   89.793   [                                  0.12172                                   864.94 ]
+                         :                                   mu_pt:                                   68.246                                   36.996   [                                   35.000                                   953.06 ]
+                         :                                  tau_pt:                                   152.62                                   63.765   [                                   100.00                                   1425.3 ]
+                         :                               sist_mass:                                   144.50                                   125.39   [                                   25.120                                   2367.3 ]
+                         : sist_mass-sqrt(13000.0*13000.0*xi1*xi2):                                  -866.54                                   364.64   [                                  -2061.2                                   1684.9 ]
+                         :                                  met_pt:                                   83.240                                   61.334   [                                  0.25051                                   949.86 ]
+                         :               sist_rap-0.5*log(xi1/xi2):                                 0.095941                                   1.0506   [                                  -2.4392                                   3.0858 ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Factory                  : Evaluate classifier: Fisher
+                         : 
+Fisher                   : [dataset] : Loop over test events and fill histograms with classifier response...
+                         : 
+                         : Also filling probability and rarity histograms (on request)...
+TFHandler_Fisher         :                                Variable                                       Mean                                       RMS                               [        Min                                       Max ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         :                                sist_rap:                                -0.090027                                   1.0400   [                                  -2.3071                                   2.3476 ]
+                         :                                    acop:                                  0.49088                                  0.38325   [                               0.00015542                                   1.0000 ]
+                         :                                 sist_pt:                                   151.26                                   89.793   [                                  0.12172                                   864.94 ]
+                         :                                   mu_pt:                                   68.246                                   36.996   [                                   35.000                                   953.06 ]
+                         :                                  tau_pt:                                   152.62                                   63.765   [                                   100.00                                   1425.3 ]
+                         :                               sist_mass:                                   144.50                                   125.39   [                                   25.120                                   2367.3 ]
+                         : sist_mass-sqrt(13000.0*13000.0*xi1*xi2):                                  -866.54                                   364.64   [                                  -2061.2                                   1684.9 ]
+                         :                                  met_pt:                                   83.240                                   61.334   [                                  0.25051                                   949.86 ]
+                         :               sist_rap-0.5*log(xi1/xi2):                                 0.095941                                   1.0506   [                                  -2.4392                                   3.0858 ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Factory                  : Evaluate classifier: BDT
+                         : 
+BDT                      : [dataset] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_BDT            :                                Variable                                       Mean                                       RMS                               [        Min                                       Max ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         :                                sist_rap:                                -0.090027                                   1.0400   [                                  -2.3071                                   2.3476 ]
+                         :                                    acop:                                  0.49088                                  0.38325   [                               0.00015542                                   1.0000 ]
+                         :                                 sist_pt:                                   151.26                                   89.793   [                                  0.12172                                   864.94 ]
+                         :                                   mu_pt:                                   68.246                                   36.996   [                                   35.000                                   953.06 ]
+                         :                                  tau_pt:                                   152.62                                   63.765   [                                   100.00                                   1425.3 ]
+                         :                               sist_mass:                                   144.50                                   125.39   [                                   25.120                                   2367.3 ]
+                         : sist_mass-sqrt(13000.0*13000.0*xi1*xi2):                                  -866.54                                   364.64   [                                  -2061.2                                   1684.9 ]
+                         :                                  met_pt:                                   83.240                                   61.334   [                                  0.25051                                   949.86 ]
+                         :               sist_rap-0.5*log(xi1/xi2):                                 0.095941                                   1.0506   [                                  -2.4392                                   3.0858 ]
+                         : ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Evaluation results ranked by best signal efficiency and purity (area)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet       MVA                       
+                         : Name:         Method:          ROC-integ
+                         : dataset       BDT            : 0.997
+                         : dataset       Likelihood     : 0.947
+                         : dataset       Fisher         : 0.936
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Testing efficiency compared to training efficiency (overtraining check)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet              MVA              Signal efficiency: from test sample (from training sample) 
+                         : Name:                Method:          @B=0.01             @B=0.10            @B=0.30   
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : dataset              BDT            : 0.932 (0.932)       0.998 (1.000)      1.000 (1.000)
+                         : dataset              Likelihood     : 0.060 (0.713)       0.972 (0.981)      1.000 (1.000)
+                         : dataset              Fisher         : 0.079 (0.168)       0.813 (0.803)      0.981 (0.968)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+Dataset:dataset          : Created tree 'TestTree' with 29262 events
+                         : 
+Dataset:dataset          : Created tree 'TrainTree' with 21500 events
+                         : 
+Factory                  : [1mThank you for using TMVA![0m
+                         : [1mFor citation information, please visit: http://tmva.sf.net/citeTMVA.html[0m
+==> Wrote root file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root
+==> TMVAClassification is done!
+(int) 0

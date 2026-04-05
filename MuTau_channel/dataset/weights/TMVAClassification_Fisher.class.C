@@ -8,10 +8,10 @@
 
 Method         : Fisher::Fisher
 TMVA Release   : 4.2.1         [262657]
-ROOT Release   : 6.38/04       [402948]
+ROOT Release   : 6.30/07       [400903]
 Creator        : mblancco
-Date           : Thu Apr  2 15:23:45 2026
-Host           : Linux buildvm-x86-29.rdu3.fedoraproject.org 6.18.7-200.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Jan 23 16:42:34 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+Date           : Sun Apr  5 19:05:09 2026
+Host           : Linux cmsbuild102.cern.ch 4.18.0-513.11.1.el8_9.x86_64 #1 SMP Wed Jan 17 02:00:40 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
 Dir            : /eos/home-m/mblancco/tau_analysis/MuTau_channel
 Training events: 21500
 Analysis type  : [Classification]
@@ -35,14 +35,14 @@ IgnoreNegWeightsInTraining: "False" [Events with negative weights are ignored in
 
 NVar 9
 sist_rap                      sist_rap                      sist_rap                      Central system rapidity                                         'F'    [-2.31757044792,2.38625693321]
-acop                          acop                          acop                          Central system acoplanarity                                     'F'    [0.000155424742843,0.999999761581]
-sist_pt                       sist_pt                       sist_pt                       Total Momentum                GeV                               'F'    [0.249046832323,861.686767578]
-mu_pt                         mu_pt                         mu_pt                         muon pt                       GeV                               'F'    [35.000415802,953.058532715]
-tau_pt                        tau_pt                        tau_pt                        tau pt                        GeV                               'F'    [100.000610352,1425.25610352]
-sist_mass                     sist_mass                     sist_mass                     Invariant Mass                GeV                               'F'    [25.1197223663,2367.25024414]
-sist_mass-sqrt(13000.0*13000.0*xi1*xi2)         sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_ sist_mass-sqrt(13000.0*13000.0*xi1*xi2)         Invariant Mass Matching                         GeV                                                 'F'    [-158767.859375,1684.94555664]
-met_pt                        met_pt                        met_pt                        Missing energy                GeV                               'D'    [1.04408073425,897.497192383]
-sist_rap-0.5*log(xi1/xi2)       sist_rap_M_0.5_T_log_xi1_D_xi2_ sist_rap-0.5*log(xi1/xi2)       Rapidity matching                                                   'D'    [-2.42552685738,3.11699485779]
+acop                          acop                          acop                          Central system acoplanarity                                     'F'    [0.00124339794274,0.999999701977]
+sist_pt                       sist_pt                       sist_pt                       Total Momentum                GeV                               'F'    [0.214997932315,1082.75488281]
+mu_pt                         mu_pt                         mu_pt                         muon pt                       GeV                               'F'    [35.0044822693,1016.8706665]
+tau_pt                        tau_pt                        tau_pt                        tau pt                        GeV                               'F'    [100.000610352,1254.78356934]
+sist_mass                     sist_mass                     sist_mass                     Invariant Mass                GeV                               'F'    [28.4653339386,2139.56738281]
+sist_mass-sqrt(13000.0*13000.0*xi1*xi2)         sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_ sist_mass-sqrt(13000.0*13000.0*xi1*xi2)         Invariant Mass Matching                         GeV                                                 'F'    [-2125.49951172,1439.27954102]
+met_pt                        met_pt                        met_pt                        Missing energy                GeV                               'D'    [1.11025154591,1143.71887207]
+sist_rap-0.5*log(xi1/xi2)       sist_rap_M_0.5_T_log_xi1_D_xi2_ sist_rap-0.5*log(xi1/xi2)       Rapidity matching                                                   'D'    [-2.59698534012,3.11699485779]
 NSpec 0
 
 
@@ -192,16 +192,16 @@ class ReadFisher : public IClassifierReader {
 
 inline void ReadFisher::Initialize() 
 {
-   fFisher0 = -1.31840345986;
-   fFisherCoefficients.push_back( 0.0371218054231 );
-   fFisherCoefficients.push_back( 0.999882812658 );
-   fFisherCoefficients.push_back( 3.56732637886e-05 );
-   fFisherCoefficients.push_back( -0.00332631224162 );
-   fFisherCoefficients.push_back( 7.67904973758e-05 );
-   fFisherCoefficients.push_back( 0.00239461327038 );
-   fFisherCoefficients.push_back( -8.03454396413e-06 );
-   fFisherCoefficients.push_back( 0.000959632747182 );
-   fFisherCoefficients.push_back( -0.0287522069602 );
+   fFisher0 = -0.67071018392;
+   fFisherCoefficients.push_back( -0.083966366622 );
+   fFisherCoefficients.push_back( 0.769136958046 );
+   fFisherCoefficients.push_back( 0.000854426543396 );
+   fFisherCoefficients.push_back( -0.00249627798622 );
+   fFisherCoefficients.push_back( -0.00159024558049 );
+   fFisherCoefficients.push_back( 0.00241739025092 );
+   fFisherCoefficients.push_back( 0.000547445783879 );
+   fFisherCoefficients.push_back( 0.00164068467474 );
+   fFisherCoefficients.push_back( 0.101043387054 );
 
    // sanity check
    if (fFisherCoefficients.size() != fNvars) {

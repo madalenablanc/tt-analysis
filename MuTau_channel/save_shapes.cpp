@@ -141,59 +141,69 @@ int save_shapes(){
 
     // ---- Event loops ----
 
-    // Helper lambda: extract xi for a given arm from proton_multi arrays
-    // Data/QCD files store protons as arrays: proton_multi_arm[], proton_multi_xi[]
-    // Returns xi of first proton found on the requested arm, or -1 if none
-    auto getXiFromArray = [](TTree* tree, int arm) -> double {
-        TLeaf* l_arm = tree->GetLeaf("proton_multi_arm");
-        TLeaf* l_xi  = tree->GetLeaf("proton_multi_xi");
-        if(!l_arm || !l_xi) return -1;
-        int n = l_arm->GetLen();
-        for(int j = 0; j < n; j++){
-            if((int)l_arm->GetValue(j) == arm)
-                return l_xi->GetValue(j);
+    // DATA: no weight, require protons on both arms
+    // proton_multi_arm/xi are stored as std::vector branches - use SetBranchAddress
+    {
+        vector<int>   *v_arm = nullptr;
+        vector<float> *v_xi  = nullptr;
+        tree_data->SetBranchAddress("proton_multi_arm", &v_arm);
+        tree_data->SetBranchAddress("proton_multi_xi",  &v_xi);
+
+        cout << "Processing DATA (" << n_evt_data << " events)" << endl;
+        for(int i = 0; i < n_evt_data; i++){
+            tree_data->GetEvent(i);
+            if(tree_data->GetLeaf("sist_mass")->GetValue(0) < 0) continue;
+
+            double xi1 = -1, xi2 = -1;
+            if(v_arm && v_xi){
+                for(size_t j = 0; j < v_arm->size(); j++){
+                    if((*v_arm)[j] == 0 && xi1 < 0) xi1 = (*v_xi)[j];
+                    if((*v_arm)[j] == 1 && xi2 < 0) xi2 = (*v_xi)[j];
+                }
+            }
+            if(xi1 <= 0 || xi2 <= 0) continue;
+
+            aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0));
+            m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0));
+            pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0));
+            ra_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0));
+            tau_data.Fill(tree_data->GetLeaf("tau_pt")->GetValue(0));
+            met_data.Fill(tree_data->GetLeaf("met_pt")->GetValue(0));
+            r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2));
+            mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2));
         }
-        return -1;
-    };
-
-    // DATA: no weight, proton xi from array branches
-    cout << "Processing DATA (" << n_evt_data << " events)" << endl;
-    for(int i = 0; i < n_evt_data; i++){
-        tree_data->GetEvent(i);
-        if(tree_data->GetLeaf("sist_mass")->GetValue(0) < 0) continue;
-
-        double w = 1.0;
-        aco_data.Fill(tree_data->GetLeaf("acop")->GetValue(0), w);
-        m_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0), w);
-        pt_data.Fill(tree_data->GetLeaf("sist_pt")->GetValue(0), w);
-        ra_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0), w);
-        tau_data.Fill(tree_data->GetLeaf("tau_pt")->GetValue(0), w);
-        met_data.Fill(tree_data->GetLeaf("met_pt")->GetValue(0), w);
-
-        double xi1 = getXiFromArray(tree_data, 0);  // arm 0
-        double xi2 = getXiFromArray(tree_data, 1);  // arm 1
-        r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
-        mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
     }
 
-    // QCD: no weight (data-driven), proton xi from array branches
-    cout << "Processing QCD (" << n_evt_qcd << " events)" << endl;
-    for(int i = 0; i < n_evt_qcd; i++){
-        tree_qcd->GetEvent(i);
-        if(tree_qcd->GetLeaf("sist_mass")->GetValue(0) < 0) continue;
+    // QCD: no weight (data-driven), require protons on both arms
+    {
+        vector<int>   *v_arm = nullptr;
+        vector<float> *v_xi  = nullptr;
+        tree_qcd->SetBranchAddress("proton_multi_arm", &v_arm);
+        tree_qcd->SetBranchAddress("proton_multi_xi",  &v_xi);
 
-        double w = 1.0;
-        aco_qcd.Fill(tree_qcd->GetLeaf("acop")->GetValue(0), w);
-        m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0), w);
-        pt_qcd.Fill(tree_qcd->GetLeaf("sist_pt")->GetValue(0), w);
-        ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0), w);
-        tau_qcd.Fill(tree_qcd->GetLeaf("tau_pt")->GetValue(0), w);
-        met_qcd.Fill(tree_qcd->GetLeaf("met_pt")->GetValue(0), w);
+        cout << "Processing QCD (" << n_evt_qcd << " events)" << endl;
+        for(int i = 0; i < n_evt_qcd; i++){
+            tree_qcd->GetEvent(i);
+            if(tree_qcd->GetLeaf("sist_mass")->GetValue(0) < 0) continue;
 
-        double xi1 = getXiFromArray(tree_qcd, 0);  // arm 0
-        double xi2 = getXiFromArray(tree_qcd, 1);  // arm 1
-        r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
-        mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
+            double xi1 = -1, xi2 = -1;
+            if(v_arm && v_xi){
+                for(size_t j = 0; j < v_arm->size(); j++){
+                    if((*v_arm)[j] == 0 && xi1 < 0) xi1 = (*v_xi)[j];
+                    if((*v_arm)[j] == 1 && xi2 < 0) xi2 = (*v_xi)[j];
+                }
+            }
+            if(xi1 <= 0 || xi2 <= 0) continue;
+
+            aco_qcd.Fill(tree_qcd->GetLeaf("acop")->GetValue(0));
+            m_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0));
+            pt_qcd.Fill(tree_qcd->GetLeaf("sist_pt")->GetValue(0));
+            ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0));
+            tau_qcd.Fill(tree_qcd->GetLeaf("tau_pt")->GetValue(0));
+            met_qcd.Fill(tree_qcd->GetLeaf("met_pt")->GetValue(0));
+            r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2));
+            mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2));
+        }
     }
 
     // DY: use weight branch, apply DY_SCALE after loop
@@ -204,7 +214,7 @@ int save_shapes(){
 
         double xi1 = tree_dy->GetLeaf("xi_arm1_1")->GetValue(0);
         double xi2 = tree_dy->GetLeaf("xi_arm2_1")->GetValue(0);
-        if(xi1 < 0 || xi2 < 0) continue;  // require pileup protons on both arms
+        if(xi1 <= 0 || xi2 <= 0) continue;  // require pileup protons on both arms
 
         double w = tree_dy->GetLeaf("weight")->GetValue(0);
         aco_dy.Fill(tree_dy->GetLeaf("acop")->GetValue(0), w);
@@ -214,10 +224,8 @@ int save_shapes(){
         tau_dy.Fill(tree_dy->GetLeaf("tau_pt")->GetValue(0), w);
         met_dy.Fill(tree_dy->GetLeaf("met_pt")->GetValue(0), w);
 
-        if(xi1 > 0 && xi2 > 0){
-            r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
-            mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
-        }
+        r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
+        mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
     }
 
     // ttbar: use weight branch, apply TTBAR_SCALE after loop
@@ -228,7 +236,7 @@ int save_shapes(){
 
         double xi1 = tree_ttjets->GetLeaf("xi_arm1_1")->GetValue(0);
         double xi2 = tree_ttjets->GetLeaf("xi_arm2_1")->GetValue(0);
-        if(xi1 < 0 || xi2 < 0) continue;  // require pileup protons on both arms
+        if(xi1 <= 0 || xi2 <= 0) continue;  // require pileup protons on both arms
 
         double w = tree_ttjets->GetLeaf("weight")->GetValue(0);
         aco_ttjets.Fill(tree_ttjets->GetLeaf("acop")->GetValue(0), w);
@@ -238,10 +246,8 @@ int save_shapes(){
         tau_ttjets.Fill(tree_ttjets->GetLeaf("tau_pt")->GetValue(0), w);
         met_ttjets.Fill(tree_ttjets->GetLeaf("met_pt")->GetValue(0), w);
 
-        if(xi1 > 0 && xi2 > 0){
-            r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
-            mm_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
-        }
+        r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
+        mm_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
     }
 
     // Signal: use weight branch (already contains proper normalization)
@@ -252,7 +258,7 @@ int save_shapes(){
 
         double xi1 = tree_sinal->GetLeaf("xi_arm1_1")->GetValue(0);
         double xi2 = tree_sinal->GetLeaf("xi_arm2_1")->GetValue(0);
-        if(xi1 < 0 || xi2 < 0) continue;
+        if(xi1 <= 0 || xi2 <= 0) continue;
 
         double w = tree_sinal->GetLeaf("weight")->GetValue(0);
         aco_sinal.Fill(tree_sinal->GetLeaf("acop")->GetValue(0), w);
@@ -262,10 +268,8 @@ int save_shapes(){
         tau_sinal.Fill(tree_sinal->GetLeaf("tau_pt")->GetValue(0), w);
         met_sinal.Fill(tree_sinal->GetLeaf("met_pt")->GetValue(0), w);
 
-        if(xi1 > 0 && xi2 > 0){
-            r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
-            mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
-        }
+        r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
+        mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
     }
 
     // ---- Apply MC scale factors ----

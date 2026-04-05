@@ -1,0 +1,1539 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2868
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs30 \cf2 \CocoaLigature0 Singularity> combine -M AsymptoticLimits mutau_bdt_workspace.root -m 120 -n MuTau_bdt --cl 0.95\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is AsymptoticLimits\
+\
+ -- AsymptoticLimits ( CLs ) --\
+Observed Limit: r < 281.5513\
+Expected  2.5%: r < 37.1094\
+Expected 16.0%: r < 56.1047\
+Expected 50.0%: r < 95.0000\
+Expected 84.0%: r < 176.0363\
+Expected 97.5%: r < 287.9995\
+\
+Singularity> \
+Singularity> combine -M Significance mutau_bdt_workspace.root -m 120 -n MuTau_bdt --significance\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is Significance\
+\
+ -- Significance -- \
+Significance: 2.41418\
+Singularity> \
+Singularity> combine -M Significance mutau_bdt_workspace.root -m 120 -n MuTau_bdt_exp -t -1 --expectSignal=1\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is Significance\
+\
+ -- Significance -- \
+Significance: 0.0458656\
+Singularity> combine -M FitDiagnostics mutau_bdt_workspace.root -m 120 -n MuTau_bdt \\\
+>     --saveShapes --saveWithUncertainties --rMin 0 --rMax 500 --robustFit 1\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is FitDiagnostics\
+\
+ --- FitDiagnostics ---\
+Best fit r: 99.5359  -54.3159/+89.8852  (68% CL)\
+Singularity> \
+Singularity> combine -M MultiDimFit mutau_bdt_workspace.root -m 120 -n MuTau_bdt_singles \\\
+>     --algo singles --rMin 0 --rMax 500 --robustFit 1\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present\
+\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+best fit parameter values and profile-likelihood uncertainties: \
+   r :   +99.561   -54.362/+89.879 (68%)\
+Singularity> combine -M GoodnessOfFit mutau_bdt_workspace.root -m 120 -n MuTau_bdt_gof \\\
+>     --algo saturated\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+Will use saturated model to compute goodness of fit for a binned likelihood\
+>>> Method used is GoodnessOfFit\
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present\
+\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.7077\
+Singularity> combine -M GoodnessOfFit mutau_bdt_workspace.root -m 120 -n MuTau_bdt_gof_toys \\\
+>     --algo saturated -t 200 --toysFrequentist\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+Will use saturated model to compute goodness of fit for a binned likelihood\
+>>> Method used is GoodnessOfFit\
+Generate toy 1/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.1567\
+Generate toy 2/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.52381\
+Generate toy 3/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.3123\
+Generate toy 4/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.4425\
+Generate toy 5/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.1853\
+Generate toy 6/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.2447\
+Generate toy 7/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.8433\
+Generate toy 8/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.431\
+Generate toy 9/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.7733\
+Generate toy 10/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.4863\
+Generate toy 11/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.7038\
+Generate toy 12/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.0792\
+Generate toy 13/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.5029\
+Generate toy 14/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.7628\
+Generate toy 15/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.4108\
+Generate toy 16/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 24.4296\
+Generate toy 17/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.8952\
+Generate toy 18/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 3.58198\
+Generate toy 19/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.755\
+Generate toy 20/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.2497\
+Generate toy 21/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.9024\
+Generate toy 22/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.055\
+Generate toy 23/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 25.9765\
+Generate toy 24/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.4564\
+Generate toy 25/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.73\
+Generate toy 26/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.2763\
+Generate toy 27/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.8493\
+Generate toy 28/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 4.60971\
+Generate toy 29/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.0552\
+Generate toy 30/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.0532\
+Generate toy 31/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.54817\
+Generate toy 32/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 6.93734\
+Generate toy 33/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 23.1842\
+Generate toy 34/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.718\
+Generate toy 35/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.6119\
+Generate toy 36/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.0083\
+Generate toy 37/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.0766\
+Generate toy 38/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.0348\
+Generate toy 39/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.2328\
+Generate toy 40/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.8952\
+Generate toy 41/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.72007\
+Generate toy 42/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 20.7074\
+Generate toy 43/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.0052\
+Generate toy 44/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.1667\
+Generate toy 45/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.94899\
+Generate toy 46/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.02771\
+Generate toy 47/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.85433\
+Generate toy 48/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.2055\
+Generate toy 49/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.4027\
+Generate toy 50/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 27.1067\
+Generate toy 51/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 20.41\
+Generate toy 52/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.0388\
+Generate toy 53/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.2031\
+Generate toy 54/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 6.78048\
+Generate toy 55/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.8631\
+Generate toy 56/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.9689\
+Generate toy 57/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.5798\
+Generate toy 58/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.2299\
+Generate toy 59/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.6341\
+Generate toy 60/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.0282\
+Generate toy 61/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14\
+Generate toy 62/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.3979\
+Generate toy 63/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.2101\
+Generate toy 64/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.4235\
+Generate toy 65/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.81\
+Generate toy 66/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.77\
+Generate toy 67/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 20.8778\
+Generate toy 68/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.44511\
+Generate toy 69/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 25.9633\
+Generate toy 70/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.8123\
+Generate toy 71/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.9966\
+Generate toy 72/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.4732\
+Generate toy 73/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.1527\
+Generate toy 74/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.299\
+Generate toy 75/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.2261\
+Generate toy 76/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.6114\
+Generate toy 77/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.9334\
+Generate toy 78/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.214\
+Generate toy 79/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 28.0551\
+Generate toy 80/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.2431\
+Generate toy 81/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.9365\
+Generate toy 82/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.1347\
+Generate toy 83/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 4.89095\
+Generate toy 84/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.2939\
+Generate toy 85/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.5259\
+Generate toy 86/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 29.0089\
+Generate toy 87/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 22.6104\
+Generate toy 88/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.4086\
+Generate toy 89/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.8312\
+Generate toy 90/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.89328\
+Generate toy 91/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 24.0824\
+Generate toy 92/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.03722\
+Generate toy 93/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.64487\
+Generate toy 94/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.3105\
+Generate toy 95/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.3058\
+Generate toy 96/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.0843\
+Generate toy 97/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.3125\
+Generate toy 98/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.3216\
+Generate toy 99/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.3191\
+Generate toy 100/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.4944\
+Generate toy 101/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.2884\
+Generate toy 102/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.8898\
+Generate toy 103/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.7039\
+Generate toy 104/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.21393\
+Generate toy 105/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.36528\
+Generate toy 106/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.7839\
+Generate toy 107/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.147\
+Generate toy 108/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.9266\
+Generate toy 109/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.63\
+Generate toy 110/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.13267\
+Generate toy 111/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.5984\
+Generate toy 112/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.3041\
+Generate toy 113/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.54671\
+Generate toy 114/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.0834\
+Generate toy 115/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.7632\
+Generate toy 116/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.5877\
+Generate toy 117/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.2906\
+Generate toy 118/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.9908\
+Generate toy 119/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.7515\
+Generate toy 120/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.8067\
+Generate toy 121/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.608\
+Generate toy 122/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.1328\
+Generate toy 123/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.52324\
+Generate toy 124/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.0329\
+Generate toy 125/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 23.9187\
+Generate toy 126/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.0937\
+Generate toy 127/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.1965\
+Generate toy 128/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 36.3094\
+Generate toy 129/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.2223\
+Generate toy 130/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.2228\
+Generate toy 131/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 25.4416\
+Generate toy 132/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.0082\
+Generate toy 133/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.0863\
+Generate toy 134/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 6.67751\
+Generate toy 135/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.3878\
+Generate toy 136/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.5914\
+Generate toy 137/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 33.9191\
+Generate toy 138/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.257\
+Generate toy 139/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.0664\
+Generate toy 140/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 29.4839\
+Generate toy 141/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.2205\
+Generate toy 142/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.1048\
+Generate toy 143/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.754\
+Generate toy 144/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.38189\
+Generate toy 145/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 6.98176\
+Generate toy 146/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.23756\
+Generate toy 147/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.3534\
+Generate toy 148/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.8455\
+Generate toy 149/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.1522\
+Generate toy 150/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.5265\
+Generate toy 151/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.9863\
+Generate toy 152/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.8466\
+Generate toy 153/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.0876\
+Generate toy 154/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.7195\
+Generate toy 155/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.83381\
+Generate toy 156/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.5754\
+Generate toy 157/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.7745\
+Generate toy 158/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.90254\
+Generate toy 159/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.76991\
+Generate toy 160/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.876\
+Generate toy 161/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 17.6701\
+Generate toy 162/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.1939\
+Generate toy 163/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.5253\
+Generate toy 164/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.535\
+Generate toy 165/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.1657\
+Generate toy 166/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.9492\
+Generate toy 167/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 10.5449\
+Generate toy 168/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.2626\
+Generate toy 169/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.8376\
+Generate toy 170/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 23.2809\
+Generate toy 171/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.7017\
+Generate toy 172/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.2314\
+Generate toy 173/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 7.36588\
+Generate toy 174/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.8337\
+Generate toy 175/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.233\
+Generate toy 176/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.2517\
+Generate toy 177/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 27.7283\
+Generate toy 178/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 13.5133\
+Generate toy 179/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.8545\
+Generate toy 180/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.2937\
+Generate toy 181/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.7888\
+Generate toy 182/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 15.4563\
+Generate toy 183/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.9785\
+Generate toy 184/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 8.3791\
+Generate toy 185/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.3293\
+Generate toy 186/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 19.2543\
+Generate toy 187/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.62495\
+Generate toy 188/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 25.4692\
+Generate toy 189/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 16.5506\
+Generate toy 190/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.8623\
+Generate toy 191/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.6308\
+Generate toy 192/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 18.4667\
+Generate toy 193/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 9.16347\
+Generate toy 194/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 20.2672\
+Generate toy 195/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 24.0733\
+Generate toy 196/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.1576\
+Generate toy 197/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.6761\
+Generate toy 198/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 11.0129\
+Generate toy 199/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 12.7833\
+Generate toy 200/200\
+RooSimultaneousOpt: number of channel masks must equal number of channels\
+\
+ --- GoodnessOfFit --- \
+Best fit test statistic: 14.1027\
+mean   expected limit: r < 14.6357 +/- 0.375374 @ 95%CL (200 toyMC)\
+median expected limit: r < 14.0431 @ 95%CL (200 toyMC)\
+   68% expected band : 9.62495 < r < 18.6308\
+   95% expected band : 6.93734 < r < 28.0551\
+Singularity> combineTool.py -M CollectGoodnessOfFit \\\
+>     --input higgsCombineMuTau_bdt_gof.GoodnessOfFit.mH120.root \\\
+>             higgsCombineMuTau_bdt_gof_toys.GoodnessOfFit.mH120.*.root \\\
+>     -o gof_MuTau_bdt.json\
+\
+\
+>> Writing output gof_MuTau_bdt.json from files:\
+[ 'higgsCombineMuTau_bdt_gof.GoodnessOfFit.mH120.root',\
+  'higgsCombineMuTau_bdt_gof_toys.GoodnessOfFit.mH120.123456.root']\
+Singularity> \
+Singularity> \
+Singularity> combineTool.py -M Impacts -d mutau_bdt_workspace.root -m 120 \\\
+>     --doInitialFit --robustFit 1 --rMin 0 --rMax 500\
+Have POIs: ['r']\
+>> combine -M MultiDimFit -n _initialFit_Test --algo singles --redefineSignalPOIs r --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+best fit parameter values and profile-likelihood uncertainties: \
+   r :   +99.561   -54.362/+89.879 (68%)\
+Singularity> combineTool.py -M Impacts -d mutau_bdt_workspace.root -m 120 \\\
+>     --doFits --robustFit 1 --rMin 0 --rMax 500\
+Have POIs: ['r']\
+Have parameters: 37\
+>> combine -M MultiDimFit -n _paramFit_Test_Luminosity --algo impact --redefineSignalPOIs r -P Luminosity --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter  :   Best-fit               r            \
+  Luminosity :   -0.000  -0.994/+0.994  +1.503/-1.462\
+>> combine -M MultiDimFit -n _paramFit_Test_Mu_idiso --algo impact --redefineSignalPOIs r -P Mu_idiso --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  Mu_idiso  :   +0.000  -0.994/+0.994  +0.012/-0.003\
+>> combine -M MultiDimFit -n _paramFit_Test_Mu_reco --algo impact --redefineSignalPOIs r -P Mu_reco --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  Mu_reco   :   +0.000  -0.994/+0.994  +0.019/-0.010\
+>> combine -M MultiDimFit -n _paramFit_Test_Mu_trig --algo impact --redefineSignalPOIs r -P Mu_trig --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  Mu_trig   :   +0.000  -0.994/+0.994  +0.081/-0.075\
+>> combine -M MultiDimFit -n _paramFit_Test_beta_dy --algo impact --redefineSignalPOIs r -P beta_dy --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  beta_dy   :   +0.855  -0.365/+0.621  -22.279/+30.537\
+>> combine -M MultiDimFit -n _paramFit_Test_beta_qcd --algo impact --redefineSignalPOIs r -P beta_qcd --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  beta_qcd  :   +1.707  -0.976/+1.808  -23.684/+36.996\
+>> combine -M MultiDimFit -n _paramFit_Test_beta_tt --algo impact --redefineSignalPOIs r -P beta_tt --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  beta_tt   :   +0.931  -0.419/+0.757  -20.692/+27.483\
+>> combine -M MultiDimFit -n _paramFit_Test_dy_norm --algo impact --redefineSignalPOIs r -P dy_norm --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  dy_norm   :   +0.001  -0.996/+0.994  +0.011/-0.011\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin0 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin0 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin0 :   -0.233  -0.738/+0.784  +3.073/-3.504\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin1 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin1 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin1 :   +0.238  -0.851/+0.861  -1.248/+0.101\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin10 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin10 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter           :   Best-fit               r            \
+  prop_binmutau_bin10 :   -0.053  -0.859/+0.872  -3.619/+2.917\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin11 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin11 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter           :   Best-fit               r            \
+  prop_binmutau_bin11 :   -0.649  -0.762/+0.823  +0.732/-3.643\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin12 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin12 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter           :   Best-fit               r            \
+  prop_binmutau_bin12 :   +0.609  -0.821/+0.857  -1.087/+1.630\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin13 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin13 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter           :   Best-fit               r            \
+  prop_binmutau_bin13 :   -0.474  -0.802/+0.842  +4.088/-4.344\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin14 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin14 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter           :   Best-fit               r            \
+  prop_binmutau_bin14 :   +0.508  -0.941/+0.942  +11.774/-9.143\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin15_dy --algo impact --redefineSignalPOIs r -P prop_binmutau_bin15_dy --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter              :   Best-fit               r            \
+  prop_binmutau_bin15_dy :   +0.110  -0.966/+0.966  +10.839/-8.938\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin15_sinal --algo impact --redefineSignalPOIs r -P prop_binmutau_bin15_sinal --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter                 :   Best-fit               r            \
+  prop_binmutau_bin15_sinal :   +0.015  -0.994/+0.994  +0.759/-0.755\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin15_ttjets --algo impact --redefineSignalPOIs r -P prop_binmutau_bin15_ttjets --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter                  :   Best-fit               r            \
+  prop_binmutau_bin15_ttjets :   +0.045  -0.990/+0.990  +4.189/-3.436\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin16 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin16 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter           :   Best-fit               r            \
+  prop_binmutau_bin16 :   -0.041  -0.993/+0.993  +2.717/-2.591\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin17_sinal --algo impact --redefineSignalPOIs r -P prop_binmutau_bin17_sinal --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter                 :   Best-fit               r            \
+  prop_binmutau_bin17_sinal :   -0.038  -0.995/+0.995  +1.098/-1.074\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin17_ttjets --algo impact --redefineSignalPOIs r -P prop_binmutau_bin17_ttjets --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter                  :   Best-fit               r            \
+  prop_binmutau_bin17_ttjets :   +1.935  -1.062/+1.697  +0.005/+0.005\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin18_sinal --algo impact --redefineSignalPOIs r -P prop_binmutau_bin18_sinal --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter                 :   Best-fit               r            \
+  prop_binmutau_bin18_sinal :   -0.009  -0.994/+0.995  +0.042/-0.033\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin18_ttjets --algo impact --redefineSignalPOIs r -P prop_binmutau_bin18_ttjets --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter                  :   Best-fit               r            \
+  prop_binmutau_bin18_ttjets :   +0.967  -0.673/+1.304  +0.005/+0.005\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin2 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin2 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin2 :   +0.377  -0.802/+0.826  +1.595/-2.722\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin3 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin3 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin3 :   +0.330  -0.843/+0.833  -3.548/+1.981\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin4 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin4 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin4 :   -0.790  -0.895/+0.882  -3.259/+2.386\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin5 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin5 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin5 :   +0.550  -0.876/+0.861  -3.566/+1.952\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin6 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin6 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin6 :   -0.437  -0.828/+0.916  +5.007/-6.284\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin7 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin7 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin7 :   +0.172  -0.751/+0.825  +4.616/-5.559\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin8 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin8 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin8 :   -0.127  -0.770/+0.793  -2.205/+0.447\
+>> combine -M MultiDimFit -n _paramFit_Test_prop_binmutau_bin9 --algo impact --redefineSignalPOIs r -P prop_binmutau_bin9 --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter          :   Best-fit               r            \
+  prop_binmutau_bin9 :   -1.030  -0.760/+0.801  -0.455/-1.865\
+>> combine -M MultiDimFit -n _paramFit_Test_qcd_norm --algo impact --redefineSignalPOIs r -P qcd_norm --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  qcd_norm  :   +0.000  -0.995/+0.994  +0.027/-0.010\
+>> combine -M MultiDimFit -n _paramFit_Test_tau_idVSe --algo impact --redefineSignalPOIs r -P tau_idVSe --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  tau_idVSe :   +0.000  -0.995/+0.994  +2.475/-2.399\
+>> combine -M MultiDimFit -n _paramFit_Test_tau_idVSjet --algo impact --redefineSignalPOIs r -P tau_idVSjet --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter   :   Best-fit               r            \
+  tau_idVSjet :   -0.000  -0.994/+0.995  +4.970/-4.730\
+>> combine -M MultiDimFit -n _paramFit_Test_tau_idVSmu --algo impact --redefineSignalPOIs r -P tau_idVSmu --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter  :   Best-fit               r            \
+  tau_idVSmu :   +0.000  -0.995/+0.994  +3.065/-2.960\
+>> combine -M MultiDimFit -n _paramFit_Test_ttjets_norm --algo impact --redefineSignalPOIs r -P ttjets_norm --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter   :   Best-fit               r            \
+  ttjets_norm :   -0.001  -0.993/+0.995  +0.018/+0.050\
+>> combine -M MultiDimFit -n _paramFit_Test_xiProton --algo impact --redefineSignalPOIs r -P xiProton --floatOtherPOIs 1 --saveInactivePOI 1 --robustFit 1 --rMin 0 --rMax 500 -m 120 -d mutau_bdt_workspace.root\
+ <<< Combine >>> \
+ <<< v10.5.1 >>>\
+>>> Random number generator seed is 123456\
+>>> Method used is MultiDimFit\
+Doing initial fit: \
+\
+ --- MultiDimFit ---\
+Parameter impacts: \
+  Parameter :   Best-fit               r            \
+  xiProton  :   +0.000  -0.995/+0.994  +49.473/-32.952\
+Singularity> combineTool.py -M Impacts -d mutau_bdt_workspace.root -m 120 \\\
+>     -o impacts_MuTau_bdt.json\
+Have POIs: ['r']\
+Have parameters: 37\
+Singularity> plotImpacts.py -i impacts_MuTau_bdt.json -o impacts_MuTau_bdt\
+>> Doing page 0, have 30 parameters\
+Info in <TCanvas::Print>: pdf file impacts_MuTau_bdt.pdf has been created using the current canvas\
+>> Doing page 1, have 7 parameters\
+Info in <TCanvas::Print>: Current canvas added to pdf file impacts_MuTau_bdt.pdf and file closed\
+Singularity> python3 plot_single_limit.py \\\
+>     higgsCombineMuTau_bdt.AsymptoticLimits.mH120.root \\\
+>     --mass 120 --output MuTau_bdt_limits\
+[summary] Wrote MuTau_bdt_limits.txt\
+Info in <TCanvas::Print>: png file MuTau_bdt_limits.png has been created\
+Info in <TCanvas::Print>: pdf file MuTau_bdt_limits.pdf has been created\
+[plot] Saved MuTau_bdt_limits.png/pdf\
+Singularity> \
+}

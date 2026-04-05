@@ -437,9 +437,11 @@ int TMVAClassification( TString myMethodList = "" )
    //if(backgroundWeight<0) backgroundWeight=-backgroundWeight/5500.;
 
 
-   double signalWeight=0.00021;
-
-   double backgroundWeight=104.;
+   // Tree-level weights set to 1.0: normalization is fully handled by
+   // SetSignalWeightExpression / SetBackgroundWeightExpression above.
+   // Hard-coded global scale factors (0.00021, 104.) were redundant and brittle.
+   double signalWeight     = 1.0;
+   double backgroundWeight = 1.0;
 
 
    // You can add an arbitrary number of signal or background trees
@@ -944,11 +946,41 @@ int TMVAClassification( TString myMethodList = "" )
                            "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=2" );
 
 
-   if (Use["BDT"])  // Adaptive Boost
+   if (Use["BDT"]) {
 
+      // ---------------------------------------------------------------
+      // BDT SCAN - uncomment ONE block at a time, keep method name "BDT"
+      // so run_bdt_all.C and TMVAClassificationApplication.C need no changes
+      // ---------------------------------------------------------------
+
+      // Scan A: conservative AdaBoost (stability baseline)
+      // Shallower trees, stronger pruning, ignores negative-weight events
       factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT",
+         "!H:!V:NTrees=600:MinNodeSize=5%:MaxDepth=2:BoostType=AdaBoost:"
+         "AdaBoostBeta=0.2:UseBaggedBoost:BaggedSampleFraction=0.5:"
+         "SeparationType=GiniIndex:nCuts=40:"
+         "PruneMethod=CostComplexity:PruneStrength=5:"
+         "NegWeightTreatment=IgnoreNegWeightsInTraining" );
 
-                           "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:AdaBoostBeta=0.5:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=20" );
+      // Scan B: close to original, with pruning + negative-weight pairing
+      // Uncomment this and comment Scan A to test
+      // factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT",
+      //    "!H:!V:NTrees=850:MinNodeSize=2.5%:MaxDepth=3:BoostType=AdaBoost:"
+      //    "AdaBoostBeta=0.3:UseBaggedBoost:BaggedSampleFraction=0.5:"
+      //    "SeparationType=GiniIndex:nCuts=40:"
+      //    "PruneMethod=CostComplexity:PruneStrength=3:"
+      //    "NegWeightTreatment=PairNegWeightsGlobal" );
+
+      // Scan C: gradient-boosted variant
+      // Uncomment this and comment Scan A to test
+      // factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT",
+      //    "!H:!V:NTrees=600:MinNodeSize=2.5%:MaxDepth=2:BoostType=Grad:"
+      //    "Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:"
+      //    "SeparationType=GiniIndex:nCuts=40:"
+      //    "PruneMethod=CostComplexity:PruneStrength=2:"
+      //    "NegWeightTreatment=IgnoreNegWeightsInTraining" );
+
+   }
 
 
    if (Use["BDTB"]) // Bagging
