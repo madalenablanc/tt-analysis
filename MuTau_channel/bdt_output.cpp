@@ -115,7 +115,7 @@ int main() { // plots bdt output - MuTau channel
 
     // Save
     canvas->Draw();
-    canvas->SaveAs("bdt_output.png");
+    canvas->SaveAs("bdt_output_new.png");
 
     bool interactive = false;
 

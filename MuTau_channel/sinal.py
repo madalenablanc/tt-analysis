@@ -167,6 +167,14 @@ def proton_count(arms, target_arm):
     return sum(1 for value in arms if int(value) == target_arm)
 
 
+def proton_arm_index(arms, target_arm):
+    """Return the list index of the first proton in target_arm, or -1 if absent."""
+    for i, arm_value in enumerate(arms):
+        if int(arm_value) == target_arm:
+            return i
+    return -1
+
+
 def main():
     muon_neg18_lowTrig = open(EMU_DIR / "muon_neg18_lowTrig.txt")
     muon_pos18_lowTrig = open(EMU_DIR / "muon_pos18_lowTrig.txt")
@@ -325,6 +333,54 @@ def main():
     n_p_dw_xi = 0.0
     n_p_rad = 0.0
 
+    # --- cutflow table ---
+    # index: 0=all, 1=nonempty mu/tau, 2=baseline ID+eta+dR, 3=kinematics,
+    #        4=OS charge, 5=eta repeat, 6=len(xi)==2, 7=thx fiducial,
+    #        8=track fiducial, 9=rad damage weight, 10=tree fill
+    STEP_LABELS = [
+        "0. All events",
+        "1. Non-empty mu/tau",
+        "2. Baseline ID+eta+dR",
+        "3. Kinematics (pt cuts)",
+        "4. Opposite sign",
+        "5. Eta repeat check",
+        "6. >=1 proton per arm",
+        "7. thx fiducial",
+        "8. Track fiducial",
+        "9. Rad-damage weight",
+        "10. Tree fill",
+    ]
+    cf_uw   = [0]   * 11   # unweighted counts
+    cf_wgen = [0.0] * 11   # sum weight_sm[0]
+    cf_wfin = [0.0] * 11   # sum final weight
+
+    # xi multiplicity table (filled before the len(xi)!=2 cut)
+    xi_mult_uw   = {0: 0,   1: 0,   2: 0,   "gt2": 0}
+    xi_mult_wfin = {0: 0.0, 1: 0.0, 2: 0.0, "gt2": 0.0}
+
+    # xangle occupancy
+    xangle_occ = {}
+
+    # muon SF decomposition sums (at baseline step)
+    sum_wsample = 0.0
+    sum_w_trig  = 0.0
+    sum_w_trig_idiso = 0.0
+    sum_w_full  = 0.0
+
+    # --- Table-8-style cutflow (note-matched, flat, independent of debug cutflow) ---
+    # Weighted by weight_factor = weight_sample * mu_SFs (same weight as main selection)
+    # Rows: ID+ISO only | +pT | +OS | +PPS raw (len>=2) | +PPS final (after all corrections)
+    NOTE_LABELS = [
+        "1. ID+ISO (tau_id_full>0.5, e_id>0.5)",
+        "2. pT(mu)>35 GeV, pT(tau)>100 GeV",
+        "3. Opposite sign",
+        "4. >=1 proton per arm",
+        "5. PPS final (after all corrections)",
+    ]
+    NOTE_REF = [2.45, 315.0, 3.11, 35.2, float("nan")]  # SM Signal from Table 8 (note: non-monotonic — likely OCR artefact)
+    cf_note_uw  = [0]   * 5
+    cf_note_w   = [0.0] * 5   # sum of weight_factor (= weight_sample * mu_SFs)
+
     PI = math.pi
 
     rad_multi = ROOT.TFile.Open("pixelEfficiencies_multiRP_reMiniAOD.root")
@@ -383,10 +439,20 @@ def main():
         weight_sm = ntp1.weight_sm
         bsm_weights = ntp1.bsm_weights
 
+        # step 0: all events
+        cf_uw[0]   += 1
+        cf_wgen[0] += float(weight_sm[0])
+        cf_wfin[0] += float(weight_sm[0])
+
         if len(e_charge) == 0 or len(tau_charge) == 0:
             continue
 
         weight_sample = 54900.0 * weight_sm[0] / (4000.0 * 1000.0)
+
+        # step 1: non-empty mu/tau
+        cf_uw[1]   += 1
+        cf_wgen[1] += float(weight_sm[0])
+        cf_wfin[1] += weight_sample
 
         phi_e = e_phi[0]
         phi_tau = tau_phi[0]
@@ -405,6 +471,25 @@ def main():
         angular_dist = math.sqrt(delta_phi * delta_phi + delta_eta * delta_eta)
         histo_DR.Fill(angular_dist)
 
+        # --- Table-8 note cutflow (flat, independent block) ---
+        # Uses same mu SFs as main selection; requires only id+iso at row 1 (no eta/dR)
+        _p_tot_note = e_pt[0] / math.sin(2.0 * math.atan(math.exp(-e_eta[0])))
+        _wf_note = weight_sample * muon_trig_sf(e_pt[0], e_eta[0], e_charge[0], _p_tot_note) \
+                                 * muon_idiso_sf(e_pt[0], e_eta[0], e_charge[0], _p_tot_note) \
+                                 * mu_reco_sf(e_pt[0], e_eta[0])
+        if tau_id_full[0] > 0.5 and e_id[0] > 0.5:
+            cf_note_uw[0] += 1
+            cf_note_w[0]  += _wf_note
+            if tau_pt[0] > 100.0 and e_pt[0] > 35.0:
+                cf_note_uw[1] += 1
+                cf_note_w[1]  += _wf_note
+                if float(e_charge[0]) * float(tau_charge[0]) < 0.0:
+                    cf_note_uw[2] += 1
+                    cf_note_w[2]  += _wf_note
+                    if proton_arm_index(arm, 0) >= 0 and proton_arm_index(arm, 1) >= 0:
+                        cf_note_uw[3] += 1
+                        cf_note_w[3]  += _wf_note
+
         if tau_id_full[0] > 0.5 and e_id[0] > 0.5 and abs(tau_eta[0]) < 2.4 and abs(e_eta[0]) < 2.4 and angular_dist > 0.4:
             mu_trig = muon_trig_sf(e_pt[0], e_eta[0], e_charge[0], e_pt[0] / math.sin(2.0 * math.atan(math.exp(-e_eta[0]))))
             mu_idiso = muon_idiso_sf(e_pt[0], e_eta[0], e_charge[0], e_pt[0] / math.sin(2.0 * math.atan(math.exp(-e_eta[0]))))
@@ -413,14 +498,35 @@ def main():
             weight_factor = weight_sample * mu_trig * mu_idiso * mu_reco
             n_id += weight_factor
 
+            # step 2: baseline ID+eta+dR + muon SFs applied
+            cf_uw[2]   += 1
+            cf_wgen[2] += float(weight_sm[0])
+            cf_wfin[2] += weight_factor
+            sum_wsample      += weight_sample
+            sum_w_trig       += weight_sample * mu_trig
+            sum_w_trig_idiso += weight_sample * mu_trig * mu_idiso
+            sum_w_full       += weight_factor
+
             if tau_pt[0] > 100.0 and e_pt[0] > 35.0:
                 n_pt += weight_factor
+                # step 3: kinematics
+                cf_uw[3]   += 1
+                cf_wgen[3] += float(weight_sm[0])
+                cf_wfin[3] += weight_factor
 
                 if float(e_charge[0]) * float(tau_charge[0]) < 0.0:
                     n_charge += weight_factor
+                    # step 4: opposite sign
+                    cf_uw[4]   += 1
+                    cf_wgen[4] += float(weight_sm[0])
+                    cf_wfin[4] += weight_factor
 
                     if abs(tau_eta[0]) < 2.4 and abs(e_eta[0]) < 2.4:
                         n_eta += weight_factor
+                        # step 5: eta repeat (should equal step 4 if baseline was applied correctly)
+                        cf_uw[5]   += 1
+                        cf_wgen[5] += float(weight_sm[0])
+                        cf_wfin[5] += weight_factor
 
                         mu_trig_syst = muon_trig_sf(e_pt[0], e_eta[0], e_charge[0], e_pt[0] / math.sin(2.0 * math.atan(math.exp(-e_eta[0]))), 1)
                         mu_idiso_syst = muon_idiso_sf(e_pt[0], e_eta[0], e_charge[0], e_pt[0] / math.sin(2.0 * math.atan(math.exp(-e_eta[0]))), 1)
@@ -430,10 +536,27 @@ def main():
                         scalars["syst_mu_idiso"][0] = mu_idiso_syst
                         scalars["syst_mu_reco"][0] = mu_reco_syst
 
-                        if len(xi) != 2:
+                        # xi multiplicity table (before the per-arm cut)
+                        _xi_len = len(xi)
+                        if _xi_len == 0:
+                            xi_mult_uw[0] += 1;   xi_mult_wfin[0] += weight_factor
+                        elif _xi_len == 1:
+                            xi_mult_uw[1] += 1;   xi_mult_wfin[1] += weight_factor
+                        elif _xi_len == 2:
+                            xi_mult_uw[2] += 1;   xi_mult_wfin[2] += weight_factor
+                        else:
+                            xi_mult_uw["gt2"] += 1; xi_mult_wfin["gt2"] += weight_factor
+
+                        idx0 = proton_arm_index(arm, 0)
+                        idx1 = proton_arm_index(arm, 1)
+                        if idx0 < 0 or idx1 < 0:
                             continue
 
                         n_rec += weight_factor
+                        # step 6: >=1 proton per arm
+                        cf_uw[6]   += 1
+                        cf_wgen[6] += float(weight_sm[0])
+                        cf_wfin[6] += weight_factor
 
                         histo_e_pt.Fill(e_pt[0])
                         histo_tau_pt.Fill(tau_pt[0])
@@ -459,6 +582,7 @@ def main():
 
                         print(f"tamanho bsm_weights: {len(bsm_weights)}")
                         sm_cs = bsm_weights[51]
+                        print(f"  bsm_weights[51]={sm_cs:.6g}  min={min(bsm_weights):.6g}  max={max(bsm_weights):.6g}  first5={list(bsm_weights[:5])}")
                         for p in range(102):
                             bsm_weights[p] = bsm_weights[p] / sm_cs
 
@@ -479,7 +603,7 @@ def main():
                             xangle = 133.0
                         if 0.185 < fraction <= 0.205:
                             xangle = 134.0
-                        if 20.5 <= fraction <= 0.227:
+                        if 0.205 < fraction <= 0.227:
                             xangle = 135.0
                         if 0.227 <= fraction <= 0.251:
                             xangle = 136.0
@@ -532,197 +656,211 @@ def main():
                         if 0.925 <= fraction <= 1.00:
                             xangle = 160.0
 
+                        xangle_occ[xangle] = xangle_occ.get(xangle, 0) + 1
+
                         limit_fun_arm_0 = ROOT.TF1("limit_fun_arm_0", "-(8.44219E-07*[xangle]-0.000100957)+(([xi]<(0.000247185*[xangle]+0.101599))*-(1.40289E-05*[xangle]-0.00727237)+([xi]>=(0.000247185*[xangle]+0.101599))*-(0.000107811*[xangle]-0.0261867))*([xi]-(0.000247185*[xangle]+0.101599))", 0, 1)
                         limit_fun_arm_1 = ROOT.TF1("limit_fun_arm_1", "-(-4.74758E-07*[xangle]+3.0881E-05)+(([xi]<(0.000727859*[xangle]+0.0722653))*-(2.43968E-05*[xangle]-0.0085461)+([xi]>=(0.000727859*[xangle]+0.0722653))*-(7.19216E-05*[xangle]-0.0148267))*([xi]-(0.000727859*[xangle]+0.0722653))", 0, 1)
 
                         limit_fun_arm_0.SetParameter("xangle", xangle)
                         limit_fun_arm_1.SetParameter("xangle", xangle)
-                        limit_fun_arm_0.SetParameter("xi", xi[0])
-                        limit_fun_arm_1.SetParameter("xi", xi[1])
+                        limit_fun_arm_0.SetParameter("xi", xi[idx0])
+                        limit_fun_arm_1.SetParameter("xi", xi[idx1])
 
                         print(f"upper limit arm 0: {-limit_fun_arm_0.Eval(0.5)} upper limit arm 1: {-limit_fun_arm_1.Eval(0.5)}")
 
-                        if thx[0] > -limit_fun_arm_0.Eval(0.5) or thx[1] > -limit_fun_arm_1.Eval(0.5):
+                        if thx[idx0] > -limit_fun_arm_0.Eval(0.5) or thx[idx1] > -limit_fun_arm_1.Eval(0.5):
                             continue
 
                         print("#######################ehi")
                         n_p_up_xi += weight_factor
-                        print(f"x1: {trackx1[0]} x2: {trackx2[0]} y1: {tracky1[0]} y2: {tracky2[0]} xi_1: {xi[0]} xi_2: {xi[1]}")
+                        # step 7: thx fiducial
+                        cf_uw[7]   += 1
+                        cf_wgen[7] += float(weight_sm[0])
+                        cf_wfin[7] += weight_factor
+                        print(f"x1: {trackx1[idx0]} x2: {trackx2[idx0]} y1: {tracky1[idx0]} y2: {tracky2[idx0]} xi_1: {xi[idx0]} xi_2: {xi[idx1]}")
 
                         if fraction <= 0.21:
-                            if trackx1[0] < 2.71 or trackx1[0] > 17.927:
+                            if trackx1[idx0] < 2.71 or trackx1[idx0] > 17.927:
                                 continue
-                            if tracky1[0] < -11.589 or tracky1[0] > 3.698:
+                            if tracky1[idx0] < -11.589 or tracky1[idx0] > 3.698:
                                 continue
-                            if trackx2[0] < 2.278 or trackx2[0] > 24.62:
+                            if trackx2[idx0] < 2.278 or trackx2[idx0] > 24.62:
                                 continue
-                            if tracky2[0] < -10.898 or tracky2[0] > 4.398:
+                            if tracky2[idx0] < -10.898 or tracky2[idx0] > 4.398:
                                 continue
-                            if trackx1[1] < 3.0 or trackx1[1] > 18.498:
+                            if trackx1[idx1] < 3.0 or trackx1[idx1] > 18.498:
                                 continue
-                            if tracky1[1] < -11.298 or tracky1[1] > 4.098:
+                            if tracky1[idx1] < -11.298 or tracky1[idx1] > 4.098:
                                 continue
-                            if trackx2[1] < 2.42 or trackx2[1] > 25.045:
+                            if trackx2[idx1] < 2.42 or trackx2[idx1] > 25.045:
                                 continue
-                            if tracky2[1] < -10.398 or tracky2[1] > 5.098:
+                            if tracky2[idx1] < -10.398 or tracky2[idx1] > 5.098:
                                 continue
 
                         if 0.21 < fraction <= 0.29:
-                            if trackx1[0] < 2.85 or trackx1[0] > 17.927:
+                            if trackx1[idx0] < 2.85 or trackx1[idx0] > 17.927:
                                 continue
-                            if tracky1[0] < -11.589 or tracky1[0] > 3.698:
+                            if tracky1[idx0] < -11.589 or tracky1[idx0] > 3.698:
                                 continue
-                            if trackx2[0] < 2.42 or trackx2[0] > 24.62:
+                            if trackx2[idx0] < 2.42 or trackx2[idx0] > 24.62:
                                 continue
-                            if tracky2[0] < -10.798 or tracky2[0] > 4.298:
+                            if tracky2[idx0] < -10.798 or tracky2[idx0] > 4.298:
                                 continue
-                            if trackx1[1] < 3.0 or trackx1[1] > 18.07:
+                            if trackx1[idx1] < 3.0 or trackx1[idx1] > 18.07:
                                 continue
-                            if tracky1[1] < -11.198 or tracky1[1] > 4.098:
+                            if tracky1[idx1] < -11.198 or tracky1[idx1] > 4.098:
                                 continue
-                            if trackx2[1] < 2.42 or trackx2[1] > 25.045:
+                            if trackx2[idx1] < 2.42 or trackx2[idx1] > 25.045:
                                 continue
-                            if tracky2[1] < -10.398 or tracky2[1] > 5.098:
+                            if tracky2[idx1] < -10.398 or tracky2[idx1] > 5.098:
                                 continue
 
                         if 0.29 < fraction <= 0.37:
-                            if trackx1[0] < 2.562 or trackx1[0] > 17.64:
+                            if trackx1[idx0] < 2.562 or trackx1[idx0] > 17.64:
                                 continue
-                            if tracky1[0] < -11.098 or tracky1[0] > 4.198:
+                            if tracky1[idx0] < -11.098 or tracky1[idx0] > 4.198:
                                 continue
-                            if trackx2[0] < 2.135 or trackx2[0] > 24.62:
+                            if trackx2[idx0] < 2.135 or trackx2[idx0] > 24.62:
                                 continue
-                            if tracky2[0] < -11.398 or tracky2[0] > 3.798:
+                            if tracky2[idx0] < -11.398 or tracky2[idx0] > 3.798:
                                 continue
-                            if trackx1[1] < 3.0 or trackx1[1] > 17.931:
+                            if trackx1[idx1] < 3.0 or trackx1[idx1] > 17.931:
                                 continue
-                            if tracky1[1] < -10.498 or tracky1[1] > 4.698:
+                            if tracky1[idx1] < -10.498 or tracky1[idx1] > 4.698:
                                 continue
-                            if trackx2[1] < 2.279 or trackx2[1] > 24.76:
+                            if trackx2[idx1] < 2.279 or trackx2[idx1] > 24.76:
                                 continue
-                            if tracky2[1] < -10.598 or tracky2[1] > 4.498:
+                            if tracky2[idx1] < -10.598 or tracky2[idx1] > 4.498:
                                 continue
 
                         if 0.37 < fraction <= 0.50:
-                            if trackx1[0] < 2.564 or trackx1[0] > 17.93:
+                            if trackx1[idx0] < 2.564 or trackx1[idx0] > 17.93:
                                 continue
-                            if tracky1[0] < -11.098 or tracky1[0] > 4.198:
+                            if tracky1[idx0] < -11.098 or tracky1[idx0] > 4.198:
                                 continue
-                            if trackx2[0] < 2.278 or trackx2[0] > 24.62:
+                            if trackx2[idx0] < 2.278 or trackx2[idx0] > 24.62:
                                 continue
-                            if tracky2[0] < -11.398 or tracky2[0] > 3.698:
+                            if tracky2[idx0] < -11.398 or tracky2[idx0] > 3.698:
                                 continue
-                            if trackx1[1] < 3.0 or trackx1[1] > 17.931:
+                            if trackx1[idx1] < 3.0 or trackx1[idx1] > 17.931:
                                 continue
-                            if tracky1[1] < -10.498 or tracky1[1] > 4.698:
+                            if tracky1[idx1] < -10.498 or tracky1[idx1] > 4.698:
                                 continue
-                            if trackx2[1] < 2.279 or trackx2[1] > 24.76:
+                            if trackx2[idx1] < 2.279 or trackx2[idx1] > 24.76:
                                 continue
-                            if tracky2[1] < -10.598 or tracky2[1] > 4.398:
+                            if tracky2[idx1] < -10.598 or tracky2[idx1] > 4.398:
                                 continue
 
                         if 0.50 < fraction <= 0.77:
-                            if trackx1[0] < 2.847 or trackx1[0] > 17.93:
+                            if trackx1[idx0] < 2.847 or trackx1[idx0] > 17.93:
                                 continue
-                            if tracky1[0] < -11.098 or tracky1[0] > 4.098:
+                            if tracky1[idx0] < -11.098 or tracky1[idx0] > 4.098:
                                 continue
-                            if trackx2[0] < 2.278 or trackx2[0] > 24.62:
+                            if trackx2[idx0] < 2.278 or trackx2[idx0] > 24.62:
                                 continue
-                            if tracky2[0] < -11.398 or tracky2[0] > 3.698:
+                            if tracky2[idx0] < -11.398 or tracky2[idx0] > 3.698:
                                 continue
-                            if trackx1[1] < 3.0 or trackx1[1] > 17.931:
+                            if trackx1[idx1] < 3.0 or trackx1[idx1] > 17.931:
                                 continue
-                            if tracky1[1] < -10.498 or tracky1[1] > 4.698:
+                            if tracky1[idx1] < -10.498 or tracky1[idx1] > 4.698:
                                 continue
-                            if trackx2[1] < 2.279 or trackx2[1] > 24.76:
+                            if trackx2[idx1] < 2.279 or trackx2[idx1] > 24.76:
                                 continue
-                            if tracky2[1] < -10.598 or tracky2[1] > 4.398:
+                            if tracky2[idx1] < -10.598 or tracky2[idx1] > 4.398:
                                 continue
 
                         if fraction > 0.77:
-                            if trackx1[0] < 2.847 or trackx1[0] > 17.931:
+                            if trackx1[idx0] < 2.847 or trackx1[idx0] > 17.931:
                                 continue
-                            if tracky1[0] < -11.598 or tracky1[0] > 4.498:
+                            if tracky1[idx0] < -11.598 or tracky1[idx0] > 4.498:
                                 continue
-                            if trackx2[0] < 2.278 or trackx2[0] > 24.62:
+                            if trackx2[idx0] < 2.278 or trackx2[idx0] > 24.62:
                                 continue
-                            if tracky2[0] < -11.598 or tracky2[0] > 3.398:
+                            if tracky2[idx0] < -11.598 or tracky2[idx0] > 3.398:
                                 continue
-                            if trackx1[1] < 3.0 or trackx1[1] > 17.931:
+                            if trackx1[idx1] < 3.0 or trackx1[idx1] > 17.931:
                                 continue
-                            if tracky1[1] < -9.998 or tracky1[1] > 4.698:
+                            if tracky1[idx1] < -9.998 or tracky1[idx1] > 4.698:
                                 continue
-                            if trackx2[1] < 2.279 or trackx2[1] > 24.76:
+                            if trackx2[idx1] < 2.279 or trackx2[idx1] > 24.76:
                                 continue
-                            if tracky2[1] < -10.598 or tracky2[1] > 3.898:
+                            if tracky2[idx1] < -10.598 or tracky2[idx1] > 3.898:
                                 continue
 
                         n_p_dw_xi += weight_factor
+                        # step 8: track fiducial
+                        cf_uw[8]   += 1
+                        cf_wgen[8] += float(weight_sm[0])
+                        cf_wfin[8] += weight_factor
 
                         weight = 1.0
 
                         if fraction <= 0.21:
                             raddamage56_match = get_hist(rad_multi, "Pixel/2018/2018A/h56_220_2018A_all_2D", hist_cache_multi)
                             raddamage56 = get_hist(rad_damage, "Pixel/2018/2018A/h56_210_2018A_all_2D", hist_cache_rad)
-                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[1], tracky1[1]))
-                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[1], tracky1[1]))
+                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[idx1], tracky1[idx1]))
+                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[idx1], tracky1[idx1]))
                             raddamage45_match = get_hist(rad_multi, "Pixel/2018/2018A/h45_220_2018A_all_2D", hist_cache_multi)
                             raddamage45 = get_hist(rad_damage, "Pixel/2018/2018A/h45_210_2018A_all_2D", hist_cache_rad)
-                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[0], tracky1[0]))
-                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[0], tracky1[0]))
+                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[idx0], tracky1[idx0]))
+                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[idx0], tracky1[idx0]))
 
                         if 0.21 < fraction < 0.29:
                             raddamage56_match = get_hist(rad_multi, "Pixel/2018/2018B1/h56_220_2018B1_all_2D", hist_cache_multi)
                             raddamage56 = get_hist(rad_damage, "Pixel/2018/2018B1/h56_210_2018B1_all_2D", hist_cache_rad)
-                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[1], tracky1[1]))
-                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[1], tracky1[1]))
+                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[idx1], tracky1[idx1]))
+                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[idx1], tracky1[idx1]))
                             raddamage45_match = get_hist(rad_multi, "Pixel/2018/2018B1/h45_220_2018B1_all_2D", hist_cache_multi)
                             raddamage45 = get_hist(rad_damage, "Pixel/2018/2018B1/h45_210_2018B1_all_2D", hist_cache_rad)
-                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[0], tracky1[0]))
-                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[0], tracky1[0]))
+                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[idx0], tracky1[idx0]))
+                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[idx0], tracky1[idx0]))
 
                         if 0.29 < fraction <= 0.37:
                             raddamage56_match = get_hist(rad_multi, "Pixel/2018/2018B2/h56_220_2018B2_all_2D", hist_cache_multi)
                             raddamage56 = get_hist(rad_damage, "Pixel/2018/2018B2/h56_210_2018B2_all_2D", hist_cache_rad)
-                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[1], tracky1[1]))
-                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[1], tracky1[1]))
+                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[idx1], tracky1[idx1]))
+                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[idx1], tracky1[idx1]))
                             raddamage45_match = get_hist(rad_multi, "Pixel/2018/2018B2/h45_220_2018B2_all_2D", hist_cache_multi)
                             raddamage45 = get_hist(rad_damage, "Pixel/2018/2018B2/h45_210_2018B2_all_2D", hist_cache_rad)
-                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[0], tracky1[0]))
-                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[0], tracky1[0]))
+                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[idx0], tracky1[idx0]))
+                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[idx0], tracky1[idx0]))
 
                         if 0.37 < fraction <= 0.50:
                             raddamage56_match = get_hist(rad_multi, "Pixel/2018/2018C/h56_220_2018C_all_2D", hist_cache_multi)
                             raddamage56 = get_hist(rad_damage, "Pixel/2018/2018C/h56_210_2018C_all_2D", hist_cache_rad)
-                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[1], tracky1[1]))
-                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[1], tracky1[1]))
+                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[idx1], tracky1[idx1]))
+                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[idx1], tracky1[idx1]))
                             raddamage45_match = get_hist(rad_multi, "Pixel/2018/2018C/h45_220_2018C_all_2D", hist_cache_multi)
                             raddamage45 = get_hist(rad_damage, "Pixel/2018/2018C/h45_210_2018C_all_2D", hist_cache_rad)
-                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[0], tracky1[0]))
-                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[0], tracky1[0]))
+                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[idx0], tracky1[idx0]))
+                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[idx0], tracky1[idx0]))
 
                         if 0.50 < fraction <= 0.77:
                             raddamage56_match = get_hist(rad_multi, "Pixel/2018/2018D1/h56_220_2018D1_all_2D", hist_cache_multi)
                             raddamage56 = get_hist(rad_damage, "Pixel/2018/2018D1/h56_210_2018D1_all_2D", hist_cache_rad)
-                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[1], tracky1[1]))
-                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[1], tracky1[1]))
+                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[idx1], tracky1[idx1]))
+                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[idx1], tracky1[idx1]))
                             raddamage45_match = get_hist(rad_multi, "Pixel/2018/2018D1/h45_220_2018D1_all_2D", hist_cache_multi)
                             raddamage45 = get_hist(rad_damage, "Pixel/2018/2018D1/h45_210_2018D1_all_2D", hist_cache_rad)
-                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[0], tracky1[0]))
-                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[0], tracky1[0]))
+                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[idx0], tracky1[idx0]))
+                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[idx0], tracky1[idx0]))
 
                         if fraction > 0.77:
                             raddamage56_match = get_hist(rad_multi, "Pixel/2018/2018D2/h56_220_2018D2_all_2D", hist_cache_multi)
                             raddamage56 = get_hist(rad_damage, "Pixel/2018/2018D2/h56_210_2018D2_all_2D", hist_cache_rad)
-                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[1], tracky1[1]))
-                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[1], tracky1[1]))
+                            weight *= raddamage56.GetBinContent(raddamage56.FindBin(trackx1[idx1], tracky1[idx1]))
+                            weight *= raddamage56_match.GetBinContent(raddamage56_match.FindBin(trackx1[idx1], tracky1[idx1]))
                             raddamage45_match = get_hist(rad_multi, "Pixel/2018/2018D2/h45_220_2018D2_all_2D", hist_cache_multi)
                             raddamage45 = get_hist(rad_damage, "Pixel/2018/2018D2/h45_210_2018D2_all_2D", hist_cache_rad)
-                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[0], tracky1[0]))
-                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[0], tracky1[0]))
+                            weight *= raddamage45.GetBinContent(raddamage45.FindBin(trackx1[idx0], tracky1[idx0]))
+                            weight *= raddamage45_match.GetBinContent(raddamage45_match.FindBin(trackx1[idx0], tracky1[idx0]))
 
                         print(f"weight rad {weight}")
                         n_p_rad += weight * weight_factor
+                        # step 9: radiation damage weight applied
+                        cf_uw[9]   += 1
+                        cf_wgen[9] += float(weight_sm[0])
+                        cf_wfin[9] += weight * weight_factor
 
                         for branch in vector_branches.values():
                             branch.clear()
@@ -820,42 +958,49 @@ def main():
 
                         scalars["weight"][0] = weight_factor * weight
 
-                        scalars["thy1"][0] = thy[0]
-                        scalars["thy2"][0] = thy[1]
-                        scalars["thx1"][0] = thx[0]
-                        scalars["thx2"][0] = thx[1]
-                        scalars["y1"][0] = y_vals[0]
-                        scalars["y2"][0] = y_vals[1]
-                        scalars["x1"][0] = x_vals[0]
-                        scalars["x2"][0] = x_vals[1]
-                        scalars["t1"][0] = t_vals[0]
-                        scalars["t2"][0] = t_vals[1]
-                        scalars["arm1"][0] = arm[0]
-                        scalars["arm2"][0] = arm[1]
-                        scalars["time1"][0] = Tempo[0]
-                        scalars["time2"][0] = Tempo[1]
-                        scalars["trackx1_1"][0] = trackx1[0]
-                        scalars["trackx1_2"][0] = trackx1[1]
-                        scalars["trackx2_1"][0] = trackx2[0]
-                        scalars["trackx2_2"][0] = trackx2[1]
-                        scalars["tracky1_1"][0] = tracky1[0]
-                        scalars["tracky1_2"][0] = tracky1[1]
-                        scalars["tracky2_1"][0] = tracky2[0]
-                        scalars["tracky2_2"][0] = tracky2[1]
-                        scalars["trackrpid1_1"][0] = trackrpid1[0]
-                        scalars["trackrpid1_2"][0] = trackrpid1[1]
-                        scalars["trackrpid2_1"][0] = trackrpid2[0]
-                        scalars["trackrpid2_2"][0] = trackrpid2[1]
-                        scalars["trackthx1_1"][0] = trackthx1[0]
-                        scalars["trackthx1_2"][0] = trackthx1[1]
-                        scalars["trackthx2_1"][0] = trackthx2[0]
-                        scalars["trackthx2_2"][0] = trackthx2[1]
-                        scalars["trackthy1_1"][0] = trackthy1[0]
-                        scalars["trackthy1_2"][0] = trackthy1[1]
-                        scalars["trackthy2_1"][0] = trackthy2[0]
-                        scalars["trackthy2_2"][0] = trackthy2[1]
+                        scalars["thy1"][0] = thy[idx0]
+                        scalars["thy2"][0] = thy[idx1]
+                        scalars["thx1"][0] = thx[idx0]
+                        scalars["thx2"][0] = thx[idx1]
+                        scalars["y1"][0] = y_vals[idx0]
+                        scalars["y2"][0] = y_vals[idx1]
+                        scalars["x1"][0] = x_vals[idx0]
+                        scalars["x2"][0] = x_vals[idx1]
+                        scalars["t1"][0] = t_vals[idx0]
+                        scalars["t2"][0] = t_vals[idx1]
+                        scalars["arm1"][0] = arm[idx0]
+                        scalars["arm2"][0] = arm[idx1]
+                        scalars["time1"][0] = Tempo[idx0]
+                        scalars["time2"][0] = Tempo[idx1]
+                        scalars["trackx1_1"][0] = trackx1[idx0]
+                        scalars["trackx1_2"][0] = trackx1[idx1]
+                        scalars["trackx2_1"][0] = trackx2[idx0]
+                        scalars["trackx2_2"][0] = trackx2[idx1]
+                        scalars["tracky1_1"][0] = tracky1[idx0]
+                        scalars["tracky1_2"][0] = tracky1[idx1]
+                        scalars["tracky2_1"][0] = tracky2[idx0]
+                        scalars["tracky2_2"][0] = tracky2[idx1]
+                        scalars["trackrpid1_1"][0] = trackrpid1[idx0]
+                        scalars["trackrpid1_2"][0] = trackrpid1[idx1]
+                        scalars["trackrpid2_1"][0] = trackrpid2[idx0]
+                        scalars["trackrpid2_2"][0] = trackrpid2[idx1]
+                        scalars["trackthx1_1"][0] = trackthx1[idx0]
+                        scalars["trackthx1_2"][0] = trackthx1[idx1]
+                        scalars["trackthx2_1"][0] = trackthx2[idx0]
+                        scalars["trackthx2_2"][0] = trackthx2[idx1]
+                        scalars["trackthy1_1"][0] = trackthy1[idx0]
+                        scalars["trackthy1_2"][0] = trackthy1[idx1]
+                        scalars["trackthy2_1"][0] = trackthy2[idx0]
+                        scalars["trackthy2_2"][0] = trackthy2[idx1]
 
                         out.Fill()
+                        # step 10: tree fill
+                        cf_uw[10]   += 1
+                        cf_wgen[10] += float(weight_sm[0])
+                        cf_wfin[10] += weight * weight_factor
+                        # note cutflow row 5: PPS final (all corrections survived)
+                        cf_note_uw[4] += 1
+                        cf_note_w[4]  += weight * weight_factor
 
     canvases = [ROOT.TCanvas(f"c{idx+1}", "", 700, 800) for idx in range(8)]
     histo_e_pt.Draw("histo")
@@ -867,15 +1012,91 @@ def main():
     histo_Mt.Draw("histo")
     histo_DR.Draw("histo")
 
-    print("os acontecimentos já foram moltiplicados por o sample weight")
-    print(f"O número total de acontecimentos é {ntp1.GetEntries() * weight_sample}")
-    print(f"O número de partículas com 1e e 1th é {n_id}")
-    print(f"O n  mero de part  culas com tau pt e electron pt    {n_pt}")
-    print(f"O número de partículas com o produto das cargas positivos é {n_charge}")
-    print(f"O número de partículas com 2 prot reconstruidos é {n_rec}")
-    print(f"O n  mero de part  culas com 2 prot reconstruidos que passam o up_xi cut é   {n_p_up_xi}")
-    print(f"O n  mero de part  culas com 2 prot reconstruidos que passam o dw_xi cut      {n_p_dw_xi}")
-    print(f"O n  mero de part  culas com 2 prot reconstruidos que passam o radiation damage cut       {n_p_rad}")
+    # ------------------------------------------------------------------ #
+    #                       CUTFLOW TABLE                                 #
+    # ------------------------------------------------------------------ #
+    col_w = 40
+    print("\n" + "=" * 90)
+    print(f"{'Step':<{col_w}} {'Unweighted':>12} {'Sum w_gen':>16} {'Sum w_final':>16}")
+    print("-" * 90)
+    for idx, label in enumerate(STEP_LABELS):
+        print(f"{label:<{col_w}} {cf_uw[idx]:>12d} {cf_wgen[idx]:>16.4f} {cf_wfin[idx]:>16.6g}")
+    print("=" * 90)
+
+    # Relative efficiencies
+    print("\n--- Step-by-step efficiency (w_final[n] / w_final[n-1]) ---")
+    for idx in range(1, 11):
+        denom = cf_wfin[idx - 1]
+        eff = cf_wfin[idx] / denom if denom != 0 else float("nan")
+        print(f"  step {idx-1} -> {idx}  ({STEP_LABELS[idx-1].split('.')[1].strip()} -> {STEP_LABELS[idx].split('.')[1].strip()}): {eff:.4f}")
+
+    # Muon SF decomposition
+    print("\n--- Muon SF weight decomposition (at baseline step) ---")
+    print(f"  sum weight_sample              = {sum_wsample:.6g}")
+    print(f"  sum weight_sample * mu_trig    = {sum_w_trig:.6g}")
+    print(f"  sum weight_sample * trig*idiso = {sum_w_trig_idiso:.6g}")
+    print(f"  sum weight_factor (full)       = {sum_w_full:.6g}")
+
+    # xi multiplicity
+    print("\n--- Proton multiplicity table (at len(xi) cut, after eta repeat) ---")
+    print(f"  {'len(xi)':<10} {'Unweighted':>12} {'Sum w_final':>16}")
+    for key in [0, 1, 2, "gt2"]:
+        label_xi = f"len(xi)=={key}" if key != "gt2" else "len(xi)>2"
+        print(f"  {label_xi:<10} {xi_mult_uw[key]:>12d} {xi_mult_wfin[key]:>16.6g}")
+
+    # xangle occupancy
+    print("\n--- Xangle occupancy (events reaching xangle assignment) ---")
+    for ang in sorted(xangle_occ):
+        print(f"  xangle={ang:.0f}: {xangle_occ[ang]}")
+
+    # Output tree check
+    print(f"\n--- Output tree entries: {out.GetEntries()} (should equal cf_uw[10]={cf_uw[10]}) ---\n")
+
+    # ------------------------------------------------------------------ #
+    #               TABLE-8 STYLE COMPARISON (note-matched)               #
+    # ------------------------------------------------------------------ #
+    # NOTE: Table 8 SM Signal column (from note, European notation):
+    #   Row 1 ID+ISO    : 2.45E+00
+    #   Row 2 pT cuts   : 3.15E+02  <-- non-monotonic vs row 1; likely OCR/PDF artefact
+    #   Row 3 OS        : 3.11E+00  <-- S/B check: 3.11/8200 = 3.8e-4, but table says 3.88e-2
+    #   Row 4 PPS (raw) : 3.52E+01
+    # S/B cross-check: row2 = 315/16200 = 1.94e-2 ~ 1.96e-2 (table) => row 2 consistent internally
+    # S/B cross-check: row1 =  2.45/453000 = 5.41e-6 (table) => row 1 consistent internally
+    # Conclusion: row 3 value 3.11E+00 is almost certainly a misread; likely 3.11E+02
+    print("\n" + "=" * 100)
+    print(f"{'TABLE-8 COMPARISON (SM signal, weighted by weight_sample * mu_SFs)'}")
+    print(f"{'Selection step':<45} {'This code':>12} {'Note ref':>12} {'Ratio code/ref':>14} {'Unweighted':>12}")
+    print("-" * 100)
+
+    def _eff(a, b):
+        return a / b if b != 0.0 else float("nan")
+
+    for idx, label in enumerate(NOTE_LABELS):
+        ref  = NOTE_REF[idx]
+        code = cf_note_w[idx]
+        ratio = _eff(code, ref)
+        ref_str  = f"{ref:.4g}" if ref == ref else "  n/a"
+        ratio_str = f"{ratio:.4f}" if ratio == ratio else "  n/a"
+        print(f"  {label:<43} {code:>12.4f} {ref_str:>12} {ratio_str:>14} {cf_note_uw[idx]:>12d}")
+
+    print("=" * 100)
+
+    print("\n  Relative efficiencies (this code):")
+    pairs = [
+        ("ID+ISO -> pT",       0, 1),
+        ("pT -> OS",           1, 2),
+        ("OS -> PPS raw",      2, 3),
+        ("OS -> PPS final",    2, 4),
+        ("PPS raw -> PPS fin", 3, 4),
+    ]
+    print(f"  {'Step':<25} {'code eff':>10}  |  note ref values for comparison")
+    for name, a, b in pairs:
+        e_code = _eff(cf_note_w[b], cf_note_w[a])
+        e_ref  = _eff(NOTE_REF[b],  NOTE_REF[a])
+        e_code_str = f"{e_code:.4f}" if e_code == e_code else "  n/a"
+        e_ref_str  = f"{e_ref:.4f}"  if e_ref  == e_ref  else "  n/a"
+        print(f"  {name:<25} {e_code_str:>10}  |  {e_ref_str}")
+    print()
 
     output.Write()
     output.Close()

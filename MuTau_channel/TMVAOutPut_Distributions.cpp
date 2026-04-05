@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int main() {
+int TMVAOutPut_Distributions() {
    TFile *inputFile = new TFile("TMVA_allBkg_Mutau_2018.root", "READ");
 
    // ===================== SIGNAL =====================

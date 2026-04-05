@@ -40,13 +40,17 @@ void run_bdt_all(TString inputFile, TString outputFile, TString sampleType)
     reader->AddVariable("mu_pt",          &var_mupt);
     reader->AddVariable("tau_pt",         &var_taupt);
     reader->AddVariable("sist_mass",      &var_mass);
-    reader->AddVariable("sist_mass - sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)", &var_massmatch);
+    reader->AddVariable("sist_mass - sqrt(13000.0*13000.0*xi1*xi2)", &var_massmatch);
     reader->AddVariable("met_pt",         &var_met);
-    reader->AddVariable("sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)", &var_rapmatch);
+    reader->AddVariable("sist_rap-0.5*log(xi1/xi2)", &var_rapmatch);
 
-    // Book BDT method
-    TString weightfile = "dataset/weights/TMVAClassification_BDT.weights.xml";
-    reader->BookMVA("BDT method", weightfile);
+    // Book methods
+    TString weightfile_bdt  = "dataset/weights/TMVAClassification_BDT.weights.xml";
+    TString weightfile_lk   = "dataset/weights/TMVAClassification_Likelihood.weights.xml";
+    TString weightfile_fish = "dataset/weights/TMVAClassification_Fisher.weights.xml";
+    reader->BookMVA("BDT method",        weightfile_bdt);
+    reader->BookMVA("Likelihood method", weightfile_lk);
+    reader->BookMVA("Fisher method",     weightfile_fish);
 
     // Open input file
     TFile *input = TFile::Open(inputFile);
@@ -72,8 +76,10 @@ void run_bdt_all(TString inputFile, TString outputFile, TString sampleType)
         tree->SetBranchAddress("proton_multi_xi",  &v_xi);
     }
 
-    // Output histogram
-    TH1F *histBdt = new TH1F("MVA_BDT", "MVA_BDT", 20, -0.8, 0.8);
+    // Output histograms
+    TH1F *histBdt  = new TH1F("MVA_BDT",        "MVA_BDT",        20, -0.8, 0.8);
+    TH1F *histLk   = new TH1F("MVA_Likelihood",  "MVA_Likelihood", 20, -1.0, 1.0);
+    TH1F *histFish = new TH1F("MVA_Fisher",      "MVA_Fisher",     20, -4.0, 4.0);
 
     Long64_t nEntries = tree->GetEntries();
     std::cout << "Processing " << nEntries << " events..." << std::endl;
@@ -129,14 +135,20 @@ void run_bdt_all(TString inputFile, TString outputFile, TString sampleType)
         var_massmatch = b_mass - sqrt(13000.*13000.*xi1*xi2);
         var_rapmatch  = b_rap - 0.5*log(xi1/xi2);
 
-        // Evaluate BDT
-        double bdtScore = reader->EvaluateMVA("BDT method");
-        histBdt->Fill(bdtScore, b_weight);
+        // Evaluate methods
+        double bdtScore  = reader->EvaluateMVA("BDT method");
+        double lkScore   = reader->EvaluateMVA("Likelihood method");
+        double fishScore = reader->EvaluateMVA("Fisher method");
+        histBdt->Fill(bdtScore,  b_weight);
+        histLk->Fill(lkScore,    b_weight);
+        histFish->Fill(fishScore, b_weight);
     }
 
     // Write output
     TFile *target = new TFile(outputFile, "RECREATE");
     histBdt->Write();
+    histLk->Write();
+    histFish->Write();
     target->Close();
 
     std::cout << "Events with protons on both arms: " << nPassed << " / " << nEntries << std::endl;

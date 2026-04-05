@@ -1,0 +1,37 @@
+# CMS Combine datacard for MuTau channel (Likelihood shape)
+# Generated on 2026-04-02
+
+imax 1  number of channels
+jmax 3  number of backgrounds
+kmax *  number of nuisance parameters
+------------
+bin        mutau
+observation -1
+------------
+shapes data_obs mutau ../MuTau_shapes.root lk_data
+shapes sinal    mutau ../MuTau_shapes.root lk_sinal
+shapes dy       mutau ../MuTau_shapes.root lk_dy
+shapes ttjets   mutau ../MuTau_shapes.root lk_ttjets
+shapes qcd      mutau ../MuTau_shapes.root lk_qcd
+------------
+bin           mutau    mutau   mutau    mutau
+process       sinal     dy      ttjets   qcd
+process       0         1       2        3
+rate          -1        -1      -1       -1
+------------
+Luminosity   lnN       1.015    1.015   1.015    -
+tau_idVSjet  lnN       1.05     1.04    1.04     -
+tau_idVSe    lnN       1.025    1.025   1.025    -
+tau_idVSmu   lnN       1.031    1.032   1.026    -
+Mu_trig      lnN       1.005    1.0007  1.0007   -
+Mu_idiso     lnN       1.0002   1.0004  1.0004   -
+Mu_reco      lnN       1.0006   1.0005  1.0005   -
+xiProton     lnN       1.50     1.50    1.50     1.50
+dy_norm      lnN       -        1.30    -        -
+ttjets_norm  lnN       -        -       1.50     -
+qcd_norm     lnN       -        -       -        1.50
+------------
+* autoMCStats 10
+beta_dy     rateParam  mutau    dy       1.0      [0,5]
+beta_tt     rateParam  mutau    ttjets   1.0      [0,5]
+beta_qcd    rateParam  mutau    qcd      1.0      [0,5]

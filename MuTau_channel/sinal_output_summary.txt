@@ -1,0 +1,76 @@
+==========================================================================================
+Step                                       Unweighted        Sum w_gen      Sum w_final
+------------------------------------------------------------------------------------------
+0. All events                                  299979         402.6607          402.661
+1. Non-empty mu/tau                            255999         344.4193          4.72716
+2. Baseline ID+eta+dR                           58766          56.9908          0.76574
+3. Kinematics (pt cuts)                         48307          29.7485           0.3966
+4. Opposite sign                                46194          28.9627         0.386123
+5. Eta repeat check                             46194          28.9627         0.386123
+6. len(xi)==2                                   16920          10.1018         0.134708
+7. thx fiducial                                 16332           9.8587         0.131468
+8. Track fiducial                               14085           8.3142         0.110894
+9. Rad-damage weight                            14085           8.3142        0.0632853
+10. Tree fill                                   14085           8.3142        0.0632853
+==========================================================================================
+
+--- Step-by-step efficiency (w_final[n] / w_final[n-1]) ---
+  step 0 -> 1  (All events -> Non-empty mu/tau): 0.0117
+  step 1 -> 2  (Non-empty mu/tau -> Baseline ID+eta+dR): 0.1620
+  step 2 -> 3  (Baseline ID+eta+dR -> Kinematics (pt cuts)): 0.5179
+  step 3 -> 4  (Kinematics (pt cuts) -> Opposite sign): 0.9736
+  step 4 -> 5  (Opposite sign -> Eta repeat check): 1.0000
+  step 5 -> 6  (Eta repeat check -> len(xi)==2): 0.3489
+  step 6 -> 7  (len(xi)==2 -> thx fiducial): 0.9759
+  step 7 -> 8  (thx fiducial -> Track fiducial): 0.8435
+  step 8 -> 9  (Track fiducial -> Rad-damage weight): 0.5707
+  step 9 -> 10  (Rad-damage weight -> Tree fill): 1.0000
+
+--- Muon SF weight decomposition (at baseline step) ---
+  sum weight_sample              = 0.782198
+  sum weight_sample * mu_trig    = 0.77258
+  sum weight_sample * trig*idiso = 0.76588
+  sum weight_factor (full)       = 0.76574
+
+--- Proton multiplicity table (at len(xi) cut, after eta repeat) ---
+  len(xi)      Unweighted      Sum w_final
+  len(xi)==0         2517         0.031958
+  len(xi)==1        11829         0.123407
+  len(xi)==2        16920         0.134708
+  len(xi)>2         14928        0.0960508
+
+--- Xangle occupancy (events reaching xangle assignment) ---
+  xangle=130: 2334
+  xangle=131: 255
+  xangle=132: 285
+  xangle=133: 312
+  xangle=134: 325
+  xangle=135: 359
+  xangle=136: 416
+  xangle=137: 394
+  xangle=138: 470
+  xangle=139: 473
+  xangle=140: 502
+  xangle=141: 470
+  xangle=142: 505
+  xangle=143: 521
+  xangle=144: 553
+  xangle=145: 583
+  xangle=146: 631
+  xangle=147: 635
+  xangle=148: 632
+  xangle=149: 680
+  xangle=150: 685
+  xangle=151: 578
+  xangle=152: 612
+  xangle=153: 552
+  xangle=154: 519
+  xangle=155: 543
+  xangle=156: 362
+  xangle=157: 254
+  xangle=158: 140
+  xangle=159: 16
+  xangle=160: 1324
+
+--- Output tree entries: 14085 (should equal cf_uw[10]=14085) ---
+

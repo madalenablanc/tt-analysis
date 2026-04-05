@@ -147,7 +147,7 @@ int TMVAClassification( TString myMethodList = "" )
 
    Use["CFMlpANN"]        = 0; // Depreciated ANN from ALEPH
 
-   Use["TMlpANN"]         = 1; // ROOT's own ANN
+   Use["TMlpANN"]         = 0; // ROOT's own ANN
 
 #ifdef R__HAS_TMVAGPU
 
@@ -297,10 +297,15 @@ int TMVAClassification( TString myMethodList = "" )
 
    TTree *signalTree     = (TTree*)inputSIGN->Get("tree");
 
+   // Aliases to avoid TMVA formula parser misreading xi_arm1_1 as array indexing
+   background->SetAlias("xi1", "xi_arm1_1");
+   background->SetAlias("xi2", "xi_arm2_1");
+   signalTree->SetAlias("xi1", "xi_arm1_1");
+   signalTree->SetAlias("xi2", "xi_arm2_1");
 
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
 
-   TString outfileName( "TMVA_allBkg_Mutau_2018_likelihood.root");
+   TString outfileName( "TMVA_allBkg_Mutau_2018.root");
 
    TFile* outputFile = TFile::Open( outfileName, "RECREATE" );
 
@@ -382,13 +387,13 @@ int TMVAClassification( TString myMethodList = "" )
 
   // dataloader->AddVariable("min_deltaR_tau_h", "Minimum angular distance between a couple of non-leading tau_h", "", 'F');
 
-   dataloader->AddVariable("sist_mass - sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)", "Invariant Mass Matching", "GeV", 'F');
+   dataloader->AddVariable("sist_mass - sqrt(13000.0*13000.0*xi1*xi2)", "Invariant Mass Matching", "GeV", 'F');
 
    // dataloader->AddVariable("jet_b_n", "Number of Jets", "", 'I');
 
    dataloader->AddVariable("met_pt", "Missing energy", "GeV" ,'D');
 
-   dataloader->AddVariable("sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)","Rapidity matching", "" ,'D');
+   dataloader->AddVariable("sist_rap-0.5*log(xi1/xi2)","Rapidity matching", "" ,'D');
 
 
 

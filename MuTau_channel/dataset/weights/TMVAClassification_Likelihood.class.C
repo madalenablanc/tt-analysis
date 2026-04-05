@@ -8,10 +8,10 @@
 
 Method         : Likelihood::Likelihood
 TMVA Release   : 4.2.1         [262657]
-ROOT Release   : 6.38/00       [402944]
+ROOT Release   : 6.38/04       [402948]
 Creator        : mblancco
-Date           : Thu Feb 26 12:44:12 2026
-Host           : Linux buildvm-x86-26.rdu3.fedoraproject.org 6.17.1-300.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Mon Oct 6 15:37:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+Date           : Thu Apr  2 15:23:44 2026
+Host           : Linux buildvm-x86-29.rdu3.fedoraproject.org 6.18.7-200.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Jan 23 16:42:34 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 Dir            : /eos/home-m/mblancco/tau_analysis/MuTau_channel
 Training events: 21500
 Analysis type  : [Classification]
@@ -40,9 +40,9 @@ sist_pt                       sist_pt                       sist_pt             
 mu_pt                         mu_pt                         mu_pt                         muon pt                       GeV                               'F'    [35.000415802,953.058532715]
 tau_pt                        tau_pt                        tau_pt                        tau pt                        GeV                               'F'    [100.000610352,1425.25610352]
 sist_mass                     sist_mass                     sist_mass                     Invariant Mass                GeV                               'F'    [25.1197223663,2367.25024414]
-sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)         sist_mass_M_sqrt_13000.0_T_13000.0_T_xi_arm1_1_T_xi_arm2_1_ sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)         Invariant Mass Matching                                     GeV                                                             'F'    [-158767.859375,1684.94555664]
+sist_mass-sqrt(13000.0*13000.0*xi1*xi2)         sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_ sist_mass-sqrt(13000.0*13000.0*xi1*xi2)         Invariant Mass Matching                         GeV                                                 'F'    [-158767.859375,1684.94555664]
 met_pt                        met_pt                        met_pt                        Missing energy                GeV                               'D'    [1.04408073425,897.497192383]
-sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)       sist_rap_M_0.5_T_log_xi_arm1_1_D_xi_arm2_1_ sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)       Rapidity matching                                                                           'D'    [-2.42552685738,3.11699485779]
+sist_rap-0.5*log(xi1/xi2)       sist_rap_M_0.5_T_log_xi1_D_xi2_ sist_rap-0.5*log(xi1/xi2)       Rapidity matching                                                   'D'    [-2.42552685738,3.11699485779]
 NSpec 0
 
 
@@ -91,7 +91,7 @@ class ReadLikelihood : public IClassifierReader {
         fNvars( 9 )
    {
       // the training input variables
-      const char* inputVars[] = { "sist_rap", "acop", "sist_pt", "mu_pt", "tau_pt", "sist_mass", "sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)", "met_pt", "sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)" };
+      const char* inputVars[] = { "sist_rap", "acop", "sist_pt", "mu_pt", "tau_pt", "sist_mass", "sist_mass-sqrt(13000.0*13000.0*xi1*xi2)", "met_pt", "sist_rap-0.5*log(xi1/xi2)" };
 
       // sanity checks
       if (theInputVars.size() <= 0) {

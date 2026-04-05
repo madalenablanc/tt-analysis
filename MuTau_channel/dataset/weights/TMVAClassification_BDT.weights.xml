@@ -2,13 +2,13 @@
 <MethodSetup Method="BDT::BDT">
   <GeneralInfo>
     <Info name="TMVA Release" value="4.2.1 [262657]"/>
-    <Info name="ROOT Release" value="6.38/00 [402944]"/>
+    <Info name="ROOT Release" value="6.38/04 [402948]"/>
     <Info name="Creator" value="mblancco"/>
-    <Info name="Date" value="Sat Mar  7 15:12:54 2026"/>
-    <Info name="Host" value="Linux buildvm-x86-26.rdu3.fedoraproject.org 6.17.1-300.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Mon Oct 6 15:37:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux"/>
+    <Info name="Date" value="Thu Apr  2 15:23:53 2026"/>
+    <Info name="Host" value="Linux buildvm-x86-29.rdu3.fedoraproject.org 6.18.7-200.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Jan 23 16:42:34 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux"/>
     <Info name="Dir" value="/eos/home-m/mblancco/tau_analysis/MuTau_channel"/>
     <Info name="Training events" value="21500"/>
-    <Info name="TrainingTime" value="5.64643407e+00"/>
+    <Info name="TrainingTime" value="6.58352804e+00"/>
     <Info name="AnalysisType" value="Classification"/>
   </GeneralInfo>
   <Options>
@@ -64,9 +64,9 @@
     <Variable VarIndex="3" Expression="mu_pt" Label="mu_pt" Title="muon pt" Unit="GeV" Internal="mu_pt" Type="F" Min="3.50004158e+01" Max="9.53058533e+02"/>
     <Variable VarIndex="4" Expression="tau_pt" Label="tau_pt" Title="tau pt" Unit="GeV" Internal="tau_pt" Type="F" Min="1.00000610e+02" Max="1.42525610e+03"/>
     <Variable VarIndex="5" Expression="sist_mass" Label="sist_mass" Title="Invariant Mass" Unit="GeV" Internal="sist_mass" Type="F" Min="2.51197224e+01" Max="2.36725024e+03"/>
-    <Variable VarIndex="6" Expression="sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)" Label="sist_mass-sqrt(13000.0*13000.0*xi_arm1_1*xi_arm2_1)" Title="Invariant Mass Matching" Unit="GeV" Internal="sist_mass_M_sqrt_13000.0_T_13000.0_T_xi_arm1_1_T_xi_arm2_1_" Type="F" Min="-1.58767859e+05" Max="1.68494556e+03"/>
+    <Variable VarIndex="6" Expression="sist_mass-sqrt(13000.0*13000.0*xi1*xi2)" Label="sist_mass-sqrt(13000.0*13000.0*xi1*xi2)" Title="Invariant Mass Matching" Unit="GeV" Internal="sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_" Type="F" Min="-1.58767859e+05" Max="1.68494556e+03"/>
     <Variable VarIndex="7" Expression="met_pt" Label="met_pt" Title="Missing energy" Unit="GeV" Internal="met_pt" Type="D" Min="1.04408073e+00" Max="8.97497192e+02"/>
-    <Variable VarIndex="8" Expression="sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)" Label="sist_rap-0.5*log(xi_arm1_1/xi_arm2_1)" Title="Rapidity matching" Unit="" Internal="sist_rap_M_0.5_T_log_xi_arm1_1_D_xi_arm2_1_" Type="D" Min="-2.42552686e+00" Max="3.11699486e+00"/>
+    <Variable VarIndex="8" Expression="sist_rap-0.5*log(xi1/xi2)" Label="sist_rap-0.5*log(xi1/xi2)" Title="Rapidity matching" Unit="" Internal="sist_rap_M_0.5_T_log_xi1_D_xi2_" Type="D" Min="-2.42552686e+00" Max="3.11699486e+00"/>
   </Variables>
   <Spectators NSpec="0"/>
   <Classes NClass="2">
