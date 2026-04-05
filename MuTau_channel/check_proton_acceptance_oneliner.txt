@@ -1,7 +1,3 @@
-## Quick One-Liner Method to Check Proton Acceptance
-## =====================================================
-
-This is what Jonathan mentioned he did:
 
 ### Step 1: Open ROOT and your data file
 ```bash
@@ -52,10 +48,3 @@ Long64_t good = tree->GetEntries("Sum$(Proton_multiRP_arm==0)>=1 && Sum$(Proton_
 
 ### Why the discrepancy between 0.13 and 0.20?
 
-The difference could be due to:
-1. **Different event selections**: Matteo might have applied trigger/physics cuts before measuring
-2. **Different data samples**: He might have used a subset of the data
-3. **Different time periods**: Early 2018 vs full year
-4. **Definition differences**: Maybe he counted differently (e.g., only multiRP protons vs all protons)
-
-The safest approach is to measure it yourself from YOUR final data sample with YOUR exact event selection!
