@@ -361,6 +361,10 @@ def main():
     # xangle occupancy
     xangle_occ = {}
 
+    # pre-cut sums (ALL generated events, no selection)
+    precut_sum_wsm0   = 0.0   # sum of weight_sm[0] before any cut
+    precut_sum_wsample = 0.0  # sum of weight_sample before any cut
+
     # muon SF decomposition sums (at baseline step)
     sum_wsample = 0.0
     sum_w_trig  = 0.0
@@ -439,6 +443,11 @@ def main():
         weight_sm = ntp1.weight_sm
         bsm_weights = ntp1.bsm_weights
 
+        # pre-cut sums: BEFORE any selection (all generated events)
+        weight_sample = 54900.0 * 0.0047 * weight_sm[0] / 402.661  # L × σ_SM(rwgt51) / sum(w_sm0)
+        precut_sum_wsm0    += float(weight_sm[0])
+        precut_sum_wsample += weight_sample
+
         # step 0: all events
         cf_uw[0]   += 1
         cf_wgen[0] += float(weight_sm[0])
@@ -446,8 +455,6 @@ def main():
 
         if len(e_charge) == 0 or len(tau_charge) == 0:
             continue
-
-        weight_sample = 54900.0 * weight_sm[0] / (4000.0 * 1000.0)
 
         # step 1: non-empty mu/tau
         cf_uw[1]   += 1
@@ -1036,6 +1043,20 @@ def main():
     print(f"  sum weight_sample * mu_trig    = {sum_w_trig:.6g}")
     print(f"  sum weight_sample * trig*idiso = {sum_w_trig_idiso:.6g}")
     print(f"  sum weight_factor (full)       = {sum_w_full:.6g}")
+
+    # --- SM cross-section check vs note's 4.7 fb (PRE-CUT, full sample) ---
+    lumi_pb = 54900.0
+    sigma_precut_pb = precut_sum_wsample / lumi_pb
+    sigma_ws_pb     = sum_wsample / lumi_pb
+    sigma_wf_pb     = sum_w_full  / lumi_pb
+    print(f"\n--- SM cross-section check (reference: 4.7 fb = 0.0047 pb) ---")
+    print(f"  sum(weight_sm[0])  ALL events    = {precut_sum_wsm0:.6g}")
+    print(f"  sum(weight_sample) ALL events    = {precut_sum_wsample:.6g}")
+    print(f"  sigma_implied (pre-cut)          = {sigma_precut_pb:.6g} pb = {sigma_precut_pb*1000:.4g} fb")
+    print(f"  ratio sigma_implied / 0.0047 pb  = {sigma_precut_pb/0.0047:.4f}")
+    print(f"  --- after baseline cuts ---")
+    print(f"  sigma from sum(weight_sample)/L  = {sigma_ws_pb:.6g} pb = {sigma_ws_pb*1000:.4g} fb")
+    print(f"  sigma from sum(weight_factor)/L  = {sigma_wf_pb:.6g} pb = {sigma_wf_pb*1000:.4g} fb  (+ muon SFs)")
 
     # xi multiplicity
     print("\n--- Proton multiplicity table (at len(xi) cut, after eta repeat) ---")

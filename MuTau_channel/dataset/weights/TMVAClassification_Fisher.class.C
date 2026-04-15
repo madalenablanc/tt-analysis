@@ -10,7 +10,7 @@ Method         : Fisher::Fisher
 TMVA Release   : 4.2.1         [262657]
 ROOT Release   : 6.30/07       [400903]
 Creator        : mblancco
-Date           : Sun Apr  5 19:05:09 2026
+Date           : Mon Apr 13 15:16:37 2026
 Host           : Linux cmsbuild102.cern.ch 4.18.0-513.11.1.el8_9.x86_64 #1 SMP Wed Jan 17 02:00:40 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
 Dir            : /eos/home-m/mblancco/tau_analysis/MuTau_channel
 Training events: 21500
@@ -192,16 +192,16 @@ class ReadFisher : public IClassifierReader {
 
 inline void ReadFisher::Initialize() 
 {
-   fFisher0 = -0.67071018392;
-   fFisherCoefficients.push_back( -0.083966366622 );
-   fFisherCoefficients.push_back( 0.769136958046 );
-   fFisherCoefficients.push_back( 0.000854426543396 );
-   fFisherCoefficients.push_back( -0.00249627798622 );
-   fFisherCoefficients.push_back( -0.00159024558049 );
-   fFisherCoefficients.push_back( 0.00241739025092 );
-   fFisherCoefficients.push_back( 0.000547445783879 );
-   fFisherCoefficients.push_back( 0.00164068467474 );
-   fFisherCoefficients.push_back( 0.101043387054 );
+   fFisher0 = -0.670710184045;
+   fFisherCoefficients.push_back( -0.083966364351 );
+   fFisherCoefficients.push_back( 0.769136959129 );
+   fFisherCoefficients.push_back( 0.000854426551357 );
+   fFisherCoefficients.push_back( -0.00249627799217 );
+   fFisherCoefficients.push_back( -0.00159024557965 );
+   fFisherCoefficients.push_back( 0.00241739025224 );
+   fFisherCoefficients.push_back( 0.000547445784139 );
+   fFisherCoefficients.push_back( 0.00164068466663 );
+   fFisherCoefficients.push_back( 0.101043384526 );
 
    // sanity check
    if (fFisherCoefficients.size() != fNvars) {
