@@ -307,6 +307,10 @@ int save_shapes(){
     TH1D* bdt_dy     = LoadBDTHist("TMVApp_DY.root",    "bdt_dy",     DY_SCALE);
     TH1D* bdt_ttjets = LoadBDTHist("TMVApp_ttjets.root","bdt_ttjets", TTBAR_SCALE);
     TH1D* bdt_sinal  = LoadBDTHist("TMVApp_sinal.root", "bdt_sinal");
+    if (bdt_sinal) {
+        cout << "bdt_sinal entries = " << bdt_sinal->GetEntries() << endl;
+        cout << "bdt_sinal integral = " << bdt_sinal->Integral() << endl;
+    }
 
     // ---- Likelihood histograms ----
     TH1D* lk_data   = LoadBDTHist("TMVApp_data.root",  "lk_data",   1.0,       "MVA_Likelihood");

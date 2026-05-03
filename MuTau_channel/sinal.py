@@ -246,6 +246,9 @@ def main():
         ("pps_has_arm0", "pps_has_arm0/D"),
         ("pps_has_arm1", "pps_has_arm1/D"),
         ("pps_has_both_arms", "pps_has_both_arms/D"),
+        ("weight_sm", "weight_sm/D"),
+        ("weight_sample", "weight_sample/D"),
+        ("weight_factor", "weight_factor/D"),
         ("weight", "weight/D"),
         ("M_e_met", "M_e_met/D"),
         ("syst_mu_trig", "syst_mu_trig/D"),
@@ -364,6 +367,8 @@ def main():
     # pre-cut sums (ALL generated events, no selection)
     precut_sum_wsm0   = 0.0   # sum of weight_sm[0] before any cut
     precut_sum_wsample = 0.0  # sum of weight_sample before any cut
+    final_bdt_sum_weight = 0.0
+    final_bdt_n_events = 0
 
     # muon SF decomposition sums (at baseline step)
     sum_wsample = 0.0
@@ -444,7 +449,7 @@ def main():
         bsm_weights = ntp1.bsm_weights
 
         # pre-cut sums: BEFORE any selection (all generated events)
-        weight_sample = 54900.0 * 0.0047 * weight_sm[0] / 402.661  # L × σ_SM(rwgt51) / sum(w_sm0)
+        weight_sample = weight_sm[0] * (54900.0 * 0.0047) / 402.661  # L × σ_SM / Σ(weight_sm) 
         precut_sum_wsm0    += float(weight_sm[0])
         precut_sum_wsample += weight_sample
 
@@ -963,6 +968,9 @@ def main():
 
                         scalars["n_pu"][0] = 0.0
 
+                        scalars["weight_sm"][0] = float(weight_sm[0])
+                        scalars["weight_sample"][0] = weight_sample
+                        scalars["weight_factor"][0] = weight_factor
                         scalars["weight"][0] = weight_factor * weight
 
                         scalars["thy1"][0] = thy[idx0]
@@ -1001,6 +1009,8 @@ def main():
                         scalars["trackthy2_2"][0] = trackthy2[idx1]
 
                         out.Fill()
+                        final_bdt_n_events += 1
+                        final_bdt_sum_weight += weight * weight_factor
                         # step 10: tree fill
                         cf_uw[10]   += 1
                         cf_wgen[10] += float(weight_sm[0])
@@ -1057,6 +1067,13 @@ def main():
     print(f"  --- after baseline cuts ---")
     print(f"  sigma from sum(weight_sample)/L  = {sigma_ws_pb:.6g} pb = {sigma_ws_pb*1000:.4g} fb")
     print(f"  sigma from sum(weight_factor)/L  = {sigma_wf_pb:.6g} pb = {sigma_wf_pb*1000:.4g} fb  (+ muon SFs)")
+    print("\n=== Signal normalization audit ===")
+    print(f"All events: {ntp1.GetEntries()}")
+    print(f"Events entering BDT hist: {final_bdt_n_events}")
+    print(f"sum(weight_sm) all events = {precut_sum_wsm0:.6g}")
+    print(f"sum(weight_sample) all events = {precut_sum_wsample:.6g}")
+    print(f"sum(weight_factor) all events = {sum_w_full:.6g}")
+    print(f"sum(weight_factor) final BDT selection = {final_bdt_sum_weight:.6g}")
 
     # xi multiplicity
     print("\n--- Proton multiplicity table (at len(xi) cut, after eta repeat) ---")

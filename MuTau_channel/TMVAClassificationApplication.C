@@ -282,6 +282,7 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    std::cout << "--- Select signal sample" << std::endl;
    TTree* theTree = (TTree*)input->Get("tree");
    Double_t userVar1, userVar2, userVar3, userVar4, userVar5, userVar6, userVar7, userVar8, userVar9, userVar10;
+   Double_t userWeightSm = 0.0, userWeightSample = 0.0, userWeightFactor = 0.0;
    theTree->SetBranchAddress( "acop", &userVar1 );
    theTree->SetBranchAddress( "sist_pt", &userVar2 );
    theTree->SetBranchAddress( "sist_mass", &userVar3 );
@@ -292,6 +293,9 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    theTree->SetBranchAddress( "weight", &userVar8 );
    theTree->SetBranchAddress( "tau_pt", &userVar9 );
    theTree->SetBranchAddress( "mu_pt", &userVar10 );
+   if (theTree->GetBranch("weight_sm")) theTree->SetBranchAddress("weight_sm", &userWeightSm);
+   if (theTree->GetBranch("weight_sample")) theTree->SetBranchAddress("weight_sample", &userWeightSample);
+   if (theTree->GetBranch("weight_factor")) theTree->SetBranchAddress("weight_factor", &userWeightFactor);
 
    // Note: SetWeight sets a static tree weight read before the loop starts,
    // so userVar8 is still 0 here. Per-event weighting is done in Fill() below.
@@ -301,6 +305,12 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    Double_t effS       = 0.7;
  
    std::vector<Float_t> vecVar(4); // vector for EvaluateMVA tests
+   double sumWeightSm = 0.0;
+   double sumWeightSample = 0.0;
+   double sumWeightFactor = 0.0;
+   double sumHistWeight = 0.0;
+   Long64_t nAll = 0;
+   Long64_t nAfterSelection = 0;
  
    std::cout << "--- Processing: " << theTree->GetEntries() << " events" << std::endl;
    TStopwatch sw;
@@ -310,9 +320,14 @@ void TMVAClassificationApplication( TString myMethodList = "" )
       if (ievt%1000 == 0) std::cout << "--- ... Processing event: " << ievt << std::endl;
  
       theTree->GetEntry(ievt);
+      nAll++;
+      sumWeightSm += userWeightSm;
+      sumWeightSample += userWeightSample;
+      sumWeightFactor += userWeightFactor;
 
       // Skip events without valid protons on both arms
       if (userVar6 <= 0 || userVar7 <= 0) continue;
+      nAfterSelection++;
 
 	var1 = userVar1;
 	var2 = userVar2;
@@ -333,6 +348,11 @@ void TMVAClassificationApplication( TString myMethodList = "" )
       }
 
       Double_t evtWeight = userVar8;  // per-event weight from tree
+      if (Use["BDT"]) {
+         Double_t bdtScore = reader->EvaluateMVA( "BDT method" );
+         histBdt->Fill( bdtScore, evtWeight );
+         sumHistWeight += evtWeight;
+      }
       if (Use["Likelihood"   ])   histLk     ->Fill( reader->EvaluateMVA( "Likelihood method"    ), evtWeight );
       if (Use["LikelihoodD"  ])   histLkD    ->Fill( reader->EvaluateMVA( "LikelihoodD method"   ), evtWeight );
       if (Use["LikelihoodPCA"])   histLkPCA  ->Fill( reader->EvaluateMVA( "LikelihoodPCA method" ), evtWeight );
@@ -354,7 +374,6 @@ void TMVAClassificationApplication( TString myMethodList = "" )
       if (Use["TMlpANN"      ])   histNnT    ->Fill( reader->EvaluateMVA( "TMlpANN method"       ), evtWeight );
       if (Use["DNN_GPU"]) histDnnGpu->Fill(reader->EvaluateMVA("DNN_GPU method"), evtWeight);
       if (Use["DNN_CPU"]) histDnnCpu->Fill(reader->EvaluateMVA("DNN_CPU method"), evtWeight);
-      if (Use["BDT"          ])   histBdt    ->Fill( reader->EvaluateMVA( "BDT method"           ), evtWeight );
       if (Use["BDTG"         ])   histBdtG   ->Fill( reader->EvaluateMVA( "BDTG method"          ), evtWeight );
       if (Use["BDTB"         ])   histBdtB   ->Fill( reader->EvaluateMVA( "BDTB method"          ), evtWeight );
       if (Use["BDTD"         ])   histBdtD   ->Fill( reader->EvaluateMVA( "BDTD method"          ), evtWeight );
@@ -387,6 +406,16 @@ void TMVAClassificationApplication( TString myMethodList = "" )
    // Get elapsed time
    sw.Stop();
    std::cout << "--- End of event loop: "; sw.Print();
+   std::cout << "=== Signal normalization audit (TMVA input tree) ===" << std::endl;
+   std::cout << "All events: " << nAll << std::endl;
+   std::cout << "Events entering BDT hist: " << nAfterSelection << std::endl;
+   std::cout << "sum(weight_sm) all events = " << sumWeightSm << std::endl;
+   std::cout << "sum(weight_sample) all events = " << sumWeightSample << std::endl;
+   std::cout << "sum(weight_factor) all events = " << sumWeightFactor << std::endl;
+   std::cout << "sum(weight_factor) final BDT selection = " << sumHistWeight << std::endl;
+   if (Use["BDT"] && histBdt) {
+      std::cout << "BDT signal histogram integral = " << histBdt->Integral() << std::endl;
+   }
  
    // Get efficiency for cuts classifier
    if (Use["CutsGA"]) std::cout << "--- Efficiency for CutsGA method: " << double(nSelCutsGA)/theTree->GetEntries()

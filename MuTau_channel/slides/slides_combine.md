@@ -1,6 +1,6 @@
 ---
-title: "MuTau channel: Combine tool"
-date: "13/04/2026"
+title: "MuTau channel: signal normalization fix and combine tool results"
+date: "16/04/2026"
 theme: "Madrid"
 colortheme: "default"
 fontsize: 10pt
@@ -93,6 +93,34 @@ Produces `MuTau_shapes.root` -- input ROOT file with per-sample kinematic histog
 1. Requires `sist_mass > 0`; for MC: protons on both arms (`xi1 > 0 && xi2 > 0`)
 2. Fills invariant mass (`m_X`, 30 bins, 0--1200 GeV) and 7 other kinematic histograms per sample
 3. Applies MC normalization (DY: `Scale(1.004e-4)`, ttbar: `Scale(1.0)`, data/QCD: weight = 1)
+
+---
+
+# data/MC validation (1)
+
+Signal scaled $\times 100$ for visibility. $\sigma_\text{SM} = 4.7$ fb, per-arm proton selection.
+
+\begin{columns}
+\column{0.33\textwidth}
+\includegraphics[width=\textwidth]{../norm_fix_plot_mass_after.png}
+\column{0.33\textwidth}
+\includegraphics[width=\textwidth]{../norm_fix_plot_rap_after.png}
+\column{0.33\textwidth}
+\includegraphics[width=\textwidth]{../norm_fix_plot_pt_after.png}
+\end{columns}
+
+---
+
+# data/MC validation (2)
+
+\begin{columns}
+\column{0.33\textwidth}
+\includegraphics[width=\textwidth]{../norm_fix_plot_tau_pt_after.png}
+\column{0.33\textwidth}
+\includegraphics[width=\textwidth]{../norm_fix_plot_met_after.png}
+\column{0.33\textwidth}
+\includegraphics[width=\textwidth]{../norm_fix_plot_acop_after.png}
+\end{columns}
 
 ---
 
@@ -215,22 +243,42 @@ plotImpacts.py -i impacts_MuTau_bdt.json -o impacts_MuTau_bdt
 
 ---
 
+# signal and background yields entering the fit
+
+### BDT input yields (protons on both arms, Scan A)
+
+| Sample | Yield (events) | Notes |
+|--------|---------------|-------|
+| Data | 1,708 | Real protons required |
+| DY | (from fit) | $w = w_\text{gen} \times \text{SFs} \times 1.004\times10^{-4}$ |
+| ttbar | (from fit) | $w = w_\text{gen} \times \text{SFs} \times 1.0$ |
+| QCD | (from fit) | data-driven, weight $= 1$ |
+| **Signal** | **0.079** | $\sigma_\text{SM} = 4.7$ fb, real normalization |
+
+Signal is about 0.005% of the data. The BDT is essential to separate it from background.
+
+\includegraphics[width=0.55\textwidth]{../bdt_signal_real_norm.png}
+
+---
+
 # results: 95% CL upper limits on $r$
 
 ### Method: AsymptoticLimits, BDT shape, mH = 120 GeV (Scan A, corrected normalization)
 
 | Estimate | $r = \sigma / \sigma_\text{SM}$ | Absolute $\sigma_{95}$ |
 |----------|--------------------------------|------------------------|
-| Expected $-2\sigma$ | -- | -- |
-| Expected $-1\sigma$ | -- | -- |
-| **Expected (median)** | **2.04** | **$\sim$9.6 fb** |
-| Expected $+1\sigma$ | -- | -- |
-| Expected $+2\sigma$ | -- | -- |
-| **Observed** | **6.03** | **$\sim$28.3 fb** |
+| Expected $-2\sigma$ | 0.79 | 3.7 fb |
+| Expected $-1\sigma$ | 1.20 | 5.6 fb |
+| **Expected (median)** | **2.04** | **9.6 fb** |
+| Expected $+1\sigma$ | 3.76 | 17.7 fb |
+| Expected $+2\sigma$ | 6.18 | 29.0 fb |
+| **Observed** | **6.03** | **28.3 fb** |
+
+$\sigma_{95} = r_{95} \times \sigma_\text{SM}$, $\sigma_\text{SM} = 4.7$ fb.
 
 **mass-shape cross-check:** expected $r < 22.75$, observed $r < 45.0$ (mass as discriminant).
 
-The BDT result is $\sim$11$\times$ better than the mass-shape result
+The BDT result is about 11x better than the mass-shape result
 
 ---
 
@@ -244,7 +292,7 @@ The BDT result is $\sim$11$\times$ better than the mass-shape result
 | Expected significance at $r=1$ | $1.62\sigma$ |
 | Best-fit signal strength | $r = 2.13\;^{+1.92}_{-1.17}$ |
 
-**before fix (wrong normalization):** expected significance was $\sim 0.046\sigma$, best-fit $r \sim 100$ -- those numbers were artifacts of the 47$\times$ normalization underestimate.
+**before fix (wrong normalization):** expected significance was about 0.046 sigma, best-fit r was about 100 -- those numbers were artifacts of the 47x normalization underestimate.
 
 **now:** The mild excess ($2.41\sigma$) is consistent with a statistical fluctuation
 
@@ -295,8 +343,8 @@ Scan B gives expected $r < 2.13$ (+4\% vs A) -- Scan A robustness confirmed.
 # Summary and next steps (cont)
 
 ### What was achieved
-- **bug 1 fixed:** proton selection corrected to per-arm logic ($\geq$1 per PPS arm): +25% signal yield
-- **bug 2 fixed:** signal normalization corrected to $\sigma_\text{SM} = 4.7$ fb (was 47$\times$ too small)
+- **bug 1 fixed:** proton selection corrected to per-arm logic (at least 1 per PPS arm): +25% signal yield
+- **bug 2 fixed:** signal normalization corrected to SM cross section = 4.7 fb (was 47x too small)
 - BDT trained and scanned (A, B, C); Scan A selected ; Scan C rejected (unstable)
 - statistical validation: limits, significance, fit diagnostics, GoF, impacts
 

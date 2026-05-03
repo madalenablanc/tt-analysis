@@ -3,6 +3,7 @@
 #include <fstream>
 #include "TFile.h"
 #include "TTree.h"
+#include "TChain.h"
 #include "TApplication.h"
 #include "TGraphErrors.h"
 #include "TBranch.h"
@@ -292,10 +293,11 @@ double muRecoSF(double pt, double eta, int flag=0){
  int main(){
 
  openFiles();
+ system("mkdir -p scalars");
 
  //Inicialização proões (tratação dos erros estatísticos)
 
- TFile proton_sist_1("../../PIC_joao/reco_charactersitics_version1.root");
+ TFile proton_sist_1("/eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrections/reco_charactersitics_version1.root");
 TGraphErrors* xi_sist_1 = (TGraphErrors*)proton_sist_1.Get("2018_TS1_TS2/multi rp-0/xi/g_systematics_vs_xi");
 TF1 xi_sist_inter_1("xi_sist_inter_1","pol20" ,0,10);
 xi_sist_inter_1.SetParLimits(0,-.8,0.1);
@@ -309,9 +311,9 @@ xi_sist_2->Fit("xi_sist_inter_2");
 
  TLorentzVector ele, tau, nu; 
 
- TFile fundo ("/eos/user/m/mpisano/analyzer_mutau/CMSSW_12_5_0/src/ExclTauTau/ExclTauTau/test/Data_MuTauTriggers_2018C_BSM_scalar_600_NWA_nov.root");
- TTree* ntp1 = (TTree*) fundo.Get("ntp1");
- TFile output ("./MuTau_sinal_BSM_2018_scalar_m600_NWA.root", "RECREATE", "");
+ TChain* ntp1 = new TChain("ntp1");
+ ntp1->Add("/eos/user/j/jjhollar/TauTauBackup/analyzer_mutau/CMSSW_12_5_0/test/scalar_600/Data_MuTauTriggers_2018C_BSM_scalar_600_NWA_nov_*.root");
+ TFile output ("./scalars/MuTau_sinal_BSM_2018_scalar_m600_NWA.root", "RECREATE", "");
  double weight_sample =0.;
  double weight =1;
 
@@ -809,8 +811,8 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 		    //Adicionar seletor de periodo
 
 
-		    TFile file_multi("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_multiRP_reMiniAOD.root");
-		    TFile file_rad("/eos/project-c/ctpps/subsystems/Pixel/RPixTracking/pixelEfficiencies_radiation_reMiniAOD.root");
+		    TFile file_multi("pixelEfficiencies_multiRP_reMiniAOD.root");
+		    TFile file_rad("pixelEfficiencies_radiation_reMiniAOD.root");
 
 		    weight=1.;
 
@@ -1018,27 +1020,35 @@ for (int i = 0; i < ntp1 -> GetEntries(); i++){
 	}
 TCanvas c1;
 histo_e_pt.Draw("histo");
+c1.SaveAs("./scalars/histo_e_pt_scalar_m600.png");
 
 TCanvas c2;
 histo_tau_pt.Draw("histo");
+c2.SaveAs("./scalars/histo_tau_pt_scalar_m600.png");
 
 TCanvas c3;
 histo_n_tau.Draw("histo");
+c3.SaveAs("./scalars/histo_n_tau_scalar_m600.png");
 
 TCanvas c4;
 histo_n_eletron.Draw("histo");
+c4.SaveAs("./scalars/histo_n_eletron_scalar_m600.png");
 
 TCanvas c5;
 histo_acop.Draw("histo");
+c5.SaveAs("./scalars/histo_acop_scalar_m600.png");
 
 TCanvas c6;
 histo_Pt.Draw("histo");
+c6.SaveAs("./scalars/histo_Pt_scalar_m600.png");
 
 TCanvas c7;
 histo_Mt.Draw("histo");
+c7.SaveAs("./scalars/histo_Mt_scalar_m600.png");
 
 TCanvas c8;
 histo_DR.Draw("histo");
+c8.SaveAs("./scalars/histo_DR_scalar_m600.png");
 
 cout << "os acontecimentos já foram moltiplicados por o sample weight" << endl;
 

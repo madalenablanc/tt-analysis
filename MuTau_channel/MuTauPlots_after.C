@@ -58,7 +58,7 @@ void MuTauPlots_after()
     PlotDef plots[] = {
         {"sist_mass", "mass_after", "Invariant mass;m(#mu,#tau) [GeV];Events", 20, 0, 1000},
         {"acop", "acop_after", "Acoplanarity;1 - |#Delta#phi|/#pi;Events", 20, 0, 1},
-        {"sist_pt", "pt_after", "System p_{T};p_{T}(#mu,#tau) [GeV];Events", 20, 0, 200},
+        {"sist_pt", "pt_after", "p_{T}(#mu,#tau);p_{T}(#mu,#tau) [GeV];Events", 20, 0, 200},
         {"sist_rap", "rap_after", "System rapidity;y(#mu,#tau);Events", 20, -3, 3},
         {"tau_pt", "tau_pt_after", "Tau p_{T};p_{T}^{#tau} [GeV];Events", 20, 100, 500},
         {"met_pt", "met_after", "Missing E_{T};MET [GeV];Events", 20, 0, 300},
@@ -106,12 +106,12 @@ void MuTauPlots_after()
         TString cut_ttbar = TString::Format("(sist_mass > 0 && %s) * weight", proton_cut_mc.Data());
         TString cut_signal = TString::Format("(sist_mass > 0 && %s) * weight", proton_cut_mc.Data());
 
-        // Create histograms
-        TH1F *h_data   = new TH1F("h_data_"   + name, title, nbins, xmin, xmax);
-        TH1F *h_qcd    = new TH1F("h_qcd_"    + name, title, nbins, xmin, xmax);
-        TH1F *h_dy     = new TH1F("h_dy_"     + name, title, nbins, xmin, xmax);
-        TH1F *h_ttbar  = new TH1F("h_ttbar_"  + name, title, nbins, xmin, xmax);
-        TH1F *h_signal = new TH1F("h_signal_" + name, title, nbins, xmin, xmax);
+        // Create histograms (no title: drawn manually to avoid collision with CMS header)
+        TH1F *h_data   = new TH1F("h_data_"   + name, "", nbins, xmin, xmax);
+        TH1F *h_qcd    = new TH1F("h_qcd_"    + name, "", nbins, xmin, xmax);
+        TH1F *h_dy     = new TH1F("h_dy_"     + name, "", nbins, xmin, xmax);
+        TH1F *h_ttbar  = new TH1F("h_ttbar_"  + name, "", nbins, xmin, xmax);
+        TH1F *h_signal = new TH1F("h_signal_" + name, "", nbins, xmin, xmax);
 
         // Fill histograms using weight branch
         t_data->Draw(var + " >> h_data_" + name, cut_data, "goff");
@@ -126,7 +126,7 @@ void MuTauPlots_after()
         // Signal: scaled for visibility
         h_dy->Scale(DY_SCALE);
         h_ttbar->Scale(TTBAR_SCALE);
-        h_signal->Scale(5000);
+        h_signal->Scale(100);
 
         // Style
         h_data->SetMarkerStyle(20);
@@ -147,7 +147,7 @@ void MuTauPlots_after()
         h_signal->SetFillStyle(0);
 
         // Create stack (bottom to top: ttbar, QCD, DY)
-        THStack *stack = new THStack("stack_" + name, title);
+        THStack *stack = new THStack("stack_" + name, "");
         stack->Add(h_ttbar);
         stack->Add(h_qcd);
         stack->Add(h_dy);
@@ -190,7 +190,7 @@ void MuTauPlots_after()
         leg->SetBorderSize(0);
         leg->SetFillStyle(0);
         leg->AddEntry(h_data, "Data", "lep");
-        leg->AddEntry(h_signal, "Signal", "l");
+        leg->AddEntry(h_signal, "Signal #times 100", "l");
         leg->AddEntry(h_dy, "Drell-Yan", "f");
         leg->AddEntry(h_qcd, "QCD", "f");
         leg->AddEntry(h_ttbar, "t#bar{t}", "f");
@@ -199,12 +199,16 @@ void MuTauPlots_after()
         // Labels
         TLatex latex;
         latex.SetNDC();
-        latex.SetTextSize(0.05);
-        latex.SetTextFont(62);
-        latex.DrawLatex(0.18, 0.92, "CMS-TOTEM Preliminary");
         latex.SetTextAlign(31);
+        latex.SetTextFont(42);
         latex.SetTextSize(0.04);
         latex.DrawLatex(0.92, 0.92, "54.9 fb^{-1} (13 TeV)");
+
+        // Panel title drawn inside the plot area
+        TString panel_title = TString(title).Tokenize(";")->At(0)->GetName();
+        latex.SetTextAlign(11);
+        latex.SetTextSize(0.048);
+        latex.DrawLatex(0.18, 0.88, panel_title);
 
         // Draw ratio plot
         pad2->cd();
@@ -229,7 +233,22 @@ void MuTauPlots_after()
         h_ratio->GetXaxis()->SetTitleOffset(0.9);
         h_ratio->GetXaxis()->SetLabelSize(0.10);
 
+        // MC uncertainty band in ratio (relative stat. uncertainty of MC stack)
+        TH1F *h_ratio_unc = (TH1F*)h_mcsum->Clone("h_ratio_unc_" + name);
+        for (int i = 1; i <= h_ratio_unc->GetNbinsX(); i++) {
+            double mc  = h_mcsum->GetBinContent(i);
+            double err = h_mcsum->GetBinError(i);
+            h_ratio_unc->SetBinContent(i, 1.0);
+            h_ratio_unc->SetBinError(i, mc > 0 ? err / mc : 0.0);
+        }
+        h_ratio_unc->SetFillColor(kGray + 1);
+        h_ratio_unc->SetFillStyle(1001);
+        h_ratio_unc->SetMarkerSize(0);
+        h_ratio_unc->SetLineWidth(0);
+
         h_ratio->Draw("e");
+        h_ratio_unc->Draw("e2 same");
+        h_ratio->Draw("e same");
 
         // Draw line at ratio = 1
         TLine *line = new TLine(xmin, 1, xmax, 1);
@@ -249,7 +268,7 @@ void MuTauPlots_after()
         std::cout << "========================" << std::endl;
 
         c->Update();
-        c->SaveAs("plot_" + name + ".png");
+        c->SaveAs("norm_fix_plot_" + name + ".png");
     }
 
     std::cout << "After proton mixing plots saved" << std::endl;

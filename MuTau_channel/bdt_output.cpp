@@ -101,17 +101,17 @@ int main() { // plots bdt output - MuTau channel
     sum_bkg.Draw("same && E2");
 
     // Legend
-    TLegend *legend = new TLegend(0.7, 0.7, 0.9, 0.9);
-    legend->AddEntry(histQCD, "QCD contribution", "f");
-    legend->AddEntry(histDY, "DY contribution", "f");
-    legend->AddEntry(histTTJets, "TTJets contribution", "f");
-    legend->AddEntry(histSinal, "Signal (x5000)", "l");
-    legend->AddEntry(histDados, "Data", "l");
-    legend->SetBorderSize(1);
-    legend->SetFillColor(0);
-    legend->Draw();
-    stack->GetXaxis()->SetTitle("BDT output");
-    stack->GetYaxis()->SetTitle("Arbitrary units");
+    // TLegend *legend = new TLegend(0.7, 0.7, 0.9, 0.9);
+    // legend->AddEntry(histQCD, "QCD contribution", "f");
+    // legend->AddEntry(histDY, "DY contribution", "f");
+    // legend->AddEntry(histTTJets, "TTJets contribution", "f");
+    // legend->AddEntry(histSinal, "Signal (x5000)", "l");
+    // legend->AddEntry(histDados, "Data", "l");
+    // legend->SetBorderSize(1);
+    // legend->SetFillColor(0);
+    // legend->Draw();
+    // stack->GetXaxis()->SetTitle("BDT output");
+    // stack->GetYaxis()->SetTitle("Arbitrary units");
 
     // Save
     canvas->Draw();

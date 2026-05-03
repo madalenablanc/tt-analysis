@@ -2,30 +2,24 @@
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;\f2\fnil\fcharset0 HelveticaNeue;
 \f3\fnil\fcharset0 Menlo-Bold;}
 {\colortbl;\red255\green255\blue255;\red197\green197\blue197;\red46\green46\blue46;\red193\green193\blue193;
-\red19\green19\blue19;\red0\green0\blue0;\red254\green233\blue234;\red0\green0\blue0;\red254\green234\blue234;
-\red255\green236\blue236;}
+\red19\green19\blue19;\red0\green0\blue0;\red254\green233\blue234;\red0\green0\blue0;\red255\green236\blue236;
+}
 {\*\expandedcolortbl;;\cssrgb\c81569\c81569\c81569;\cssrgb\c23529\c23529\c23529;\cssrgb\c80000\c80000\c80000;
-\cssrgb\c9412\c9412\c9412;\cssrgb\c0\c0\c0;\cssrgb\c100000\c93333\c93333;\cssrgb\c0\c1\c1;\cssrgb\c100000\c93427\c93302;
-\cssrgb\c100000\c94213\c94088\c10196;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww12540\viewh9420\viewkind0
+\cssrgb\c9412\c9412\c9412;\cssrgb\c0\c0\c0;\cssrgb\c100000\c93333\c93333;\cssrgb\c0\c1\c1;\cssrgb\c100000\c94213\c94088\c10196;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12880\viewh9760\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs28 \cf0 \
 ## create and prepare environment \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0    # launches an SL7 container on lxplus\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 cmssw-el7                  \
+   # launches an SL7 container on lxplus\
+cmssw-el7                  \
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 # matches CMSSW_14_1_0_pre4 + Combine v10.5.1                    \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 export SCRAM_ARCH=slc7_amd64_gcc12      \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0     # sets PATH/LIBS for this release          \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 cd /eos/home-m/mblancco/cmssw/CMSSW_14_1_0_pre4/src\
+# matches CMSSW_14_1_0_pre4 + Combine v10.5.1                    \
+export SCRAM_ARCH=slc7_amd64_gcc12      \
+    # sets PATH/LIBS for this release          \
+cd /eos/home-m/mblancco/cmssw/CMSSW_14_1_0_pre4/src\
 \
 cmsenv                                        \
 \
@@ -35,8 +29,7 @@ export PATH=$CMSSW_BASE/src/HiggsAnalysis/CombinedLimit/scripts:$PATH\
 \
 ## rebuild shapes if input has changed\
 \
-cd /eos/home-m/mblancco/tau_analysis/MuTau_channel\
-g++ save_shapes.cpp -o save_shapes $(root-config --cflags --libs)\
+szakg++ save_shapes.cpp -o save_shapes $(root-config --cflags --libs)\
 ./save_shapes                                     # writes MuTau_shapes.root\
 \
 \
@@ -45,27 +38,25 @@ g++ save_shapes.cpp -o save_shapes $(root-config --cflags --libs)\
 cd /eos/home-m/mblancco/tau_analysis/MuTau_channel/datacards\
 \
 text2workspace.py mutau_mass_shape.txt \\\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0     -o mutau_mass_shape_workspace.root\
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \
+    -o mutau_mass_shape_workspace.root\
+\
 text2workspace.py mutau_likelihood_shape.txt -o mutau_mass_shape_workspace.root\
 \
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs23\fsmilli11700 \cf2 \cb3 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec2 # Option B: run limits using Likelihood MVA score as discriminant\
+# Option B: run limits using Likelihood MVA score as discriminant\
 text2workspace.py mutau_likelihood_shape.txt -o mutau_lk_workspace.root -m 120\
 combine -M AsymptoticLimits mutau_lk_workspace.root -m 120 -n MuTau_lk --cl 0.95
-\fs26 \cf4 \cb5 \strokec4 \
+\fs26 \cf4 \cb5 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\f0\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
 \
 \pard\pardeftab720\partightenfactor0
 {\field{\*\fldinst{HYPERLINK "vscode-webview://0ctbcd4gur8q6gk7s82up5q7mo908m3gl2upk4k2fuhf94cfj5q0/index.html?id=378f2794-97b1-4785-939e-66be1c71462d&parentId=2&origin=4154b99f-728d-4b3c-b330-3cce39a2370f&swVersion=4&extensionId=Anthropic.claude-code&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&session=a27c7332-0633-4a68-bb0e-e85f78ad99da#"}}{\fldrslt 
 \f1\fs22\fsmilli11050 \cf0 \cb5 \expnd0\expndtw0\kerning0
-\ul \ulc0 \outl0\strokewidth0 \strokec6 mutau_likelihood_shape.txt}}\
+\ul \ulc0 mutau_likelihood_shape.txt}}\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
 combine -M AsymptoticLimits mutau_mass_shape_workspace.root -n MuTau\
@@ -106,7 +97,7 @@ combineTool.py -M GoodnessOfFit --algo saturated \\\
 ## 
 \f2 \cf7 \expnd0\expndtw0\kerning0
 \'a0I\cf8 mpact plots (requires\'a0
-\f3\b \cb10 fitDiagnostics
+\f3\b \cb9 fitDiagnostics
 \f2\b0 \cb1 )\cf7 \
 
 \f0 \cf0 \kerning1\expnd0\expndtw0 \
