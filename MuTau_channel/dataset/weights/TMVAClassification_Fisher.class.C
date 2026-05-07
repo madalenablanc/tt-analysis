@@ -8,10 +8,10 @@
 
 Method         : Fisher::Fisher
 TMVA Release   : 4.2.1         [262657]
-ROOT Release   : 6.30/07       [400903]
+ROOT Release   : 6.38/04       [402948]
 Creator        : mblancco
-Date           : Mon Apr 13 15:16:37 2026
-Host           : Linux cmsbuild102.cern.ch 4.18.0-513.11.1.el8_9.x86_64 #1 SMP Wed Jan 17 02:00:40 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+Date           : Sun May  3 14:27:23 2026
+Host           : Linux buildvm-x86-15.rdu3.fedoraproject.org 6.19.8-200.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Mar 13 22:06:06 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
 Dir            : /eos/home-m/mblancco/tau_analysis/MuTau_channel
 Training events: 21500
 Analysis type  : [Classification]
