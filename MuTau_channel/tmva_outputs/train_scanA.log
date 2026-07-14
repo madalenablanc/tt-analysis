@@ -139,7 +139,7 @@ Factory                  : Train method: Likelihood for Classification
                          : 
                          : Filling reference histograms
                          : Building PDF out of reference histograms
-                         : Elapsed time for training with 21500 events: 0.125 sec         
+                         : Elapsed time for training with 21500 events: 0.0854 sec         
 Likelihood               : [dataset] : Evaluation of Likelihood on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -157,7 +157,7 @@ Likelihood               : [dataset] : Evaluation of Likelihood on training samp
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.0278 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.0156 sec       
                          : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_Likelihood.weights.xml[0m
                          : Creating standalone class: [0;36mdataset/weights/TMVAClassification_Likelihood.class.C[0m
                          : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_Likelihood/Likelihood
@@ -223,7 +223,7 @@ Fisher                   : Results for Fisher coefficients:
                          :               sist_rap-0.5*log(xi1/xi2):                                  +0.101
                          :                                (offset):                                  -0.671
                          : ---------------------------------------------------------------------------------
-                         : Elapsed time for training with 21500 events: 0.0209 sec         
+                         : Elapsed time for training with 21500 events: 0.014 sec         
 Fisher                   : [dataset] : Evaluation of Fisher on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -241,7 +241,7 @@ Fisher                   : [dataset] : Evaluation of Fisher on training sample (
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.00523 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.00255 sec       
                          : <CreateMVAPdfs> Separation from histogram (PDF): 0.635 (0.000)
                          : Dataset[dataset] : Evaluation of Fisher on training sample
 0%, time left: unknown
@@ -272,22 +272,22 @@ BDT                      : #events: (reweighted) sig: 10624 bkg: 10624
                          : #events: (unweighted) sig: 6498 bkg: 14750
                          : Training 600 Decision Trees ... patience please
 0%, time left: unknown
-6%, time left: 2 sec
-12%, time left: 2 sec
-19%, time left: 2 sec
-25%, time left: 2 sec
-31%, time left: 1 sec
-37%, time left: 1 sec
-44%, time left: 1 sec
-50%, time left: 1 sec
-56%, time left: 1 sec
-62%, time left: 1 sec
+6%, time left: 1 sec
+12%, time left: 1 sec
+19%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
 69%, time left: 0 sec
 75%, time left: 0 sec
 81%, time left: 0 sec
 87%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for training with 21500 events: 3.16 sec         
+                         : Elapsed time for training with 21500 events: 1.26 sec         
 BDT                      : [dataset] : Evaluation of BDT on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -305,7 +305,7 @@ BDT                      : [dataset] : Evaluation of BDT on training sample (215
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.42 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.168 sec       
                          : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_BDT.weights.xml[0m
                          : Creating standalone class: [0;36mdataset/weights/TMVAClassification_BDT.class.C[0m
                          : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_BDT/BDT
@@ -379,7 +379,7 @@ Likelihood               : [dataset] : Evaluation of Likelihood on testing sampl
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.0591 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.0218 sec       
 Factory                  : Test method: Fisher for Classification performance
                          : 
 Fisher                   : [dataset] : Evaluation of Fisher on testing sample (29262 events)
@@ -399,7 +399,7 @@ Fisher                   : [dataset] : Evaluation of Fisher on testing sample (2
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.00795 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.00473 sec       
                          : Dataset[dataset] : Evaluation of Fisher on testing sample
 0%, time left: unknown
 6%, time left: 0 sec
@@ -436,7 +436,7 @@ BDT                      : [dataset] : Evaluation of BDT on testing sample (2926
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.546 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.213 sec       
 Factory                  : [1mEvaluate all methods[0m
 Factory                  : Evaluate classifier: Likelihood
                          : 

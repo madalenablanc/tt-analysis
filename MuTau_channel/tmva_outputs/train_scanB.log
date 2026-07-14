@@ -2,8 +2,12 @@
 Processing TMVAClassification_scan.C...
 
 ==> Start TMVAClassification
---- TMVAClassification       : Using input BKG file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/background_total-protons_syst.root
---- TMVAClassification       : Using input SIGNAL file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/MuTau_sinal_SM_2018_july.root
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present
+
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present
+
+--- TMVAClassification       : Using input BKG file: background_total-protons_syst.root
+--- TMVAClassification       : Using input SIGNAL file: MuTau_sinal_SM_2018_july.root
 DataSetInfo              : [dataset] : Added class "Signal"
 DataSetInfo              : [dataset] : Added class "Background"
                          : Add Tree tree of type Signal with 21398 events
@@ -140,7 +144,7 @@ Factory                  : Train method: Likelihood for Classification
                          : 
                          : Filling reference histograms
                          : Building PDF out of reference histograms
-                         : Elapsed time for training with 21500 events: 0.111 sec         
+                         : Elapsed time for training with 21500 events: 0.0789 sec         
 Likelihood               : [dataset] : Evaluation of Likelihood on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -158,7 +162,7 @@ Likelihood               : [dataset] : Evaluation of Likelihood on training samp
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.0309 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.0153 sec       
                          : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_Likelihood.weights.xml[0m
                          : Creating standalone class: [0;36mdataset/weights/TMVAClassification_Likelihood.class.C[0m
                          : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_Likelihood/Likelihood
@@ -224,7 +228,7 @@ Fisher                   : Results for Fisher coefficients:
                          :               sist_rap-0.5*log(xi1/xi2):                                  +0.101
                          :                                (offset):                                  -0.671
                          : ---------------------------------------------------------------------------------
-                         : Elapsed time for training with 21500 events: 0.0224 sec         
+                         : Elapsed time for training with 21500 events: 0.0105 sec         
 Fisher                   : [dataset] : Evaluation of Fisher on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -242,7 +246,7 @@ Fisher                   : [dataset] : Evaluation of Fisher on training sample (
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.00659 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.00136 sec       
                          : <CreateMVAPdfs> Separation from histogram (PDF): 0.635 (0.000)
                          : Dataset[dataset] : Evaluation of Fisher on training sample
 0%, time left: unknown
@@ -274,44 +278,44 @@ Factory                  : Train method: BDT for Classification
                          : --> total sum of weights = 21500 = 21500
                          : Found a total of -10150.1 in negative weights out of 21498 training events 
 0%, time left: unknown
-6%, time left: 116 sec
-13%, time left: 100 sec
-19%, time left: 142 sec
-25%, time left: 122 sec
-32%, time left: 114 sec
-38%, time left: 97 sec
-44%, time left: 79 sec
-50%, time left: 68 sec
-56%, time left: 54 sec
-63%, time left: 43 sec
-69%, time left: 36 sec
-75%, time left: 29 sec
-82%, time left: 21 sec
-88%, time left: 14 sec
-94%, time left: 6 sec
-                         : <Negative Event Pairing> took: 107 sec                              
+6%, time left: 60 sec
+13%, time left: 51 sec
+19%, time left: 73 sec
+25%, time left: 63 sec
+32%, time left: 60 sec
+38%, time left: 51 sec
+44%, time left: 42 sec
+50%, time left: 36 sec
+56%, time left: 28 sec
+63%, time left: 23 sec
+69%, time left: 19 sec
+75%, time left: 15 sec
+82%, time left: 11 sec
+88%, time left: 7 sec
+94%, time left: 3 sec
+                         : <Negative Event Pairing> took: 55.7 sec                              
                          :  after PreProcessing, the Event sample is left with 14701 events (unweighted), all with positive weights, adding up to 21500
                          :  nSig=6498 sigWeight=6500 nBkg=8203 bkgWeight=15000
 BDT                      : #events: (reweighted) sig: 7350.5 bkg: 7350.5
                          : #events: (unweighted) sig: 6498 bkg: 8203
                          : Training 850 Decision Trees ... patience please
 0%, time left: unknown
-6%, time left: 2 sec
-12%, time left: 2 sec
-18%, time left: 2 sec
-25%, time left: 2 sec
-31%, time left: 2 sec
-37%, time left: 2 sec
-43%, time left: 1 sec
-50%, time left: 1 sec
-56%, time left: 1 sec
-62%, time left: 1 sec
-68%, time left: 1 sec
+6%, time left: 1 sec
+12%, time left: 1 sec
+18%, time left: 1 sec
+25%, time left: 1 sec
+31%, time left: 1 sec
+37%, time left: 0 sec
+43%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+68%, time left: 0 sec
 75%, time left: 0 sec
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for training with 21500 events: 110 sec         
+                         : Elapsed time for training with 21500 events: 57.3 sec         
 BDT                      : [dataset] : Evaluation of BDT on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -329,7 +333,7 @@ BDT                      : [dataset] : Evaluation of BDT on training sample (215
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 1 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.448 sec       
                          : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_BDT.weights.xml[0m
                          : Creating standalone class: [0;36mdataset/weights/TMVAClassification_BDT.class.C[0m
                          : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_BDT/BDT
@@ -403,7 +407,7 @@ Likelihood               : [dataset] : Evaluation of Likelihood on testing sampl
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.0398 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.0217 sec       
 Factory                  : Test method: Fisher for Classification performance
                          : 
 Fisher                   : [dataset] : Evaluation of Fisher on testing sample (29262 events)
@@ -423,7 +427,7 @@ Fisher                   : [dataset] : Evaluation of Fisher on testing sample (2
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.00722 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.00454 sec       
                          : Dataset[dataset] : Evaluation of Fisher on testing sample
 0%, time left: unknown
 6%, time left: 0 sec
@@ -445,7 +449,7 @@ Factory                  : Test method: BDT for Classification performance
                          : 
 BDT                      : [dataset] : Evaluation of BDT on testing sample (29262 events)
 0%, time left: unknown
-6%, time left: 1 sec
+6%, time left: 0 sec
 12%, time left: 0 sec
 18%, time left: 0 sec
 25%, time left: 0 sec
@@ -460,7 +464,7 @@ BDT                      : [dataset] : Evaluation of BDT on testing sample (2926
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 1.09 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.553 sec       
 Factory                  : [1mEvaluate all methods[0m
 Factory                  : Evaluate classifier: Likelihood
                          : 

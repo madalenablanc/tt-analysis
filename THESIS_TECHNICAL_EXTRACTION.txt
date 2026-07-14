@@ -1,0 +1,794 @@
+================================================================================
+THESIS TECHNICAL DOCUMENTATION
+Exclusive tau-pair production with PPS proton tagging — MuTau channel
+Extracted from codebase: May 2026
+================================================================================
+
+
+--------------------------------------------------------------------------------
+1. FULL ANALYSIS WORKFLOW
+--------------------------------------------------------------------------------
+
+The pipeline has two main phases followed by a BDT training and statistical
+interpretation stage.
+
+  NanoAOD (EOS/XRootD)
+      |
+      v  fase0_data_mutau.py / fase0_dy.py / fase0_ttjets.py / fase0_qcd_data.py
+  Phase 0: Lightweight skimming — trigger filter, lumi mask, define observables,
+           snapshot proton collections. Output: skimmed flat ROOT trees on EOS.
+      |
+      v  fase1_data.py / fase1_dy.py / fase1_ttjets.py / fase1_qcd.py
+  Phase 1: Full event selection — object ID, pT, eta, DeltaR, charge.
+           Compute scale factors. Output: selected trees with weight branches.
+      |
+      v  merge_pp_mutau.py
+  Merging + Proton Mixing — merge files, mix pileup protons (0.245 weight),
+  produce merged ROOT files on EOS.
+      |
+      v  sinal.cpp
+  Signal Processor — read MC ntuple (ntp1), apply signal selection, apply
+  fiducial proton cuts per era, apply radiation damage weights, compute xi
+  up/down systematics, write MuTau_sinal_SM_2018_july.root.
+      |
+      v  TMVAClassification.C
+  TMVA BDT Training — reads background_total-protons_syst.root +
+  MuTau_sinal_SM_2018_july.root, trains BDT, writes
+  dataset/weights/TMVAClassification_BDT.weights.xml.
+      |
+      v  TMVAClassificationApplication.C
+  BDT Application — applies trained BDT to data/DY/QCD/TTJets/signal,
+  writes TMVApp_{data,DY,QCD,ttjets,sinal}.root.
+      |
+      v  save_shapes.cpp
+  Shapes Production — reads merged ROOT files + TMVApp files, fills 1D
+  histograms for all observables and BDT output, applies DY_SCALE,
+  writes MuTau_shapes.root.
+      |
+      v  datacards/mutau_bdt_shape.txt  -->  CMS Combine
+  Statistical Interpretation — text2workspace, combine asymptotic CLs limits,
+  signal strength r = sigma / sigma_SM.
+
+
+Key output files on EOS:
+  /eos/user/m/mblancco/samples_2018_mutau/Data_2018_UL_MuTau_nano_merged_proton_vars.root
+  /eos/user/m/mblancco/samples_2018_mutau/DY_2018_UL_MuTau_nano_merged_pileup_protons.root
+  /eos/user/m/mblancco/samples_2018_mutau/ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root
+  /eos/user/m/mblancco/samples_2018_mutau/QCD_2018_UL_MuTau_nano_merged_proton_vars_new.root
+  MuTau_sinal_SM_2018_july.root          (signal, local)
+  MuTau_shapes.root                      (final shapes for Combine, local)
+
+
+--------------------------------------------------------------------------------
+2. EVENT SELECTION (mu tau_h channel)
+--------------------------------------------------------------------------------
+
+All cuts confirmed from:
+  - fase0_data_mutau.py  (phase 0 filter)
+  - fase1_data.py / fase1_dy.py / fase1_ttjets.py  (phase 1 filter)
+
+
+TRIGGER
+  HLT_IsoMu24 == 1   (single isolated muon trigger, 2018)
+  Applied at phase 0 in fase0_data_mutau.py line 229.
+
+
+LUMI MASK
+  A certified luminosity list (dadosluminosidade.txt) is loaded into a C++ map
+  and applied as lumi_filter(run, luminosityBlock) during phase 0 skimming.
+  Implemented in fase0_data_mutau.py lines 152-191.
+
+
+MUON SELECTION
+  Cut            Value               Branch / condition in phase 1
+  --------------------------------------------------------
+  MVA ID         >= 3 (Tight)        muon_id > 3
+  pT             > 35 GeV            muon_pt > 35.
+  |eta|          < 2.4               fabs(muon_eta) < 2.4
+
+  NanoAOD source: Muon_mvaId[0], Muon_pt[0], Muon_eta[0]
+
+
+TAU (hadronic) SELECTION
+  All tau ID discriminants from DeepTau 2017 v2p1.
+
+  Cut        NanoAOD variable                  Threshold   Working point
+  -------------------------------------------------------------------
+  VSjet      Tau_idDeepTau2017v2p1VSjet[0]     > 63        >= VeryTight (bit 6)
+  VSe        Tau_idDeepTau2017v2p1VSe[0]       > 7         >= Tight (bit 3)
+  VSmu       Tau_idDeepTau2017v2p1VSmu[0]      > 1         >= Loose (bit 1)
+  pT         Tau_pt[0]                          > 100 GeV
+  |eta|      Tau_eta[0]                         < 2.4
+
+
+PAIR-LEVEL CUTS
+  Opposite charge:    muon_charge * tau_charge < 0
+  DeltaR separation:  tau.DeltaR(muon) > 0.4  (TLorentzVector)
+
+
+JET AND B-TAG
+  Saved at phase 0 for later use. b-tagging uses DeepCSV:
+    n_b_jet = count of jets with Jet_btagDeepB > 0.4506
+  No explicit b-jet veto is applied in phase 1 selection filters, but n_b_jet
+  is available as a variable for further cuts if needed.
+
+
+MET
+  MET_pt and MET_phi stored from NanoAOD in phase 0.
+  Used as BDT input variable. No explicit MET cut in event selection.
+
+
+--------------------------------------------------------------------------------
+3. PROTON SELECTION AND PPS
+--------------------------------------------------------------------------------
+
+Signal selection is implemented in sinal.cpp.
+For data/MC backgrounds, only one-proton-per-arm requirement is applied.
+
+
+ONE PROTON PER ARM REQUIREMENT
+
+  Data and QCD (real multiRP protons from NanoAOD):
+    Scan arm vector, take first proton on each arm:
+      for j in proton_multi_arm: if arm==0 -> xi1; if arm==1 -> xi2
+    Require both arms: xi1 > 0 && xi2 > 0
+
+  MC (DY, ttbar) pileup protons (mixed from proton pool):
+    xi_arm1_1 >= 0 && xi_arm2_1 >= 0
+
+  Signal (from MC ntuple ntp1):
+    if (xi->size() != 2) continue;   // exactly one proton per arm
+
+
+UPPER XI FIDUCIAL CUT (thetaX limit)
+  Applied in sinal.cpp via crossing-angle-dependent TF1 functions:
+
+    TF1 limit_fun_arm_0("limit_fun_arm_0",
+      "-(8.44219E-07*[xangle]-0.000100957)+"
+      "(([xi]<(0.000247185*[xangle]+0.101599))*-(1.40289E-05*[xangle]-0.00727237)"
+      "+([xi]>=(0.000247185*[xangle]+0.101599))*-(0.000107811*[xangle]-0.0261867))"
+      "*([xi]-(0.000247185*[xangle]+0.101599))", 0, 1);
+
+    TF1 limit_fun_arm_1("limit_fun_arm_1",
+      "-(-4.74758E-07*[xangle]+3.0881E-05)+"
+      "(([xi]<(0.000727859*[xangle]+0.0722653))*-(2.43968E-05*[xangle]-0.0085461)"
+      "+([xi]>=(0.000727859*[xangle]+0.0722653))*-(7.19216E-05*[xangle]-0.0148267))"
+      "*([xi]-(0.000727859*[xangle]+0.0722653))", 0, 1);
+
+    // Reject event if thetaX exceeds limit:
+    if((*thx)[0] > -limit_fun_arm_0.Eval(0.5) ||
+       (*thx)[1] > -limit_fun_arm_1.Eval(0.5)) continue;
+
+  The crossing angle (xangle) is determined from the event's fractional index
+  within the sample, mapping to 2018 fill periods (130-160 urad):
+    fraction <= 0.134  -> xangle = 130
+    fraction in (0.134, 0.149) -> 131
+    ...
+    fraction >= 0.925  -> 160
+
+
+LOWER XI FIDUCIAL CUT (track position cuts)
+  Era-by-era fiducial acceptance in track (x,y) space in mm.
+  Six 2018 eras defined by fractional event index:
+
+  ERA A  (fraction <= 0.21):
+    NEAR 45:  2.710 < trackx1 < 17.927 mm,  -11.589 < tracky1 < 3.698 mm
+    FAR  45:  2.278 < trackx2 < 24.620 mm,  -10.898 < tracky2 < 4.398 mm
+    NEAR 56:  3.000 < trackx1 < 18.498 mm,  -11.298 < tracky1 < 4.098 mm
+    FAR  56:  2.420 < trackx2 < 25.045 mm,  -10.398 < tracky2 < 5.098 mm
+
+  ERA B1 (fraction in (0.21, 0.29]):
+    NEAR 45:  2.850 < trackx1 < 17.927 mm,  -11.589 < tracky1 < 3.698 mm
+    FAR  45:  2.420 < trackx2 < 24.620 mm,  -10.798 < tracky2 < 4.298 mm
+    NEAR 56:  3.000 < trackx1 < 18.070 mm,  -11.198 < tracky1 < 4.098 mm
+    FAR  56:  2.420 < trackx2 < 25.045 mm,  -10.398 < tracky2 < 5.098 mm
+
+  ERA B2 (fraction in (0.29, 0.37]):
+    NEAR 45:  2.562 < trackx1 < 17.640 mm,  -11.098 < tracky1 < 4.198 mm
+    FAR  45:  2.135 < trackx2 < 24.620 mm,  -11.398 < tracky2 < 3.798 mm
+    NEAR 56:  3.000 < trackx1 < 17.931 mm,  -10.498 < tracky1 < 4.698 mm
+    FAR  56:  2.279 < trackx2 < 24.760 mm,  -10.598 < tracky2 < 4.498 mm
+
+  ERA C  (fraction in (0.37, 0.50]):
+    NEAR 45:  2.564 < trackx1 < 17.930 mm,  -11.098 < tracky1 < 4.198 mm
+    FAR  45:  2.278 < trackx2 < 24.620 mm,  -11.398 < tracky2 < 3.698 mm
+    NEAR 56:  3.000 < trackx1 < 17.931 mm,  -10.498 < tracky1 < 4.698 mm
+    FAR  56:  2.279 < trackx2 < 24.760 mm,  -10.598 < tracky2 < 4.398 mm
+
+  ERA D1 (fraction in (0.50, 0.77]):
+    NEAR 45:  2.847 < trackx1 < 17.930 mm,  -11.098 < tracky1 < 4.098 mm
+    FAR  45:  2.278 < trackx2 < 24.620 mm,  -11.398 < tracky2 < 3.698 mm
+    NEAR 56:  3.000 < trackx1 < 17.931 mm,  -10.498 < tracky1 < 4.698 mm
+    FAR  56:  2.279 < trackx2 < 24.760 mm,  -10.598 < tracky2 < 4.398 mm
+
+  ERA D2 (fraction > 0.77):
+    NEAR 45:  2.847 < trackx1 < 17.931 mm,  -11.598 < tracky1 < 4.498 mm
+    FAR  45:  2.278 < trackx2 < 24.620 mm,  -11.598 < tracky2 < 3.398 mm
+    NEAR 56:  3.000 < trackx1 < 17.931 mm,   -9.998 < tracky1 < 4.698 mm
+    FAR  56:  2.279 < trackx2 < 24.760 mm,  -10.598 < tracky2 < 3.898 mm
+
+
+RADIATION DAMAGE CORRECTIONS
+  Applied per era using 2D histograms from two ROOT files:
+    pixelEfficiencies_multiRP_reMiniAOD.root
+    pixelEfficiencies_radiation_reMiniAOD.root
+
+  Example (Era A):
+    TH2F *raddamage56_match = file_multi.Get("Pixel/2018/2018A/h56_220_2018A_all_2D");
+    TH2F *raddamage56       = file_rad.Get("Pixel/2018/2018A/h56_210_2018A_all_2D");
+    weight *= raddamage56->GetBinContent(raddamage56->FindBin(trackx1[arm56], tracky1[arm56]));
+    weight *= raddamage56_match->GetBinContent(...);
+    // Same for arm 45 (h45_... histograms)
+
+  The product of four 2D efficiency values (near + far) x (arm 45 + arm 56)
+  is applied as a multiplicative per-event weight.
+  Same era-based logic applies for B1, B2, C, D1, D2.
+
+
+XI SYSTEMATIC VARIATIONS (up/down)
+  Loaded from reco_charactersitics_version1.root:
+    TGraphErrors* xi_sist_1 =
+      proton_sist_1.Get("2018_TS1_TS2/multi rp-0/xi/g_systematics_vs_xi");
+    TF1 xi_sist_inter_1("xi_sist_inter_1", "pol20", 0, 10);
+    xi_sist_1->Fit("xi_sist_inter_1");
+    // Same for arm 1
+
+  Up/down xi stored as output branches:
+    xi_arm1_1_up = xi_arm1 + xi_sist_inter_1.Eval(xi_arm1)
+    xi_arm1_1_dw = xi_arm1 - xi_sist_inter_1.Eval(xi_arm1)
+    xi_arm2_1_up = xi_arm2 + xi_sist_inter_2.Eval(xi_arm2)
+    xi_arm2_1_dw = xi_arm2 - xi_sist_inter_2.Eval(xi_arm2)
+
+
+PROTON POOL (pileup proton mixing for backgrounds)
+  Script: proton_pool_MuGamma.cpp
+
+  Proton pool extracted from QCD data (same HLT_IsoMu24 trigger), saving
+  multiRP proton kinematics (xi, arm, thetaX, thetaY) to separate ROOT files:
+    /eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/
+        proton_pool_MUGAMMA_2018_UL_fromQCD_nano_{N}.root
+
+  These are mixed with DY/ttbar MC events by merge_pp_mutau.py to simulate
+  the expected pileup proton background rate.
+
+  Probability that random pileup provides protons on both arms: 0.245
+
+
+--------------------------------------------------------------------------------
+4. NORMALIZATION
+--------------------------------------------------------------------------------
+
+Documented in NORMALIZATION_DOCUMENTATION.md and implemented in:
+  check_mc_normalization.py, fase1_dy.py, fase1_ttjets.py,
+  merge_pp_mutau.py, save_shapes.cpp.
+
+
+LUMINOSITY
+  L = 54.9 fb^-1 = 54,900 pb^-1   (2018 UL, CMS certified)
+
+
+CROSS-SECTIONS
+  Sample                               sigma (pb)    Reference
+  -----------------------------------------------------------
+  DY (Z/gamma* -> ll, M > 50 GeV)     6077.22       NNLO, FEWZ 3.1
+  ttbar                                831.76        NNLO+NNLL, TOP++ 2.0
+  gamma-gamma -> tau-tau (SM signal)   4.7 fb        CMS measurement
+
+
+SUM OF GENERATOR WEIGHTS (from NanoAOD Runs tree, genEventSumw)
+  Sample    N events          Sum(gen_weights)
+  ---------------------------------------------------
+  DY        195,510,810       3.323 x 10^12
+  ttbar     304,895,029       6.108 x 10^11
+
+  Script: check_mc_normalization.py
+  Accesses: Runs tree, branch genEventSumw (+ genEventCount)
+
+
+MC SCALE FACTORS
+  Scale = (L x sigma) / Sum(gen_weights)
+
+  DY_SCALE   = (54900 x 6077.22) / 3.323e12  = 1.004e-4
+  TTBAR_SCALE = 1.0  (see ttbar normalization below)
+
+
+NORMALIZATION PIPELINE
+
+  DY:
+    event_weight (fase1_dy.py)  = generator_weight x mu_trig_sf x mu_idiso_sf x mu_reco_sf
+    weight (merge)              = event_weight x 0.245
+    final_weight (plotting)     = weight x DY_SCALE
+                                = gen_w x SFs x 0.245 x 1.004e-4
+                                ~ 17000 x 0.97 x 0.245 x 1.004e-4  ~  0.4 per event
+
+  ttbar:
+    event_weight (fase1_ttjets.py) = 0.15 x mu_trig_sf x mu_idiso_sf x mu_reco_sf
+    weight (merge)                 = event_weight x 0.245
+    final_weight (plotting)        = weight x 1.0   (TTBAR_SCALE = 1.0)
+
+    The hardcoded 0.15 factor:
+      L x sigma / Sum(gen_w) x avg_gen_w = 7.476e-5 x 2000 = 0.1495 ~ 0.15
+      Verified to 0.3% in validate_normalization.py.
+
+  Signal (gamma-gamma -> tau-tau):
+    weight_sample = 54900 x weight_sm[0] / (4000 x 1000)
+    final_weight  = weight_sample x radiation_damage_weight x muon_SFs
+
+  QCD:
+    Data-driven. No MC normalization. weight = 1.0.
+
+
+PROTON ACCEPTANCE FACTOR: 0.245
+  Probability of having pileup protons reconstructed on both PPS arms
+  simultaneously. Applied as multiplicative weight during merge step to
+  DY and ttbar backgrounds.
+
+
+EXPECTED YIELDS AFTER PROTON CUT
+  Sample    Raw events    Weighted yield
+  --------------------------------------
+  DY        1,704         486 events
+  ttbar     26,649        954 events
+
+
+NORMALIZATION FORMULA (summary)
+  weight = (L x sigma / Sum_w_gen) x generator_weight x SF_muon x eff_proton
+
+  Where:
+    L            = 54,900 pb^-1
+    sigma        = production cross-section (pb)
+    Sum_w_gen    = sum of generator weights from original NanoAOD Runs tree
+    generator_weight = per-event generator weight (from aMC@NLO)
+    SF_muon      = trigger x ID/Iso x reconstruction scale factors
+    eff_proton   = 0.245
+
+
+--------------------------------------------------------------------------------
+5. SCALE FACTORS AND CORRECTIONS
+--------------------------------------------------------------------------------
+
+Muon SFs loaded from text lookup tables:
+  /eos/user/m/mblancco/tau_analysis/POGCorrections/
+      muon_neg18_lowTrig.txt    (mu-, pT < 200 GeV)
+      muon_pos18_lowTrig.txt    (mu+, pT < 200 GeV)
+      muon_18_highTrig.txt      (pT > 200 GeV)
+      muon_IdISO.txt            (combined ID+Iso)
+
+  Format: eta_min eta_max pt_min pt_max corr syst  (one row per bin)
+  Validity: |eta| < 2.4 and pT > 35 GeV; returns 1.0 outside acceptance.
+  flag=0 -> nominal correction; flag=1 -> systematic uncertainty
+
+
+MUON TRIGGER SF (MuonTrigSF)
+  pT < 200 GeV, charge < 0 -> uses muon_neg18_lowTrig.txt
+  pT < 200 GeV, charge > 0 -> uses muon_pos18_lowTrig.txt
+  pT > 200 GeV             -> uses muon_18_highTrig.txt
+
+
+MUON ID+ISO SF (MuonIDISOSF)
+  Uses muon_IdISO.txt (charge-independent)
+
+
+MUON RECONSTRUCTION SF (muRecoSF) — hardcoded values
+  |eta| > 2.1, pT < 200: sf = 0.999
+
+  pT > 200 (uses total momentum p = pT / sin(2*atan(exp(-eta)))):
+    p in [100, 150):  |eta|<1.6 -> 0.9948;  |eta|>1.6 -> 0.993
+    p in [150, 200):  |eta|<1.6 -> 0.9950;  |eta|>1.6 -> 0.990
+    p in [200, 300):  |eta|<1.6 -> 0.994;   |eta|>1.6 -> 0.988
+    p in [300, 400):  |eta|<1.6 -> 0.9914;  |eta|>1.6 -> 0.981
+    p in [400, 600):  |eta|<1.6 -> 0.993;   |eta|>1.6 -> 0.983
+    p in [600, 1500): |eta|<1.6 -> 0.991;   |eta|>1.6 -> 0.978
+    p in [1500,3500): |eta|<1.6 -> 1.0;     |eta|>1.6 -> 0.98
+
+  Systematic uncertainties (flag=1), pT < 200:
+    |eta| < 0.9:          0.000382
+    0.9 <= |eta| < 1.2:   0.000522
+    1.2 <= |eta| < 2.1:   0.000831
+    |eta| >= 2.1:         0.001724
+
+
+COMBINED MUON WEIGHT (signal, sinal.cpp)
+  entry_65 = weight_sample x weight_rad x mu_trig_sf x mu_idiso_sf x mu_reco_sf
+
+
+TAU ID SCALE FACTORS
+  Encoded in Combine datacard as log-normal nuisances (not applied
+  event-by-event in the tree; accounted for in the statistical fit):
+
+  Nuisance       Signal    DY      ttbar
+  ----------------------------------------
+  tau_idVSjet    1.05      1.04    1.04
+  tau_idVSe      1.025     1.025   1.025
+  tau_idVSmu     1.031     1.032   1.026
+
+
+--------------------------------------------------------------------------------
+6. OBSERVABLES AND FEATURE ENGINEERING
+--------------------------------------------------------------------------------
+
+All defined in phase 0 (fase0_data_mutau.py) and used in BDT training and
+plotting. All use TLorentzVector arithmetic.
+
+  Variable          Formula / Definition
+  -----------------------------------------------------------------------
+  sist_mass         M(mu + tau) = (muon + tau).M()
+  sist_pt           pT(mu + tau) = (muon + tau).Pt()
+  sist_rap          Y(mu + tau) = (muon + tau).Rapidity()
+  acop              1 - |Delta_phi| / pi
+                    Delta_phi = |phi_mu - phi_tau|;
+                    if Delta_phi > pi: Delta_phi = 2*pi - Delta_phi;
+                    acop = |Delta_phi| / pi
+  met_pt            MET_pt (missing transverse energy)
+  delta_r           DeltaR(mu, tau) = tau.DeltaR(muon)  [TLorentzVector]
+  xi_arm1_1         xi of leading multiRP proton with arm == 0
+  xi_arm2_1         xi of leading multiRP proton with arm == 1
+  Rapidity matching Y_sys - 0.5 * log(xi1/xi2)
+  Mass matching     sist_mass - 13000 * sqrt(xi1 * xi2)
+  Proton inv. mass  M_pp = 13000 * sqrt(xi1 * xi2)  [sqrt(s) = 13000 GeV]
+
+
+PHYSICAL MOTIVATION:
+
+  Acoplanarity:
+    For exclusive production gamma-gamma -> tau tau, the two-body final state
+    is back-to-back in the transverse plane (Delta_phi = pi), giving acop ~ 0.
+    Backgrounds (DY, QCD, ttbar) fill the full acop range up to 1.
+
+  Rapidity matching:
+    For a central exclusive process gamma-gamma -> tau tau, the rapidity of
+    the central system equals 0.5 * log(xi1/xi2). The residual
+    Y_sys - 0.5*log(xi1/xi2) peaks at 0 for signal but is flat for
+    backgrounds where the protons are not kinematically correlated with
+    the tau pair.
+
+  Mass matching:
+    Similarly, M_sys - sqrt(s * xi1 * xi2) peaks near 0 for signal.
+    For unrelated pileup protons, this quantity is broadly distributed
+    and typically strongly negative.
+
+
+--------------------------------------------------------------------------------
+7. BDT / TMVA / COMBINE
+--------------------------------------------------------------------------------
+
+TMVA BDT TRAINING  (TMVAClassification.C)
+
+  Input files:
+    Signal:     MuTau_sinal_SM_2018_july.root  (tree "tree")
+    Background: background_total-protons_syst.root  (tree "tree")
+
+  Training configuration:
+    nTrain_Signal     = 6500
+    nTrain_Background = 15000
+    SplitMode         = Random
+    NormMode          = NumEvents
+
+  Signal weight expression:
+    weight * weights_bsm_sf[51]
+    (index 51 = SM point in BSM reweighting vector)
+
+  Background weight expression:
+    weight
+
+  Global tree-level weights:
+    signalWeight = backgroundWeight = 1.0
+    (all normalization handled by per-event weight expressions above)
+
+  INPUT VARIABLES (9 total):
+    1.  sist_rap                              central system rapidity
+    2.  acop                                  acoplanarity
+    3.  sist_pt                               total pT  [GeV]
+    4.  mu_pt                                 muon pT  [GeV]
+    5.  tau_pt                                tau pT   [GeV]
+    6.  sist_mass                             invariant mass  [GeV]
+    7.  sist_mass - sqrt(13000^2 * xi1*xi2)   invariant mass matching  [GeV]
+    8.  met_pt                                MET  [GeV]
+    9.  sist_rap - 0.5*log(xi1/xi2)           rapidity matching
+
+    Note: xi1, xi2 are tree aliases for xi_arm1_1, xi_arm2_1 to avoid TMVA
+    parser misreading array indexing notation.
+
+  THREE BDT CONFIGURATIONS (scanned):
+
+    Scan A (DEFAULT — AdaBoost, conservative baseline):
+      NTrees=600, MinNodeSize=5%, MaxDepth=2, BoostType=AdaBoost,
+      AdaBoostBeta=0.2, UseBaggedBoost, BaggedSampleFraction=0.5,
+      SeparationType=GiniIndex, nCuts=40,
+      PruneMethod=CostComplexity, PruneStrength=5,
+      NegWeightTreatment=IgnoreNegWeightsInTraining
+
+    Scan B (AdaBoost with negative weight pairing):
+      NTrees=850, MinNodeSize=2.5%, MaxDepth=3, BoostType=AdaBoost,
+      AdaBoostBeta=0.3, UseBaggedBoost, BaggedSampleFraction=0.5,
+      SeparationType=GiniIndex, nCuts=40,
+      PruneMethod=CostComplexity, PruneStrength=3,
+      NegWeightTreatment=PairNegWeightsGlobal
+
+    Scan C (Gradient boost):
+      NTrees=600, MinNodeSize=2.5%, MaxDepth=2, BoostType=Grad,
+      Shrinkage=0.10, UseBaggedBoost, BaggedSampleFraction=0.5,
+      SeparationType=GiniIndex, nCuts=40,
+      PruneMethod=CostComplexity, PruneStrength=2,
+      NegWeightTreatment=IgnoreNegWeightsInTraining
+
+  Output: dataset/weights/TMVAClassification_BDT.weights.xml
+          TMVA_allBkg_Mutau_2018.root
+
+
+BDT APPLICATION  (TMVAClassificationApplication.C)
+  Reads XML weights, applies to each sample, produces:
+    TMVApp_data.root
+    TMVApp_DY.root
+    TMVApp_QCD.root
+    TMVApp_ttjets.root
+    TMVApp_sinal.root
+  Each contains histogram MVA_BDT (and MVA_Likelihood, MVA_Fisher).
+
+
+COMBINE DATACARD  (datacards/mutau_bdt_shape.txt)
+
+  imax 1  (one channel: mutau)
+  jmax 3  (three backgrounds: dy, ttjets, qcd)
+  shapes from MuTau_shapes.root:
+    bdt_data, bdt_sinal, bdt_dy, bdt_ttjets, bdt_qcd
+  rate = -1 for all (shapes from file)
+
+  SYSTEMATIC UNCERTAINTIES (log-normal):
+    Nuisance       Signal    DY       ttbar    QCD
+    ------------------------------------------------
+    Luminosity     1.015     1.015    1.015    -
+    tau_idVSjet    1.05      1.04     1.04     -
+    tau_idVSe      1.025     1.025    1.025    -
+    tau_idVSmu     1.031     1.032    1.026    -
+    Mu_trig        1.005     1.0007   1.0007   -
+    Mu_idiso       1.0002    1.0004   1.0004   -
+    Mu_reco        1.0006    1.0005   1.0005   -
+    xiProton       1.50      1.50     1.50     1.50
+    dy_norm        -         1.30     -        -
+    ttjets_norm    -         -        1.50     -
+    qcd_norm       -         -        -        1.50
+
+  FREE NORMALIZATION PARAMETERS (rateParam):
+    beta_dy,  beta_tt,  beta_qcd  in [0, 5]  (float freely in fit)
+
+  MC STATISTICAL UNCERTAINTY:
+    autoMCStats 10  (Barlow-Beeston-lite, threshold 10 events)
+
+  ALTERNATIVE DATACARDS:
+    datacards/mutau_mass_shape.txt     — invariant mass shape fit (m_data etc.)
+    datacards/mutau_likelihood_shape.txt — TMVA Likelihood discriminant
+
+
+COMBINE RESULTS (from scan_results.txt):
+
+  Scan A (AdaBoost N=600, d=2):
+    -2sigma=0.789  -1sigma=1.199  Exp=2.039  +1sigma=3.762  +2sigma=6.181  Obs=6.031
+
+  Scan B (AdaBoost N=850, d=3):
+    -2sigma=0.797  -1sigma=1.233  Exp=2.125  +1sigma=3.955  +2sigma=6.442  Obs=4.731
+
+  Scan C (Gradient N=600, d=2):
+    -2sigma=48.8   -1sigma=69.9   Exp=111.5  +1sigma=194.2  +2sigma=337.9  Obs=219.4
+
+  Most recent result (May 2026, per-arm proton selection, Scan A):
+    Expected r < 95.0   at 95% CL
+    Observed r < 281.6  at 95% CL
+    Observed significance: 2.41 sigma
+
+  Earlier April 2026 result (different normalization):
+    Expected r < 2.04
+    Observed r < 6.03
+
+
+--------------------------------------------------------------------------------
+8. COMPUTATIONAL OPTIMIZATION
+--------------------------------------------------------------------------------
+
+ROOT EnableImplicitMT
+  All phase 0 and phase 1 scripts call ROOT.EnableImplicitMT() at startup.
+  This activates implicit multithreading for RDataFrame::Snapshot, parallelizing
+  the event loop across all available CPU cores.
+
+MT FALLBACK (fase0_data_mutau.py)
+  Phase 0 data skimmer includes automatic fallback to single-thread mode:
+    def try_rdf(input_spec, use_mt=True):
+        if use_mt: ROOT.EnableImplicitMT()
+        else:       ROOT.DisableImplicitMT()
+        df = ROOT.RDataFrame("Events", input_spec)
+        df_defs = build_df_defs(df)
+        df_defs.Snapshot("tree", part_file, COLUMNS)
+  Tries MT first; falls back to ST if failure occurs.
+
+RDataFrame USAGE
+  Entire phase 0 and phase 1 processing uses ROOT.RDataFrame instead of
+  manual TTree loops. Benefits:
+    - Lazy evaluation (filter/define nodes compiled JIT before execution)
+    - Implicit parallelism with MT enabled
+    - Efficient multi-file chaining
+
+SUBPROCESS ISOLATION (fase0_data_mutau.py)
+  Each file processed as an independent subprocess, isolating potential
+  segfaults/memory issues from the driver process:
+    def run_worker(single_idx):
+        return subprocess.run(
+            [sys.executable, sys.argv[0], "--single-index", str(single_idx)], ...)
+
+RESUME CAPABILITY
+  All phase 0/1 scripts maintain a JSON resume file tracking completed file
+  indices, enabling restart after interruption without reprocessing:
+    .mutau_phase0_resume.json
+    .mutau_phase1_dy_resume.json
+    .mutau_phase1_ttjets_resume.json
+    .mutau_phase1_qcd_resume.json
+
+XROOTD RESILIENCE (fase0_data_mutau.py)
+  Tries multiple redirectors in order:
+    root://cms-xrd-global.cern.ch
+    root://xrootd-cms.infn.it
+  Auto-renews VOMS proxy if expiring (voms-proxy-init -voms cms -valid 24:00).
+  Falls back to local xrdcp caching on failure.
+
+
+--------------------------------------------------------------------------------
+9. FILE STRUCTURE AND DATA FLOW
+--------------------------------------------------------------------------------
+
+PHASE 0 INPUTS (NanoAOD on XRootD):
+  Data_MuTau_phase0_2018.txt  -> /store/.../RunIISummer20UL18NanoAODv9/...
+  DY_2018_UL.txt
+  ttJets_2018_UL.txt
+  QCD_2018_UL.txt
+
+PHASE 0 OUTPUTS (EOS):
+  /eos/user/m/mblancco/samples_2018_mutau/fase0_mutau_proton_vars/
+      Data_2018_UL_skimmed_MuTau_nano_{0..N}.root
+  /eos/user/m/mblancco/samples_2018_mutau/fase0_DY/
+      DY_2018_UL_skimmed_MuTau_nano_{0..N}.root
+  [similar directories for TTJets, QCD]
+
+PHASE 1 OUTPUTS (EOS):
+  /eos/user/m/mblancco/samples_2018_mutau/fase1_data_proton_vars/
+      Data_2018_UL_skimmed_MuTau_cuts_{0..N}.root
+  /eos/user/m/mblancco/samples_2018_mutau/fase1_dy/
+      DY_2018_UL_skimmed_MuTau_cuts_{0..N}.root
+  /eos/user/m/mblancco/samples_2018_mutau/fase1_ttjets/
+      ttjets_2018_UL_skimmed_MuTau_cuts_{0..N}.root
+
+MERGED FILES (EOS):
+  /eos/user/m/mblancco/samples_2018_mutau/
+      Data_2018_UL_MuTau_nano_merged_proton_vars.root
+      DY_2018_UL_MuTau_nano_merged_pileup_protons.root
+      ttjets_2018_UL_MuTau_nano_merged_pileup_protons.root
+      QCD_2018_UL_MuTau_nano_merged_proton_vars_new.root
+
+SIGNAL (local):
+  MuTau_sinal_SM_2018_july.root
+  Source MC file:
+    /eos/cms/store/user/jjhollar/TauTau_NanoAOD_Madalena/SignalSamples/MuTau/
+    GammaGammaTauTau_2018_UL_MuTau_SMandBSMweights_ntuplesfromminiJuly.root
+
+TMVA OUTPUTS (local):
+  TMVA_allBkg_Mutau_2018.root
+  dataset/weights/TMVAClassification_BDT.weights.xml
+  TMVApp_{data,DY,QCD,ttjets,sinal}.root
+
+FINAL SHAPES (local):
+  MuTau_shapes.root
+    Histograms: {aco,m,pt,ra,r,mm,tau,met,bdt}_{data,dy,qcd,ttjets,sinal}
+    Also: lk_* (Likelihood) and fish_* (Fisher) discriminants
+
+DATACARDS (local):
+  datacards/mutau_bdt_shape.txt         BDT discriminant shape fit
+  datacards/mutau_mass_shape.txt        Invariant mass shape fit
+  datacards/mutau_likelihood_shape.txt  Likelihood discriminant
+
+PROTON POOL (EOS):
+  /eos/cms/store/group/phys_smp/Exclusive_DiTau/proton_pool_2018/
+      proton_pool_MUGAMMA_2018_UL_fromQCD_nano_{N}.root
+
+POG CORRECTIONS (EOS):
+  /eos/user/m/mblancco/tau_analysis/POGCorrections/
+      muon_neg18_lowTrig.txt
+      muon_pos18_lowTrig.txt
+      muon_18_highTrig.txt
+      muon_IdISO.txt
+
+PPS EFFICIENCY FILES (local):
+  pixelEfficiencies_multiRP_reMiniAOD.root
+  pixelEfficiencies_radiation_reMiniAOD.root
+
+PPS SYSTEMATICS FILE (EOS):
+  /eos/home-m/mblancco/tau_analysis/TauTau_Channel/POGCorrections/
+      reco_charactersitics_version1.root
+      Contains: 2018_TS1_TS2/multi rp-{0,1}/xi/g_systematics_vs_xi
+
+
+BRANCH NAMING CONVENTIONS
+
+  Phase 0 data tree branches:
+    muon_pt, tau_pt, muon_eta, tau_eta, muon_phi, tau_phi,
+    muon_mass, tau_mass, muon_charge, tau_charge,
+    muon_id, tau_id1, tau_id2, tau_id3,
+    muon_n, tau_n,
+    sist_mass, sist_pt, sist_rap, acop,
+    met_pt, met_phi,
+    jet_pt, jet_eta, jet_phi, jet_mass, jet_btag,
+    n_b_jet, weight, generator_weight,
+    nproton_multi, nproton_single,
+    proton_multi_xi[], proton_multi_arm[], proton_multi_t[],
+    proton_multi_thetaX[], proton_multi_thetaY[],
+    proton_multi_time[], proton_multi_timeUnc[],
+    proton_single_xi[]
+
+  Phase 1 DY/ttbar additional branches:
+    mu_id, mu_pt, mu_eta, mu_phi, mu_mass, mu_charge, mu_n,
+    mu_trig_sf, mu_idiso_sf, mu_reco_sf,
+    mu_trig_syst, mu_idiso_syst, mu_reco_syst,
+    event_weight
+
+  Signal tree branches (post-sinal.cpp):
+    mu_pt, tau_pt, mu_eta, tau_eta, mu_charge, tau_charge,
+    mu_id, tau_id_full, tau_id_antimu, tau_id_antie, tau_id_antij,
+    sist_acop, sist_pt, sist_mass, sist_rap,
+    xi_arm1_1, xi_arm2_1,
+    xi_arm1_1_up, xi_arm1_1_dw, xi_arm2_1_up, xi_arm2_1_dw,
+    thy1, thy2, thx1, thx2,
+    y1, y2, x1, x2, t1, t2, arm1, arm2,
+    trackx1_1, trackx1_2, trackx2_1, trackx2_2,
+    tracky1_1, tracky1_2, tracky2_1, tracky2_2,
+    weight, syst_mu_trig, syst_mu_idiso, syst_mu_reco,
+    weights_bsm_sf[] (102 BSM reweighting points)
+
+  BSM weights:
+    index 51 = SM reference point
+    weights_bsm_sf[p] / weights_bsm_sf[51] = ratio for BSM point p
+
+
+--------------------------------------------------------------------------------
+10. SUMMARY OF KEY NUMERICAL VALUES
+--------------------------------------------------------------------------------
+
+  Quantity                       Value
+  ----------------------------------------------------------
+  Centre-of-mass energy          13 TeV
+  Integrated luminosity          54.9 fb^-1
+  Trigger                        HLT_IsoMu24
+  Muon pT threshold              > 35 GeV
+  Tau pT threshold               > 100 GeV
+  |eta| cut (mu and tau)         < 2.4
+  Muon ID working point          MVA ID >= 3 (Tight)
+  DeepTau VSjet threshold        > 63 (>= VeryTight, bit 6)
+  DeepTau VSe threshold          > 7  (>= Tight, bit 3)
+  DeepTau VSmu threshold         > 1  (>= Loose, bit 1)
+  DeltaR(mu, tau)                > 0.4
+  DeepCSV b-tag medium WP        0.4506
+  DY cross-section               6077.22 pb  (NNLO, FEWZ 3.1)
+  ttbar cross-section            831.76 pb   (NNLO+NNLL, TOP++ 2.0)
+  Signal cross-section           4.7 fb
+  DY sum of generator weights    3.323 x 10^12
+  ttbar sum of generator weights 6.108 x 10^11
+  DY scale factor                1.004 x 10^-4
+  TTBAR_SCALE                    1.0  (pre-normalized via 0.15 factor)
+  ttbar normalization factor     0.15  (= L x sigma / Sum_w x avg_gen_w)
+  Proton acceptance (both arms)  0.245
+  BDT: NTrees / MaxDepth (Scan A) 600 / 2  (AdaBoost)
+  BDT: AdaBoostBeta              0.2
+  BDT: nCuts / MinNodeSize       40 / 5%
+  Signal training events         6500
+  Background training events     15000
+  Lumi uncertainty (lnN)         1.015
+  xiProton uncertainty (lnN)     1.50  (50%)
+  DY normalization uncertainty   1.30  (30%)
+  ttbar normalization uncertainty 1.50 (50%)
+  QCD normalization uncertainty  1.50  (50%)
+  Expected 95% CL limit (Scan A, April 2026)   r < 2.04
+  Observed 95% CL limit (Scan A, April 2026)   r < 6.03
+  Expected 95% CL limit (Scan A, May 2026)     r < 95.0
+  Observed 95% CL limit (Scan A, May 2026)     r < 281.6
+  Observed significance (May 2026)             2.41 sigma
+
+
+--------------------------------------------------------------------------------
+END OF DOCUMENT
+--------------------------------------------------------------------------------

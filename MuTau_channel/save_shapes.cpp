@@ -13,6 +13,15 @@ using namespace std;
 const double DY_SCALE = 1.004e-4;       // L x sigma / Sum_w for DY
 const double TTBAR_SCALE = 1.0;         // ttbar already normalized via 0.15 factor
 
+// Helper: get leaf value trying multiple branch names (data/MC have different naming)
+double GetLeafSafe(TTree* tree, std::initializer_list<const char*> names, double def = 0.0) {
+    for (const char* name : names) {
+        TLeaf* lf = tree->GetLeaf(name);
+        if (lf) return lf->GetValue(0);
+    }
+    return def;
+}
+
 // Helper: load a MVA histogram from TMVA application outputs
 TH1D* LoadBDTHist(const char* fileName, const char* newName, double scale = 1.0, const char* histName = "MVA_BDT") {
     TFile input(fileName);
@@ -131,13 +140,21 @@ int save_shapes(){
     TH1D tau_ttjets("tau_ttjets","tau_ttjets", bin_tau, min_tau, max_tau);
     TH1D tau_sinal("tau_sinal","tau_sinal", bin_tau, min_tau, max_tau);
 
-    // met: muon pT (labeled "met" in plot_m.cpp but actually muon_pt/mu_pt)
+    // met: missing transverse energy
     int bin_met = 20; double min_met = 0, max_met = 300;
     TH1D met_data("met_data","met_data", bin_met, min_met, max_met);
     TH1D met_qcd("met_qcd","met_qcd", bin_met, min_met, max_met);
     TH1D met_dy("met_dy","met_dy", bin_met, min_met, max_met);
     TH1D met_ttjets("met_ttjets","met_ttjets", bin_met, min_met, max_met);
     TH1D met_sinal("met_sinal","met_sinal", bin_met, min_met, max_met);
+
+    // mupt: muon pT (BDT input variable)
+    int bin_mupt = 20; double min_mupt = 0, max_mupt = 300;
+    TH1D mupt_data("mupt_data","mupt_data", bin_mupt, min_mupt, max_mupt);
+    TH1D mupt_qcd("mupt_qcd","mupt_qcd", bin_mupt, min_mupt, max_mupt);
+    TH1D mupt_dy("mupt_dy","mupt_dy", bin_mupt, min_mupt, max_mupt);
+    TH1D mupt_ttjets("mupt_ttjets","mupt_ttjets", bin_mupt, min_mupt, max_mupt);
+    TH1D mupt_sinal("mupt_sinal","mupt_sinal", bin_mupt, min_mupt, max_mupt);
 
     // ---- Event loops ----
 
@@ -169,6 +186,7 @@ int save_shapes(){
             ra_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0));
             tau_data.Fill(tree_data->GetLeaf("tau_pt")->GetValue(0));
             met_data.Fill(tree_data->GetLeaf("met_pt")->GetValue(0));
+            mupt_data.Fill(GetLeafSafe(tree_data, {"mu_pt", "muon_pt"}));
             r_data.Fill(tree_data->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2));
             mm_data.Fill(tree_data->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2));
         }
@@ -201,6 +219,7 @@ int save_shapes(){
             ra_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0));
             tau_qcd.Fill(tree_qcd->GetLeaf("tau_pt")->GetValue(0));
             met_qcd.Fill(tree_qcd->GetLeaf("met_pt")->GetValue(0));
+            mupt_qcd.Fill(GetLeafSafe(tree_qcd, {"mu_pt", "muon_pt"}));
             r_qcd.Fill(tree_qcd->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2));
             mm_qcd.Fill(tree_qcd->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2));
         }
@@ -223,6 +242,7 @@ int save_shapes(){
         ra_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0), w);
         tau_dy.Fill(tree_dy->GetLeaf("tau_pt")->GetValue(0), w);
         met_dy.Fill(tree_dy->GetLeaf("met_pt")->GetValue(0), w);
+        mupt_dy.Fill(GetLeafSafe(tree_dy, {"mu_pt", "muon_pt"}), w);
 
         r_dy.Fill(tree_dy->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
         mm_dy.Fill(tree_dy->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
@@ -245,6 +265,7 @@ int save_shapes(){
         ra_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0), w);
         tau_ttjets.Fill(tree_ttjets->GetLeaf("tau_pt")->GetValue(0), w);
         met_ttjets.Fill(tree_ttjets->GetLeaf("met_pt")->GetValue(0), w);
+        mupt_ttjets.Fill(GetLeafSafe(tree_ttjets, {"mu_pt", "muon_pt"}), w);
 
         r_ttjets.Fill(tree_ttjets->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
         mm_ttjets.Fill(tree_ttjets->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
@@ -267,6 +288,7 @@ int save_shapes(){
         ra_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0), w);
         tau_sinal.Fill(tree_sinal->GetLeaf("tau_pt")->GetValue(0), w);
         met_sinal.Fill(tree_sinal->GetLeaf("met_pt")->GetValue(0), w);
+        mupt_sinal.Fill(GetLeafSafe(tree_sinal, {"mu_pt", "muon_pt"}), w);
 
         r_sinal.Fill(tree_sinal->GetLeaf("sist_rap")->GetValue(0) - 0.5*log(xi1/xi2), w);
         mm_sinal.Fill(tree_sinal->GetLeaf("sist_mass")->GetValue(0) - 13000.*sqrt(xi1*xi2), w);
@@ -275,11 +297,11 @@ int save_shapes(){
     // ---- Apply MC scale factors ----
     aco_dy.Scale(DY_SCALE);    m_dy.Scale(DY_SCALE);    pt_dy.Scale(DY_SCALE);
     ra_dy.Scale(DY_SCALE);     r_dy.Scale(DY_SCALE);    mm_dy.Scale(DY_SCALE);
-    tau_dy.Scale(DY_SCALE);    met_dy.Scale(DY_SCALE);
+    tau_dy.Scale(DY_SCALE);    met_dy.Scale(DY_SCALE);    mupt_dy.Scale(DY_SCALE);
 
     aco_ttjets.Scale(TTBAR_SCALE);    m_ttjets.Scale(TTBAR_SCALE);    pt_ttjets.Scale(TTBAR_SCALE);
     ra_ttjets.Scale(TTBAR_SCALE);     r_ttjets.Scale(TTBAR_SCALE);    mm_ttjets.Scale(TTBAR_SCALE);
-    tau_ttjets.Scale(TTBAR_SCALE);    met_ttjets.Scale(TTBAR_SCALE);
+    tau_ttjets.Scale(TTBAR_SCALE);    met_ttjets.Scale(TTBAR_SCALE);  mupt_ttjets.Scale(TTBAR_SCALE);
 
     // ---- Print yields ----
     cout << endl << "=== Event yields ===" << endl;
@@ -299,7 +321,8 @@ int save_shapes(){
     r_data.Write();    r_qcd.Write();    r_dy.Write();    r_ttjets.Write();    r_sinal.Write();
     mm_data.Write();   mm_qcd.Write();   mm_dy.Write();   mm_ttjets.Write();   mm_sinal.Write();
     tau_data.Write();  tau_qcd.Write();  tau_dy.Write();  tau_ttjets.Write();  tau_sinal.Write();
-    met_data.Write();  met_qcd.Write();  met_dy.Write();  met_ttjets.Write();  met_sinal.Write();
+    met_data.Write();   met_qcd.Write();   met_dy.Write();   met_ttjets.Write();   met_sinal.Write();
+    mupt_data.Write();  mupt_qcd.Write();  mupt_dy.Write();  mupt_ttjets.Write();  mupt_sinal.Write();
 
     // ---- BDT histograms ----
     TH1D* bdt_data   = LoadBDTHist("TMVApp_data.root",  "bdt_data");

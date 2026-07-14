@@ -56,9 +56,14 @@ PYEOF
     # --- 2. Train ---
     echo "--- Training ---"
     root -l -b -q TMVAClassification_scan.C 2>&1 | tee train_scan${SCAN}.log
+    cp train_scan${SCAN}.log tmva_outputs/train_scan${SCAN}.log
     AUC=$(grep -o "ROC-integ.*: [0-9.]*" train_scan${SCAN}.log | tail -1 | awk '{print $NF}')
     [ -z "$AUC" ] && AUC="N/A"
     echo "  AUC = $AUC"
+
+    # --- Save per-scan TMVA output for ROC comparison ---
+    cp TMVA_allBkg_Mutau_2018.root tmva_outputs/TMVA_scan${SCAN}.root
+    echo "  Saved tmva_outputs/TMVA_scan${SCAN}.root"
 
     # --- 3. Apply BDT to all samples ---
     echo "--- Applying BDT to all samples ---"
@@ -78,20 +83,48 @@ PYEOF
         > combine_scan${SCAN}.log 2>&1
     cat combine_scan${SCAN}.log
 
-    # --- 6. Extract limits ---
+    # --- 6. Fit diagnostics (best-fit signal strength) ---
+    echo "--- FitDiagnostics (Scan ${SCAN}) ---"
+    combine -M FitDiagnostics datacards/ws_scan${SCAN}.root \
+        -m 120 -n MuTau_scan${SCAN} --saveShapes --saveWithUncertainties \
+        --rMin -1 --rMax 1000 \
+        > fitdiag_scan${SCAN}.log 2>&1
+    cat fitdiag_scan${SCAN}.log
+
+    # --- 7. Observed significance ---
+    echo "--- Significance observed (Scan ${SCAN}) ---"
+    combine -M Significance datacards/ws_scan${SCAN}.root \
+        -m 120 -n MuTau_scan${SCAN} \
+        > sig_obs_scan${SCAN}.log 2>&1
+    cat sig_obs_scan${SCAN}.log
+
+    # --- 8. Expected significance (Asimov) ---
+    echo "--- Significance expected (Scan ${SCAN}) ---"
+    combine -M Significance datacards/ws_scan${SCAN}.root \
+        -m 120 -n MuTau_scan${SCAN}_exp -t -1 --expectSignal=1 \
+        > sig_exp_scan${SCAN}.log 2>&1
+    cat sig_exp_scan${SCAN}.log
+
+    # --- 9. Extract limits and significance ---
     M2=$(grep  "Expected  2.5%" combine_scan${SCAN}.log | awk '{print $NF}')
     M1=$(grep  "Expected 16.0%" combine_scan${SCAN}.log | awk '{print $NF}')
     MED=$(grep "Expected 50.0%" combine_scan${SCAN}.log | awk '{print $NF}')
     P1=$(grep  "Expected 84.0%" combine_scan${SCAN}.log | awk '{print $NF}')
     P2=$(grep  "Expected 97.5%" combine_scan${SCAN}.log | awk '{print $NF}')
     OBS=$(grep "Observed Limit" combine_scan${SCAN}.log | awk '{print $NF}')
+    SIG_OBS=$(grep "Significance:" sig_obs_scan${SCAN}.log | awk '{print $NF}')
+    SIG_EXP=$(grep "Significance:" sig_exp_scan${SCAN}.log | awk '{print $NF}')
+    MU_HAT=$(grep "Best fit r:" fitdiag_scan${SCAN}.log | awk '{print $4}')
 
-    # --- 7. Record ---
+    # --- 10. Record ---
     printf "%-6s | %-8s | %-12s | %-12s | %-12s | %-12s | %-12s | %-12s\n" \
         "${SCAN}" "$AUC" "$M2" "$M1" "$MED" "$P1" "$P2" "$OBS" >> "$RESULTS"
 
     echo ""
-    echo "  Scan ${SCAN} done: Expected median = $MED  Observed = $OBS"
+    echo "  Scan ${SCAN} done:"
+    echo "    Limits:      Expected = $MED  Observed = $OBS"
+    echo "    Significance: obs = ${SIG_OBS}sigma  exp = ${SIG_EXP}sigma"
+    echo "    Best-fit mu: ${MU_HAT}"
 }
 
 SCANS_TO_RUN="${1:-ABC}"  # default: all three

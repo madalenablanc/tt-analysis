@@ -64,18 +64,18 @@ All SF tables are $(\eta, p_T)$-binned. The $\xi$ systematics graph is fit to a 
 
 ---
 
-# Step 0 — normalization weight (all events)
+# Step 0: normalization weight (all events)
 
 Computed **before any selection**, for every event:
 
-$$w_\text{norm} = w_\text{SM}[0] \times \frac{L \times \sigma_\text{SM}}{\sum w_\text{SM}[0]} = w_\text{SM}[0] \times \frac{54900 \times 0.0047}{402.661}$$
+$$w_\text{norm} = \frac{L \times w_\text{SM}[0]}{N_\text{gen}} = \frac{54900 \times w_\text{SM}[0]}{4{,}000{,}000}$$
 
 - $w_\text{SM}[0]$: per-event LHE reweighting weight (SM point, index 0 out of 102 weights)
-- $\sum w_\text{SM}[0] = 402.661$: sum over all 299,979 events
-- $\sigma_\text{SM} = 0.0047$ pb from reweighting index 51 ($\gamma\gamma \to \mu\tau$ SM cross-section)
-- Cross-check: $\sum_\text{all events} w_\text{norm} = L \times \sigma_\text{SM} = 258$ expected events
+- $N_\text{gen} = 4{,}000{,}000$: original generated sample size (before skimming)
+- The ntuple on disk has 299,979 events (after skimming); the weights already encode the reduction
+- The denominator 4M and the stored weights are set up so $\sum w_\text{norm} \approx L \times \sigma_\text{SM}$
 
-Cutflow at step 0 records: raw count, $\sum w_\text{SM}[0]$, $\sum w_\text{SM}[0]$ (identical at this step).
+Cutflow at step 0 records: raw count and $\sum w_\text{SM}[0]$.
 
 ---
 
@@ -271,32 +271,32 @@ The normalized array is stored in `weights_bsm_sf[102]`. Multiplying any entry b
 
 ```
 For every event i in ntp1:
-│
-├─ STEP 0  w_norm = w_SM[0] × (54900 × 0.0047 / 402.661)
-│          [all 299,979 events]
-│
-├─ STEP 1  cut: len(mu) > 0 AND len(tau) > 0
-│
-├─ STEP 2  cut: tau_id_full > 0.5, mu_id > 0.5,
-│               |eta_mu| < 2.4, |eta_tau| < 2.4, dR > 0.4
-│          w_factor = w_norm × SF_trig × SF_ID+ISO × SF_reco
-│
-├─ STEP 3  cut: pT_tau > 100 GeV, pT_mu > 35 GeV
-│
-├─ STEP 4  cut: q_mu × q_tau < 0 (opposite sign)
-│
-├─ STEP 5  cut: |eta| < 2.4 repeat  [xi syst shifts computed]
-│
-├─ STEP 6  cut: >=1 proton in arm 0 AND >=1 in arm 1
-│          [BSM weights normalized, histograms filled]
-│
-├─ STEP 7  cut: theta_x fiducial (xangle-dependent TF1)
-│
-├─ STEP 8  cut: track (x,y) fiducial (era-dependent windows)
-│
-├─ STEP 9  w_rad = eps_multi_arm0 × eps_rad_arm0
-│                × eps_multi_arm1 × eps_rad_arm1
-│          w_final = w_factor × w_rad
-│
-└─ STEP 10 out.Fill()   [weight = w_final]
+
+  STEP 0   w_norm = 54900 * w_SM[0] / (4000 * 1000)
+           [all generated events]
+
+  STEP 1   cut: len(mu) > 0 AND len(tau) > 0
+
+  STEP 2   cut: tau_id_full>0.5, mu_id>0.5,
+                |eta_mu|<2.4, |eta_tau|<2.4, dR>0.4
+           w_factor = w_norm * SF_trig * SF_ID+ISO * SF_reco
+
+  STEP 3   cut: pT_tau > 100 GeV, pT_mu > 35 GeV
+
+  STEP 4   cut: q_mu * q_tau < 0  (opposite sign)
+
+  STEP 5   cut: |eta| < 2.4 repeat  [xi syst shifts computed]
+
+  STEP 6   cut: >=1 proton per arm
+           [BSM weights normalized, histograms filled]
+
+  STEP 7   cut: theta_x fiducial (xangle-dependent)
+
+  STEP 8   cut: track (x,y) fiducial (era-dependent)
+
+  STEP 9   w_rad = eff_multi_arm0 * eff_rad_arm0
+                 * eff_multi_arm1 * eff_rad_arm1
+           w_final = w_factor * w_rad
+
+  STEP 10  out.Fill()   [weight = w_final]
 ```

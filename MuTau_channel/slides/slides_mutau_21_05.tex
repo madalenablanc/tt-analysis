@@ -1,0 +1,340 @@
+\begin{frame}{Overview}
+\protect\phantomsection\label{overview}
+\begin{block}{Where we are}
+\protect\phantomsection\label{where-we-are}
+Since the last meeting (16/04), the two main bugs were fixed and full
+Combine results were obtained for the \(\mu\tau_h\) channel:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+Expected limit (median) & \(r < 2.04\) \\
+Observed limit & \(r < 6.03\) \\
+Observed significance & \(2.41\sigma\) \\
+Expected significance & \(1.62\sigma\) \\
+Best-fit \(r\) & \(2.13\;^{+1.92}_{-1.17}\) \\
+GoF \(p\)-value & 0.51 \\
+\bottomrule\noalign{}
+\end{longtable}
+}
+
+\(\sigma_\text{SM} = 4.7\) fb, BDT Scan A (AdaBoost, \(N=600\),
+\(d=2\)), per-arm proton selection.
+\end{block}
+
+\begin{block}{Today}
+\protect\phantomsection\label{today}
+\begin{enumerate}
+\tightlist
+\item
+  Where the analysis stands and what is left
+\item
+  Translating \(r\) limits to \(a_\tau\) --- context with SM and
+  existing constraints
+\item
+  Thesis outline and structure discussion
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Analysis status: what is done}
+\protect\phantomsection\label{analysis-status-what-is-done}
+\begin{block}{\(\mu\tau_h\) channel --- completed}
+\protect\phantomsection\label{mutau_h-channel-completed}
+\begin{itemize}
+\tightlist
+\item
+  Phase 0 + Phase 1 pipeline (parallelised: days \(\to\) hours)
+\item
+  Normalization fixed: DY scale \(= 1.004\times10^{-4}\), PU proton
+  weight \(= 0.245\)
+\item
+  Pileup proton treatment corrected (QCD stays data-driven, only DY and
+  \(t\bar{t}\) enriched)
+\item
+  \textbf{Bug 1 fixed:} proton selection changed to per-arm logic (+25\%
+  signal yield: \(14\,085 \to 21\,398\) events)
+\item
+  \textbf{Bug 2 fixed:} signal normalization corrected using
+  \(\sigma_\text{SM} = 4.7\) fb and \(\sum w_\text{SM} = 402.661\) (was
+  \(47\times\) too small)
+\item
+  BDT trained and scanned (Scan A selected); statistical validation
+  complete
+\end{itemize}
+\end{block}
+
+\begin{block}{Dominant uncertainty}
+\protect\phantomsection\label{dominant-uncertainty}
+\texttt{xiProton} (50\%) is the leading nuisance --- impacts \(r\) by
+\(+49\,/\,-33\).
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Analysis status: what is left}
+\protect\phantomsection\label{analysis-status-what-is-left}
+\begin{block}{Remaining items for \(\mu\tau_h\)}
+\protect\phantomsection\label{remaining-items-for-mutau_h}
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{Post-fit shape validation} --- identify which BDT bins drive
+  the \(2.41\sigma\) excess; check pre/post-fit agreement per bin
+\item
+  \textbf{\(\sigma_\text{SM}\) cross-check} --- verify the signal MC
+  normalization against an independent sample count
+\item
+  \textbf{Proton modelling} --- \texttt{xiProton} dominates; assess
+  whether 50\% is the appropriate uncertainty or if it can be tightened
+  with a dedicated study
+\item
+  \textbf{Background control regions} --- DY, \(t\bar{t}\), QCD
+  normalization factors (\texttt{beta\_dy}, \texttt{beta\_tt},
+  \texttt{beta\_qcd}) driven largely by the fit; cross-check with
+  dedicated CRs
+\end{enumerate}
+\end{block}
+
+\begin{block}{Extension}
+\protect\phantomsection\label{extension}
+\begin{itemize}
+\tightlist
+\item
+  Apply the same pipeline to the \(\tau_h\tau_h\) channel (code
+  structure already in place)
+\item
+  Combine \(\mu\tau_h\) + \(\tau_h\tau_h\) for improved sensitivity
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{From \(r\) limits to \(a_\tau\) --- the
+connection}
+\protect\phantomsection\label{from-r-limits-to-a_tau-the-connection}
+\begin{block}{Signal cross section depends on \(a_\tau\)}
+\protect\phantomsection\label{signal-cross-section-depends-on-a_tau}
+The exclusive process \(\gamma\gamma \to \tau^+\tau^-\) probes the
+\(\tau\tau\gamma\) vertex. The cross section receives a BSM correction:
+
+\[\sigma(a_\tau, d_\tau) = \sigma_\text{SM} + \Delta\sigma(a_\tau - a_\tau^\text{SM}, d_\tau)\]
+
+An observed (or excluded) signal strength
+\(r = \sigma/\sigma_\text{SM}\) therefore constrains deviations
+\(\Delta a_\tau = a_\tau - a_\tau^\text{SM}\).
+\end{block}
+
+\begin{block}{Strategy}
+\protect\phantomsection\label{strategy}
+\begin{itemize}
+\tightlist
+\item
+  With Combine limits on \(r\), extract 95\% CL allowed range for
+  \(a_\tau\) using the BSM reweighting branches already stored in the
+  signal MC (\texttt{BSM\textbackslash{}\_weight} array)
+\item
+  Each entry in the array corresponds to a different
+  \((a_\tau, d_\tau)\) hypothesis
+\item
+  Scan \(r(a_\tau)\) and read off where \(r_\text{obs/exp}\) intersects
+  the curve
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{\(a_\tau\): SM prediction and existing limits}
+\protect\phantomsection\label{a_tau-sm-prediction-and-existing-limits}
+\begin{block}{SM prediction}
+\protect\phantomsection\label{sm-prediction}
+\[a_\tau^\text{SM} = a_\tau^\text{QED} + a_\tau^\text{EW} + a_\tau^\text{HVP} + a_\tau^\text{HLbL} \approx 117\,721 \times 10^{-8}\]
+\end{block}
+
+\begin{block}{Existing experimental constraints (95\% CL)}
+\protect\phantomsection\label{existing-experimental-constraints-95-cl}
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3438}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2812}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Experiment
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Constraint
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Process
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+L3 / OPAL (LEP) & \(-0.052 < a_\tau < 0.013\) &
+\(Z \to \tau\tau\gamma\) \\
+DELPHI (LEP) & similar order & \(e^+e^- \to e^+e^-\tau^+\tau^-\) \\
+ATLAS (PbPb, 2023) & \(-0.0042 < a_\tau < 0.0048\) &
+\(\gamma\gamma \to \tau\tau\) (UPC) \\
+CMS (PbPb, 2023) & similar & \(\gamma\gamma \to \tau\tau\) (UPC) \\
+\textbf{This analysis (pp)} & \textbf{TBD} &
+\(\gamma\gamma \to \tau\tau\) + PPS tag \\
+\bottomrule\noalign{}
+\end{longtable}
+}
+
+The LEP limits are \(\sim 1\) order of magnitude above the first QED
+contribution.\\
+The PbPb UPC results are the current best, but pp collisions reach
+\textbf{higher \(M_{\tau\tau}\)}, enhancing BSM sensitivity at large
+dipole values.
+\end{block}
+\end{frame}
+
+\begin{frame}{\(a_\tau\) landscape --- where this analysis sits}
+\protect\phantomsection\label{a_tau-landscape-where-this-analysis-sits}
+\begin{columns}
+\column{0.55\textwidth}
+
+### Why pp + PPS is complementary to PbPb
+
+\begin{itemize}
+\item PbPb UPC: lower $M_{\tau\tau}$ threshold, clean topology, large cross section
+\item pp: higher $M_{\tau\tau}$ reach $\to$ BSM dipole effects scale as $M^2 / \Lambda^2$, so sensitivity to heavy new physics is enhanced
+\item Proton tagging provides a strong kinematic constraint (mass matching) that is absent in PbPb
+\item Expected pp limits on $a_\tau$ competitive with or beyond current LEP bounds
+\end{itemize}
+
+\column{0.45\textwidth}
+
+### Sensitivity scaling
+
+$$\Delta a_\tau^\text{BSM} \propto \frac{m_\tau^2}{\Lambda^2}$$
+
+BSM sensitivity of $a_\tau$ is $\sim 280\times$ larger than $a_\mu$ and $\sim 3600\times$ larger than $a_e$ for the same NP scale $\Lambda$.
+
+\medskip
+$a_\tau$ is essentially **unmeasured** experimentally — the SM prediction has never been tested to the level of the first QED contribution.
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{Next step: \(r \to a_\tau\) conversion}
+\protect\phantomsection\label{next-step-r-to-a_tau-conversion}
+\begin{block}{Approach using existing BSM weights}
+\protect\phantomsection\label{approach-using-existing-bsm-weights}
+The signal MC already contains per-event BSM reweighting arrays. The
+procedure:
+
+\begin{enumerate}
+\tightlist
+\item
+  For each hypothesis \(a_\tau^{(k)}\) in the scan, reweight the signal
+  histogram:
+  \[w_i^{(k)} = w_i^\text{SM} \times \frac{\text{BSM\_weight}[k]}{\text{BSM\_weight}[0]}\]
+\item
+  Rerun Combine (or use analytic scaling) to obtain
+  \(r_{95}(a_\tau^{(k)})\)
+\item
+  Plot \(r_{95}\) vs \(a_\tau\) --- the crossing with
+  \(r_\text{obs} = 6.03\) and \(r_\text{exp} = 2.04\) gives the excluded
+  range
+\end{enumerate}
+\end{block}
+
+\begin{block}{Goal for thesis}
+\protect\phantomsection\label{goal-for-thesis}
+Produce a plot showing: - Observed and expected excluded regions in
+\(a_\tau\) - SM prediction marked - Comparison band with current best
+limits (ATLAS/CMS PbPb)
+\end{block}
+\end{frame}
+
+\begin{frame}{Thesis outline}
+\protect\phantomsection\label{thesis-outline}
+\begin{block}{Current chapter structure}
+\protect\phantomsection\label{current-chapter-structure}
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2105}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3684}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4211}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Title
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+1 & Theory (literature review of key papers) & draft \\
+2 & Introduction (SM, \(\tau\) lepton, \(g-2\), CEP motivation) & in
+progress \\
+3 & Experimental apparatus (CMS + PPS) & draft \\
+4 & Preliminary analysis (conceptual stage, small sample validation) &
+draft \\
+5 & Samples and object reconstruction & in progress \\
+6 & Analysis and results (\(\mu\tau_h\), BDT, Combine) & in progress \\
+\bottomrule\noalign{}
+\end{longtable}
+}
+\end{block}
+\end{frame}
+
+\begin{frame}{Thesis structure --- open questions}
+\protect\phantomsection\label{thesis-structure-open-questions}
+\begin{block}{Question 1: Chapter 1 placement}
+\protect\phantomsection\label{question-1-chapter-1-placement}
+Chapter 1 is currently a set of literature review notes on key papers.\\
+\textbf{Option A:} Keep as standalone chapter (current) --- gives the
+reader the bibliography context upfront.\\
+\textbf{Option B:} Merge content into Chapter 2 (Introduction) ---
+standard thesis structure; avoids a chapter that reads as notes.
+\end{block}
+
+\begin{block}{Question 2: Scope of results}
+\protect\phantomsection\label{question-2-scope-of-results}
+Currently only \(\mu\tau_h\) has full results.\\
+\textbf{Option A:} Present \(\mu\tau_h\) as the main result with an
+outlook section for other channels.\\
+\textbf{Option B:} Attempt \(\tau_h\tau_h\) before submission and
+include as a second result.
+\end{block}
+
+\begin{block}{Question 3: \(a_\tau\) limit extraction}
+\protect\phantomsection\label{question-3-a_tau-limit-extraction}
+Should the thesis include a full \(r \to a_\tau\) scan (using BSM
+weights), or report limits on \(r\) only and leave \(a_\tau\)
+translation as future work?
+\end{block}
+\end{frame}
+
+\begin{frame}{Summary}
+\protect\phantomsection\label{summary}
+\begin{block}{Done since last meeting}
+\protect\phantomsection\label{done-since-last-meeting}
+Nothing new since 16/04 --- the corrected combine results stand as the
+current best output.
+\end{block}
+
+\begin{block}{Immediate next steps}
+\protect\phantomsection\label{immediate-next-steps}
+\begin{enumerate}
+\tightlist
+\item
+  Post-fit shape validation --- identify \(2.41\sigma\) excess origin
+\item
+  \(r \to a_\tau\) scan using BSM weight branches
+\item
+  Produce \(a_\tau\) exclusion plot vs SM + PbPb limits
+\item
+  Resolve thesis structure questions above
+\item
+  Extend pipeline to \(\tau_h\tau_h\)
+\end{enumerate}
+\end{block}
+
+\begin{block}{Key numbers to keep in mind}
+\protect\phantomsection\label{key-numbers-to-keep-in-mind}
+\[r_\text{exp} < 2.04 \quad r_\text{obs} < 6.03 \quad \sigma_\text{SM} = 4.7\ \text{fb} \quad \text{GoF } p = 0.51\]
+\end{block}
+\end{frame}

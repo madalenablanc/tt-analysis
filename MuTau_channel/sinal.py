@@ -449,7 +449,7 @@ def main():
         bsm_weights = ntp1.bsm_weights
 
         # pre-cut sums: BEFORE any selection (all generated events)
-        weight_sample = weight_sm[0] * (54900.0 * 0.0047) / 402.661  # L × σ_SM / Σ(weight_sm) 
+        weight_sample = 54900.0 * weight_sm[0] / (4000.0 * 1000.0)  # Matteo's formula: L × w_SM / N_gen
         precut_sum_wsm0    += float(weight_sm[0])
         precut_sum_wsample += weight_sample
 

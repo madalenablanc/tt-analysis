@@ -8,10 +8,10 @@
 
 Method         : BDT::BDT
 TMVA Release   : 4.2.1         [262657]
-ROOT Release   : 6.38/04       [402948]
+ROOT Release   : 6.30/07       [400903]
 Creator        : mblancco
-Date           : Sun May  3 14:27:25 2026
-Host           : Linux buildvm-x86-15.rdu3.fedoraproject.org 6.19.8-200.fc43.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Mar 13 22:06:06 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+Date           : Thu May 28 04:22:01 2026
+Host           : Linux cmsbuild102.cern.ch 4.18.0-513.11.1.el8_9.x86_64 #1 SMP Wed Jan 17 02:00:40 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
 Dir            : /eos/home-m/mblancco/tau_analysis/MuTau_channel
 Training events: 21500
 Analysis type  : [Classification]
@@ -330,7 +330,7 @@ void ReadBDT::Initialize()
   double inf = std::numeric_limits<double>::infinity();
   double nan = std::numeric_limits<double>::quiet_NaN();
   // itree = 0
-  fBoostWeights.push_back(0.568257485813979);
+  fBoostWeights.push_back(0.568257484277458);
   fForest.push_back( 
 NN(
 NN(
@@ -1958,7 +1958,7 @@ NN(
 NN(
 0, 
 0, 
-0, -0.172719, 0, -1, 2.95624e-16,-99) , 
+0, -0.172719, 0, -1, 2.95625e-16,-99) , 
 1, 0.97565, 0, 0, 0.505712,-99)    );
   // itree = 89
   fBoostWeights.push_back(0.194026);
@@ -2522,7 +2522,7 @@ NN(
 NN(
 0, 
 0, 
--1, 112.194, 0, -1, 0.0683874,-99) , 
+-1, 112.194, 0, -1, 0.0683875,-99) , 
 6, -1004.74, 0, 0, 0.542456,-99)    );
   // itree = 119
   fBoostWeights.push_back(0.102099);
@@ -2815,7 +2815,7 @@ NN(
 NN(
 0, 
 0, 
--1, 0, 1, -1, 0.0920621,-99) , 
+-1, 0, 1, -1, 0.092062,-99) , 
 1, 0.975639, 0, 0, 0.525048,-99) , 
 NN(
 0, 
@@ -4330,7 +4330,7 @@ NN(
 0, -0.252476, 0, -1, 4.86478e-15,-99) , 
 1, 0.975668, 0, 0, 0.393185,-99)    );
   // itree = 214
-  fBoostWeights.push_back(0.150618);
+  fBoostWeights.push_back(0.150617);
   fForest.push_back( 
 NN(
 NN(

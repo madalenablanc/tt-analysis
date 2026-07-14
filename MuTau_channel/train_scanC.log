@@ -2,8 +2,14 @@
 Processing TMVAClassification_scan.C...
 
 ==> Start TMVAClassification
---- TMVAClassification       : Using input BKG file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/background_total-protons_syst.root
---- TMVAClassification       : Using input SIGNAL file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/MuTau_sinal_SM_2018_july.root
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present
+
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present
+
+--- TMVAClassification       : Using input BKG file: background_total-protons_syst.root
+--- TMVAClassification       : Using input SIGNAL file: MuTau_sinal_SM_2018_july.root
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3001] Required argument not present
+
 DataSetInfo              : [dataset] : Added class "Signal"
 DataSetInfo              : [dataset] : Added class "Background"
                          : Add Tree tree of type Signal with 21398 events
@@ -139,7 +145,7 @@ Factory                  : Train method: Likelihood for Classification
                          : 
                          : Filling reference histograms
                          : Building PDF out of reference histograms
-                         : Elapsed time for training with 21500 events: 0.11 sec         
+                         : Elapsed time for training with 21500 events: 0.0805 sec         
 Likelihood               : [dataset] : Evaluation of Likelihood on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -157,10 +163,10 @@ Likelihood               : [dataset] : Evaluation of Likelihood on training samp
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.0292 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.0169 sec       
                          : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_Likelihood.weights.xml[0m
                          : Creating standalone class: [0;36mdataset/weights/TMVAClassification_Likelihood.class.C[0m
-                         : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_Likelihood/Likelihood
+                         : TMVA_allBkg_Mutau_2018.root:/dataset/Method_Likelihood/Likelihood
 Factory                  : Training finished
                          : 
 Factory                  : Train method: Fisher for Classification
@@ -223,7 +229,7 @@ Fisher                   : Results for Fisher coefficients:
                          :               sist_rap-0.5*log(xi1/xi2):                                  +0.101
                          :                                (offset):                                  -0.671
                          : ---------------------------------------------------------------------------------
-                         : Elapsed time for training with 21500 events: 0.0173 sec         
+                         : Elapsed time for training with 21500 events: 0.0138 sec         
 Fisher                   : [dataset] : Evaluation of Fisher on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -241,7 +247,7 @@ Fisher                   : [dataset] : Evaluation of Fisher on training sample (
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.00293 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.00395 sec       
                          : <CreateMVAPdfs> Separation from histogram (PDF): 0.635 (0.000)
                          : Dataset[dataset] : Evaluation of Fisher on training sample
 0%, time left: unknown
@@ -272,22 +278,22 @@ BDT                      : #events: (reweighted) sig: 10624 bkg: 10624
                          : #events: (unweighted) sig: 6498 bkg: 14750
                          : Training 600 Decision Trees ... patience please
 0%, time left: unknown
-6%, time left: 3 sec
-12%, time left: 3 sec
-19%, time left: 2 sec
-25%, time left: 2 sec
-31%, time left: 2 sec
-37%, time left: 2 sec
-44%, time left: 2 sec
-50%, time left: 1 sec
-56%, time left: 1 sec
-62%, time left: 1 sec
-69%, time left: 1 sec
+6%, time left: 1 sec
+12%, time left: 1 sec
+19%, time left: 1 sec
+25%, time left: 1 sec
+31%, time left: 1 sec
+37%, time left: 1 sec
+44%, time left: 1 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+69%, time left: 0 sec
 75%, time left: 0 sec
 81%, time left: 0 sec
 87%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for training with 21500 events: 3.68 sec         
+                         : Elapsed time for training with 21500 events: 2.01 sec         
 BDT                      : [dataset] : Evaluation of BDT on training sample (21500 events)
 0%, time left: unknown
 7%, time left: 0 sec
@@ -305,10 +311,10 @@ BDT                      : [dataset] : Evaluation of BDT on training sample (215
 82%, time left: 0 sec
 88%, time left: 0 sec
 94%, time left: 0 sec
-                         : Elapsed time for evaluation of 21500 events: 0.383 sec       
+                         : Elapsed time for evaluation of 21500 events: 0.202 sec       
                          : Creating xml weight file: [0;36mdataset/weights/TMVAClassification_BDT.weights.xml[0m
                          : Creating standalone class: [0;36mdataset/weights/TMVAClassification_BDT.class.C[0m
-                         : root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root:/dataset/Method_BDT/BDT
+                         : TMVA_allBkg_Mutau_2018.root:/dataset/Method_BDT/BDT
 Factory                  : Training finished
                          : 
                          : Ranking input variables (method specific)...
@@ -319,7 +325,7 @@ Likelihood               : Ranking result (top variable is best ranked)
                          :    1 : sist_mass_M_sqrt_13000.0_T_13000.0_T_xi1_T_xi2_ : 5.966e-02
                          :    2 : sist_rap_M_0.5_T_log_xi1_D_xi2_                 : -2.053e-01
                          :    3 : acop                                            : -2.222e-01
-                         :    4 : mu_pt                                           : -4.045e-01
+                         :    4 : mu_pt                                           : -4.044e-01
                          :    5 : sist_pt                                         : -4.486e-01
                          :    6 : sist_mass                                       : -7.720e-01
                          :    7 : tau_pt                                          : -1.289e+00
@@ -379,7 +385,7 @@ Likelihood               : [dataset] : Evaluation of Likelihood on testing sampl
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.0438 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.0213 sec       
 Factory                  : Test method: Fisher for Classification performance
                          : 
 Fisher                   : [dataset] : Evaluation of Fisher on testing sample (29262 events)
@@ -399,7 +405,7 @@ Fisher                   : [dataset] : Evaluation of Fisher on testing sample (2
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.00531 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.00196 sec       
                          : Dataset[dataset] : Evaluation of Fisher on testing sample
 0%, time left: unknown
 6%, time left: 0 sec
@@ -436,7 +442,7 @@ BDT                      : [dataset] : Evaluation of BDT on testing sample (2926
 81%, time left: 0 sec
 87%, time left: 0 sec
 93%, time left: 0 sec
-                         : Elapsed time for evaluation of 29262 events: 0.457 sec       
+                         : Elapsed time for evaluation of 29262 events: 0.247 sec       
 Factory                  : [1mEvaluate all methods[0m
 Factory                  : Evaluate classifier: Likelihood
                          : 
@@ -513,6 +519,6 @@ Dataset:dataset          : Created tree 'TrainTree' with 21500 events
                          : 
 Factory                  : [1mThank you for using TMVA![0m
                          : [1mFor citation information, please visit: http://tmva.sf.net/citeTMVA.html[0m
-==> Wrote root file: root://eoshome-m.cern.ch//eos/user/m/mblancco/tau_analysis/MuTau_channel/TMVA_allBkg_Mutau_2018.root
+==> Wrote root file: TMVA_allBkg_Mutau_2018.root
 ==> TMVAClassification is done!
 (int) 0

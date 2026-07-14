@@ -4,10 +4,10 @@
 >>> Method used is AsymptoticLimits
 
  -- AsymptoticLimits ( CLs ) --
-Observed Limit: r < 4.7309
-Expected  2.5%: r < 0.7969
-Expected 16.0%: r < 1.2327
-Expected 50.0%: r < 2.1250
-Expected 84.0%: r < 3.9546
-Expected 97.5%: r < 6.4422
+Observed Limit: r < 221.2419
+Expected  2.5%: r < 37.1250
+Expected 16.0%: r < 57.4277
+Expected 50.0%: r < 99.0000
+Expected 84.0%: r < 184.2375
+Expected 97.5%: r < 300.1320
 

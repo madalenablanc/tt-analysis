@@ -946,8 +946,8 @@ int TMVAClassification_scan( TString myMethodList = "" )
                            "!H:!V:NTrees=1000:MinNodeSize=2.5%:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:nCuts=20:MaxDepth=2" );
 
 
-   if (Use["BDT"])  // Scan C
-      factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT", "!H:!V:NTrees=600:MinNodeSize=2.5%:MaxDepth=2:BoostType=Grad:Shrinkage=0.10:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=40:PruneMethod=CostComplexity:PruneStrength=2:NegWeightTreatment=IgnoreNegWeightsInTraining" );
+   if (Use["BDT"])  // Scan A
+      factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDT", "!H:!V:NTrees=600:MinNodeSize=5%:MaxDepth=2:BoostType=AdaBoost:AdaBoostBeta=0.2:UseBaggedBoost:BaggedSampleFraction=0.5:SeparationType=GiniIndex:nCuts=40:PruneMethod=CostComplexity:PruneStrength=5:NegWeightTreatment=IgnoreNegWeightsInTraining" );
 
 
    if (Use["BDTB"]) // Bagging

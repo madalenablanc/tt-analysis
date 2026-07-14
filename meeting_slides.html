@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tau g-2 Analysis — Meeting Slides</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Helvetica Neue', Arial, sans-serif; background: #1a1a2e; color: #eee; }
+
+  .slide {
+    display: none;
+    width: 100vw; height: 100vh;
+    padding: 60px 80px;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .slide.active { display: flex; }
+
+  .slide-num {
+    position: absolute; bottom: 24px; right: 40px;
+    font-size: 13px; color: #888;
+  }
+
+  /* Colour themes per slide */
+  .theme-title  { background: linear-gradient(135deg, #0f3460 0%, #16213e 100%); }
+  .theme-blue   { background: linear-gradient(135deg, #16213e 0%, #0f3460 100%); }
+  .theme-purple { background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 100%); }
+  .theme-green  { background: linear-gradient(135deg, #0d2e1a 0%, #1a3a2a 100%); }
+  .theme-dark   { background: #111827; }
+
+  h1 { font-size: 2.6rem; font-weight: 700; color: #60a5fa; margin-bottom: 12px; }
+  h2 { font-size: 2rem; font-weight: 600; color: #93c5fd; margin-bottom: 28px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; }
+  h3 { font-size: 1.25rem; color: #fbbf24; margin-bottom: 10px; }
+  p  { font-size: 1.05rem; line-height: 1.6; color: #d1d5db; }
+  .subtitle { font-size: 1.2rem; color: #9ca3af; margin-top: 8px; }
+
+  ul { list-style: none; padding: 0; }
+  ul li { padding: 7px 0 7px 24px; font-size: 1.05rem; color: #d1d5db; line-height: 1.5; position: relative; }
+  ul li::before { content: "▸"; position: absolute; left: 0; color: #60a5fa; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+
+  .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 22px 24px;
+  }
+  .card.highlight { border-color: #3b82f6; background: rgba(59,130,246,0.1); }
+  .card.warn      { border-color: #f59e0b; background: rgba(245,158,11,0.08); }
+  .card.ok        { border-color: #10b981; background: rgba(16,185,129,0.08); }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 12px; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 600; margin-right: 6px;
+  }
+  .badge-done   { background: #065f46; color: #6ee7b7; }
+  .badge-wip    { background: #78350f; color: #fcd34d; }
+  .badge-todo   { background: #1e3a5f; color: #93c5fd; }
+
+  .formula {
+    background: rgba(0,0,0,0.4);
+    border-left: 4px solid #8b5cf6;
+    padding: 14px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    color: #e9d5ff;
+    margin: 14px 0;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .big-number { font-size: 2.4rem; font-weight: 700; color: #34d399; margin: 6px 0; }
+  .big-label  { font-size: 0.9rem; color: #9ca3af; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th { background: rgba(59,130,246,0.25); padding: 10px 14px; text-align: left; color: #93c5fd; font-weight: 600; }
+  td { padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.07); color: #d1d5db; }
+  tr:last-child td { border-bottom: none; }
+
+  .timeline { display: flex; flex-direction: column; gap: 12px; }
+  .tl-item { display: flex; gap: 16px; align-items: flex-start; }
+  .tl-dot  { width: 12px; height: 12px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .tl-dot.done { background: #10b981; }
+  .tl-dot.wip  { background: #f59e0b; }
+  .tl-dot.todo { background: #6b7280; }
+  .tl-text { font-size: 0.95rem; color: #d1d5db; }
+
+  /* Navigation */
+  nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    display: flex; justify-content: center; gap: 12px;
+    padding: 14px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px);
+  }
+  nav button {
+    padding: 8px 22px; border-radius: 8px; border: 1px solid #374151;
+    background: #1f2937; color: #d1d5db; cursor: pointer; font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  nav button:hover { background: #374151; }
+  nav button#prev-btn { color: #9ca3af; }
+  #slide-counter { color: #6b7280; padding: 8px 0; font-size: 0.9rem; align-self: center; }
+
+  /* keyboard hint */
+  .key-hint { position: fixed; top: 14px; right: 20px; font-size: 0.75rem; color: #4b5563; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ SLIDE 1 — TITLE ═══════════════════════════════ -->
+<div class="slide active theme-title">
+  <div style="max-width: 800px;">
+    <p style="color:#3b82f6; font-size:0.9rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px;">MSc Thesis — Progress Meeting · May 2026</p>
+    <h1 style="font-size:3rem; line-height:1.2;">Measuring the Tau Anomalous Magnetic Moment</h1>
+    <p class="subtitle" style="margin-top:20px; font-size:1.15rem;">
+      Central Exclusive Production of τ<sup>+</sup>τ<sup>−</sup> pairs via photon fusion<br>
+      in pp collisions at √s = 13 TeV with CMS + PPS (2018 Run 2)
+    </p>
+    <div style="margin-top:40px; display:flex; gap:20px; flex-wrap:wrap;">
+      <div class="card" style="flex:1; min-width:180px;">
+        <div class="big-label">Signal process</div>
+        <div style="font-size:1.1rem; color:#c4b5fd; margin-top:6px;">pp → p(γγ→ττ)p</div>
+      </div>
+      <div class="card" style="flex:1; min-width:180px;">
+        <div class="big-label">Luminosity</div>
+        <div class="big-number">54.9 fb<sup style="font-size:1.2rem">−1</sup></div>
+      </div>
+      <div class="card" style="flex:1; min-width:180px;">
+        <div class="big-label">Primary channel</div>
+        <div style="font-size:1.1rem; color:#86efac; margin-top:6px;">μ + τ<sub>h</sub></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">1 / 7</div>
+</div>
+
+<!-- ═══════════════════════════════ SLIDE 2 — WHY ═══════════════════════════════ -->
+<div class="slide theme-purple">
+  <h2>Why τ g-2? The Physics Case</h2>
+  <div class="two-col">
+    <div>
+      <h3>The anomalous magnetic moment</h3>
+      <div class="formula">a<sub>l</sub> = (g<sub>l</sub> − 2) / 2</div>
+      <ul>
+        <li>Dirac equation predicts g = 2 exactly</li>
+        <li>Quantum loop corrections shift g slightly above 2</li>
+        <li>Discrepancy between SM prediction and experiment → BSM signal</li>
+        <li>Sensitivity scales as <strong>m<sub>l</sub>²</strong> — tau is ~280× more sensitive than muon per unit NP scale</li>
+      </ul>
+      <div class="formula" style="margin-top:18px;">
+        a<sub>τ</sub><sup>SM</sup> ≈ 117 721 × 10<sup>−8</sup>
+      </div>
+    </div>
+    <div>
+      <h3>Current experimental status</h3>
+      <div class="card warn" style="margin-bottom:16px;">
+        <div class="big-label">Best limit (DELPHI / LEP)</div>
+        <div style="font-size:1.15rem; color:#fcd34d; margin-top:6px;">−0.052 &lt; a<sub>τ</sub> &lt; 0.013 (95% CL)</div>
+        <p style="font-size:0.85rem; color:#9ca3af; margin-top:6px;">From e<sup>+</sup>e<sup>−</sup> → e<sup>+</sup>e<sup>−</sup>τ<sup>+</sup>τ<sup>−</sup> — one order of magnitude above first QED contribution</p>
+      </div>
+      <div class="card ok">
+        <div class="big-label">This analysis — LHC pp advantage</div>
+        <ul style="margin-top:8px;">
+          <li>Higher masses → enhanced BSM dipole sensitivity</li>
+          <li>Proton tagging with PPS → clean exclusive topology</li>
+          <li>First measurement of γγ→ττ in pp with PPS tag</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">2 / 7</div>
+</div>
+
+<!-- ═══════════════════════════════ SLIDE 3 — EXPERIMENTAL SETUP ═══════════════════════════════ -->
+<div class="slide theme-blue">
+  <h2>Experimental Setup — CMS + PPS</h2>
+  <div class="two-col">
+    <div>
+      <h3>CMS Central Detector</h3>
+      <ul>
+        <li>Superconducting solenoid, B = 3.8 T, ⌀ 6 m</li>
+        <li>Silicon pixel + strip tracker (charged particles)</li>
+        <li>ECAL (lead-tungstate crystals) + HCAL (brass/scintillator)</li>
+        <li>Gas-ionization muon chambers</li>
+        <li>Tau reconstruction via <strong>DeepTau</strong> algorithm</li>
+        <li>Particle-flow (PF) event reconstruction</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Precision Proton Spectrometer (PPS)</h3>
+      <ul>
+        <li>Tracking + timing detectors at ≈ 210 m from IP on both sides</li>
+        <li>Detects intact protons in Roman Pots (12σ from beam)</li>
+        <li>Measures ξ = (p<sub>i</sub> − p<sub>f</sub>)/p<sub>i</sub> (fractional momentum loss)</li>
+        <li>Constrains central system: M<sub>X</sub>² = s·ξ₁·ξ₂</li>
+        <li>Full pixel upgrade in 2018 → improved resolution</li>
+      </ul>
+      <div class="card highlight" style="margin-top:16px;">
+        <strong style="color:#60a5fa;">Key advantage:</strong> proton tag directly constrains the ττ system mass and rapidity, powerfully rejecting DY background
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">3 / 7</div>
+</div>
+
+<!-- ═══════════════════════════════ SLIDE 4 — ANALYSIS STRATEGY ═══════════════════════════════ -->
+<div class="slide theme-dark">
+  <h2>Analysis Strategy — μτ<sub>h</sub> Channel</h2>
+  <div class="two-col">
+    <div>
+      <h3>Signal topology</h3>
+      <ul>
+        <li>Two intact tagged protons (one per PPS arm)</li>
+        <li>Opposite-sign μ + τ<sub>h</sub> pair, no extra hadronic activity</li>
+        <li>μ p<sub>T</sub> &gt; 35 GeV, τ<sub>h</sub> p<sub>T</sub> &gt; 100 GeV, |η| &lt; 2.4</li>
+        <li>Mass &amp; rapidity matching between central system and protons</li>
+      </ul>
+      <h3 style="margin-top:20px;">Backgrounds</h3>
+      <table>
+        <tr><th>Source</th><th>Treatment</th></tr>
+        <tr><td>Drell-Yan (DY)</td><td>MC + PU proton enrichment</td></tr>
+        <tr><td>tt̄</td><td>MC + PU proton enrichment</td></tr>
+        <tr><td>QCD multijets</td><td>Data-driven (same-sign CR)</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>8-step workflow</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>Phase 0</strong> — skimming: trigger, object selection, save proton branches</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>Phase 1</strong> — event selection: IDs, kinematic cuts, sign selection</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>Proton info</strong> — real protons for data/QCD; PU pool enrichment for DY/tt̄</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>Normalization</strong> — L·σ/Σw<sub>gen</sub>, scale factors, proton acceptance (0.245)</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>Proton observables</strong> — ξ per arm, M<sub>X</sub>(proton), rapidity, matching variables</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>BDT training</strong> — 9 variables, central kinematics + CMS/PPS consistency</div></div>
+        <div class="tl-item"><div class="tl-dot done"></div><div class="tl-text"><strong>Shape histograms</strong> — mass or BDT score for signal / backgrounds / data</div></div>
+        <div class="tl-item"><div class="tl-dot wip"></div><div class="tl-text"><strong>Combine</strong> — limits on r = σ/σ<sub>SM</sub>, significance, best-fit r</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">4 / 7</div>
+</div>
+
+<!-- ═══════════════════════════════ SLIDE 5 — CURRENT STATUS ═══════════════════════════════ -->
+<div class="slide theme-green">
+  <h2>Current Status of the Analysis</h2>
+  <div class="three-col">
+    <div>
+      <h3>Completed</h3>
+      <div class="card ok">
+        <ul style="margin:0;">
+          <li><span class="badge badge-done">done</span> Full μτ<sub>h</sub> pipeline (Phase 0 + 1)</li>
+          <li><span class="badge badge-done">done</span> Parallelization: days → hours</li>
+          <li><span class="badge badge-done">done</span> Normalization fixed (DY, tt̄, PU weight = 0.245)</li>
+          <li><span class="badge badge-done">done</span> Pileup proton bug fixed (QCD stays data-driven)</li>
+          <li><span class="badge badge-done">done</span> Distribution shapes validated (data vs MC)</li>
+          <li><span class="badge badge-done">done</span> BDT trained, Combine run, first limits obtained</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <h3>In Progress</h3>
+      <div class="card warn">
+        <ul style="margin:0;">
+          <li><span class="badge badge-wip">wip</span> Confirming σ<sub>SM</sub> normalization in signal MC</li>
+          <li><span class="badge badge-wip">wip</span> Understanding combine output (r ~ 5000 initially → improved after bug fixes)</li>
+          <li><span class="badge badge-wip">wip</span> Goodness-of-fit and nuisance impact studies</li>
+          <li><span class="badge badge-wip">wip</span> Translating r limits to a<sub>τ</sub> constraints</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <h3>Next Steps</h3>
+      <div class="card highlight">
+        <ul style="margin:0;">
+          <li><span class="badge badge-todo">next</span> Finalize combine results for μτ<sub>h</sub></li>
+          <li><span class="badge badge-todo">next</span> Extend to τ<sub>h</sub>τ<sub>h</sub> channel</li>
+          <li><span class="badge badge-todo">next</span> Systematic uncertainties study</li>
+          <li><span class="badge badge-todo">next</span> Compare expected limits with SM prediction band</li>
+          <li><span class="badge badge-todo">next</span> Plot a<sub>τ</sub> constraint vs SM + current PDG limits</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">5 / 7</div>
+</div>
+
+<!-- ═══════════════════════════════ SLIDE 6 — g-2 CONTEXT ═══════════════════════════════ -->
+<div class="slide theme-purple">
+  <h2>Where Does This Analysis Sit? (g-2 Landscape)</h2>
+  <div class="two-col" style="align-items:center;">
+    <div>
+      <h3>SM prediction for a<sub>τ</sub></h3>
+      <div class="formula">a<sub>τ</sub><sup>SM</sup> = a<sub>τ</sub><sup>QED</sup> + a<sub>τ</sub><sup>EW</sup> + a<sub>τ</sub><sup>HVP</sup> + a<sub>τ</sub><sup>HLbL</sup></div>
+      <div class="formula">≈ 117 721 × 10<sup>−8</sup></div>
+      <p style="font-size:0.9rem; color:#9ca3af; margin-top:8px;">Analogous structure to muon g-2 — leading uncertainty from hadronic sector</p>
+
+      <h3 style="margin-top:24px;">Experimental limits timeline</h3>
+      <table>
+        <tr><th>Experiment</th><th>Limit (95% CL)</th><th>Process</th></tr>
+        <tr><td>L3 / OPAL (LEP)</td><td>−0.052 &lt; a<sub>τ</sub> &lt; 0.013</td><td>Z→ττγ</td></tr>
+        <tr><td>DELPHI (LEP)</td><td>~same order</td><td>e<sup>+</sup>e<sup>−</sup>→e<sup>+</sup>e<sup>−</sup>ττ</td></tr>
+        <tr><td>ATLAS/CMS (PbPb)</td><td>Improved, but lower mass</td><td>γγ→ττ (UPC)</td></tr>
+        <tr><td style="color:#34d399;"><strong>This analysis (pp)</strong></td><td style="color:#34d399;"><strong>TBD — expected competitive</strong></td><td>γγ→ττ + PPS tag</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="card" style="padding:28px; text-align:center;">
+        <div class="big-label">Current best limit is ~1 order of magnitude above</div>
+        <div style="font-size:1.8rem; color:#f59e0b; margin:12px 0;">first QED contribution</div>
+        <div class="big-label">a<sub>τ</sub> is essentially unknown experimentally</div>
+        <div style="margin-top:20px; font-size:1rem; color:#d1d5db;">BSM sensitivity scales as m<sub>τ</sub>²/Λ<sup>2</sup>: tau is <strong style="color:#60a5fa;">3,600× more sensitive</strong> than the electron and <strong style="color:#60a5fa;">280× more sensitive</strong> than the muon to new physics at a given scale Λ</div>
+      </div>
+      <div class="card ok" style="margin-top:16px; text-align:center;">
+        <div class="big-label">pp collisions key advantage</div>
+        <div style="font-size:1rem; color:#6ee7b7; margin-top:8px;">Higher M<sub>ττ</sub> reach → enhanced BSM dipole sensitivity beyond PbPb measurements</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">6 / 7</div>
+</div>
+
+<!-- ═══════════════════════════════ SLIDE 7 — THESIS OUTLINE ═══════════════════════════════ -->
+<div class="slide theme-blue">
+  <h2>Thesis Structure — Discussion</h2>
+  <div class="two-col">
+    <div>
+      <h3>Current chapter outline</h3>
+      <table>
+        <tr><th>Chapter</th><th>Status</th></tr>
+        <tr><td>1 — Theory (paper reviews)</td><td><span class="badge badge-done">draft</span></td></tr>
+        <tr><td>2 — Introduction (SM, τ, g-2)</td><td><span class="badge badge-wip">in progress</span></td></tr>
+        <tr><td>3 — Experimental apparatus (CMS + PPS)</td><td><span class="badge badge-done">draft</span></td></tr>
+        <tr><td>4 — Preliminary analysis</td><td><span class="badge badge-done">draft</span></td></tr>
+        <tr><td>5 — Samples &amp; object reconstruction</td><td><span class="badge badge-wip">in progress</span></td></tr>
+        <tr><td>6 — Analysis &amp; results</td><td><span class="badge badge-wip">in progress</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Open questions / structure feedback</h3>
+      <div class="card warn" style="margin-bottom:14px;">
+        <h3 style="font-size:1rem; margin-bottom:8px;">Chapter 1 (Theory) placement</h3>
+        <p style="font-size:0.9rem;">Currently used as literature review — should this become part of Introduction, or stay as a standalone background chapter?</p>
+      </div>
+      <div class="card warn" style="margin-bottom:14px;">
+        <h3 style="font-size:1rem; margin-bottom:8px;">Results scope for thesis</h3>
+        <p style="font-size:0.9rem;">Results currently only for μτ<sub>h</sub> channel. Should thesis attempt τ<sub>h</sub>τ<sub>h</sub> as well, or present μτ<sub>h</sub> as the main result with outlook?</p>
+      </div>
+      <div class="card warn">
+        <h3 style="font-size:1rem; margin-bottom:8px;">σ<sub>SM</sub> normalization</h3>
+        <p style="font-size:0.9rem;">Still to be fully resolved — impacts final a<sub>τ</sub> limit extraction. Need to verify signal MC normalization scheme.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide-num">7 / 7</div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <button id="prev-btn" onclick="changeSlide(-1)">← Prev</button>
+  <span id="slide-counter">1 / 7</span>
+  <button id="next-btn" onclick="changeSlide(1)">Next →</button>
+</nav>
+
+<div class="key-hint">← → arrow keys to navigate</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const counter = document.getElementById('slide-counter');
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function changeSlide(dir) { showSlide(current + dir); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changeSlide(-1);
+  });
+</script>
+</body>
+</html>
