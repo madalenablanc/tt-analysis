@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <cmath>
 #include <vector>
 #include "TApplication.h"
@@ -141,11 +142,11 @@ int main(){
     TApplication app("app",NULL,NULL);
     gStyle->SetOptStat(0);
 
-    // Open files
-    TFile fdata  ("/eos/user/m/mblancco/samples_2018_mutau/final_samples/Data_2018_UL_MuTau_merged.root");
-    TFile fdy    ("/eos/user/m/mblancco/samples_2018_mutau/final_samples/DY_2018_UL_MuTau_merged.root");
-    TFile fqcd   ("/eos/user/m/mblancco/samples_2018_mutau/final_samples/QCD_2018_UL_MuTau_merged.root");
-    TFile fttjets("/eos/user/m/mblancco/samples_2018_mutau/final_samples/ttjets_2018_UL_MuTau_merged.root");
+    // New CR-specific phase-1 outputs. These are merged from fase1_cr.py.
+    TFile fdata  ("/eos/user/m/mblancco/samples_2018_mutau/fase1_cr_mutau_clean/merged/data_all.root");
+    TFile fdy    ("/eos/user/m/mblancco/samples_2018_mutau/fase1_cr_mutau_clean/merged/dy_all.root");
+    TFile fqcd   ("/eos/user/m/mblancco/samples_2018_mutau/fase1_cr_mutau_clean/merged/qcd_all.root");
+    TFile fttjets("/eos/user/m/mblancco/samples_2018_mutau/fase1_cr_mutau_clean/merged/ttjets_all.root");
 
     TTree* tree_data   = (TTree*) fdata  .Get("tree");
     TTree* tree_dy     = (TTree*) fdy    .Get("tree");
@@ -213,7 +214,7 @@ int main(){
     TH1D h_r_qcd_TT("h_r_qcd_TT","",bin_r_TT, min_r_TT, max_r_TT);
     TH1D h_r_ttjets_TT("h_r_ttjets_TT","",bin_r_TT, min_r_TT, max_r_TT);
 
-    // QCD CR (data points from OS data tree, "QCD" component from SS data-driven tree)
+    // QCD CR: black markers come from the SS part of the data tree.
     TH1D h_aco_data_QCD("h_aco_data_QCD","",bin_aco_QCD, min_aco_QCD, max_aco_QCD);
     TH1D h_aco_dy_QCD("h_aco_dy_QCD","",bin_aco_QCD, min_aco_QCD, max_aco_QCD);
     TH1D h_aco_qcd_QCD("h_aco_qcd_QCD","",bin_aco_QCD, min_aco_QCD, max_aco_QCD);
@@ -264,13 +265,9 @@ int main(){
             int    n_b      = (int) GetLeafSafe(tree_data,{"n_b_jet"});
             double w_data   = 1.0;
 
-            // muTau CR definitions:
-            //   DY  : 40 <= M <= 100, a < 0.3, Nb = 0, OS
-            //   TT  : M > 400,        a > 0.3, Nb >= 1, OS
-            //   QCD : M > 100,        a < 0.8, Nb = 0, SS-driven background
-            bool isDY_CR  = (sist_mass >= 40 && sist_mass <= 100) && (acop < 0.3) && (n_b == 0);
-            bool isTT_CR  = (n_b >= 1) && (acop > 0.3) && (sist_mass > 400);
-            bool isQCD_CR = (sist_mass > 100) && (n_b == 0) && (acop < 0.8);
+            bool isDY_CR  = (sist_mass >= 40.0 && sist_mass <= 100.0) && (acop < 0.3) && (n_b == 0);
+            bool isTT_CR  = (sist_mass > 400.0) && (acop > 0.3) && (n_b >= 1);
+            bool isQCD_CR = (sist_mass > 100.0) && (acop < 0.8) && (n_b == 0);
 
             if(isDY_CR) {
                 h_aco_data_DY.Fill(acop,w_data);
@@ -284,12 +281,44 @@ int main(){
                 h_pt_data_TT.Fill(sist_pt,w_data);
                 h_r_data_TT.Fill(sist_rap,w_data);
             }
-            if(isQCD_CR) {
-                h_aco_data_QCD.Fill(acop,w_data);
-                h_m_data_QCD.Fill(sist_mass,w_data);
-                h_pt_data_QCD.Fill(sist_pt,w_data);
-                h_r_data_QCD.Fill(sist_rap,w_data);
-            }
+        }
+    }
+
+    cout << "Filling histograms: DATA (SS QCD CR)" << endl;
+
+    // The QCD CR is validated with same-sign data. The new data tree keeps
+    // both charge categories, so it can be used for all three CRs.
+    {
+        vector<int>*   v_arm = nullptr;
+        vector<float>* v_xi  = nullptr;
+        bool has_p = (tree_data->GetBranch("proton_multi_arm") &&
+                      tree_data->GetBranch("proton_multi_xi"));
+        if (has_p) {
+            tree_data->SetBranchAddress("proton_multi_arm", &v_arm);
+            tree_data->SetBranchAddress("proton_multi_xi",  &v_xi);
+        }
+
+        int n_evt_data = tree_data->GetEntries();
+        for (int i = 0; i < n_evt_data; ++i) {
+            tree_data->GetEntry(i);
+            if (!PassProtonSelection(tree_data, has_p, v_arm, v_xi)) continue;
+            if (!PassMuTauBaseline(tree_data, false, true)) continue;
+
+            double sist_mass = GetLeafSafe(tree_data, {"sist_mass"}, -1.0);
+            if (sist_mass < 0) continue;
+
+            double acop    = GetLeafSafe(tree_data, {"sist_acop", "acop"});
+            double sist_pt = GetLeafSafe(tree_data, {"sist_pt"});
+            double sist_rap = GetLeafSafe(tree_data, {"sist_rap"});
+            int n_b = (int)GetLeafSafe(tree_data, {"n_b_jet"});
+
+            bool isQCD_CR = (sist_mass > 100.0) && (acop < 0.8) && (n_b == 0);
+            if (!isQCD_CR) continue;
+
+            h_aco_data_QCD.Fill(acop, 1.0);
+            h_m_data_QCD.Fill(sist_mass, 1.0);
+            h_pt_data_QCD.Fill(sist_pt, 1.0);
+            h_r_data_QCD.Fill(sist_rap, 1.0);
         }
     }
 
@@ -310,7 +339,9 @@ int main(){
         for(int i=0; i<n_evt_dy; i++){
             tree_dy->GetEntry(i);
             if (!PassProtonSelection(tree_dy, has_p, v_arm, v_xi)) continue;
-            if (!PassMuTauBaseline(tree_dy, true, false)) continue;
+            // Keep both charge categories here. The DY/tt CRs use OS, while
+            // their contamination in the QCD CR must use SS.
+            if (!PassMuTauBaseline(tree_dy, false, false)) continue;
 
             double sist_mass = GetLeafSafe(tree_dy,{"sist_mass"},-1.0);
             if(sist_mass < 0) continue;
@@ -320,10 +351,14 @@ int main(){
             double sist_rap = GetLeafSafe(tree_dy,{"sist_rap"});
             int    n_b      = (int) GetLeafSafe(tree_dy,{"n_b_jet"});
             double w_dy     = GetLeafSafe(tree_dy,{"event_weight","weight"},1.0) * DY_SCALE * EPSILON_PROTON;
+            double mu_ch    = GetLeafSafe(tree_dy,{"mu_charge","muon_charge"});
+            double tau_ch   = GetLeafSafe(tree_dy,{"tau_charge"});
+            bool isOS       = (mu_ch * tau_ch < 0.0);
+            bool isSS       = (mu_ch * tau_ch > 0.0);
 
-            bool isDY_CR  = (sist_mass >= 40 && sist_mass <= 100) && (acop < 0.3) && (n_b == 0);
-            bool isTT_CR  = (n_b >= 1) && (acop > 0.3) && (sist_mass > 400);
-            bool isQCD_CR = (sist_mass > 100) && (n_b == 0) && (acop < 0.8);
+            bool isDY_CR  = isOS && (sist_mass >= 40.0 && sist_mass <= 100.0) && (acop < 0.3) && (n_b == 0);
+            bool isTT_CR  = isOS && (sist_mass > 400.0) && (acop > 0.3) && (n_b >= 1);
+            bool isQCD_CR = isSS && (sist_mass > 100.0) && (acop < 0.8) && (n_b == 0);
 
             if(isDY_CR) {
                 h_aco_dy_DY.Fill(acop,w_dy);
@@ -373,9 +408,9 @@ int main(){
             double sist_rap = GetLeafSafe(tree_qcd,{"sist_rap"});
             int    n_b      = (int) GetLeafSafe(tree_qcd,{"n_b_jet"});
 
-            bool isDY_CR  = (sist_mass >= 40 && sist_mass <= 100) && (acop < 0.3) && (n_b == 0);
-            bool isTT_CR  = (n_b >= 1) && (acop > 0.3) && (sist_mass > 400);
-            bool isQCD_CR = (sist_mass > 100) && (n_b == 0) && (acop < 0.8);
+            bool isDY_CR  = (sist_mass >= 40.0 && sist_mass <= 100.0) && (acop < 0.3) && (n_b == 0);
+            bool isTT_CR  = (sist_mass > 400.0) && (acop > 0.3) && (n_b >= 1);
+            bool isQCD_CR = (sist_mass > 100.0) && (acop < 0.8) && (n_b == 0);
 
             if(isDY_CR) {
                 h_aco_qcd_DY.Fill(acop,1);
@@ -415,7 +450,9 @@ int main(){
         for(int i=0; i<n_evt_ttjets; i++){
             tree_ttjets->GetEntry(i);
             if (!PassProtonSelection(tree_ttjets, has_p, v_arm, v_xi)) continue;
-            if (!PassMuTauBaseline(tree_ttjets, true, false)) continue;
+            // Keep both signs so the QCD CR receives the SS ttbar
+            // contamination while the DY/tt CRs remain OS.
+            if (!PassMuTauBaseline(tree_ttjets, false, false)) continue;
 
             double sist_mass = GetLeafSafe(tree_ttjets,{"sist_mass"},-1.0);
             if(sist_mass < 0) continue;
@@ -424,11 +461,17 @@ int main(){
             double sist_pt  = GetLeafSafe(tree_ttjets,{"sist_pt"});
             double sist_rap = GetLeafSafe(tree_ttjets,{"sist_rap"});
             int    n_b      = (int) GetLeafSafe(tree_ttjets,{"n_b_jet"});
-            double w_ttjets = GetLeafSafe(tree_ttjets,{"event_weight","weight"},1.0) * EPSILON_PROTON;
+            // Existing CR trees contain 0.15 * generator_weight for ttbar.
+            // The original MuTau phase-1 pipeline ignored generator_weight.
+            double w_ttjets = 0.15 * EPSILON_PROTON;
+            double mu_ch    = GetLeafSafe(tree_ttjets,{"mu_charge","muon_charge"});
+            double tau_ch   = GetLeafSafe(tree_ttjets,{"tau_charge"});
+            bool isOS       = (mu_ch * tau_ch < 0.0);
+            bool isSS       = (mu_ch * tau_ch > 0.0);
 
-            bool isDY_CR  = (sist_mass >= 40 && sist_mass <= 100) && (acop < 0.3) && (n_b == 0);
-            bool isTT_CR  = (n_b >= 1) && (acop > 0.3) && (sist_mass > 400);
-            bool isQCD_CR = (sist_mass > 100) && (n_b == 0) && (acop < 0.8);
+            bool isDY_CR  = isOS && (sist_mass >= 40.0 && sist_mass <= 100.0) && (acop < 0.3) && (n_b == 0);
+            bool isTT_CR  = isOS && (sist_mass > 400.0) && (acop > 0.3) && (n_b >= 1);
+            bool isQCD_CR = isSS && (sist_mass > 100.0) && (acop < 0.8) && (n_b == 0);
 
             if(isDY_CR) {
                 h_aco_ttjets_DY.Fill(acop,w_ttjets);
